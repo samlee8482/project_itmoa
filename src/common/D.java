@@ -215,24 +215,40 @@ public interface D {
 //  =============== 사용자  ==============	
 	
 	// 리뷰 목록
-
 	public static final String SQL_SELECT_REVIEW =  
-		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title"
+		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_viewcnt"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 	
 	
+	// 리뷰 목록에서 키워드로 검색
+		public static final String SQL_SELECT_REVIEW_BY_KEYWORD =  
+			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title"
+			+ " FROM review_brd r, mb m, class cl, ins i"
+			+ " WHERE r.review_title LIKE ('%?%') OR r.review_content LIKE ('%?%') OR i.ins_name LIKE ('%?%')"
+			+ "	AND m.mb_uid = r.mb_uid"
+			+ " AND cl.class_uid = r.class_uid"
+			+ " AND cl.ins_uid = i.ins_uid";
+	
+	
 	// 리뷰 내용
 		public static final String SQL_SELECT_REVIEW_BY_UID =  
-			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content"
+			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content, r.review_brd_viewcnt"
 			+ " FROM review_brd r, mb m, class cl, ins i"
 			+ " WHERE r.review_brd_uid = ?"
 			+ " AND m.mb_uid = r.mb_uid"
 			+ " AND cl.class_uid = r.class_uid"
 			+ " AND cl.ins_uid = i.ins_uid";
+	
 		
+	// 조회수 처리는?
+	public static final String SQL_UPDATE_REVIEW_BRD_INC_VIEWCNT = 
+		"UPDATE review_brd "
+		+ " SET review_brd_viewcnt = review_brd_viewcnt + 1 "
+		+ " WHERE review_brd_uid = ?";	
+	
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID = 
@@ -247,9 +263,11 @@ public interface D {
 	public static final String SQL_INSERT_REVIEW_BRD = 
 		"INSERT INTO rep(rep_content) VALUES (?)";
 	
+	
 	// 댓글 수정
 	public static final String SQL_UPDATE_REVIEW_BRD_BY_UID = 
 		"UPDATE rep SET rep_content=? WHERE rep_uid = ?";
+	
 	
 	// 댓글 삭제
 	public static final String SQL_DELETE_REVIEW_BRD_BY_UID = 
@@ -292,7 +310,7 @@ public interface D {
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
 		"UPDATE news_brd "
 		+ " SET news_brd_viewcnt = news_brd_viewcnt + 1 "
-		+ " WHERE uid = ?";	
+		+ " WHERE news_brd_uid = ?";	
 	
 	
 //  =============== 관리자용 ==============	
