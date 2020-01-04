@@ -43,6 +43,18 @@ public class MbDTO {
 		this.ins_name = ins_name;
 		this.cur_name = cur_name;
 	}
+	
+	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_level, String mb_img) {
+		this.mb_uid = mb_uid;
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_level = mb_level;
+		this.mb_img = mb_img;
+	}
+	
+	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2, String mb_img, int zzim_uid, String ins_name, String cur_name) {
+		
+	}
 
 	// 게터세터
 	public int getMb_uid() {
