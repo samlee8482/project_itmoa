@@ -157,7 +157,6 @@ public class AdminMbDAO {
 		String SELECT_MB = D.SQL_SELECT_USER + D.SQL_SELECT_USER_WHERE_UID;
 		
 		try {
-			pstmt.setInt(1, mb_uid);
 			pstmt = conn.prepareStatement(SELECT_MB);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
@@ -176,15 +175,15 @@ public class AdminMbDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_USER);
-			pstmt.setInt(1, mb_uid);
-			pstmt.setString(2, mb_pw);
-			pstmt.setInt(3, mb_zip);
-			pstmt.setString(4, mb_email);
-			pstmt.setInt(5, mb_level);
-			pstmt.setInt(6, mb_zip);
-			pstmt.setString(7, mb_add1);
-			pstmt.setString(8, mb_add2);
-			pstmt.setString(9, mb_img);
+			pstmt.setString(1, mb_pw);
+			pstmt.setInt(2, mb_zip);
+			pstmt.setString(3, mb_email);
+			pstmt.setInt(4, mb_level);
+			pstmt.setInt(5, mb_zip);
+			pstmt.setString(6, mb_add1);
+			pstmt.setString(7, mb_add2);
+			pstmt.setString(8, mb_img);
+			pstmt.setInt(9, mb_uid);
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
