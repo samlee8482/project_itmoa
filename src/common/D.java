@@ -62,7 +62,7 @@ public interface D {
 
 	// 회원 검색 조건) 회원번호
 	public static final String SQL_SELECT_USER_BY_UID =
-		"AND mb_uid LIKE (%?%)";	
+		"AND mb_uid = ?";	
 	
 	// 회원 검색 조건) 회원ID
 	public static final String SQL_SELECT_USER_BY_ID =
@@ -85,5 +85,105 @@ public interface D {
 		"UPDATE mb"
 		+ "SET SET mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ "WHERE mb_uid = ?";
+	
+	// 학원 검색 조건) 전체
+		public static final String SQL_SELECT_CLASS = "
+	select i.ins_img, cl.class_zzimcnt, i.ins_name "학원명", c.cur_name "과정명"
+	from class cl, cur c, ins i
+	where cl.cur_uid = c.cur_uid
+	and cl.ins_uid = i.ins_uid
 
+	// 학원 검색 조건 ) 지역조건
+	public static final String SQL_SELECT_CLASS_BY_INS_LOCATION = 
+	"and i.ins_location like ('%?%'); 
+	 
+		// 학원 검색 조건 ) 지점조건
+	           public static final String SQL_SELECT_CLASS_BY_INS_BRANCH = 
+	"and i.ins_branch like ('%?%')”;
+
+		// 학원 검색 조건 ) 과정명조건
+	public static final String SQL_SELECT_CLASS_BY_CUR_NAME = 
+	"and c.cur_name like ('%?%')”;
+
+	// 학원 검색 결과 정렬
+	public static final String SQL_ORDER_BY_CLASS_UID = 
+	"order by cl.class_zzimcnt DESC”;
+
+	// 사용가능한 조합 
+	// 1. 학원 검색 기본 화면 
+	  	SQL_SELECT_CLASS +SQL_ORDER_BY_CLASS_UID;
+	    
+		// 2. 학원 검색 ) 지역 전체 + 지점 조건 + 과정명 조건 
+	  	SQL_SELECT_CLASS + SQL_SELECT_CLASS_BY_INS_BRANCH+     SQL_SELECT_CLASS_BY_CUR_NAME +SQL_ORDER_BY_CLASS_UID;
+
+
+
+		// 학원 상세 페이지
+		public static final String SQL_SELECT_INS_BY_UID = "
+		SELECT c.*,  i.ins_name 
+	FROM class cl,  ins i, cur c
+	WHERE class_uid = 2
+	      and cl.cur_uid = c.cur_uid
+	      and cl.ins_uid = i.ins_uid";
+
+	// 찜 추가
+	public static final String SQL_INSERT_ZZIM = “
+		INSERT INTO zzim (mb_uid, cur_uid) 
+	VALUES (?, ?)“;
+
+		
+
+	// ----------- 관리자  -------------
+	// 학원목록
+	public static final String SQL_SELECT_INS =
+		"SELECT *"
+		+ "FROM ins";
+	
+	public static final String SQL_INS_WHERE_UID =
+		"WHERE ins_uid = ?"
+
+	public static final String SQL_INS_WHERE_NAME =
+		"WHERE ins_name LIKE ('%?%')";
+	
+	public static final String SQL_INS_WHERE_CUR_NAME =
+			"WHERE ins_uid = ?"
+		
+	public static final String SQL_SELECT_INS_ORDER_BY_UID =
+			"ORDER BY ins_uid";
+	
+	// 학원등록
+	public static final String SQL_INSERT_INS =
+		"INSERT INTO ins"
+		+ "(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch)"
+		+ "VALUES( ?, ?, ?, ?, ?, ?)";
+	
+	// 학원수정
+	public static final String SQL_UPDATE_INS=
+		"UPDATE ins"
+		+ "SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?"
+		+ "WHERE mb_uid = ?";
+	// 학원삭제
+	public static final String SQL_DELETE_INS =
+		"DELETE  FROM ins"
+		+ "WHERE ins_uid = ?”;
+
+	// 클래스 목록
+	public static final String SQL_SELECT_CLASS =
+		"SELECT c.cur_name '과정명', c.cur_hours '시수'"
+		+ "	from class cl, ins i, cur c"
+		+ "where cl.ins_uid = ?"
+		+ "and cl.cur_uid = c.cur_uid"
+		+ "and cl.ins_uid = i.ins_uid”;
+
+	// 클래스 추가
+	public static final String SQL_INSERT_CLASS = “
+INSERT INTO class(ins_uid, cur_uid) 
+VALUES (?, ?)“;
+	
+	// 클래스 삭제
+	public static final String SQL_DELETE_CLASS = “
+DELETE FROM class 
+WHERE class_uid = ?”;
+
+	
 }
