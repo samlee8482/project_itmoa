@@ -230,38 +230,49 @@ public interface D {
 	
 	// 리뷰 목록
 	public static final String SQL_SELECT_REVIEW =  
-		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_viewcnt"
+		"SELECT r.review_brd_uid, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_viewcnt"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 	
 	
-	// 리뷰 목록에서 키워드로 검색
-		public static final String SQL_SELECT_REVIEW_BY_KEYWORD =  
-			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title"
-			+ " FROM review_brd r, mb m, class cl, ins i"
-			+ " WHERE r.review_title LIKE ('%?%') OR r.review_content LIKE ('%?%') OR i.ins_name LIKE ('%?%')"
-			+ "	AND m.mb_uid = r.mb_uid"
-			+ " AND cl.class_uid = r.class_uid"
-			+ " AND cl.ins_uid = i.ins_uid";
+	// 리뷰 검색 조건) 회원ID
+	public static final String SQL_SELECT_REVIEW_BRD_WHERE_USER_ID =  
+		" AND m.mb_id LIKE ('%?%')";
 	
+	// 리뷰 검색 조건) 리뷰제목
+	public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE = 
+	  	" AND r.review_title LIKE ('%?%')";
 	
+	// 리뷰 검색 조건) 리뷰내용
+	 public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT = 
+		" AND r.review_content LIKE ('%?%')";
+	
+	// 리뷰 목록 정렬
+	public static final String SQL_ORDER_REVIEW =  
+		" ORDER BY review_brd_uid DESC";
+		
+
 	// 리뷰 내용
-		public static final String SQL_SELECT_REVIEW_BY_UID =  
-			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content, r.review_brd_viewcnt"
-			+ " FROM review_brd r, mb m, class cl, ins i"
-			+ " WHERE r.review_brd_uid = ?"
-			+ " AND m.mb_uid = r.mb_uid"
-			+ " AND cl.class_uid = r.class_uid"
-			+ " AND cl.ins_uid = i.ins_uid";
+	public static final String SQL_SELECT_REVIEW_BY_UID =  
+		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content, r.review_brd_viewcnt"
+		+ " FROM review_brd r, mb m, class cl, ins i"
+		+ " WHERE r.review_brd_uid = ?"
+		+ " AND m.mb_uid = r.mb_uid"
+		+ " AND cl.class_uid = r.class_uid"
+		+ " AND cl.ins_uid = i.ins_uid";
 	
 		
 	// 조회수 처리는?
-	public static final String SQL_UPDATE_REVIEW_BRD_INC_VIEWCNT = 
+	public static final String SQL_UPDATE_REVIEW_INC_VIEWCNT = 
 		"UPDATE review_brd "
 		+ " SET review_brd_viewcnt = review_brd_viewcnt + 1 "
 		+ " WHERE review_brd_uid = ?";	
+	
+	
+	public static final String SQL_DELETE_REVIEW_BY_UID =
+		"DELETE FROM review_brd WHERE review_brd_uid = ?";		
 	
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
@@ -327,7 +338,7 @@ public interface D {
 		+ " WHERE news_brd_uid = ?";	
 	
 	
-//  =============== 관리자용 ==============	
+//  =============== 관리자용  ==============	
 
 	public static final String SQL_INSERT_NEWS_BRD = 
 		"INSERT INTO news_brd "
