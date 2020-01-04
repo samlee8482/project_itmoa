@@ -199,7 +199,7 @@ public class AdminMbDAO {
 		int cnt = 0;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_DELETE_MB_BY_UID);
+			pstmt = conn.prepareStatement(D.SQL_DELETE_USER_BY_UID);
 			pstmt.setInt(1, mb_uid);
 			cnt = pstmt.executeUpdate();
 			

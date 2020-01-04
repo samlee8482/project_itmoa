@@ -88,7 +88,8 @@ public interface D {
 		+ " SET mb_name, mb_pw, mb_img = ?, mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
 	
-	
+	// 회원 정보 삭제
+	public static final String SQL_DELETE_USER_BY_UID = "DELETE FROM mb WHERE mb_uid = ?";
 	
 	
 	
