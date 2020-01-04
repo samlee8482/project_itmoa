@@ -40,6 +40,7 @@ public class AdminMbDAO {
 
 	
 	// 관리자페이지 회원정보검색
+	// 1.
 	public MbDTO[] createMbArr(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
 		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
 
@@ -63,6 +64,7 @@ public class AdminMbDAO {
 		return arr;
 	}
 	
+	// 2.
 	public MbDTO[] selectMb(int option_mb_1, int option_mb_2, String option_mb_3) {
 		// option_mb_1 은 회원구분
 		// option_mb_2 는 검색조건
@@ -123,6 +125,7 @@ public class AdminMbDAO {
 	}
 	
 	// 관리자페이지 회원상세정보 가져오기
+	// 1.
 	public MbDTO[] createMbByUidArr(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
 		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
 
@@ -148,6 +151,7 @@ public class AdminMbDAO {
 		return arr;
 	}
 	
+	// 2.
 	public MbDTO[] selectMbByUid(int mb_uid) {
 		MbDTO[] arr = null;
 		String SELECT_MB = D.SQL_SELECT_USER + D.SQL_SELECT_USER_WHERE_UID;
@@ -165,6 +169,7 @@ public class AdminMbDAO {
 		return arr; 
 	}
 
+	// 관리자페이지 회원정보수정
 	public int updateMbByUid(int mb_uid, String mb_pw, String mb_name, String mb_email, int mb_level, int mb_zip, String mb_add1, String mb_add2,
 		String mb_img) throws SQLException{
 		int cnt = 0;
@@ -189,6 +194,7 @@ public class AdminMbDAO {
 		return cnt;
 	}
 
+	// 관리자페이지 회원정보삭제
 	public int deleteByUid(int mb_uid) throws SQLException{
 		int cnt = 0;
 		
