@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"mariaDB-16f6628ceda-147e741d3581508e": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - itmoa",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "itmoa",
+				"url": "jdbc:mysql://localhost:3306/itmoa",
+				"type": "dev",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
