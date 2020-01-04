@@ -38,7 +38,7 @@ public class AdminNewsDAO {
 		if(conn != null) conn.close();
 	}
 	
-	// 관리자페이지 뉴스정보검색
+	// 관리자페이지 뉴스 검색
 	// 1.
 	public NewsDTO[] createNewsArr(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
 		ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
@@ -58,6 +58,7 @@ public class AdminNewsDAO {
 		return arr;
 	}
 	
+	// 2.
 	public NewsDTO[] selectNews(int option_news_1, int option_news_2, String option_news_3) {
 		// option_news_1 은 검색조건
 		// option_news_2 는 검색키워드
@@ -104,22 +105,16 @@ public class AdminNewsDAO {
 		return arr; 
 	}
 	
-	// 관리자페이지 뉴스수정
-	public int updateMbByUid(int news_brd_uid, String news_brd_title, String mb_name, String mb_email, int mb_level, int mb_zip, String mb_add1, String mb_add2,
-		String mb_img) throws SQLException{
+	// 관리자페이지 뉴스 수정
+	public int updateMbByUid(int news_brd_uid, String news_brd_title, String news_brd_content, String news_brd_img) throws SQLException{
 		int cnt = 0;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_UPDATE_USER);
-			pstmt.setInt(1, mb_uid);
-			pstmt.setString(2, mb_pw);
-			pstmt.setInt(3, mb_zip);
-			pstmt.setString(4, mb_email);
-			pstmt.setInt(5, mb_level);
-			pstmt.setInt(6, mb_zip);
-			pstmt.setString(7, mb_add1);
-			pstmt.setString(8, mb_add2);
-			pstmt.setString(9, mb_img);
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_NEWS_BRD_BY_UID);
+			pstmt.setString(1, news_brd_title);
+			pstmt.setString(2, news_brd_content);
+			pstmt.setString(3, news_brd_img);
+			pstmt.setInt(4, news_brd_uid);
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
@@ -129,13 +124,12 @@ public class AdminNewsDAO {
 		return cnt;
 	}
 	
-	
-	
+	// 관리자페이지 뉴스 삭제
 	public int deleteByUid(int mb_uid) throws SQLException{
 		int cnt = 0;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_DELETE_MB_BY_UID);
+			pstmt = conn.prepareStatement(D.SQL_DELETE_NEWS_BRD_BY_UID);
 			pstmt.setInt(1, mb_uid);
 			cnt = pstmt.executeUpdate();
 			
@@ -146,5 +140,31 @@ public class AdminNewsDAO {
 		return cnt;
 	}
 	
+	// 관리자페이지 뉴스 삽입
+	// 1.
+	public int insert(NewsDTO dto) throws SQLException {
+		String news_brd_title = dto.getNews_brd_title();
+		String news_brd_img = dto.getNews_brd_img();
+		String news_brd_content = dto.getNews_brd_content();
+		
+		return this.insert(news_brd_title, news_brd_img, news_brd_content);
+	}
+	
+	// 2.
+	public int insert(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_INSERT_NEWS_BRD);
+			pstmt.setString(1, news_brd_title);
+			pstmt.setString(2, news_brd_img);
+			pstmt.setString(3, news_brd_content);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 }

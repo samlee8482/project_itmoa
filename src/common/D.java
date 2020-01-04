@@ -304,7 +304,7 @@ public interface D {
 	
 	public static final String SQL_UPDATE_NEWS_BRD_BY_UID = 
 		"UPDATE news_brd"
-		+ " SET news_brd_title = ?, news_brd_content = ?"
+		+ " SET news_brd_title = ?, news_brd_content = ?, news_brd_img = ?"
 		+ " WHERE news_brd_uid = ?";
 		
 	public static final String SQL_DELETE_NEWS_BRD_BY_UID = 
