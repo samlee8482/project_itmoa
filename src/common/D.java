@@ -59,9 +59,9 @@ public interface D {
 	// 회원 검색 조건) 조건 없을 때      
 	public static final String SQL_SELECT_USER =                  
 		"SELECT *"
-		+ " FROM mb"
-		+ " WHERE mb_level IN(?, ?, ?)";
-
+		+ " FROM mb";
+	public static final String SQL_SELECT_USER_WHERE_LEVEL =    
+		" WHERE mb_level IN(?, ?, ?)";
 	// 회원 검색 조건) 회원번호
 	public static final String SQL_SELECT_USER_WHERE_UID =
 		" AND mb_uid = ?";	
