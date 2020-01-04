@@ -1,0 +1,161 @@
+package com.lec.beans;
+
+public class MbDTO {
+	
+	//매개변수
+	private int mb_uid;
+	private String mb_name;
+	private String mb_id;
+	private String mb_pw;
+	private String mb_add1;
+	private String mb_add2;
+	private int mb_zip;
+	private String mb_email;
+	private int mb_level;
+	private String regdate;
+	private String mb_img;
+	private int zzim_uid;
+	private String ins_name;
+	private String cur_name;
+	
+	// 생성자
+	public MbDTO() {
+		super();
+	}
+
+	// 매개변수 생성자
+	public MbDTO(int mb_uid, String mb_name, String mb_id, String mb_pw, String mb_add1, String mb_add2, int mb_zip,
+			String mb_email, int mb_level, String regdate, String mb_img, int zzim_uid, String ins_name,
+			String cur_name) {
+		super();
+		this.mb_uid = mb_uid;
+		this.mb_name = mb_name;
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_add1 = mb_add1;
+		this.mb_add2 = mb_add2;
+		this.mb_zip = mb_zip;
+		this.mb_email = mb_email;
+		this.mb_level = mb_level;
+		this.regdate = regdate;
+		this.mb_img = mb_img;
+		this.zzim_uid = zzim_uid;
+		this.ins_name = ins_name;
+		this.cur_name = cur_name;
+	}
+
+	// 게터세터
+	public int getMb_uid() {
+		return mb_uid;
+	}
+
+	public void setMb_uid(int mb_uid) {
+		this.mb_uid = mb_uid;
+	}
+
+	public String getMb_name() {
+		return mb_name;
+	}
+
+	public void setMb_name(String mb_name) {
+		this.mb_name = mb_name;
+	}
+
+	public String getMb_id() {
+		return mb_id;
+	}
+
+	public void setMb_id(String mb_id) {
+		this.mb_id = mb_id;
+	}
+
+	public String getMb_pw() {
+		return mb_pw;
+	}
+
+	public void setMb_pw(String mb_pw) {
+		this.mb_pw = mb_pw;
+	}
+
+	public String getMb_add1() {
+		return mb_add1;
+	}
+
+	public void setMb_add1(String mb_add1) {
+		this.mb_add1 = mb_add1;
+	}
+
+	public String getMb_add2() {
+		return mb_add2;
+	}
+
+	public void setMb_add2(String mb_add2) {
+		this.mb_add2 = mb_add2;
+	}
+
+	public int getMb_zip() {
+		return mb_zip;
+	}
+
+	public void setMb_zip(int mb_zip) {
+		this.mb_zip = mb_zip;
+	}
+
+	public String getMb_email() {
+		return mb_email;
+	}
+
+	public void setMb_email(String mb_email) {
+		this.mb_email = mb_email;
+	}
+
+	public int getMb_level() {
+		return mb_level;
+	}
+
+	public void setMb_level(int mb_level) {
+		this.mb_level = mb_level;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	public String getMb_img() {
+		return mb_img;
+	}
+
+	public void setMb_img(String mb_img) {
+		this.mb_img = mb_img;
+	}
+
+	public int getZzim_uid() {
+		return zzim_uid;
+	}
+
+	public void setZzim_uid(int zzim_uid) {
+		this.zzim_uid = zzim_uid;
+	}
+
+	public String getIns_name() {
+		return ins_name;
+	}
+
+	public void setIns_name(String ins_name) {
+		this.ins_name = ins_name;
+	}
+
+	public String getCur_name() {
+		return cur_name;
+	}
+
+	public void setCur_name(String cur_name) {
+		this.cur_name = cur_name;
+	}
+
+	
+}
