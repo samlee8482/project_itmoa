@@ -35,6 +35,7 @@ public interface D {
 		+ " AND z.class_uid = cl.class_uid" 
 		+ " AND cl.cur_uid = c.cur_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
+	
 
 	// 마이페이지에서 찜 삭제하기
 	public static final String SQL_DELETE_ZZIM = 
@@ -51,6 +52,12 @@ public interface D {
 		"UPDATE mb"
 		+ " SET mb_img = ?"
 		+ " WHERE mb_uid = ?";
+	
+	// 프로필 이미지 삭제
+		public static final String SQL_DELETE_MYPAGE_IMG =
+			"UPDATE mb"
+			+ " SET mb_img = ?"
+			+ " WHERE mb_uid = ?";
 	
 	
 
