@@ -277,17 +277,17 @@ public interface D {
 	
 //  =============== 관리자용 ==============	
 
-	public static final String SQL_INSERT_NEWS = 
+	public static final String SQL_INSERT_NEWS_BRD = 
 		"INSERT INTO news_brd "
 		+ " (news_brd_title, news_brd_img, news_brd_content)"
 		+ " VALUES(?,?,?)";
 	
-	public static final String SQL_UPDATE_NEWS_BY_UID = 
+	public static final String SQL_UPDATE_NEWS_BRD_BY_UID = 
 		"UPDATE news_brd"
 		+ " SET news_brd_title = ?, news_brd_content = ?"
 		+ " WHERE news_brd_uid = ?";
 		
-	public static final String SQL_DELETE_NEWS_BY_UID = 
+	public static final String SQL_DELETE_NEWS_BRD_BY_UID = 
 		"DELETE "
 		+ "FROM news_brd "
 		+ "WHERE news_brd_uid = ?";			
