@@ -53,7 +53,7 @@ public interface D {
 		+ " SET mb_img = ?"
 		+ " WHERE mb_uid = ?";
 	
-	// 프로필 이미지 삭제
+	// 프로필 이미지 삭제(기본 이미지로 변경)
 		public static final String SQL_DELETE_MYPAGE_IMG =
 			"UPDATE mb"
 			+ " SET mb_img = ?"
@@ -179,14 +179,21 @@ public interface D {
 	
 	// 학원등록
 	public static final String SQL_INSERT_INS =
-		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch)"
+		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
 		+ " VALUES( ?, ?, ?, ?, ?, ?)";
 	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=
 		"UPDATE ins"
-		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?"
-		+ " WHERE mb_uid = ?";
+		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?, ins_img = ?"
+		+ " WHERE ins_uid = ?";
+	
+	// 학원 이미지 삭제(기본 이미지로 변경)
+	public static final String SQL_DELETE_INS_IMG=
+			"UPDATE ins"
+			+ " SET ins_img = ?"
+			+ " WHERE ins_uid = ?";
+	
 	// 학원삭제
 	public static final String SQL_DELETE_INS =
 		"DELETE FROM ins WHERE ins_uid = ?";
