@@ -285,7 +285,7 @@ public interface D {
 	
 	// 뉴스 검색 결과 정렬
 	public static final String SQL_ORDER_BY_NEWS_BRD = 
-		"ORDER BY ?  ?";
+		" ORDER BY ?  ?";
 	
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
@@ -308,7 +308,7 @@ public interface D {
 		
 	public static final String SQL_DELETE_NEWS_BRD_BY_UID = 
 		"DELETE "
-		+ "FROM news_brd "
-		+ "WHERE news_brd_uid = ?";			
+		+ " FROM news_brd "
+		+ " WHERE news_brd_uid = ?";			
 	
 }
