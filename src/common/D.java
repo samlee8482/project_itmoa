@@ -29,7 +29,7 @@ public interface D {
 
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
-		"SELECT m.*, z.zzim_uid \"회원번호\", i.ins_name \"학원명\",  c.cur_name \"과정명\""
+		"SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name"
 		+ " FROM zzim z, cur c, class cl, ins i, mb m"
 		+ " WHERE z.mb_uid = ?"
 		+ " AND z.class_uid = cl.class_uid" 
@@ -103,7 +103,7 @@ public interface D {
 	
 	// 학원 검색 조건) 전체
 		public static final String SQL_SELECT_CLASS = 
-	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name \"학원명\", c.cur_name \"과정명\" "
+	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name, c.cur_name"
 	+ " FROM class cl, cur c, ins i "
 	+ " WHERE cl.cur_uid = c.cur_uid "
 	+ " AND cl.ins_uid = i.ins_uid";
@@ -212,15 +212,34 @@ public interface D {
 	
 //  ####################################   3. 리뷰 관련 SQL문     ####################################
 	
-//  =============== 사용자+관리자 ==============	
+//  =============== 사용자  ==============	
 	
 	// 리뷰 목록
-	public static final String SQL_SELECT_REVIEW = 
-		"SELECT * FROM review_brd";
+	public static final String SQL_SELECT_REVIEW =  
+		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title"
+		+ " FROM review_brd r, mb m, class cl, ins i"
+		+ " WHERE m.mb_uid = r.mb_uid"
+		+ " AND cl.class_uid = r.class_uid"
+		+ " AND cl.ins_uid = i.ins_uid";
+	
+	
+	// 리뷰 내용
+		public static final String SQL_SELECT_REVIEW_BY_UID =  
+			"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content"
+			+ " FROM review_brd r, mb m, class cl, ins i"
+			+ " WHERE r.review_brd_uid = ?"
+			+ " AND m.mb_uid = r.mb_uid"
+			+ " AND cl.class_uid = r.class_uid"
+			+ " AND cl.ins_uid = i.ins_uid";
+		
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID = 
-		"SELECT rep_id, rep_content FROM rep WHERE rep.uid = ?";
+		"SELECT m.mb_name, re.rep_uid, re.rep_content"
+		+ " FROM review_brd r, rep re, mb m"
+		+ " WHERE r.review_brd_uid = ?"
+		+ " AND m.mb_uid = re.mb_uid"
+		+ " AND r.review_brd_uid = re.review_brd_uid";
 	
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
@@ -235,22 +254,20 @@ public interface D {
 	public static final String SQL_DELETE_REVIEW_BY_UID = 
 		"DELETE FROM rep WHERE rep_uid= ?";
 		
-		
-		
 
-	
-	
-	
-	
-	
 		
-		
+	
+	
+	
+	
+	
+	
 //  ####################################   4. IT News 관련 SQL문     ####################################
 	
 //  =============== 사용자용  ==============			
 
 	// 뉴스 리스트, 등록된 시간 순서로 조회
-	public static final String SQL_SELECT_NEWS_BY_REGDATE = 
+	public static final String SQL_SELECT_NEWS = 
 		"SELECT * FROM news_brd";
 	
 	// 회원 검색 조건) 
