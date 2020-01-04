@@ -4,6 +4,7 @@ public class ReviewDTO {
 	//매개변수
 	private int mb_uid;
 	private String mb_id;
+	private String ins_name;
 	private int review_brd_uid;
 	private String review_brd_title;
 	private String review_brd_content;
@@ -16,13 +17,14 @@ public class ReviewDTO {
 	public ReviewDTO() {
 		super();
 	}
-
+	
 	// 매개변수 생성자
-	public ReviewDTO(int mb_uid, String mb_id, int review_brd_uid, String review_brd_title, String review_brd_content,
-			String review_brd_regdate, int rep_uid, String rep_content, String rep_regdate) {
+	public ReviewDTO(int mb_uid, String mb_id, String ins_name, int review_brd_uid, String review_brd_title,
+			String review_brd_content, String review_brd_regdate, int rep_uid, String rep_content, String rep_regdate) {
 		super();
 		this.mb_uid = mb_uid;
 		this.mb_id = mb_id;
+		this.ins_name = ins_name;
 		this.review_brd_uid = review_brd_uid;
 		this.review_brd_title = review_brd_title;
 		this.review_brd_content = review_brd_content;
@@ -47,6 +49,14 @@ public class ReviewDTO {
 
 	public void setMb_id(String mb_id) {
 		this.mb_id = mb_id;
+	}
+
+	public String getIns_name() {
+		return ins_name;
+	}
+
+	public void setIns_name(String ins_name) {
+		this.ins_name = ins_name;
 	}
 
 	public int getReview_brd_uid() {
@@ -104,7 +114,9 @@ public class ReviewDTO {
 	public void setRep_regdate(String rep_regdate) {
 		this.rep_regdate = rep_regdate;
 	}
+
 	
+
 	
 
 }
