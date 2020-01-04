@@ -214,8 +214,12 @@ public interface D {
 	
 //  =============== 사용자+관리자 ==============	
 	
+	// 리뷰 목록
+	public static final String SQL_SELECT_REVIEW = 
+		"SELECT * FROM review_brd";
+	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
-	public static final String SQL_SELECT_REVIEW_BY_UID = 
+	public static final String SQL_SELECT_REP_BY_UID = 
 		"SELECT rep_id, rep_content FROM rep WHERE rep.uid = ?";
 	
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
@@ -223,11 +227,9 @@ public interface D {
 	public static final String SQL_INSERT_REVIEW = 
 		"INSERT INTO rep(rep_content) VALUES (?)";
 	
-	
 	// 댓글 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
 		"UPDATE rep SET rep_content=? WHERE rep_uid = ?";
-	
 	
 	// 댓글 삭제
 	public static final String SQL_DELETE_REVIEW_BY_UID = 
@@ -245,8 +247,8 @@ public interface D {
 		
 //  ####################################   4. IT News 관련 SQL문     ####################################
 	
-//  =============== 사용자용 ==============			
-	// ----------- 사용자 -------------
+//  =============== 사용자용  ==============			
+
 	// 뉴스 리스트, 등록된 시간 순서로 조회
 	public static final String SQL_SELECT_NEWS_BY_REGDATE = 
 		"SELECT * FROM news_brd";
@@ -263,7 +265,11 @@ public interface D {
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_INC_VIEWCNT = 
 		"UPDATE news_brd SET news_brd_viewcnt = news_brd_viewcnt + 1 WHERE uid = ?";
-	// ----------- 관리자  -------------
+	
+	
+	
+//  =============== 관리자용 ==============	
+	
 	public static final String SQL_INSERT_NEWS = 
 		"INSERT INTO news_brd (news_brd_title, news_brd_img, news_brd_content) VALUES(?,?,?)";
 
