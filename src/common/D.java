@@ -85,8 +85,9 @@ public interface D {
    // 회원 정보 수정 
 	public static final String SQL_UPDATE_USER =
 		"UPDATE mb"
-		+ " SET SET mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_name, mb_pw, mb_img = ?, mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
+	
 	
 	
 	
@@ -146,6 +147,7 @@ public interface D {
 	public static final String SQL_INSERT_ZZIM = "INSERT INTO zzim (mb_uid, cur_uid) VALUES (?, ?)";
 
 		
+	
 
 	//  ================ 관리자용 ===============
 	
@@ -198,5 +200,85 @@ public interface D {
 	// 클래스 삭제
 	public static final String SQL_DELETE_CLASS = "DELETE FROM class WHERE class_uid = ?";
 
+
 	
+	
+	
+	
+	
+	
+	
+	
+	
+//  ####################################   3. 리뷰 관련 SQL문     ####################################
+	
+//  =============== 사용자+관리자 ==============	
+	
+	// 리뷰uid에 해당하는 댓글 리스트 불러오기
+	public static final String SQL_SELECT_REVIEW_BY_UID = 
+		"SELECT rep_id, rep_content FROM rep WHERE rep.uid = ?";
+	
+	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
+	// 댓글 작성
+	public static final String SQL_INSERT_REVIEW = 
+		"INSERT INTO rep(rep_content) VALUES (?)";
+	
+	
+	// 댓글 수정
+	public static final String SQL_UPDATE_REVIEW_BY_UID = 
+		"UPDATE rep SET rep_content=? WHERE rep_uid = ?";
+	
+	
+	// 댓글 삭제
+	public static final String SQL_DELETE_REVIEW_BY_UID = 
+		"DELETE FROM rep WHERE rep_uid= ?";
+		
+		
+		
+
+	
+	
+	
+	
+	
+		
+		
+//  ####################################   4. IT News 관련 SQL문     ####################################
+	
+//  =============== 사용자용 ==============			
+	// ----------- 사용자 -------------
+	// 뉴스 리스트, 등록된 시간 순서로 조회
+	public static final String SQL_SELECT_NEWS_BY_REGDATE = 
+		"SELECT * FROM news_brd";
+	
+	// 회원 검색 조건) 
+	public static final String SQL_SELECT_USER_BY_UID = 
+		"AND mb_uid LIKE (%?%)";	
+
+	// 뉴스 보기
+	public static final String SQL_SELECT_NEWS_BY_UID = 
+		"SELECT * FROM news_brd WHERE news_brd_uid = ?";
+	
+
+	// 조회수 처리는?
+	public static final String SQL_UPDATE_NEWS_INC_VIEWCNT = 
+		"UPDATE news_brd SET news_brd_viewcnt = news_brd_viewcnt + 1 WHERE uid = ?";
+	// ----------- 관리자  -------------
+	public static final String SQL_INSERT_NEWS = 
+		"INSERT INTO news_brd (news_brd_title, news_brd_img, news_brd_content) VALUES(?,?,?)";
+
+	// 뉴스 검색 결과 정렬
+	public static final String SQL_ORDER_BY_NEWS_REGDATE_DESC = 
+		"ORDER BY ?  ?";
+		
+	public static final String SQL_UPDATE_NEWS_BY_UID = 
+		"UPDATE news_brd SET news_brd_title = ?, news_brd_content = ? WHERE news_brd_uid = ?";
+		
+	public static final String SQL_DELETE_NEWS_BY_UID = 
+		"DELETE FROM news_brd WHERE news_brd_uid = ?";			
+		
+		
+		
 }
+
+
