@@ -1,7 +1,7 @@
 /build/
 *.class
 
-# package, library, *.jar, *.war
+# library, *.jar, *.war
 # Eclipse
 
 .classpath
