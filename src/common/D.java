@@ -109,19 +109,19 @@ public interface D {
 	+ " AND cl.ins_uid = i.ins_uid";
 
 	// 학원 검색 조건 ) 지역조건
-	public static final String SQL_SELECT_CLASS_BY_INS_LOCATION = 
+	public static final String SQL_SELECT_CLASS_WHERE_INS_LOCATION = 
 	 " AND i.ins_location like ('%?%')"; 
 	 
 	// 학원 검색 조건 ) 지점조건
-	public static final String SQL_SELECT_CLASS_BY_INS_BRANCH = 
+	public static final String SQL_SELECT_CLASS_WHERE_INS_BRANCH = 
 	 " AND i.ins_branch like ('%?%')";
 
 	// 학원 검색 조건 ) 과정명조건
-	public static final String SQL_SELECT_CLASS_BY_CUR_NAME = 
+	public static final String SQL_SELECT_CLASS_WHERE_CUR_NAME = 
 	" AND c.cur_name like ('%?%')";
 
 	// 정렬
-	public static final String SQL_ORDER_BY_CLASS_UID = 
+	public static final String SQL_ORDER_WHERE_CLASS_UID = 
 	" ORDER BY cl.class_zzimcnt DESC";
 
 	
@@ -272,15 +272,15 @@ public interface D {
 		"SELECT * FROM news_brd";
 	
 	// 뉴스 검색 조건) 뉴스UID
-	public static final String SQL_SELECT_NEWS_BRD_BY_UID = 
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
 		" WHERE news_brd_uid = ?";
 
 	// 뉴스 검색 조건) 뉴스 제목
-	public static final String SQL_SELECT_NEWS_BRD_BY_TITLE = 
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
 		" WHERE news_brd_title LIKE ('%?%')";
 
 	// 뉴스 검색 조건) 뉴스 내용
-	public static final String SQL_SELECT_NEWS_BRD_BY_CONTENT = 
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
 		" WHERE news_brd_content LIKE ('%?%')";
 	
 	// 뉴스 검색 결과 정렬
