@@ -44,6 +44,8 @@ public class MbDTO {
 		this.cur_name = cur_name;
 	}
 	
+	// MbDAO
+	// 로그인
 	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_level, String mb_img) {
 		this.mb_uid = mb_uid;
 		this.mb_id = mb_id;
@@ -52,8 +54,48 @@ public class MbDTO {
 		this.mb_img = mb_img;
 	}
 	
+	// 마이페이지
 	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2, String mb_img, int zzim_uid, String ins_name, String cur_name) {
-		
+		this.mb_uid = mb_uid;
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_add1 = mb_add1;
+		this.mb_add2 = mb_add2;
+		this.mb_zip = mb_zip;
+		this.mb_img = mb_img;
+		this.zzim_uid = zzim_uid;
+		this.ins_name = ins_name;
+		this.cur_name = cur_name;
+	}
+
+	// AdminMbDAO
+	// 관리자페이지 회원정보검색
+	public MbDTO(int mb_uid, String mb_name, String mb_id, String mb_email, String mb_add1, String mb_add2,
+			String regdate) {
+		super();
+		this.mb_uid = mb_uid;
+		this.mb_name = mb_name;
+		this.mb_id = mb_id;
+		this.mb_email = mb_email;
+		this.mb_add1 = mb_add1;
+		this.mb_add2 = mb_add2;
+		this.regdate = regdate;
+	}
+
+	// 관리자페이지 회원상세정보(회원번호 눌렀을 때)
+	public MbDTO(int mb_uid, String mb_id, String mb_pw, String mb_name, String mb_email, int mb_level, int mb_zip, String mb_add1, String mb_add2,
+			String mb_img) {
+		super();
+		this.mb_uid = mb_uid;
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_name = mb_name;
+		this.mb_add1 = mb_add1;
+		this.mb_add2 = mb_add2;
+		this.mb_level = mb_level;
+		this.mb_zip = mb_zip;
+		this.mb_email = mb_email;
+		this.mb_img = mb_img;
 	}
 
 	// 게터세터
