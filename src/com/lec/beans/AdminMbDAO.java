@@ -169,21 +169,20 @@ public class AdminMbDAO {
 	}
 
 	// 관리자페이지 회원정보수정
-	public int updateMbByUid(int mb_uid, String mb_pw, String mb_name, String mb_email, int mb_level, int mb_zip, String mb_add1, String mb_add2,
-		String mb_img) throws SQLException{
+	public int updateMbByUid(String mb_pw, String mb_img, int mb_level, String mb_email, int mb_zip, String mb_add1, String mb_add2,
+		int mb_uid) throws SQLException{
 		int cnt = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_USER);
 			pstmt.setString(1, mb_pw);
-			pstmt.setInt(2, mb_zip);
-			pstmt.setString(3, mb_email);
-			pstmt.setInt(4, mb_level);
+			pstmt.setString(2, mb_img);
+			pstmt.setInt(3, mb_level);
+			pstmt.setString(4, mb_email);
 			pstmt.setInt(5, mb_zip);
 			pstmt.setString(6, mb_add1);
 			pstmt.setString(7, mb_add2);
-			pstmt.setString(8, mb_img);
-			pstmt.setInt(9, mb_uid);
+			pstmt.setInt(8, mb_uid);
 			cnt = pstmt.executeUpdate();
 			
 		} finally {

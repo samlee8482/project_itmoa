@@ -92,7 +92,7 @@ public interface D {
    // 회원 정보 수정 
 	public static final String SQL_UPDATE_USER =
 		"UPDATE mb"
-		+ " SET mb_name, mb_pw, mb_img = ?, mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_pw = ?, mb_img = ?, mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
 	
 	// 회원 정보 삭제

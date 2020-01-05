@@ -75,38 +75,38 @@ public class MbDAO {
 		return arr; 
 	}
 	
-	public int loginCheck(String mb_id, String mb_pw) {
-		MbDTO[] arr = null;
-		
-		String dbPW = "";	// db 에서 꺼낸 비밀번호 담을 변수
-		int x = -1;
-		
-		//String SQL_SELECT_MB_PW_BY_ID = "SELECT mb_uid, mb_id, mb_pw, mb_level, mb_img FROM mb WHERE ID = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);
-			pstmt.setString(1, mb_id);
-			pstmt.setString(2, mb_pw);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
-            {
-                dbPW = rs.getString("mb_pw"); // 비번을 변수에 넣는다.
- 
-                if (dbPW.equals(mb_pw)) 
-                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-                else                  
-                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-                
-            } else {
-                x = -1; // 해당 아이디가 없을 경우
-            }
- 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return x;
-	}
+//	public int loginCheck(String mb_id, String mb_pw) {
+//		MbDTO[] arr = null;
+//		
+//		String dbPW = "";	// db 에서 꺼낸 비밀번호 담을 변수
+//		int x = -1;
+//		
+//		//String SQL_SELECT_MB_PW_BY_ID = "SELECT mb_uid, mb_id, mb_pw, mb_level, mb_img FROM mb WHERE ID = ?";
+//		
+//		try {
+//			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);
+//			pstmt.setString(1, mb_id);
+//			pstmt.setString(2, mb_pw);
+//			rs = pstmt.executeQuery();
+//			
+//			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+//            {
+//                dbPW = rs.getString("mb_pw"); // 비번을 변수에 넣는다.
+// 
+//                if (dbPW.equals(mb_pw)) 
+//                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
+//                else                  
+//                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+//                
+//            } else {
+//                x = -1; // 해당 아이디가 없을 경우
+//            }
+// 
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return x;
+//	}
 	
 	// 회원가입
 	public int join(String mb_name, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2) {
