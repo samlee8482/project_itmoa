@@ -263,13 +263,17 @@ public interface D {
 		
 
 	// 리뷰 내용
-	public static final String SQL_SELECT_REVIEW_BY_UID =  
-		"SELECT r.review_brd_uid, m.mb_name, m.mb_id, i.ins_name, r.review_brd_title, r.review_content, r.review_brd_viewcnt"
-		+ " FROM review_brd r, mb m, class cl, ins i"
+	public static final String SQL_SELECT_REVIEW_CONTENT =  
+		"SELECT i.ins_name, r.review_brd_title, m.mb_id,  r.review_content, r.review_brd_viewcnt, re.rep_uid"
+		+ " FROM review_brd r, mb m, class cl, ins i, rep re"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
-		+ " AND cl.ins_uid = i.ins_uid";
+		+ " AND cl.ins_uid = i.ins_uid"
+		+ " AND re.mb_uid = m.mb_uid"
+		+ " AND r.review_brd_uid = re.review_brd_uid";
+	
+	
 	
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
@@ -287,17 +291,18 @@ public interface D {
 	
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
-	public static final String SQL_SELECT_REP_BY_UID = 
-		"SELECT m.mb_name, re.rep_uid, re.rep_content"
-		+ " FROM review_brd r, rep re, mb m"
-		+ " WHERE r.review_brd_uid = ?"
-		+ " AND m.mb_uid = re.mb_uid"
-		+ " AND r.review_brd_uid = re.review_brd_uid";
+	public static final String SQL_SELECT_REP_BY_UID =  
+			"SELECT m.mb_id, re.rep.*"
+			+ " FROM rep re, review_brd r"
+			+ " WHERE review_brd_uid = ?"
+			+ " AND re.review_brd_uid = r.review_brd_uid"
+			+ " AND re.mb_uid = m.mb_uid";
+	
 	
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
 	public static final String SQL_INSERT_REP = 
-		"INSERT INTO rep(rep_content) VALUES (?)";
+		"INSERT INTO rep(mb_uid, rep_content) VALUES (? ?)";
 	
 	
 	// 댓글 수정
