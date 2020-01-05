@@ -141,6 +141,13 @@ public interface D {
 	" ORDER BY cl.class_zzimcnt DESC";
 
 	
+	// 사용자 레벨업
+	public static final String SQL_UPDATE_MB_LEVEL = 
+		"UPDATE mb"
+		+ " SET mb_level = 2"
+		+ " WHERE mb_uid = ?";
+	
+	
 	/* 사용가능한 조건 조합 예시 
 	  	SQL_SELECT_CLASS + SQL_ORDER_BY_CLASS_UID;
 	    
@@ -152,14 +159,14 @@ public interface D {
 	
 	// 학원 상세 페이지
 		public static final String SQL_SELECT_INS_BY_UID = 
-				"SELECT c.*,  i.ins_name "
+				"SELECT c.*,  i.ins_name, i.ins_img"
 				+ " FROM class cl,  ins i, cur c"
 				+ " WHERE class_uid = ?"
 				+ " AND cl.cur_uid = c.cur_uid"
 				+ " AND cl.ins_uid = i.ins_uid";
 
 	// 찜 추가
-	public static final String SQL_INSERT_ZZIM = "INSERT INTO zzim (mb_uid, cur_uid) VALUES (?, ?)";
+	public static final String SQL_INSERT_ZZIM = "INSERT INTO zzim (mb_uid, class_uid) VALUES (?, ?)";
 
 		
 	
