@@ -37,71 +37,66 @@ public class NewsDAO {
 		if(conn != null) conn.close();
 	}
 	
-	// 뉴스 목록 불러오기 - 수정중
-	// 1.
+	// 뉴스 불러오기
+	// 1-1.
 	public NewsDTO [] createNewsArray(ResultSet rs) throws SQLException {
-		NewsDTO [] arr = null;
-		
 		ArrayList<NewsDTO> newsList = new ArrayList<NewsDTO>();
 		
 		while(rs.next()){
      
 			int news_brd_uid = rs.getInt("news_brd_uid");
-			String mb_id = rs.getString("mb_id");
-			String news_brd_regdate = rs.getString("news_brd_regdate");
 			String news_brd_title = rs.getString("news_brd_title");
-			String news_brd_viewcnt = rs.getString("news_brd_viewcnt");
 			String news_brd_img = rs.getString("news_brd_img");
+			int news_brd_viewcnt = rs.getInt("news_brd_viewcnt");
 			
-			NewsDTO dto = new NewsDTO(news_brd_uid, mb_id, news_brd_regdate, news_brd_title, news_brd_viewcnt, news_brd_img);
+			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_img, news_brd_viewcnt);
 			newsList.add(dto);			
 		}
 		
 		int size = newsList.size();
-		ReviewDTO [] arr = new ReviewDTO[size];
+		NewsDTO [] arr = new NewsDTO[size];
 		
 		newsList.toArray(arr);
 		
 		return arr;
 	}
 	
-	// 2.
-	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
+	// 1-2.
+	public NewsDTO[] selectNewsList(int option_news, String keyword) throws SQLException {
 		
-		
-		ReviewDTO [] arr = null;
-		String selectReview = D.SQL_SELECT_REVIEW;
+		NewsDTO [] arr = null;
+		String selectNews = D.SQL_SELECT_REVIEW;
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		switch(option_review) {
+		switch(option_news) {
 			case 1: 
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
+				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
 				break;
 			case 2:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
+				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
 				break;
 			case 3:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
+				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
 				break;
 			default:
 				break;
 		}
 		
 		// 정렬
-		selectReview += D.SQL_ORDER_REVIEW;
+		selectNews += D.SQL_ORDER_REVIEW;
 		
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
 			if(keyword != null && !keyword.equals("")) {
-				pstmt = conn.prepareStatement(selectReview);
+				pstmt = conn.prepareStatement(selectNews);
 				pstmt.setString(1, keyword);
 			}else { 
-				pstmt = conn.prepareStatement(selectReview);
+				pstmt = conn.prepareStatement(selectNews);
 			}
 
 			rs = pstmt.executeQuery();
-			arr = createReviewArray(rs);
+			arr = createNewsArray(rs);
 		} finally {
 			close();
 		}		
