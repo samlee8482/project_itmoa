@@ -129,7 +129,7 @@ public interface D {
 	" AND c.cur_name like ('%?%')";
 
 	// 정렬
-	public static final String SQL_ORDER_WHERE_CLASS_UID = 
+	public static final String SQL_ORDER_CLASS_UID = 
 	" ORDER BY cl.class_zzimcnt DESC";
 
 	
