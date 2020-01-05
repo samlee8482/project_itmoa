@@ -275,6 +275,11 @@ public interface D {
 	
 	
 	
+	// 댓글 작성
+	public static final String SQL_INSERT_REVIEW = 
+		"INSERT INTO review_brd (mb_uid, mb_id, mb_img, review_brd_title,"
+		+ "review_brd_content, review_brd_regdate) VALUES (?, ?, ?, ?, ?, ?)";
+	
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
 		"UPDATE review_brd SET review_brd_title=?, review_brd_content = ? WHERE review_brd_uid = ?";
@@ -302,7 +307,9 @@ public interface D {
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
 	public static final String SQL_INSERT_REP = 
+
 		"INSERT INTO rep(mb_uid, rep_content) VALUES (? ?)";
+
 	
 	
 	// 댓글 수정

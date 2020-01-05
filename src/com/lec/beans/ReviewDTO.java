@@ -5,6 +5,7 @@ public class ReviewDTO {
 	private int mb_uid;
 	private String mb_id;
 	private String mb_name;
+	private String mb_img;
 	private String ins_name;
 	private int review_brd_uid;
 	private String review_brd_title;
@@ -20,13 +21,14 @@ public class ReviewDTO {
 		super();
 	}
 
-	public ReviewDTO(int mb_uid, String mb_id, String mb_name, String ins_name, int review_brd_uid,
+	public ReviewDTO(int mb_uid, String mb_id, String mb_name, String mb_img, String ins_name, int review_brd_uid,
 			String review_brd_title, String review_brd_content, String review_brd_regdate, int review_brd_viewcnt,
 			int rep_uid, String rep_content, String rep_regdate) {
 		super();
 		this.mb_uid = mb_uid;
 		this.mb_id = mb_id;
 		this.mb_name = mb_name;
+		this.mb_img = mb_img;
 		this.ins_name = ins_name;
 		this.review_brd_uid = review_brd_uid;
 		this.review_brd_title = review_brd_title;
@@ -117,6 +119,14 @@ public class ReviewDTO {
 
 	public void setMb_name(String mb_name) {
 		this.mb_name = mb_name;
+	}
+	
+	public String getMb_img() {
+		return mb_img;
+	}
+
+	public void setMb_img(String mb_img) {
+		this.mb_img = mb_img;
 	}
 
 	public String getIns_name() {
