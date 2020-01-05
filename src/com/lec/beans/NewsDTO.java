@@ -31,6 +31,15 @@ public class NewsDTO {
 		this.news_brd_title = news_brd_title;
 		this.news_brd_viewcnt = news_brd_viewcnt;
 	}
+	
+	// 사용자페이지 뉴스정보검색
+	public NewsDTO(int news_brd_uid, String news_brd_title, String news_brd_img, int news_brd_viewcnt) {
+		super();
+		this.news_brd_uid = news_brd_uid;
+		this.news_brd_title = news_brd_title;
+		this.news_brd_img = news_brd_img;
+		this.news_brd_viewcnt = news_brd_viewcnt;
+	}
 
 	// 게터세터
 	public int getNews_brd_uid() {
