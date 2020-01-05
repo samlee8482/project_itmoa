@@ -37,6 +37,9 @@ public class ReviewDAO {
 		if(conn != null) conn.close();
 	}
 	
+	
+	
+	
 	// 후기검색
 	// 1.
 	public ReviewDTO [] createReviewArray(ResultSet rs) throws SQLException {
@@ -63,6 +66,8 @@ public class ReviewDAO {
 		
 		return arr;
 	}
+	
+	
 	
 	// 2.
 	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
@@ -107,6 +112,9 @@ public class ReviewDAO {
 		
 		return arr;
 	}
+	
+	
+	
 	
 	
 	
