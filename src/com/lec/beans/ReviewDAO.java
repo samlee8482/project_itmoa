@@ -7,12 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import common.D;
 
 public class ReviewDAO {
-	
+	   
 	Connection conn;
 	PreparedStatement pstmt;
 	Statement stmt;
@@ -260,14 +259,30 @@ public class ReviewDAO {
 	}
 	
 
-	public int insertReview(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException{
+	// 학원후기 삽입
+	// 1.
+	public int insertReview(ReviewDTO dto) throws SQLException {
+		int mb_uid = dto.getMb_uid();
+		String mb_id = dto.getMb_id();
+		String mb_img = dto.getMb_img();
+		String review_brd_title = dto.getReview_brd_title();
+		String review_brd_content = dto.getReview_brd_content();
+		String review_brd_regdate = dto.getReview_brd_regdate();
+		
+		return this.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content, review_brd_regdate);
+	}
+	
+	
+	// 2.
+	public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content, String review_brd_regdate) throws SQLException{
+
 		int cnt = 0;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_INSERT_NEWS_BRD);
-			pstmt.setString(1, news_brd_title);
-			pstmt.setString(2, news_brd_img);
-			pstmt.setString(3, news_brd_content);
+			pstmt = conn.prepareStatement(D.SQL_INSERT_REVIEW);
+			pstmt.setString(1, review_brd_title);
+			pstmt.setString(2, mb_img);
+			pstmt.setString(3, review_brd_content);
 			cnt = pstmt.executeUpdate();
 		} finally {
 			close();
@@ -276,7 +291,65 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
+
+	// 댓글 삽입
+	// 1.
+	public int insertRep(ReviewDTO dto) throws SQLException {
+		int mb_uid = dto.getMb_uid();
+		String rep_content = dto.getRep_content();
+		
+		return this.insertRep(mb_uid, rep_content);
+	}
 	
+	// 2.
+	public int insertRep(int mb_uid, String rep_content) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_INSERT_REP);
+			pstmt.setInt(1, mb_uid);
+			pstmt.setString(2, rep_content);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
+	// 댓글 수정
+	public int updateRepByUid(int rep_uid, String rep_content, String rep_regdate) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_REP_BY_UID);
+			pstmt.setString(1, rep_content);
+			pstmt.setInt(2, rep_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
+	// 댓글 삭제
+	public int deleteRepByUid(int rep_uid) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_DELETE_REP_BY_UID);
+			pstmt.setInt(1, rep_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+
 	
 	
 }
