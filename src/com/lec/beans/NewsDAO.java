@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import common.D;
 
 public class NewsDAO {
-	
+	    
 	Connection conn;
 	PreparedStatement pstmt;
 	Statement stmt;
