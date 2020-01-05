@@ -45,7 +45,7 @@ public class NewsDAO {
 		ArrayList<NewsDTO> newsList = new ArrayList<NewsDTO>();
 		
 		while(rs.next()){
-
+     
 			int news_brd_uid = rs.getInt("news_brd_uid");
 			String mb_id = rs.getString("mb_id");
 			String news_brd_regdate = rs.getString("news_brd_regdate");
