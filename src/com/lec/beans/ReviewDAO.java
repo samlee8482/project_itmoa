@@ -129,7 +129,6 @@ public class ReviewDAO {
 			list.add(dto);
 		}
 		
-		
 		int size = list.size();
 		ReviewDTO [] arr = new ReviewDTO[size];
 		list.toArray(arr);
@@ -137,22 +136,48 @@ public class ReviewDAO {
 		return arr;
 	}
 	
-	// 2-1. 특정 학원후기 불러오기 review_uid로 review
-	public ReviewDTO[] selectByUid(int review_brd_uid) throws SQLException{
+	// 2-1. 특정 학원후기 불러오기 (조회수 증가o)review_uid로 review
+	public ReviewDTO[] selectReviewByUid(int review_brd_uid) throws SQLException{
+		ReviewDTO[] arr = null;
+		int cnt = 0;
+		
+		try {
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_REVIEW_INC_VIEWCNT);
+			pstmt.setInt(1, review_brd_uid);
+			cnt = pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
+			pstmt.setInt(1, review_brd_uid);
+			
+			rs = pstmt.executeQuery();
+			arr = createReviewContentArray(rs);
+			
+			conn.commit();
+		} catch(SQLException e) {
+			conn.rollback();	// 처리할 것 처리하고 throw
+			throw e;
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
+	
+	// 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
+	public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException{
 		
 		ReviewDTO[] arr = null;
 		
 		
 		try {
-			
 			pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
 			pstmt.setInt(1, review_brd_uid);
-
 			
 			rs = pstmt.executeQuery();
 			arr = createReviewContentArray(rs);
 	
-			
 		} finally {
 			close();
 		}		

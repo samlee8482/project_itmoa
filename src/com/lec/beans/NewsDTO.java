@@ -13,7 +13,7 @@ public class NewsDTO {
 		super();
 	}
 
-	// 매개변수 생성자
+	// 매개변수 생성자, 특정 뉴스 불러오기
 	public NewsDTO(int news_brd_uid, String news_brd_title, String news_brd_content, String news_brd_img,
 			int news_brd_viewcnt) {
 		super();
@@ -32,7 +32,7 @@ public class NewsDTO {
 		this.news_brd_viewcnt = news_brd_viewcnt;
 	}
 	
-	// 사용자페이지 뉴스 검색，  뉴스 불러오기
+	// 사용자페이지 뉴스 검색, 뉴스 불러오기
 	public NewsDTO(int news_brd_uid, String news_brd_title, String news_brd_img, int news_brd_viewcnt) {
 		super();
 		this.news_brd_uid = news_brd_uid;
