@@ -10,27 +10,24 @@ import java.util.ArrayList;
 
 import common.D;
 
-public class AdminReviewDAO {
-
+public class ReviewDAO {
+	
 	Connection conn;
 	PreparedStatement pstmt;
 	Statement stmt;
 	ResultSet rs;
 	
-	
-	
-	public AdminReviewDAO() {
+	public ReviewDAO() {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminReview 객체 생성, 데이터베이스 연결");
+			System.out.println("ReviewDAO() 객체 생성, 데이터베이스 연결");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
@@ -40,11 +37,8 @@ public class AdminReviewDAO {
 		if(conn != null) conn.close();
 	}
 	
-	
-	
-	
-	
-	// ResultSet --> DTO 배열로 변환 리턴
+	// 후기검색
+	// 1.
 	public ReviewDTO [] createReviewArray(ResultSet rs) throws SQLException {
 		
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
@@ -53,13 +47,12 @@ public class AdminReviewDAO {
 
 			int review_brd_uid = rs.getInt("review_brd_uid");
 			String mb_id = rs.getString("mb_id");
-			String mb_name = rs.getString("mb_name");
 			String ins_name = rs.getString("ins_name");
 			String review_brd_regdate = rs.getString("review_brd_regdate");
 			String review_brd_title = rs.getString("review_brd_title");
 			int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
 			
-			ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, mb_name, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt);
+			ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt);
 			reviewList.add(dto);			
 		}
 		
@@ -71,18 +64,14 @@ public class AdminReviewDAO {
 		return arr;
 	}
 	
-	
-	
-	
-	
-	// 리뷰 목록 
+	// 2.
 	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
 		
-	
+		
 		ReviewDTO [] arr = null;
 		String selectReview = D.SQL_SELECT_REVIEW;
 		
-		// 리뷰 검색 조건 (1)회원ID  (2)리뷰제목   (3)리뷰내용
+		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
 		switch(option_review) {
 			case 1: 
@@ -101,7 +90,6 @@ public class AdminReviewDAO {
 		// 정렬
 		selectReview += D.SQL_ORDER_REVIEW;
 		
-		
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
 			if(keyword != null && !keyword.equals("")) {
@@ -118,27 +106,6 @@ public class AdminReviewDAO {
 		}		
 		
 		return arr;
-	}
-	
-	
-	
-	
-	
-	// 리뷰 삭제
-	public int deleteReview(int review_uid) throws SQLException {
-		
-		int cnt = 0;
-		
-		try {
-			pstmt = conn.prepareStatement(D.SQL_DELETE_REVIEW_BY_UID);
-			pstmt.setInt(1, review_uid);
-			cnt = pstmt.executeUpdate();
-			
-		} finally {
-			close();
-		}
-		
-		return cnt;
 	}
 	
 	

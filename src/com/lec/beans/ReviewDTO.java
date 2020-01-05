@@ -4,6 +4,7 @@ public class ReviewDTO {
 	//매개변수
 	private int mb_uid;
 	private String mb_id;
+	private String mb_name;
 	private String ins_name;
 	private int review_brd_uid;
 	private String review_brd_title;
@@ -18,25 +19,14 @@ public class ReviewDTO {
 	public ReviewDTO() {
 		super();
 	}
-	
-	// 매개변수 생성자(목록)
-		public ReviewDTO(int review_brd_uid, String mb_id, String ins_name, String review_brd_title, int review_brd_viewcnt) {
-			super();
-			
-			this.review_brd_uid = review_brd_uid;
-			this.mb_id = mb_id;
-			this.ins_name = ins_name;
-			this.review_brd_title = review_brd_title;
-			this.review_brd_viewcnt = review_brd_viewcnt;
-	
-		}
-	
-	// 매개변수 생성자(내용)
-	public ReviewDTO(int mb_uid, String mb_id, String ins_name, int review_brd_uid, String review_brd_title,
-			String review_brd_content, String review_brd_regdate,int review_brd_viewcnt , int rep_uid, String rep_content, String rep_regdate) {
+
+	public ReviewDTO(int mb_uid, String mb_id, String mb_name, String ins_name, int review_brd_uid,
+			String review_brd_title, String review_brd_content, String review_brd_regdate, int review_brd_viewcnt,
+			int rep_uid, String rep_content, String rep_regdate) {
 		super();
 		this.mb_uid = mb_uid;
 		this.mb_id = mb_id;
+		this.mb_name = mb_name;
 		this.ins_name = ins_name;
 		this.review_brd_uid = review_brd_uid;
 		this.review_brd_title = review_brd_title;
@@ -47,8 +37,34 @@ public class ReviewDTO {
 		this.rep_content = rep_content;
 		this.rep_regdate = rep_regdate;
 	}
+	
+	// 매개변수 생성자(관리자 목록)
+	public ReviewDTO(int review_brd_uid, String mb_id, String mb_name, String ins_name, String review_brd_regdate, String review_brd_title, int review_brd_viewcnt) {
+		super();
+		
+		this.review_brd_uid = review_brd_uid;
+		this.mb_id = mb_id;
+		this.mb_name = mb_name;
+		this.ins_name = ins_name;
+		this.review_brd_regdate = review_brd_regdate;
+		this.review_brd_title = review_brd_title;
+		this.review_brd_viewcnt = review_brd_viewcnt;
 
-	// 게터세터
+	}
+		
+	// 매개변수 생성자(사용자 목록)
+	public ReviewDTO(int review_brd_uid, String mb_id, String ins_name, String review_brd_regdate, String review_brd_title, int review_brd_viewcnt) {
+		super();
+		
+		this.review_brd_uid = review_brd_uid;
+		this.mb_id = mb_id;
+		this.ins_name = ins_name;
+		this.review_brd_regdate = review_brd_regdate;
+		this.review_brd_title = review_brd_title;
+		this.review_brd_viewcnt = review_brd_viewcnt;
+
+	}
+
 	public int getMb_uid() {
 		return mb_uid;
 	}
@@ -63,6 +79,14 @@ public class ReviewDTO {
 
 	public void setMb_id(String mb_id) {
 		this.mb_id = mb_id;
+	}
+
+	public String getMb_name() {
+		return mb_name;
+	}
+
+	public void setMb_name(String mb_name) {
+		this.mb_name = mb_name;
 	}
 
 	public String getIns_name() {
@@ -104,12 +128,15 @@ public class ReviewDTO {
 	public void setReview_brd_regdate(String review_brd_regdate) {
 		this.review_brd_regdate = review_brd_regdate;
 	}
-	
 
-	public void setRep_regdate(String rep_regdate) {
-		this.rep_regdate = rep_regdate;
+	public int getReview_brd_viewcnt() {
+		return review_brd_viewcnt;
 	}
-	
+
+	public void setReview_brd_viewcnt(int review_brd_viewcnt) {
+		this.review_brd_viewcnt = review_brd_viewcnt;
+	}
+
 	public int getRep_uid() {
 		return rep_uid;
 	}
@@ -130,14 +157,11 @@ public class ReviewDTO {
 		return rep_regdate;
 	}
 
-	
-	public void setReview_brd_viewcnt(int review_brd_viewcnt) {
-		this.review_brd_viewcnt = review_brd_viewcnt;
+	public void setRep_regdate(String rep_regdate) {
+		this.rep_regdate = rep_regdate;
 	}
 	
-	public int gettReview_brd_viewcnt() {
-		return review_brd_viewcnt;
-	}
+	
 
 
 }
