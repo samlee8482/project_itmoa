@@ -40,6 +40,8 @@ public class ReviewDTO {
 		this.rep_regdate = rep_regdate;
 	}
 	
+	
+	
 	// 매개변수 생성자(관리자 목록)
 	public ReviewDTO(int review_brd_uid, String mb_id, String mb_name, String ins_name, String review_brd_regdate, String review_brd_title, int review_brd_viewcnt) {
 		super();
@@ -66,6 +68,34 @@ public class ReviewDTO {
 		this.review_brd_viewcnt = review_brd_viewcnt;
 
 	}
+	
+	
+	
+	// 매개변수 생성자(내용)
+	public ReviewDTO(int review_brd_uid, String mb_id, String ins_name, String review_brd_regdate, int review_brd_viewcnt, String review_brd_title, String review_brd_content) {
+		super();
+		
+		this.review_brd_uid = review_brd_uid;
+		this.mb_id = mb_id;
+		this.ins_name = ins_name;
+		this.review_brd_regdate = review_brd_regdate;
+		this.review_brd_title = review_brd_title;
+		this.review_brd_viewcnt = review_brd_viewcnt;
+		this.review_brd_content = review_brd_content;
+
+	}
+	
+	
+	// 매개변수 생성자(댓글)
+		public ReviewDTO(int review_brd_uid, String mb_id, String rep_content) {
+			super();
+			
+			this.review_brd_uid = review_brd_uid;
+			this.mb_id = mb_id;
+			this.rep_content = rep_content;
+
+		}
+		
 
 	public int getMb_uid() {
 		return mb_uid;
