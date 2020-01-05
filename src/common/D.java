@@ -118,15 +118,23 @@ public interface D {
 
 	// 학원 검색 조건 ) 지역조건
 	public static final String SQL_SELECT_CLASS_WHERE_INS_LOCATION = 
-	 " AND i.ins_location like ('%?%')"; 
+	 " AND i.ins_location = ?"; 
 	 
 	// 학원 검색 조건 ) 지점조건
 	public static final String SQL_SELECT_CLASS_WHERE_INS_BRANCH = 
-	 " AND i.ins_branch like ('%?%')";
+	 " AND i.ins_branch = ?";
 
+	// 학원 검색 조건 ) 지점 전체 검색
+	public static final String SQL_SELECT_BRANCH = 
+		"SELECT DISTINCT ins_branch"
+		+ " FROM ins";
+	
+	public static final String SQL_SELECT_BRANCH_WHERE_LOCATION = 
+		" WHERE ins_location = ?"; 
+	
 	// 학원 검색 조건 ) 과정명조건
 	public static final String SQL_SELECT_CLASS_WHERE_CUR_NAME = 
-	" AND c.cur_name like ('%?%')";
+	" AND c.cur_name = ?";
 
 	// 정렬
 	public static final String SQL_ORDER_CLASS_UID = 
