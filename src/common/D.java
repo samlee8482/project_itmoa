@@ -271,6 +271,9 @@ public interface D {
 		+ " AND cl.class_uid = r.class_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 	
+	// 리뷰 수정
+	public static final String SQL_UPDATE_REVIEW_BY_UID = 
+		"UPDATE review_brd SET review_brd_title=?, review_brd_content = ? WHERE review_brd_uid = ?";
 		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_REVIEW_INC_VIEWCNT = 
@@ -293,17 +296,17 @@ public interface D {
 	
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
-	public static final String SQL_INSERT_REVIEW_BRD = 
+	public static final String SQL_INSERT_REP = 
 		"INSERT INTO rep(rep_content) VALUES (?)";
 	
 	
 	// 댓글 수정
-	public static final String SQL_UPDATE_REVIEW_BRD_BY_UID = 
+	public static final String SQL_UPDATE_REP_BY_UID = 
 		"UPDATE rep SET rep_content=? WHERE rep_uid = ?";
 	
 	
 	// 댓글 삭제
-	public static final String SQL_DELETE_REVIEW_BRD_BY_UID = 
+	public static final String SQL_DELETE_REP_BY_UID = 
 		"DELETE FROM rep WHERE rep_uid= ?";
 		
 
