@@ -193,7 +193,7 @@ public class AdminMbDAO {
 	}
 
 	// 관리자페이지 회원정보삭제
-	public int deleteByUid(int mb_uid) throws SQLException{
+	public int deleteMbByUid(int mb_uid) throws SQLException{
 		int cnt = 0;
 		
 		try {
