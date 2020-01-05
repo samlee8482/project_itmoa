@@ -37,7 +37,7 @@ public class NewsDAO {
 		if(conn != null) conn.close();
 	}
 	
-	// 뉴스 불러오기
+	// 뉴스 검색 및 불러오기
 	// 1-1.
 	public NewsDTO [] createNewsArray(ResultSet rs) throws SQLException {
 		ArrayList<NewsDTO> newsList = new ArrayList<NewsDTO>();
@@ -65,26 +65,26 @@ public class NewsDAO {
 	public NewsDTO[] selectNewsList(int option_news, String keyword) throws SQLException {
 		
 		NewsDTO [] arr = null;
-		String selectNews = D.SQL_SELECT_REVIEW;
+		String selectNews = D.SQL_SELECT_NEWS_BRD;
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
 		switch(option_news) {
 			case 1: 
-				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
 				break;
 			case 2:
-				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
 				break;
 			case 3:
-				selectNews += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
 				break;
 			default:
 				break;
 		}
 		
 		// 정렬
-		selectNews += D.SQL_ORDER_REVIEW;
+		selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 		
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
