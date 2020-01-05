@@ -87,14 +87,14 @@ public class ReviewDTO {
 	
 	
 	// 매개변수 생성자(댓글)
-		public ReviewDTO(int review_brd_uid, String mb_id, String rep_content) {
-			super();
-			
-			this.review_brd_uid = review_brd_uid;
-			this.mb_id = mb_id;
-			this.rep_content = rep_content;
+	public ReviewDTO(int review_brd_uid, String mb_id, String rep_content) {
+		super();
+		
+		this.review_brd_uid = review_brd_uid;
+		this.mb_id = mb_id;
+		this.rep_content = rep_content;
 
-		}
+	}
 		
 
 	public int getMb_uid() {
