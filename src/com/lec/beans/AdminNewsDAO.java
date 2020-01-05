@@ -125,7 +125,7 @@ public class AdminNewsDAO {
 	}
 	
 	// 관리자페이지 뉴스 삭제
-	public int deleteByUid(int mb_uid) throws SQLException{
+	public int deleteNewsByUid(int mb_uid) throws SQLException{
 		int cnt = 0;
 		
 		try {
@@ -142,16 +142,16 @@ public class AdminNewsDAO {
 	
 	// 관리자페이지 뉴스 삽입
 	// 1.
-	public int insert(NewsDTO dto) throws SQLException {
+	public int insertNews(NewsDTO dto) throws SQLException {
 		String news_brd_title = dto.getNews_brd_title();
 		String news_brd_img = dto.getNews_brd_img();
 		String news_brd_content = dto.getNews_brd_content();
 		
-		return this.insert(news_brd_title, news_brd_img, news_brd_content);
+		return this.insertNews(news_brd_title, news_brd_img, news_brd_content);
 	}
 	
 	// 2.
-	public int insert(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException{
+	public int insertNews(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException{
 		int cnt = 0;
 		
 		try {

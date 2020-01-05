@@ -108,8 +108,64 @@ public class ReviewDAO {
 		return arr;
 	}
 	
+	// 학원후기 수정
+	public int updateReviewByUid(int review_brd_uid, String review_brd_title, String review_brd_content) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_REVIEW_BY_UID);
+			pstmt.setString(1, review_brd_title);
+			pstmt.setString(2, review_brd_content);
+			pstmt.setInt(3, review_brd_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
+	// 학원후기 삭제
+	public int deleteReviewByUid(int review_brd_uid) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_DELETE_REVIEW_BY_UID);
+			pstmt.setInt(1, review_brd_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
+	// 댓글 삽입
+	public int insertReview(ReviewDTO dto) throws SQLException {
+		String news_brd_title = dto.getNews_brd_title();
+		String news_brd_img = dto.getNews_brd_img();
+		String news_brd_content = dto.getNews_brd_content();
+		
+		return this.insertReview(news_brd_title, news_brd_img, news_brd_content);
+	}
 	
+	// 2.
+	public int insertReview(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_INSERT_NEWS_BRD);
+			pstmt.setString(1, news_brd_title);
+			pstmt.setString(2, news_brd_img);
+			pstmt.setString(3, news_brd_content);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 }
