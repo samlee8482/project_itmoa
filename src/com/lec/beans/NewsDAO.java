@@ -21,7 +21,7 @@ public class NewsDAO {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("ReviewDAO() 객체 생성, 데이터베이스 연결");
+			System.out.println("NewsDAO() 객체 생성, 데이터베이스 연결");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -37,27 +37,30 @@ public class NewsDAO {
 		if(conn != null) conn.close();
 	}
 	
-	public NewsDTO [] createReviewArray(ResultSet rs) throws SQLException {
+	// 뉴스 목록 불러오기 - 수정중
+	// 1.
+	public NewsDTO [] createNewsArray(ResultSet rs) throws SQLException {
+		NewsDTO [] arr = null;
 		
 		ArrayList<NewsDTO> newsList = new ArrayList<NewsDTO>();
 		
 		while(rs.next()){
-
-			int review_brd_uid = rs.getInt("review_brd_uid");
+     
+			int news_brd_uid = rs.getInt("news_brd_uid");
 			String mb_id = rs.getString("mb_id");
-			String ins_name = rs.getString("ins_name");
-			String review_brd_regdate = rs.getString("review_brd_regdate");
-			String review_brd_title = rs.getString("review_brd_title");
-			int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
+			String news_brd_regdate = rs.getString("news_brd_regdate");
+			String news_brd_title = rs.getString("news_brd_title");
+			String news_brd_viewcnt = rs.getString("news_brd_viewcnt");
+			String news_brd_img = rs.getString("news_brd_img");
 			
-			ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt);
-			reviewList.add(dto);			
+			NewsDTO dto = new NewsDTO(news_brd_uid, mb_id, news_brd_regdate, news_brd_title, news_brd_viewcnt, news_brd_img);
+			newsList.add(dto);			
 		}
 		
-		int size = reviewList.size();
+		int size = newsList.size();
 		ReviewDTO [] arr = new ReviewDTO[size];
 		
-		reviewList.toArray(arr);
+		newsList.toArray(arr);
 		
 		return arr;
 	}
