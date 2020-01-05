@@ -38,7 +38,7 @@ public class ReviewDAO {
 	}
 	
 	// 학원후기
-	// 1. 학원후기 검색 reviewDTO ->  Array로 변경 
+	// 1. 학원후기 목록 or 검색 reviewDTO ->  Array로 변경 
 	public ReviewDTO [] createReviewListArray(ResultSet rs) throws SQLException {
 		
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
@@ -64,7 +64,7 @@ public class ReviewDAO {
 		return arr;
 	}
 	
-	// 1-1. 학원후기 검색
+	// 1-1. 학원후기 목록 or 검색
 	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
 		
 		
@@ -109,7 +109,7 @@ public class ReviewDAO {
 		return arr;
 	}
 	
-	// 2. 학원후기 불러오기 reviewDTO ->  Array로 변경 
+	// 2. 특정 학원후기 불러오기 reviewDTO ->  Array로 변경 
 	public ReviewDTO [] createReviewContentArray(ResultSet rs) throws SQLException {
 		
 		ArrayList<ReviewDTO> list = new ArrayList<ReviewDTO>();
@@ -137,7 +137,7 @@ public class ReviewDAO {
 		return arr;
 	}
 	
-	// 2-1. 학원후기 불러오기 review_uid로 review
+	// 2-1. 특정 학원후기 불러오기 review_uid로 review
 	public ReviewDTO[] selectByUid(int review_brd_uid) throws SQLException{
 		
 		ReviewDTO[] arr = null;
