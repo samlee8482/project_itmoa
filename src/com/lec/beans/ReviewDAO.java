@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import common.D;
 
@@ -259,16 +258,7 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
-<<<<<<< HEAD
-	// 댓글 삽입
-//	public int insertReview(ReviewDTO dto) throws SQLException {
-//		String news_brd_title = dto.getNews_brd_title();
-//		String news_brd_img = dto.getNews_brd_img();
-//		String news_brd_content = dto.getNews_brd_content();
-//		
-//		return this.insertReview(news_brd_title, news_brd_img, news_brd_content);
-//	}
-=======
+
 	// 학원후기 삽입
 	// 1.
 	public int insertReview(ReviewDTO dto) throws SQLException {
@@ -281,7 +271,6 @@ public class ReviewDAO {
 		
 		return this.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content, review_brd_regdate);
 	}
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 	
 	// 2.
 	public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content, String review_brd_regdate) throws SQLException{
@@ -303,9 +292,6 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	// 댓글 삽입
 	// 1.
 	public int insertRep(ReviewDTO dto) throws SQLException {
@@ -363,7 +349,6 @@ public class ReviewDAO {
 		
 		return cnt;
 	}
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 	
 	
 }
