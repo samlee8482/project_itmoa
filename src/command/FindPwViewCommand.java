@@ -26,7 +26,7 @@ public class FindPwViewCommand implements Command{
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("findPdView", arr);
+		request.setAttribute("findPwView", arr);
 		
 	}
 

@@ -30,6 +30,7 @@ public class MyPageCommand implements Command {
 			}
 		}else {
 				// 처리실패하면 다시 돌아가야되는거 아닌감?!??!?!?!?
+				// 내말이!! 낼 논의 ㄱㄱ!!궁금하당 - 쌤리
 		}
 	
 	}
