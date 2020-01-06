@@ -309,5 +309,9 @@ public class controller {
 //		* insert도 같이 사용
 		}
 		
+		if (viewPage != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}
 	}
 }
