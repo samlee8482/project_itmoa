@@ -17,11 +17,14 @@ public class RepWriteOkCommand implements Command {
 		ReviewDAO dao = new ReviewDAO();
 		int cnt = 0;
 		
-		try {
-			cnt = dao.insertRep(mb_uid, rep_content);
-			request.setAttribute("repWriteOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (mb_uid > 0
+		&& rep_content != null && rep_content.length() > 0 && !rep_content.equals("")) {
+			try {
+				cnt = dao.insertRep(mb_uid, rep_content);
+				request.setAttribute("repWriteOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

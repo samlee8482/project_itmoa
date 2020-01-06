@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.AdminNewsDAO;
-import com.lec.beans.NewsDAO;
 
 public class AdminNewsUpdateOkCommand implements Command {
 
@@ -19,12 +18,17 @@ public class AdminNewsUpdateOkCommand implements Command {
 		
 		AdminNewsDAO dao = new AdminNewsDAO();
 		int cnt = 0;
-		
-		try {
-			cnt = dao.updateNewsByUid(news_brd_uid, news_brd_title, news_brd_content, news_brd_img);
-			request.setAttribute("adminNewsUpdateOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+
+		if (news_brd_uid > 0
+			&& news_brd_title != null && news_brd_title.length() > 0 && !news_brd_title.equals("")
+			&& news_brd_content != null && news_brd_content.length() > 0 && !news_brd_content.equals("")
+			&& news_brd_img != null && news_brd_img.length() > 0 && !news_brd_img.equals("")) {
+			try {
+				cnt = dao.updateNewsByUid(news_brd_uid, news_brd_title, news_brd_content, news_brd_img);
+				request.setAttribute("adminNewsUpdateOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

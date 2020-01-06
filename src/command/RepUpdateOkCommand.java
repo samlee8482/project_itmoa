@@ -13,16 +13,18 @@ public class RepUpdateOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int rep_uid = Integer.parseInt(request.getParameter("rep_uid"));
 		String rep_content = request.getParameter("rep_content");
-		String rep_regdate = request.getParameter("rep_regdate");
 		
 		ReviewDAO dao = new ReviewDAO();
 		int cnt = 0;
 		
-		try {
-			cnt = dao.updateRepByUid(rep_uid, rep_content, rep_regdate);
-			request.setAttribute("repUpdateOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (rep_uid > 0
+		&& rep_content != null && rep_content.length() > 0 && !rep_content.equals("")) {
+			try {
+				cnt = dao.updateRepByUid(rep_uid, rep_content);
+				request.setAttribute("repUpdateOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

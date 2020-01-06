@@ -16,11 +16,13 @@ public class AdminReviewDeleteOkCommand implements Command {
 		AdminReviewDAO dao = new AdminReviewDAO();
 		int cnt = 0;
 		
-		try {
-			cnt = dao.deleteReview(review_uid);
-			request.setAttribute("adminReviewDeleteOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (review_uid > 0) {
+			try {
+				cnt = dao.deleteReview(review_uid);
+				request.setAttribute("adminReviewDeleteOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

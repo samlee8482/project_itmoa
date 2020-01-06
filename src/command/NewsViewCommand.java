@@ -17,11 +17,13 @@ public class NewsViewCommand implements Command {
 		
 		int news_brd_uid = Integer.parseInt(request.getParameter("news_brd_uid"));
 		
-		try {
-			arr = dao.readNewsByUid(news_brd_uid);
-			request.setAttribute("newsView", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (news_brd_uid > 0) {
+			try {
+				arr = dao.readNewsByUid(news_brd_uid);
+				request.setAttribute("newsView", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

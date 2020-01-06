@@ -296,7 +296,7 @@ public interface D {
 	// 댓글 작성
 	public static final String SQL_INSERT_REVIEW = 
 		"INSERT INTO review_brd (mb_uid, mb_id, mb_img, review_brd_title,"
-		+ "review_brd_content, review_brd_regdate) VALUES (?, ?, ?, ?, ?, ?)";
+		+ "review_brd_content) VALUES (?, ?, ?, ?, ?)";
 	
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 

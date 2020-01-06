@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.AdminMbDAO;
-import com.lec.beans.MbDAO;
 import com.lec.beans.MbDTO;
 
 public class AdminMemberListCommand implements Command {
@@ -20,11 +19,13 @@ public class AdminMemberListCommand implements Command {
 		AdminMbDAO dao = new AdminMbDAO();
 		MbDTO [] arr = null;
 		
-		try {
-			arr = dao.selectMb(option_mb_1, option_mb_2, option_mb_3);
-			request.setAttribute("adminMemberList", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (option_mb_1 > 0 && option_mb_2 > 0 && option_mb_3 != null && option_mb_3.length() > 0 && !option_mb_3.equals("")) {
+			try {
+				arr = dao.selectMb(option_mb_1, option_mb_2, option_mb_3);
+				request.setAttribute("adminMemberList", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

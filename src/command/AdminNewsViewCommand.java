@@ -17,11 +17,13 @@ public class AdminNewsViewCommand implements Command {
 		AdminNewsDAO dao = new AdminNewsDAO();
 		NewsDTO [] arr = null;
 		
-		try {
-			arr = dao.selectNewsByUid(news_brd_uid);
-			request.setAttribute("adminNewsView", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (news_brd_uid > 0) {
+			try {
+				arr = dao.selectNewsByUid(news_brd_uid);
+				request.setAttribute("adminNewsView", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
