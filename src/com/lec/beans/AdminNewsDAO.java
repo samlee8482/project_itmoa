@@ -59,7 +59,7 @@ public class AdminNewsDAO {
 	}
 	
 	// 2.
-	public NewsDTO[] selectNews(int option_news_1, int option_news_2, String option_news_3) {
+	public NewsDTO[] selectNews(int option_news_1, int option_news_2, String option_news_3) throws SQLException {
 		// option_news_1 은 검색조건
 		// option_news_2 는 검색키워드
 		NewsDTO[] arr = null;
@@ -100,6 +100,8 @@ public class AdminNewsDAO {
 			arr = createNewsArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr; 
