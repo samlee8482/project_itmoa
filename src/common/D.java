@@ -195,7 +195,7 @@ public interface D {
 	// 학원등록
 	public static final String SQL_INSERT_INS =
 		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
-		+ " VALUES( ?, ?, ?, ?, ?, ?)";
+		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=
