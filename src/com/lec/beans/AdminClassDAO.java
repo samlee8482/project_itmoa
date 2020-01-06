@@ -339,7 +339,7 @@ public class AdminClassDAO {
 	
 	
 	// 3. 과정 삭제
-	public int deleteClass(int class_uid) throws SQLException{
+	public int deleteClassByUid(int class_uid) throws SQLException{
 		
 		int cnt = 0;
 		
