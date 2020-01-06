@@ -97,11 +97,27 @@ public class MbDTO {
 		this.mb_email = mb_email;
 		this.mb_img = mb_img;
 	}
-
+	
+	// 회원정보찾기 - ID 
+	public MbDTO(String mb_name, String mb_email) {
+		super();
+		this.mb_name = mb_name;
+		this.mb_email = mb_email;
+	}
+	
+	// 회원정보찾기 - PW
+	public MbDTO(String mb_id, String mb_name, String mb_email) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_name = mb_name;
+		this.mb_email = mb_email;
+	}
+	
 	// 게터세터
 	public int getMb_uid() {
 		return mb_uid;
 	}
+
 
 	public void setMb_uid(int mb_uid) {
 		this.mb_uid = mb_uid;

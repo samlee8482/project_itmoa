@@ -201,47 +201,89 @@ public class MbDAO {
 	}
 	
 	// 회원정보 찾기 - ID
-	public int selectId(String mb_name, String mb_email) throws SQLException {
-		int x = -1;
+	// 1.
+	public MbDTO[] createSelectIdArray(ResultSet rs) throws SQLException {
+		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
+
+		while(rs.next()){
+			String mb_name = rs.getString("mb_name");
+			String mb_email = rs.getString("mb_email");
+			
+			MbDTO dto = new MbDTO(mb_name, mb_email);
+			list.add(dto);
+		}
 		
-		String dbName = null;
-		String dbEmail = null;
+		int size = list.size();
+		MbDTO [] arr = new MbDTO[size];
+		list.toArray(arr);
+		return arr;
+	}
+	
+	// 1-1.
+	public MbDTO[] selectId(String mb_name, String mb_email) throws SQLException {
+		//int x = -1;
+		
+//		String dbName = null;
+//		String dbEmail = null;
+		
+		MbDTO[] arr = null;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_SELET_FIND_ACCOUNT_ID);
 			pstmt.setString(1, mb_name);
 			pstmt.setString(2, mb_email);
 			rs = pstmt.executeQuery();
-			
-			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
-            {
-				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
-                dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
- 
-                if (dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
-                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-                else                  
-                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-                
-            } else {
-                x = -1; // 해당 아이디가 없을 경우
-            }
+			arr = createSelectIdArray(rs);
+//			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+//            {
+//				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
+//                dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
+// 
+//                if (dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
+//                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
+//                else                  
+//                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+//                
+//            } else {
+//                x = -1; // 해당 아이디가 없을 경우
+//            }
  
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return x;
+		return arr;
 	}
 	
 	// 회원정보 찾기 - PW
-	public int selectPw(String mb_id, String mb_name, String mb_email) throws SQLException {
-		int x = -1;
+	// 1.
+	public MbDTO[] createSelectPwArray(ResultSet rs) throws SQLException {
+		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
+
+		while(rs.next()){
+			String mb_id = rs.getString("mb_id");
+			String mb_name = rs.getString("mb_name");
+			String mb_email = rs.getString("mb_email");
+			
+			MbDTO dto = new MbDTO(mb_id, mb_name, mb_email);
+			list.add(dto);
+		}
 		
-		String dbId = null;
-		String dbName = null;
-		String dbEmail = null;
+		int size = list.size();
+		MbDTO [] arr = new MbDTO[size];
+		list.toArray(arr);
+		return arr;
+	}
+	
+	public MbDTO[] selectPw(String mb_id, String mb_name, String mb_email) throws SQLException {
+		//int x = -1;
+		
+//		String dbId = null;
+//		String dbName = null;
+//		String dbEmail = null;
+		
+		MbDTO[] arr = null;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_SELECT_FIND_ACCOUNT_PWD);
@@ -250,27 +292,27 @@ public class MbDAO {
 			pstmt.setString(3, mb_email);
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
-			{
-				dbId = rs.getString("mb_id"); // 비번을 변수에 넣는다.
-				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
-				dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
-				
-				if (dbId.equals(mb_id) && dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
-					x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-				else                  
-					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-				
-			} else {
-				x = -1; // 해당 아이디가 없을 경우
-			}
+//			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+//			{
+//				dbId = rs.getString("mb_id"); // 비번을 변수에 넣는다.
+//				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
+//				dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
+//				
+//				if (dbId.equals(mb_id) && dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
+//					x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
+//				else                  
+//					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+//				
+//			} else {
+//				x = -1; // 해당 아이디가 없을 경우
+//			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return x;
+		return arr;
 	}
 	
 }
