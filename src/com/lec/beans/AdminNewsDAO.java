@@ -107,8 +107,50 @@ public class AdminNewsDAO {
 		return arr; 
 	}
 	
+	public NewsDTO[] createNewsArrByUid(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
+		ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
+
+		while(rs.next()){
+			int news_brd_uid = rs.getInt("news_brd_uid");
+			String news_brd_title = rs.getString("news_brd_title");
+			String news_brd_img = rs.getString("news_brd_img");
+			String news_brd_content = rs.getString("news_brd_content");
+			int news_brd_viewcnt = rs.getInt("news_brd_viewcnt");
+			
+			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_img, news_brd_content, news_brd_viewcnt);
+			list.add(dto);
+		}
+		
+		int size = list.size();
+		NewsDTO [] arr = new NewsDTO[size];
+		list.toArray(arr);
+		return arr;
+	}
+	
+	// 2.
+	public NewsDTO[] selectNewsByUid(int news_brd_uid) throws SQLException {
+		NewsDTO[] arr = null;
+		String SELECT_NEWS_BRD_BY_UID = D.SQL_SELECT_NEWS_BRD_CONTENT;
+		
+		SELECT_NEWS_BRD_BY_UID += D.SQL_ORDER_BY_NEWS_BRD;
+		
+		try {
+			pstmt = conn.prepareStatement(SELECT_NEWS_BRD_BY_UID);
+			pstmt.setInt(1, news_brd_uid);
+			
+			rs = pstmt.executeQuery();
+			arr = createNewsArr(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return arr; 
+	}
+	
 	// 관리자페이지 뉴스 수정
-	public int updateMbByUid(int news_brd_uid, String news_brd_title, String news_brd_content, String news_brd_img) throws SQLException{
+	public int updateNewsByUid(int news_brd_uid, String news_brd_title, String news_brd_content, String news_brd_img) throws SQLException{
 		int cnt = 0;
 		
 		try {
