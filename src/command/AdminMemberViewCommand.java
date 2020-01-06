@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.AdminMbDAO;
 import com.lec.beans.MbDTO;
-import com.lec.beans.NewsDTO;
 
 public class AdminMemberViewCommand implements Command {
 
@@ -18,13 +17,14 @@ public class AdminMemberViewCommand implements Command {
 		
 		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
 		     
-		try {
-			arr = dao.selectMbByUid(mb_uid);
-			request.setAttribute("adminMemberView", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (mb_uid > 0) {
+			try {
+				arr = dao.selectMbByUid(mb_uid);
+				request.setAttribute("adminMemberView", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
 	}
 
 }

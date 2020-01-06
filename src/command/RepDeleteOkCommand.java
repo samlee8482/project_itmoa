@@ -16,11 +16,13 @@ public class RepDeleteOkCommand implements Command {
 		ReviewDAO dao = new ReviewDAO();
 		int cnt = 0;
 		
-		try {
-			cnt = dao.deleteRepByUid(rep_uid);
-			request.setAttribute("repDeleteOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (rep_uid > 0) {
+			try {
+				cnt = dao.deleteRepByUid(rep_uid);
+				request.setAttribute("repDeleteOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

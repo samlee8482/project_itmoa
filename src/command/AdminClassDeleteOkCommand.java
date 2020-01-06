@@ -15,10 +15,10 @@ public class AdminClassDeleteOkCommand implements Command {
 		AdminClassDAO dao = new AdminClassDAO();
 		
 		//입력한 값을 받아오기
-		int ins_uid = Integer.parseInt(request.getParameter("ins_uid"));
+		int class_uid = Integer.parseInt(request.getParameter("class_uid"));
 		
 		try {			
-			cnt = dao.deleteInsByUid(ins_uid);
+			cnt = dao.deleteClassByUid(class_uid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

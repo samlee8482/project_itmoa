@@ -17,11 +17,13 @@ public class ReviewViewCommand implements Command {
 		
 		int review_brd_uid = Integer.parseInt(request.getParameter("review_brd_uid"));
 		
-		try {
-			arr = dao.readReviewByUid(review_brd_uid);
-			request.setAttribute("reviewView", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (review_brd_uid > 0) {
+			try {
+				arr = dao.readReviewByUid(review_brd_uid);
+				request.setAttribute("reviewView", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
 		}
 	}
 

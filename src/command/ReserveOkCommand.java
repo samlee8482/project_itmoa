@@ -5,10 +5,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.beans.AdminNewsDAO;
 import com.lec.beans.ClassDAO;
-import com.lec.beans.MbDAO;
-import com.lec.beans.ReviewDAO;
 
 public class ReserveOkCommand implements Command {
 
@@ -19,11 +16,13 @@ public class ReserveOkCommand implements Command {
 		ClassDAO dao = new ClassDAO();
 		int cnt = 0;
 		
-		try {
-			cnt = dao.updateMemberByUid(mb_uid);
-			request.setAttribute("reserveOk", cnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (mb_uid > 0) {
+			try {
+				cnt = dao.updateMemberByUid(mb_uid);
+				request.setAttribute("reserveOk", cnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
