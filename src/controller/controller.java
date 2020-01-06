@@ -6,27 +6,43 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.AdminClassDeleteOkCommand;
+import command.AdminCurListCommand;
+import command.AdminCurOkCommand;
+import command.AdminCurViewCommand;
+import command.AdminITNewsListCommand;
+import command.AdminITNewsUpdateOkCommand;
+import command.AdminITNewsViewCommand;
+import command.AdminInsListCommand;
+import command.AdminInsOkCommand;
+import command.AdminInsViewCommand;
+import command.AdminMemberListCommand;
+import command.AdminMemberOkCommand;
+import command.AdminMemberViewCommand;
+import command.AdminReviewDeleteOkCommand;
+import command.AdminReviewListCommand;
 import command.Command;
 import command.CurListCommand;
 import command.CurViewCommand;
-import command.FindAccountOkCommand;
-import command.LoginCommand;
+import command.FindIdOkCommand;
+import command.FindPwOkCommand;
+import command.JoinOkCommand;
 import command.LoginOkCommand;
 import command.MyPageCommand;
 import command.MyPageOkCommand;
-import command.NewsViewCommand;
 import command.NewsListCommand;
-import command.RegistOkCommand;
+import command.NewsViewCommand;
 import command.RepDeleteOkCommand;
 import command.RepUpdateOkCommand;
+import command.RepWriteOkCommand;
 import command.ReserveOkCommand;
 import command.ReviewDeleteOkCommand;
 import command.ReviewListCommand;
-import command.ReviewUpdateCommand;
 import command.ReviewUpdateOkCommand;
+import command.ReviewUpdateViewCommand;
 import command.ReviewViewCommand;
 import command.ReviewWriteOkCommand;
-import command.ZZimCommand;
+import command.ZZimOkCommand;
 
 public class controller {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,23 +82,23 @@ public class controller {
 
 //		- 회원가입
 		case "/joinOk.do":
-			command = new RegistOkCommand();
+			command = new JoinOkCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
 			break;
 	
 //		- 아이디 찾기
 		case "/findIdOk.do":
-			command = new FindAccountOkCommand();
+			command = new FindIdOkCommand();
 			command.execute(request, response);
-			viewPage = "AccountOk.jsp";
+			viewPage = "findIdOk.jsp";
 			break;
 		
 //		- 비밀번호 찾기
 		case "/findPwOk.do":
-			command = new LoginOkCommand();
+			command = new FindPwOkCommand();
 			command.execute(request, response);
-			viewPage = "login.jsp";
+			viewPage = "findPwOk.jsp";
 			break;
 
 //		- 마이페이지
@@ -94,7 +110,7 @@ public class controller {
 		case "/myPageOk.do":
 			command = new MyPageOkCommand();
 			command.execute(request, response);
-			viewPage = "myPageok.jsp";
+			viewPage = "myPageOk.jsp";
 			break;
 			
 //		- 학원
@@ -106,11 +122,11 @@ public class controller {
 		case "/curView.do":
 			command = new CurViewCommand();
 			command.execute(request, response);
-			viewPage = "curInfo.jsp";
+			viewPage = "curView.jsp";
 			break;
 //		* 찜 삭제는 커맨드에서 if문으로 거르기
 		case "/zzimOk.do":
-			command = new ZZimCommand();
+			command = new ZZimOkCommand();
 			command.execute(request, response);
 			viewPage = "zzimOk.jsp";
 			break;
@@ -136,10 +152,10 @@ public class controller {
 			command.execute(request, response);
 			viewPage = "reviewWriteOk.jsp";
 			break;
-		case "/reviewUpdate.do":
-			command = new ReviewUpdateCommand();
+		case "/reviewUpdateView.do":
+			command = new ReviewUpdateViewCommand();
 			command.execute(request, response);
-			viewPage = "reviewUpdate.jsp";
+			viewPage = "reviewUpdateView.jsp";
 			break;
 		case "/reviewUpdateOk.do":
 			command = new ReviewUpdateOkCommand();
@@ -154,6 +170,10 @@ public class controller {
 
 //		- 댓글
 // 		* 댓글 불러오기는 jQuery .click() 함수로 대체
+		case "/repWriteOk.do":
+			command = new RepWriteOkCommand();
+			command.execute(request, response);
+			viewPage = "repDeleteOk.jsp";
 		case "/repUpdateOk.do":
 			command = new RepUpdateOkCommand();
 			command.execute(request, response);
@@ -174,15 +194,98 @@ public class controller {
 		case "/newsView.do":
 			command = new NewsViewCommand();
 			command.execute(request, response);
-			viewPage = "newInfo.jsp";
+			viewPage = "newsView.jsp";
 			break;
 			
 //		관리자
-		case "/login.do":
-			command = new LoginCommand();
+//		- 회원관리
+		case "/adminMemberList.do":
+			command = new AdminMemberListCommand();
 			command.execute(request, response);
-			viewPage = "login.jsp";
+			viewPage = "adminMemberList.jsp";
 			break;
+//		* 초반 검색도 같이 사용
+		case "/adminMemberView.do":
+			command = new AdminMemberViewCommand();
+			command.execute(request, response);
+			viewPage = "adminMemberView.jsp";
+			break;
+		case "/adminMemberOk.do":
+			command = new AdminMemberOkCommand();
+			command.execute(request, response);
+			viewPage = "adminMemberOk.jsp";
+			break;
+		
+//		- 학원관리
+		case "/adminInsList.do":
+			command = new AdminInsListCommand();
+			command.execute(request, response);
+			viewPage = "adminInsList.jsp";
+			break;
+//		* 초반 검색도 같이 사용
+		case "/adminInsView.do":
+			command = new AdminInsViewCommand();
+			command.execute(request, response);
+			viewPage = "adminInsView.jsp";
+			break;
+		case "/adminInsOk.do":
+			command = new AdminInsOkCommand();
+			command.execute(request, response);
+			viewPage = "adminInsOk.jsp";
+			break;
+//		* insert 같이 사용
+		case "/adminClassList.do":
+			command = new AdminCurListCommand();
+			command.execute(request, response);
+			viewPage = "adminClassList.jsp";
+			break;
+		case "/adminCurView.do":
+			command = new AdminCurViewCommand();
+			command.execute(request, response);
+			viewPage = "adminCurView.jsp";
+			break;
+		case "/adminCurOk.do":
+			command = new AdminCurOkCommand();
+			command.execute(request, response);
+			viewPage = "adminCurOk.jsp";
+			break;
+		case "/adminClassDeleteOk.do":
+			command = new AdminClassDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminClassDeleteOk.jsp";
+			break;
+			
+//		- 리뷰관리
+		case "/adminReviewList.do":
+			command = new AdminReviewListCommand();
+			command.execute(request, response);
+			viewPage = "adminReviewList.jsp";
+			break;
+//		* 초반 검색도 같이 사용
+		case "/adminReviewDeleteOk.do":
+			command = new AdminReviewDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminReviewDeleteOk.jsp";
+			break;
+				
+//		- IT뉴스 관리
+		case "/adminITNewsList.do":
+			command = new AdminITNewsListCommand();
+			command.execute(request, response);
+			viewPage = "adminITNewsList.jsp";
+			break;
+//		* 초반 검색도 같이 사용
+		case "/adminITNewsView.do":
+			command = new AdminITNewsViewCommand();
+			command.execute(request, response);
+			viewPage = "adminITNewsView.jsp";
+			break;
+		case "/adminITNewsUpdateOk.do":
+			command = new AdminITNewsUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "adminITNewsUpdateOk.jsp";
+			break;
+//			* insert도 같이 사용
 		}
 		
 	}
