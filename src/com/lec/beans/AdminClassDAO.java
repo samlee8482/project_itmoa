@@ -19,7 +19,7 @@ public class AdminClassDAO {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminReview 객체 생성, 데이터베이스 연결");
+			System.out.println("AdminClassDAO() 객체 생성, 데이터베이스 연결");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
