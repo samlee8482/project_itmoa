@@ -77,6 +77,8 @@ public class ClassDAO {
 			arr = createCurArray(rs);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 
 		return arr;
@@ -113,6 +115,8 @@ public class ClassDAO {
 			arr = createBranchArray(rs);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 
 		return arr;
@@ -237,6 +241,8 @@ public class ClassDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 
 		return arr;
@@ -271,7 +277,7 @@ public class ClassDAO {
 		return arr;
 	}
 
-	public ClassDTO[] selectClassByUid(int class_uid) {
+	public ClassDTO[] selectClassByUid(int class_uid) throws SQLException {
 		ClassDTO[] arr = null ;
 		
 		try {
@@ -281,12 +287,14 @@ public class ClassDAO {
 			arr = createClassArrayByUid(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr;
 	}
 	
-	public int updateMemberByUid(int mb_uid) {
+	public int updateMemberByUid(int mb_uid) throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -295,12 +303,14 @@ public class ClassDAO {
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return cnt;
 	}
 	
-	public int insertZZim(int mb_uid, int class_uid) {
+	public int insertZZim(int mb_uid, int class_uid) throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -310,12 +320,14 @@ public class ClassDAO {
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return cnt;
 	}
 	
-	public int deleteZZim(int zzim_uid) {
+	public int deleteZZim(int zzim_uid) throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -324,6 +336,8 @@ public class ClassDAO {
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return cnt;
