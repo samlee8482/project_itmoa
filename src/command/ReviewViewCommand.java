@@ -19,7 +19,7 @@ public class ReviewViewCommand implements Command {
 		
 		try {
 			arr = dao.readReviewByUid(review_brd_uid);
-			request.setAttribute("review_brd_view", arr);
+			request.setAttribute("reviewView", arr);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

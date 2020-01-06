@@ -19,7 +19,7 @@ public class NewsViewCommand implements Command {
 		
 		try {
 			arr = dao.readNewsByUid(news_brd_uid);
-			request.setAttribute("news_brd_view", arr);
+			request.setAttribute("newsView", arr);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
