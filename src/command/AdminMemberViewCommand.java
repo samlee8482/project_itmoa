@@ -17,7 +17,7 @@ public class AdminMemberViewCommand implements Command {
 		MbDTO[] arr = null;
 		
 		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
-		
+		     
 		try {
 			arr = dao.selectMbByUid(mb_uid);
 			request.setAttribute("adminMemberView", arr);
