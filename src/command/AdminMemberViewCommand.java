@@ -20,7 +20,7 @@ public class AdminMemberViewCommand implements Command {
 		
 		try {
 			arr = dao.selectMbByUid(mb_uid);
-			request.setAttribute("admin_mb_view", arr);
+			request.setAttribute("adminMemberView", arr);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
