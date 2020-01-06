@@ -14,7 +14,7 @@ import command.LoginCommand;
 import command.LoginOkCommand;
 import command.MyPageCommand;
 import command.MyPageOkCommand;
-import command.NewViewCommand;
+import command.NewsViewCommand;
 import command.NewsListCommand;
 import command.RegistOkCommand;
 import command.RepDeleteOkCommand;
@@ -172,7 +172,7 @@ public class controller {
 			viewPage = "newsList.jsp";
 			break;
 		case "/newsView.do":
-			command = new NewViewCommand();
+			command = new NewsViewCommand();
 			command.execute(request, response);
 			viewPage = "newInfo.jsp";
 			break;
