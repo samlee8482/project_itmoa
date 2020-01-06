@@ -234,7 +234,7 @@ public class AdminClassDAO {
 	
 	// 학원 과정 관리 
 	// 1. 과정 추가 
-	public int insertCur(ClassDTO dto) throws SQLException{
+	public int insertCur(int ins_uid, ClassDTO dto) throws SQLException{
 		
 		String cur_name = dto.getCur_name();
 		int cur_hours = dto.getCur_hours();
@@ -246,19 +246,22 @@ public class AdminClassDAO {
 		String cur_month5 = dto.getCur_month5();
 		String cur_month6 = dto.getCur_month6();	
 		
-		return this.insertCur(cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
+		return this.insertCur(ins_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
 	}
 	
 	
 	// 1-1. 
-	public int insertCur(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
+	public int insertCur(int ins_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
 			String cur_month4, String cur_month5, String cur_month6) throws SQLException{
 		
 		int cnt = 0;
+		int cur_uid = 0;
 		
 		try {
 			
-			pstmt = conn.prepareStatement(D.SQL_INSERT_CUR);   
+			String [] generetedCols = {"cur_uid"};
+			
+			pstmt = conn.prepareStatement(D.SQL_INSERT_CUR, generetedCols);   
 			pstmt.setString(1, cur_name);
 			pstmt.setInt(2, cur_hours);
 			pstmt.setInt(3, cur_months);
@@ -270,8 +273,24 @@ public class AdminClassDAO {
 			pstmt.setString(9, cur_month6);
 					
 			cnt = pstmt.executeUpdate();
-
-		
+			
+			
+			// auto-generated keys 값 뽑아오기
+			rs = pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				cur_uid = rs.getInt(1);
+			}
+			
+			pstmt.close();
+			
+			
+			// 클래스에 저장하기
+			pstmt = conn.prepareStatement(D.SQL_INSERT_CLASS);
+				pstmt.setInt(1, ins_uid);
+				pstmt.setInt(2, cur_uid);
+				pstmt.executeUpdate();
+	
+						
 		} finally {
 			close();
 		}
@@ -281,33 +300,11 @@ public class AdminClassDAO {
 	}
 	
 	
-	
-	// 1-2. 클래스  추가 
-	public int insertClass(int ins_uid, int cur_uid) throws SQLException{
-		
-		int cnt = 0;
-		
-		try {
-			
-			pstmt = conn.prepareStatement(D.SQL_INSERT_CLASS);
-			pstmt.setInt(1, ins_uid);
-			pstmt.setInt(2, cur_uid);
-			
-			cnt = pstmt.executeUpdate();
-			
-		}finally {
-			close();
-		}
-		
-		return cnt;
-	}
-	
-	
-	
+
 	
 	// 2. 과정 수정
-	public int updateClass(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
-			String cur_month4, String cur_month5, String cur_month6, int cur_uid) throws SQLException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
+	public int updateClass(int cur_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
+			String cur_month4, String cur_month5, String cur_month6) throws SQLException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
 		
 		int cnt = 0;
 		

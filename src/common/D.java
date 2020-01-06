@@ -238,6 +238,7 @@ public interface D {
 	+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	
+	
 	// 과정 내 수업 수정
 	public static final String SQL_UPDATE_CUR = 
 	"UPDATE cur"
