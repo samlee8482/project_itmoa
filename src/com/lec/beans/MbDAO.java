@@ -59,7 +59,7 @@ public class MbDAO {
 		return arr;
 	}
 	
-	public MbDTO[] login(String mb_id, String mb_pw) {
+	public MbDTO[] login(String mb_id, String mb_pw) throws SQLException {
 		MbDTO[] arr = null;
 		
 		try {
@@ -70,6 +70,8 @@ public class MbDAO {
 			arr = createLoginArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr; 
@@ -109,7 +111,7 @@ public class MbDAO {
 //	}
 	
 	// 회원가입
-	public int join(String mb_name, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2) {
+	public int join(String mb_name, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2) throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -124,7 +126,9 @@ public class MbDAO {
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			close();
+		}
 		
 		return cnt;
 	}
@@ -158,7 +162,7 @@ public class MbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] myPage(int mb_uid) {
+	public MbDTO[] myPage(int mb_uid) throws SQLException {
 		MbDTO[] arr = null;
 		
 		try {
@@ -168,6 +172,8 @@ public class MbDAO {
 			arr = createLoginArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr; 
@@ -195,7 +201,7 @@ public class MbDAO {
 	}
 	
 	// 회원정보 찾기 - ID
-	public int selectId(String mb_name, String mb_email) {
+	public int selectId(String mb_name, String mb_email) throws SQLException {
 		int x = -1;
 		
 		String dbName = null;
@@ -223,12 +229,14 @@ public class MbDAO {
  
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return x;
 	}
 	
 	// 회원정보 찾기 - PW
-	public int selectPw(String mb_id, String mb_name, String mb_email) {
+	public int selectPw(String mb_id, String mb_name, String mb_email) throws SQLException {
 		int x = -1;
 		
 		String dbId = null;
@@ -259,6 +267,8 @@ public class MbDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return x;
 	}

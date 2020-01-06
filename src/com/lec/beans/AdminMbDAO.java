@@ -65,7 +65,7 @@ public class AdminMbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] selectMb(int option_mb_1, int option_mb_2, String option_mb_3) {
+	public MbDTO[] selectMb(int option_mb_1, int option_mb_2, String option_mb_3) throws SQLException {
 		// option_mb_1 은 회원구분
 		// option_mb_2 는 검색조건
 		// option_mb_3 은 검색키워드
@@ -119,6 +119,8 @@ public class AdminMbDAO {
 			arr = createMbArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr; 
@@ -152,7 +154,7 @@ public class AdminMbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] selectMbByUid(int mb_uid) {
+	public MbDTO[] selectMbByUid(int mb_uid) throws SQLException {
 		MbDTO[] arr = null;
 		String SELECT_MB = D.SQL_SELECT_USER + D.SQL_SELECT_USER_WHERE_UID;
 		
@@ -163,6 +165,8 @@ public class AdminMbDAO {
 			arr = createMbByUidArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return arr; 
