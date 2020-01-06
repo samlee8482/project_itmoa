@@ -280,13 +280,16 @@ public class ClassDAO {
 	
 	
 	public ClassDTO[] selectClassByUid(int class_uid) throws SQLException {
+		
 		ClassDTO[] arr = null ;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
 			pstmt.setInt(1, class_uid);
+			
 			rs = pstmt.executeQuery();
 			arr = createClassArrayByUid(rs);
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

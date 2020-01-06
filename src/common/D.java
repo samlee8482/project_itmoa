@@ -158,11 +158,10 @@ public interface D {
 
 	
 	// 학원 상세 페이지
-		public static final String SQL_SELECT_INS_BY_UID = 
-				"SELECT c.*,  i.ins_name, i.ins_img"
+	public static final String SQL_SELECT_INS_BY_UID = 
+				"SELECT c.*,  i.ins_name, i.ins_img, i.ins_x, ins_y"
 				+ " FROM class cl,  ins i, cur c"
 				+ " WHERE class_uid = ?"
-				+ " AND i.ins_x = ? AND i.ins_y = ?"
 				+ " AND cl.cur_uid = c.cur_uid"
 				+ " AND cl.ins_uid = i.ins_uid";
 
