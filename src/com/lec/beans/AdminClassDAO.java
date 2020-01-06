@@ -59,85 +59,14 @@ public class AdminClassDAO {
 		int size = list.size();
 		ClassDTO[] arr = new ClassDTO[size];
 		list.toArray(arr);
+		
 		return arr;
 	}
 
-	//	public ClassDTO[] selectCurList() throws SQLException {
-	//
-	//		ClassDTO [] arr = null;
-	//		String selectCur = D.SQL_SELECT_INS;
-	//		selectCur += D.SQL_SELECT_INS_ORDER_BY_UID;
-	//
-	//		try {
-	//			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
-	//			pstmt = conn.prepareStatement(selectCur);
-	//			rs = pstmt.executeQuery();
-	//			arr = createCurArray(rs);
-	//		} catch (Exception e) {
-	//			e.printStackTrace();
-	//		} finally {
-	//			close();
-	//		}
-	//
-	//		return arr;
-	//	}
-	//	
-	//	
-	//	//학원UID별 출력 
-	//	public ClassDTO[] selectInsByUid(int ins_uid) throws SQLException {
-	//		ClassDTO[] arr = null ;
-	//		
-	//		try {
-	//			pstmt = conn.prepareStatement(D.SQL_INS_WHERE_UID);
-	//			pstmt.setInt(1, ins_uid);
-	//			rs = pstmt.executeQuery();
-	//			arr = createCurArray(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		} finally {
-	//			close();
-	//		}
-	//		
-	//		return arr;
-	//	}
-	//	
-	//	
-	//	//학원명조건으로 출력
-	//	public ClassDTO[] selectInsByName(String ins_name) throws SQLException {
-	//		ClassDTO[] arr = null ;
-	//		
-	//		try {
-	//			pstmt = conn.prepareStatement(D.SQL_INS_WHERE_NAME);
-	//			pstmt.setString(1, ins_name);
-	//			rs = pstmt.executeQuery();
-	//			arr = createCurArray(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		} finally {
-	//			close();
-	//		}
-	//		
-	//		return arr;
-	//	}
-	//	
-	//	//학원과정으로 검색
-	//	public ClassDTO[] selectInsByCurName(int ins_uid) throws SQLException {
-	//		ClassDTO[] arr = null ;
-	//		
-	//		try {
-	//			pstmt = conn.prepareStatement(D.SQL_INS_WHERE_CUR_NAME);
-	//			pstmt.setInt(1, ins_uid);
-	//			rs = pstmt.executeQuery();
-	//			arr = createCurArray(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		} finally {
-	//			close();
-	//		}
-	//		
-	//		return arr;
-	//	}
-
+	
+	
+	
+	
 	// 관리자페이지 학원검색 전체 + 조건
 	public ClassDTO[] selectCurList(int option_ins, String keyword) throws SQLException {
 
@@ -176,13 +105,19 @@ public class AdminClassDAO {
 			}
 
 			rs = pstmt.executeQuery();
+			
 			arr = createCurArray(rs);
+		
 		} finally {
 			close();
 		}		
 
 		return arr;
 	}
+	
+	
+	
+	
 	
 	// 관리자페이지 학원등록
 	// 1.
@@ -214,13 +149,21 @@ public class AdminClassDAO {
 			pstmt.setString(6, ins_img);
 			pstmt.setString(7, ins_branch);
 			pstmt.setString(8, ins_location);
+			
 			cnt = pstmt.executeUpdate();
+	
+			
 		} finally {
 			close();
 		}
 		
 		return cnt;
 	}
+	
+	
+	
+	
+	
 	
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,
@@ -238,6 +181,7 @@ public class AdminClassDAO {
 			pstmt.setString(7, ins_branch);
 			pstmt.setString(8, ins_img);
 			pstmt.setInt(9, ins_uid);
+			
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
@@ -247,6 +191,10 @@ public class AdminClassDAO {
 		return cnt;
 	}
 	
+	
+	
+	
+	
 	// 학원 이미지 삭제
 	public int deleteInsImgByUid(String ins_img, int ins_uid) throws SQLException{
 		int cnt = 0;
@@ -255,6 +203,7 @@ public class AdminClassDAO {
 			pstmt = conn.prepareStatement(D.SQL_DELETE_INS_IMG);
 			pstmt.setString(1, ins_img);
 			pstmt.setInt(2, ins_uid);
+			
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
@@ -270,6 +219,7 @@ public class AdminClassDAO {
 		try {
 			pstmt = conn.prepareStatement(D.SQL_DELETE_INS);
 			pstmt.setInt(1, ins_uid);
+			
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
@@ -278,5 +228,139 @@ public class AdminClassDAO {
 		
 		return cnt;
 	}
+	
+	
+	
+	
+	
+	// 학원 과정 관리 
+	// 1. 과정 추가 
+	public int insertCur(ClassDTO dto) throws SQLException{
+		
+		String cur_name = dto.getCur_name();
+		int cur_hours = dto.getCur_hours();
+		int cur_months = dto.getCur_months();
+		String cur_month1 = dto.getCur_month1();
+		String cur_month2 = dto.getCur_month2();
+		String cur_month3 = dto.getCur_month3();
+		String cur_month4 = dto.getCur_month4();
+		String cur_month5 = dto.getCur_month5();
+		String cur_month6 = dto.getCur_month6();	
+		
+		return this.insertCur(cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
+	}
+	
+	
+	// 1-1. 
+	public int insertCur(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
+			String cur_month4, String cur_month5, String cur_month6) throws SQLException{
+		
+		int cnt = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(D.SQL_INSERT_CUR);   
+			pstmt.setString(1, cur_name);
+			pstmt.setInt(2, cur_hours);
+			pstmt.setInt(3, cur_months);
+			pstmt.setString(4, cur_month1);
+			pstmt.setString(5, cur_month2);
+			pstmt.setString(6, cur_month3);
+			pstmt.setString(7, cur_month4);
+			pstmt.setString(8, cur_month5);
+			pstmt.setString(9, cur_month6);
+					
+			cnt = pstmt.executeUpdate();
+
+		
+		} finally {
+			close();
+		}
+		
+		return cnt;
+		
+	}
+	
+	
+	
+	// 1-2. 클래스  추가 
+	public int insertClass(int ins_uid, int cur_uid) throws SQLException{
+		
+		int cnt = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(D.SQL_INSERT_CLASS);
+			pstmt.setInt(1, ins_uid);
+			pstmt.setInt(2, cur_uid);
+			
+			cnt = pstmt.executeUpdate();
+			
+		}finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
+	
+	
+	
+	// 2. 과정 수정
+	public int updateClass(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
+			String cur_month4, String cur_month5, String cur_month6, int cur_uid) throws SQLException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
+		
+		int cnt = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_CUR);
+			pstmt.setString(1, cur_name);
+			pstmt.setInt(2, cur_hours);
+			pstmt.setInt(3, cur_months);
+			pstmt.setString(4, cur_month1);
+			pstmt.setString(5, cur_month2);
+			pstmt.setString(6, cur_month3);
+			pstmt.setString(7, cur_month4);
+			pstmt.setString(8, cur_month5);
+			pstmt.setString(9, cur_month6);
+			pstmt.setInt(9, cur_uid);
+			
+			cnt = pstmt.executeUpdate();
+
+			
+		} finally {
+			close();
+		}
+		
+		return cnt; 
+		
+	}
+	
+	
+	
+	// 3. 과정 삭제
+	public int deleteClass(int class_uid) throws SQLException{
+		
+		int cnt = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(D.SQL_DELETE_CLASS);
+			pstmt.setInt(1, class_uid);
+		
+			cnt = pstmt.executeUpdate();
+			pstmt.close();
+
+			
+		} finally {
+			close();
+		}
+		
+		
+		return cnt; 
+		
+	}
+	
 	
 }
