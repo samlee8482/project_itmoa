@@ -215,7 +215,7 @@ public interface D {
 	
 	
 
-	// 클래스 목록
+	// 과정  목록
 	public static final String SQL_SELECT_CLASS_BY_INS_UID =
 		"SELECT c.cur_name, c.cur_hours"
 		+ " FROM class cl, ins i, cur c"
@@ -223,16 +223,27 @@ public interface D {
 		+ " AND cl.cur_uid = c.cur_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 
-	// 클래스 추가
-	public static final String SQL_INSERT_CLASS = "INSERT INTO class(ins_uid, cur_uid) VALUES (?, ?)";
+	// 과정 추가
+	public static final String SQL_INSERT_CLASS = 
+			"INSERT INTO class(ins_uid, cur_uid) VALUES (?, ?)";
 	
-	// 클래스 삭제
+	// 과정 삭제
 	public static final String SQL_DELETE_CLASS = "DELETE FROM class WHERE class_uid = ?";
 
 
+	// 과정 내 수업 추가
+	public static final String SQL_INSERT_CUR = 
+	"INSERT INTO cur"
+	+ "(cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6)"
+	+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	
-	
+	// 과정 내 수업 수정
+	public static final String SQL_UPDATE_CUR = 
+	"UPDATE cur"
+	+ " SET cur_hours = ?, cur_months = ?,  cur_month1 = ?, cur_month2 = ?, cur_month3 = ?, cur_month4 = ?, cur_month5 = ?, cur_month6 = ?"
+	+ " WHERE cur_uid = ?";
+		
 	
 	
 	
@@ -326,7 +337,7 @@ public interface D {
 	public static final String SQL_DELETE_REP_BY_UID = 
 		"DELETE FROM rep WHERE rep_uid= ?";
 		
-
+    
 		
 	
 	
