@@ -281,7 +281,7 @@ public class ClassDAO {
 		ClassDTO[] arr = null ;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL);
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID);
 			pstmt.setInt(1, class_uid);
 			rs = pstmt.executeQuery();
 			arr = createClassArrayByUid(rs);

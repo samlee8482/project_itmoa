@@ -217,7 +217,7 @@ public interface D {
 
 	// 클래스 목록
 	public static final String SQL_SELECT_CLASS_BY_INS_UID =
-		"SELECT c.cur_name \"과정명\", c.cur_hours \"시수\" "
+		"SELECT c.cur_name, c.cur_hours"
 		+ " FROM class cl, ins i, cur c"
 		+ " WHERE cl.ins_uid = ?"
 		+ " AND cl.cur_uid = c.cur_uid"

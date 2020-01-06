@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>0.8</zoom>
 	<x>0</x>
-	<y>309</y>
+	<y>506</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -89,7 +89,7 @@
 				<is_open_after_saved>true</is_open_after_saved>
 			</export_html_setting>
 			<export_image_setting>
-				<output_file_path>C:\Users\elice\Desktop\최종11.jpeg</output_file_path>
+				<output_file_path>C:\Users\wkald\Desktop\최종11123.jpeg</output_file_path>
 				<category_dir_path></category_dir_path>
 				<with_category_image>true</with_category_image>
 				<is_open_after_saved>true</is_open_after_saved>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2019-12-29 17:54:26</creation_date>
-			<updated_date>2020-01-06 18:53:56</updated_date>
+			<updated_date>2020-01-06 19:25:47</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1523,10 +1523,10 @@
 			<connections>
 				<relation>
 					<id>4</id>
-					<source>5</source>
+					<source>6</source>
 					<target>2</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
+						<source_xp>0</source_xp>
+						<source_yp>19</source_yp>
 						<target_xp>-1</target_xp>
 						<target_yp>-1</target_yp>
 						<color>
@@ -1545,10 +1545,10 @@
 				</relation>
 				<relation>
 					<id>5</id>
-					<source>6</source>
+					<source>5</source>
 					<target>2</target>
-						<source_xp>0</source_xp>
-						<source_yp>19</source_yp>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
 						<target_yp>-1</target_yp>
 						<color>
@@ -1576,7 +1576,7 @@
 				<normal_column>
 					<id>12</id>
 					<referenced_column>30</referenced_column>
-					<relation>4</relation>
+					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1643,7 +1643,7 @@
 				<normal_column>
 					<id>14</id>
 					<referenced_column>41</referenced_column>
-					<relation>5</relation>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2666,12 +2666,12 @@
 			<connections>
 				<relation>
 					<id>6</id>
-					<source>7</source>
+					<source>3</source>
 					<target>6</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
+						<source_xp>100</source_xp>
+						<source_yp>20</source_yp>
+						<target_xp>0</target_xp>
+						<target_yp>86</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2688,12 +2688,12 @@
 				</relation>
 				<relation>
 					<id>7</id>
-					<source>3</source>
+					<source>7</source>
 					<target>6</target>
-						<source_xp>100</source_xp>
-						<source_yp>20</source_yp>
-						<target_xp>0</target_xp>
-						<target_yp>86</target_yp>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2752,7 +2752,7 @@
 				<normal_column>
 					<id>42</id>
 					<referenced_column>15</referenced_column>
-					<relation>7</relation>
+					<relation>6</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2786,7 +2786,7 @@
 				<normal_column>
 					<id>43</id>
 					<referenced_column>45</referenced_column>
-					<relation>6</relation>
+					<relation>7</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
