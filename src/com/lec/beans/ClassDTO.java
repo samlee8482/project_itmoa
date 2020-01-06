@@ -23,7 +23,7 @@ public class ClassDTO {
 	private String ins_tel;
 	private String ins_img;
 	private String ins_branch;
-	
+	private String ins_location;
 	// 생성자
 	public ClassDTO() {
 		super();
@@ -50,7 +50,16 @@ public class ClassDTO {
 	}
 
 
-
+	//관리자 생성자
+	public ClassDTO(int ins_uid, String ins_name, String ins_add1, String ins_tel) {
+		super();
+		this.ins_uid = ins_uid;
+		this.ins_name = ins_name;
+		this.ins_add1 = ins_add1;
+		this.ins_tel = ins_tel;
+	}
+	
+	
 
 	//사용자 학원 전체 출력 생성자
 	public ClassDTO(String ins_name, String cur_name, int class_zzimcnt, String ins_img) {
@@ -60,6 +69,24 @@ public class ClassDTO {
 		this.class_zzimcnt = class_zzimcnt;
 		this.ins_img = ins_img;
 	}
+	
+	
+	//관리자 페이지 생성자2
+	public ClassDTO(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
+			String ins_branch, String ins_location) {
+		super();
+		this.ins_name = ins_name;
+		this.ins_zip = ins_zip;
+		this.ins_add1 = ins_add1;
+		this.ins_add2 = ins_add2;
+		this.ins_tel = ins_tel;
+		this.ins_img = ins_img;
+		this.ins_branch = ins_branch;
+		this.ins_location = ins_location;
+	}
+	
+	
+
 
 	//지역 생성자
 	public ClassDTO(String ins_branch) {
@@ -67,6 +94,9 @@ public class ClassDTO {
 		this.ins_branch = ins_branch;
 	}
 	
+
+
+
 	//getter/setter
 	public int getClass_uid() {
 		return class_uid;
@@ -226,6 +256,14 @@ public class ClassDTO {
 
 	public void setIns_branch(String ins_branch) {
 		this.ins_branch = ins_branch;
+	}
+
+	public String getIns_location() {
+		return ins_location;
+	}
+
+	public void setIns_location(String ins_location) {
+		this.ins_location = ins_location;
 	}
 	
 }
