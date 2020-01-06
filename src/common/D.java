@@ -317,8 +317,6 @@ public interface D {
 
 		"INSERT INTO rep(mb_uid, rep_content) VALUES (? ?)";
 
-	
-	
 	// 댓글 수정
 	public static final String SQL_UPDATE_REP_BY_UID = 
 		"UPDATE rep SET rep_content=? WHERE rep_uid = ?";
@@ -344,6 +342,11 @@ public interface D {
 
 	public static final String SQL_SELECT_NEWS_BRD = 
 		"SELECT * FROM news_brd";
+	
+	// 뉴스 조회
+	public static final String SQL_SELECT_NEWS_BRD_CONTENT =
+		"SELECT * FROM news_brd"
+		+ " WHERE news_brd_uid = ?"; 
 	
 	// 뉴스 검색 조건) 뉴스UID
 	public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 

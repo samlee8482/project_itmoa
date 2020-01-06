@@ -37,71 +37,66 @@ public class NewsDAO {
 		if(conn != null) conn.close();
 	}
 	
-	// 뉴스 목록 불러오기 - 수정중
-	// 1.
+	// 뉴스 검색 및 불러오기
+	// 1-1.
 	public NewsDTO [] createNewsArray(ResultSet rs) throws SQLException {
-		NewsDTO [] arr = null;
-		
 		ArrayList<NewsDTO> newsList = new ArrayList<NewsDTO>();
 		
 		while(rs.next()){
      
 			int news_brd_uid = rs.getInt("news_brd_uid");
-			String mb_id = rs.getString("mb_id");
-			String news_brd_regdate = rs.getString("news_brd_regdate");
 			String news_brd_title = rs.getString("news_brd_title");
-			String news_brd_viewcnt = rs.getString("news_brd_viewcnt");
 			String news_brd_img = rs.getString("news_brd_img");
+			int news_brd_viewcnt = rs.getInt("news_brd_viewcnt");
 			
-			NewsDTO dto = new NewsDTO(news_brd_uid, mb_id, news_brd_regdate, news_brd_title, news_brd_viewcnt, news_brd_img);
+			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_img, news_brd_viewcnt);
 			newsList.add(dto);			
 		}
 		
 		int size = newsList.size();
-		ReviewDTO [] arr = new ReviewDTO[size];
+		NewsDTO [] arr = new NewsDTO[size];
 		
 		newsList.toArray(arr);
 		
 		return arr;
 	}
 	
-	// 2.
-	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
+	// 1-2.
+	public NewsDTO[] selectNewsList(int option_news, String keyword) throws SQLException {
 		
-		
-		ReviewDTO [] arr = null;
-		String selectReview = D.SQL_SELECT_REVIEW;
+		NewsDTO [] arr = null;
+		String selectNews = D.SQL_SELECT_NEWS_BRD;
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		switch(option_review) {
+		switch(option_news) {
 			case 1: 
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
 				break;
 			case 2:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
 				break;
 			case 3:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
+				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
 				break;
 			default:
 				break;
 		}
 		
 		// 정렬
-		selectReview += D.SQL_ORDER_REVIEW;
+		selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 		
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
 			if(keyword != null && !keyword.equals("")) {
-				pstmt = conn.prepareStatement(selectReview);
+				pstmt = conn.prepareStatement(selectNews);
 				pstmt.setString(1, keyword);
 			}else { 
-				pstmt = conn.prepareStatement(selectReview);
+				pstmt = conn.prepareStatement(selectNews);
 			}
 
 			rs = pstmt.executeQuery();
-			arr = createReviewArray(rs);
+			arr = createNewsArray(rs);
 		} finally {
 			close();
 		}		
@@ -109,4 +104,77 @@ public class NewsDAO {
 		return arr;
 	}
 	
+	// 2. 특정 뉴스 불러오기 NewsDTO ->  Array로 변경 
+	public NewsDTO [] createNewsContentArray(ResultSet rs) throws SQLException {
+		
+		ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
+		
+		while(rs.next()){
+
+			int news_brd_uid = rs.getInt("news_brd_uid");
+			String news_brd_title = rs.getString("news_brd_title");
+			String news_brd_content =  rs.getString("news_brd_content");
+			String news_brd_img =  rs.getString("news_brd_img");
+			int news_brd_viewcnt = rs.getInt("news_brd_viewcnt");
+			
+			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_content, news_brd_img, news_brd_viewcnt);
+			list.add(dto);
+		}
+		
+		int size = list.size();
+		NewsDTO [] arr = new NewsDTO[size];
+		list.toArray(arr);
+		
+		return arr;
+	}
+	
+	// 2-1. 특정 학원후기 불러오기 (조회수 증가o) news_brd_uid로 review
+	public NewsDTO[] selectNewsByUid(int news_brd_uid) throws SQLException{
+		int cnt = 0;
+		NewsDTO[] arr = null;
+		
+		try {
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_NEWS_BRD_INC_VIEWCNT);
+			pstmt.setInt(1, news_brd_uid);
+			cnt = pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(D.SQL_SELECT_NEWS_BRD_CONTENT);
+			pstmt.setInt(1, news_brd_uid);
+
+			rs = pstmt.executeQuery();
+			arr = createNewsContentArray(rs);
+	
+			conn.commit();
+		} catch(SQLException e) {
+			conn.rollback();	// 처리할 것 처리하고 throw
+			throw e;
+		} finally {
+			close();
+		}
+
+		
+		return arr;
+	}
+	
+	// 2-2. 특정 학원후기 불러오기 (조회수 증가x)
+	public NewsDTO[] readNewsByUid(int news_brd_uid) throws SQLException {
+		NewsDTO [] arr = null;
+		
+		try {
+			// 트랜잭션 처리
+			pstmt.close();
+			pstmt = conn.prepareStatement(D.SQL_SELECT_NEWS_BRD_CONTENT);
+			pstmt.setInt(1, news_brd_uid);
+			rs = pstmt.executeQuery();
+			
+			arr = createNewsContentArray(rs);
+			
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
 }
