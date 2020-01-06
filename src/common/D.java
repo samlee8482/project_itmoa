@@ -162,6 +162,7 @@ public interface D {
 				"SELECT c.*,  i.ins_name, i.ins_img"
 				+ " FROM class cl,  ins i, cur c"
 				+ " WHERE class_uid = ?"
+				+ " AND i.ins_x = ? AND i.ins_y = ?"
 				+ " AND cl.cur_uid = c.cur_uid"
 				+ " AND cl.ins_uid = i.ins_uid";
 

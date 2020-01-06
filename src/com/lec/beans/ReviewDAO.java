@@ -139,14 +139,14 @@ public class ReviewDAO {
    // 2-1. 특정 학원후기 불러오기 (조회수 증가o)review_uid로 review
    public ReviewDTO[] selectReviewByUid(int review_brd_uid) throws SQLException{
       ReviewDTO[] arr = null;
-      int cnt = 0;
+      
       
       try {
          conn.setAutoCommit(false);
          
          pstmt = conn.prepareStatement(D.SQL_UPDATE_REVIEW_INC_VIEWCNT);
          pstmt.setInt(1, review_brd_uid);
-         cnt = pstmt.executeUpdate();
+         pstmt.executeUpdate();
          
          pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
          pstmt.setInt(1, review_brd_uid);
