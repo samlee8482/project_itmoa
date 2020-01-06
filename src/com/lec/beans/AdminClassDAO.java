@@ -274,7 +274,6 @@ public class AdminClassDAO {
 					
 			cnt = pstmt.executeUpdate();
 			
-			
 			// auto-generated keys 값 뽑아오기
 			rs = pstmt.getGeneratedKeys();
 			if(rs.next()) {
@@ -283,20 +282,16 @@ public class AdminClassDAO {
 			
 			pstmt.close();
 			
-			
 			// 클래스에 저장하기
 			pstmt = conn.prepareStatement(D.SQL_INSERT_CLASS);
 				pstmt.setInt(1, ins_uid);
 				pstmt.setInt(2, cur_uid);
 				pstmt.executeUpdate();
 	
-						
 		} finally {
 			close();
 		}
-		
 		return cnt;
-		
 	}
 	
 	

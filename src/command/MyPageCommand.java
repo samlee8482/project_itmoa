@@ -1,14 +1,37 @@
 package command;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MyPageCommand implements Command {
+import com.lec.beans.MbDAO;
+import com.lec.beans.MbDTO;
 
+public class MyPageCommand implements Command {
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 
+		MbDAO dao = new MbDAO();
+		MbDTO [] mypageArr = null;
+				
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		
+		
+		if(uid > 0) {// 매개변수 유효성 검증
+			try {
+				
+				mypageArr = dao.myPage(uid);  // 회원정보 가져오기
+				request.setAttribute("list", mypageArr);
+				
+			} catch (SQLException e) {  
+				e.printStackTrace();
+			}
+		}else {
+				// 처리실패하면 다시 돌아가야되는거 아닌감?!??!?!?!?
+		}
+	
 	}
 
 }

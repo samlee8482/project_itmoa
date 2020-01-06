@@ -166,7 +166,7 @@ public class MbDAO {
 		MbDTO[] arr = null;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);
+			pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
 			arr = createLoginArr(rs);
