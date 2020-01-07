@@ -21,10 +21,10 @@ public class ReviewWriteOkCommand implements Command {
 		int cnt = 0;
 		
 		if (mb_uid > 0
-		&& mb_id != null && mb_id.length() > 0 && !mb_id.equals("")
-		&& mb_img != null && mb_img.length() > 0 && !mb_img.equals("")
-		&& review_brd_title != null && review_brd_title.length() > 0 && !review_brd_title.equals("")
-		&& review_brd_content != null && review_brd_content.length() > 0 && !review_brd_content.equals("")) {
+		&& mb_id != null && mb_id.length() > 0 && !mb_id.trim().equals("")
+		&& mb_img != null && mb_img.length() > 0 && !mb_img.trim().equals("")
+		&& review_brd_title != null && review_brd_title.length() > 0 && !review_brd_title.trim().equals("")
+		&& review_brd_content != null && review_brd_content.length() > 0 && !review_brd_content.trim().equals("")) {
 			try {
 				cnt = dao.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content);
 				request.setAttribute("reviewDeleteOk", cnt);

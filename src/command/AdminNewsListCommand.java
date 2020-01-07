@@ -20,8 +20,8 @@ public class AdminNewsListCommand implements Command {
 		NewsDTO [] arr = null;
 		
 		if (option_news_1 > 0
-			&& option_news_2 > 0
-			&& option_news_3 != null && option_news_3.length() > 0 && !option_news_3.equals("")) {
+		&& option_news_2 > 0
+		&& option_news_3 != null && option_news_3.length() > 0 && !option_news_3.trim().equals("")) {
 			try {
 				arr = dao.selectNews(option_news_1, option_news_2, option_news_3);
 				request.setAttribute("adminNewsList", arr);

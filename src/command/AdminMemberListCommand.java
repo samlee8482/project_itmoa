@@ -19,7 +19,9 @@ public class AdminMemberListCommand implements Command {
 		AdminMbDAO dao = new AdminMbDAO();
 		MbDTO [] arr = null;
 		
-		if (option_mb_1 > 0 && option_mb_2 > 0 && option_mb_3 != null && option_mb_3.length() > 0 && !option_mb_3.equals("")) {
+		if (option_mb_1 > 0 
+		&& option_mb_2 > 0 
+		&& option_mb_3.length() > 0 && !option_mb_3.trim().equals("") && option_mb_3 != null) {
 			try {
 				arr = dao.selectMb(option_mb_1, option_mb_2, option_mb_3);
 				request.setAttribute("adminMemberList", arr);

@@ -19,7 +19,7 @@ public class AdminReviewListCommand implements Command {
 		ReviewDTO [] arr = null;
 		
 		if (option_review > 0
-		&& keyword != null && keyword.length() > 0 && !keyword.equals("")) {
+		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
 			try {
 				arr = dao.selectReviewList(option_review, keyword);
 				request.setAttribute("adminReviewList", arr);

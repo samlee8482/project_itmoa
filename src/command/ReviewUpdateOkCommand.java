@@ -20,8 +20,8 @@ public class ReviewUpdateOkCommand implements Command {
 		int cnt = 0;
 		
 		if (review_brd_uid > 0
-		&& review_brd_title != null && review_brd_title.length() > 0 && !review_brd_title.equals("")
-		&& review_brd_content != null && review_brd_content.length() > 0 && !review_brd_content.equals("")) {
+		&& review_brd_title != null && review_brd_title.length() > 0 && !review_brd_title.trim().equals("")
+		&& review_brd_content != null && review_brd_content.length() > 0 && !review_brd_content.trim().equals("")) {
 			try {
 				cnt = dao.updateReviewByUid(review_brd_uid, review_brd_title, review_brd_content);
 				request.setAttribute("reviewDeleteOk", cnt);

@@ -22,12 +22,18 @@ public class MyPageUpdateOkCommand implements Command {
 		String mb_add2 = request.getParameter("mb_add2");
 		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
 		
-		try {
-			cnt = dao.update(mb_pw, mb_email, mb_zip, mb_add1, mb_add2, mb_uid);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (mb_pw != null && mb_pw.length() > 0 && !mb_pw.trim().equals("")
+		&& mb_email != null && mb_email.length() > 0 && !mb_email.trim().equals("")
+		&& mb_zip > 0
+		&& mb_add1 != null && mb_add1.length() > 0 && !mb_add1.trim().equals("")
+		&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.trim().equals("")
+		&& mb_uid > 0) {
+			try {
+				cnt = dao.update(mb_pw, mb_email, mb_zip, mb_add1, mb_add2, mb_uid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
 		request.setAttribute("myPageUpdateOk", cnt);
 	}
 

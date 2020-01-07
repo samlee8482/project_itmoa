@@ -18,7 +18,7 @@ public class RepUpdateOkCommand implements Command {
 		int cnt = 0;
 		
 		if (rep_uid > 0
-		&& rep_content != null && rep_content.length() > 0 && !rep_content.equals("")) {
+		&& rep_content != null && rep_content.length() > 0 && !rep_content.trim().equals("")) {
 			try {
 				cnt = dao.updateRepByUid(rep_uid, rep_content);
 				request.setAttribute("repUpdateOk", cnt);
