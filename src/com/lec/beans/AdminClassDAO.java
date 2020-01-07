@@ -68,7 +68,7 @@ public class AdminClassDAO {
 	
 	
 	// 관리자페이지 학원검색 전체 + 조건
-	public ClassDTO[] selectCurList(int option_review, String keyword) throws SQLException {
+	public ClassDTO[] selectCurList(int option_ins, String keyword) throws SQLException {
 
 
 		ClassDTO [] arr = null;
@@ -76,7 +76,7 @@ public class AdminClassDAO {
 
 		// 학원 검색 조건 (1)학원UID  (2)학원명   (3)과정명
 
-		switch(option_review) {
+		switch(option_ins) {
 		case 1: 
 			selectIns += D.SQL_INS_WHERE_UID;
 			break;
@@ -86,7 +86,8 @@ public class AdminClassDAO {
 		case 3:
 			selectIns += D.SQL_INS_WHERE_CUR_NAME;
 			break;
-		default:
+		case 4:
+			selectIns = D.SQL_SELECT_INS;
 			break;
 		}
 
