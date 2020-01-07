@@ -64,6 +64,53 @@ public class AdminClassDAO {
 	}
 
 	
+	//관리자  AdminInsView 배열 생성
+	public ClassDTO[] createInsArray(ResultSet rs) throws SQLException {
+
+		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+
+		while (rs.next()) {
+
+			String ins_name = rs.getString("ins_name");
+			String ins_add1 = rs.getString("ins_add1");
+			String ins_add2 = rs.getString("ins_add2");
+			int ins_zip = rs.getInt("ins_zip");
+			String ins_tel = rs.getString("ins_tel");
+			String ins_location = rs.getString("ins_location");
+			String ins_branch = rs.getString("ins_branch");
+			String ins_img = rs.getString("ins_img");
+			ClassDTO dto = new ClassDTO( ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch,  ins_location);
+			list.add(dto);
+		}
+
+		int size = list.size();
+		ClassDTO[] arr = new ClassDTO[size];
+		list.toArray(arr);
+		
+		return arr;
+	}
+	
+	//관리자페이지 학원 수정할 경우 화면에 띄워주기
+	public ClassDTO[] insView() throws SQLException {
+		
+		ClassDTO [] insArr = null ;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS);
+			rs = pstmt.executeQuery();
+			insArr = createInsArray(rs);
+			
+		} finally {
+			close();
+		}
+		
+		
+		return insArr;
+		
+		
+	}
+	
 	
 	
 	

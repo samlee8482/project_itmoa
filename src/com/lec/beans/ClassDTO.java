@@ -86,6 +86,8 @@ public class ClassDTO {
 	}
 	
 	
+	//AdminInsViewCommand를 위한 생성자
+
 
 
 	//지역 생성자
@@ -94,6 +96,9 @@ public class ClassDTO {
 		this.ins_branch = ins_branch;
 	}
 	
+
+
+
 
 
 
