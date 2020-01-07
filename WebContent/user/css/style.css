@@ -1301,6 +1301,7 @@ ul.social > li > a:hover {
     padding: 20px;
     position: relative;
     border-bottom: 4px solid #f0f0f0;
+    left:20px;
 }
 
 .blog .blog-item .blog-content:after {
