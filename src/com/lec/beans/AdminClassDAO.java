@@ -216,6 +216,7 @@ public class AdminClassDAO {
 		
 		return arr;
 	}
+	
 
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,

@@ -62,6 +62,10 @@ public class ClassDAO {
 		return arr;
 	}
 
+	
+	
+	
+	
 	public ClassDTO[] selectCurList() throws SQLException {
 
 		ClassDTO [] arr = null;
@@ -83,6 +87,8 @@ public class ClassDAO {
 
 		return arr;
 	}
+	
+	
 
 	public ClassDTO[] createBranchArray(ResultSet rs) throws SQLException {
 
@@ -277,6 +283,8 @@ public class ClassDAO {
 		return arr;
 	}
 
+	
+	
 	public ClassDTO[] selectClassByUid(int class_uid) throws SQLException {
 		ClassDTO[] arr = null ;
 		
@@ -294,6 +302,8 @@ public class ClassDAO {
 		return arr;
 	}
 	
+	
+	
 	public int updateMemberByUid(int mb_uid) throws SQLException {
 		int cnt = 0;
 		
@@ -309,6 +319,8 @@ public class ClassDAO {
 		
 		return cnt;
 	}
+	
+	
 	
 	public int insertZZim(int mb_uid, int class_uid) throws SQLException {
 		int cnt = 0;
