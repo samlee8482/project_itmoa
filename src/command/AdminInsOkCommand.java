@@ -9,6 +9,11 @@ public class AdminInsOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
+		
+		
+		
+		
+		      
 	}
 
 }
