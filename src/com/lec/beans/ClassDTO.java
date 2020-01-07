@@ -55,7 +55,7 @@ public class ClassDTO {
 	}
 
 
-	//관리자 생성자
+	//관리자 생성자 - 학원정보 
 	public ClassDTO(int ins_uid, String ins_name, String ins_add1, String ins_tel) {
 		super();
 		this.ins_uid = ins_uid;
@@ -66,7 +66,7 @@ public class ClassDTO {
 	
 	
 
-	//사용자 학원 전체 출력 생성자
+	//사용자:  학원검색에서 전체 출력 생성자
 	public ClassDTO(String ins_name, String cur_name, int class_zzimcnt, String ins_img) {
 		super();
 		this.ins_name = ins_name;
@@ -91,6 +91,7 @@ public class ClassDTO {
 	}
 	
 	
+<<<<<<< HEAD
 	//관리자 학원과정 수정
 	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
 			String cur_month3, String cur_month4, String cur_month5, String cur_month6) {
@@ -105,6 +106,29 @@ public class ClassDTO {
 		this.cur_month5 = cur_month5;
 		this.cur_month6 = cur_month6;
 	}
+=======
+	
+	// 과정 삽입 생성자
+	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
+		String cur_month3, String cur_month4, String cur_month5, String cur_month6) {
+	super();
+	this.cur_name = cur_name;
+	this.cur_hours = cur_hours;
+	this.cur_months = cur_months;
+	this.cur_month1 = cur_month1;
+	this.cur_month2 = cur_month2;
+	this.cur_month3 = cur_month3;
+	this.cur_month4 = cur_month4;
+	this.cur_month5 = cur_month5;
+	this.cur_month6 = cur_month6;
+	
+	}
+	
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 	
 
 
