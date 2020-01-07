@@ -16,10 +16,10 @@ public class MyPageUpdateOkCommand implements Command {
 		MbDAO dao = new MbDAO();
 		
 		String mb_pw = request.getParameter("mb_pw");
-		String mb_email = request.getParameter("mb_pw");
+		String mb_email = request.getParameter("mb_email");
 		int mb_zip = Integer.parseInt(request.getParameter("mb_zip"));
-		String mb_add1 = request.getParameter("mb_pw");
-		String mb_add2 = request.getParameter("mb_pw");
+		String mb_add1 = request.getParameter("mb_add1");
+		String mb_add2 = request.getParameter("mb_add2");
 		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
 		
 		try {
