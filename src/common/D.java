@@ -203,6 +203,10 @@ public interface D {
 		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
 		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
 	
+	// 수정 할 학원 불러오기
+		public static final String SQL_SELECT_INS_BY_UID_FOR_UPDATE =
+			"SELECT * FROM ins WHERE ins_uid = ?";
+	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=
 		"UPDATE ins"
