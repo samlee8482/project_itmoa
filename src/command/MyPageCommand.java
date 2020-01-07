@@ -14,7 +14,7 @@ public class MyPageCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		MbDAO dao = new MbDAO();
-		MbDTO [] mypageArr = null;
+		MbDTO [] arr = null;
 				
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		
@@ -22,8 +22,8 @@ public class MyPageCommand implements Command {
 		if(uid > 0) {// 매개변수 유효성 검증
 			try {
 				
-				mypageArr = dao.myPage(uid);  // 회원정보 가져오기
-				request.setAttribute("list", mypageArr);
+				arr = dao.myPage(uid);  // 회원정보 가져오기
+				request.setAttribute("myPage", arr);
 				
 			} catch (SQLException e) {  
 				e.printStackTrace();

@@ -68,7 +68,7 @@ public class AdminClassDAO {
 	
 	
 	// 관리자페이지 학원검색 전체 + 조건
-	public ClassDTO[] selectCurList(int option_review, String keyword) throws SQLException {
+	public ClassDTO[] selectInsList(int option_review, String keyword) throws SQLException {
 
 
 		ClassDTO [] arr = null;

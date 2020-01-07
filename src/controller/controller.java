@@ -131,6 +131,7 @@ public class controller {
 		case "/curList.do":  // 학원 리스트 출력
 			command = new CurListCommand();
 			command.execute(request, response);
+			
 			viewPage = "curList.jsp";
 			break;
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
