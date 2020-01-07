@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.AdminReviewDAO;
-import com.lec.beans.ReviewDAO;
 import com.lec.beans.ReviewDTO;
 
 public class AdminReviewListCommand implements Command {
@@ -19,13 +18,15 @@ public class AdminReviewListCommand implements Command {
 		AdminReviewDAO dao = new AdminReviewDAO();
 		ReviewDTO [] arr = null;
 		
-		try {
-			arr = dao.selectReviewList(option_review, keyword);
-			request.setAttribute("adminReviewList", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (option_review > 0
+		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
+			try {
+				arr = dao.selectReviewList(option_review, keyword);
+				request.setAttribute("adminReviewList", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
 	}
 
 }

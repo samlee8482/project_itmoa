@@ -18,11 +18,14 @@ public class CurListCommand implements Command {
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO [] arr = null;
 		
-		try {
-			arr = dao.selectReviewList(option_review, keyword);
-			request.setAttribute("curList", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (option_review > 0
+		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
+			try {
+				arr = dao.selectReviewList(option_review, keyword);
+				request.setAttribute("curList", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

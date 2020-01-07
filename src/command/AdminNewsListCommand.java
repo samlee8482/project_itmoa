@@ -19,11 +19,15 @@ public class AdminNewsListCommand implements Command {
 		AdminNewsDAO dao = new AdminNewsDAO();
 		NewsDTO [] arr = null;
 		
-		try {
-			arr = dao.selectNews(option_news_1, option_news_2, option_news_3);
-			request.setAttribute("adminNewsList", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (option_news_1 > 0
+		&& option_news_2 > 0
+		&& option_news_3 != null && option_news_3.length() > 0 && !option_news_3.trim().equals("")) {
+			try {
+				arr = dao.selectNews(option_news_1, option_news_2, option_news_3);
+				request.setAttribute("adminNewsList", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -230,20 +230,22 @@ public class ReviewDAO {
       String review_brd_content = dto.getReview_brd_content();
       String review_brd_regdate = dto.getReview_brd_regdate();
       
-      return this.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content, review_brd_regdate);
+      return this.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content);
    }
    
    
    // 1-1.
-   public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content, String review_brd_regdate) throws SQLException{
+   public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content) throws SQLException{
 
       int cnt = 0;
       
       try {
          pstmt = conn.prepareStatement(D.SQL_INSERT_REVIEW);
-         pstmt.setString(1, review_brd_title);
-         pstmt.setString(2, mb_img);
-         pstmt.setString(3, review_brd_content);
+         pstmt.setInt(1, mb_uid);
+         pstmt.setString(2, mb_id);
+         pstmt.setString(3, mb_img);
+         pstmt.setString(4, review_brd_title);
+         pstmt.setString(5, review_brd_content);
          cnt = pstmt.executeUpdate();
       } finally {
          close();
@@ -279,7 +281,7 @@ public class ReviewDAO {
    }
    
    // 2. 댓글 수정
-   public int updateRepByUid(int rep_uid, String rep_content, String rep_regdate) throws SQLException{
+   public int updateRepByUid(int rep_uid, String rep_content) throws SQLException{
       int cnt = 0;
       
       try {

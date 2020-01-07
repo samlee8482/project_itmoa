@@ -78,24 +78,20 @@ public class MbDAO {
 	}
 	
 //	public int loginCheck(String mb_id, String mb_pw) {
-//		MbDTO[] arr = null;
-//		
+//		String dbID = "";	// db 에서 꺼낸 아이디 담을 변수
 //		String dbPW = "";	// db 에서 꺼낸 비밀번호 담을 변수
 //		int x = -1;
-//		
-//		//String SQL_SELECT_MB_PW_BY_ID = "SELECT mb_uid, mb_id, mb_pw, mb_level, mb_img FROM mb WHERE ID = ?";
-//		
 //		try {
-//			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);
+//			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGINOK);
 //			pstmt.setString(1, mb_id);
-//			pstmt.setString(2, mb_pw);
 //			rs = pstmt.executeQuery();
 //			
 //			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
 //            {
+//				dbID = rs.getString("mb_id");
 //                dbPW = rs.getString("mb_pw"); // 비번을 변수에 넣는다.
 // 
-//                if (dbPW.equals(mb_pw)) 
+//                if (dbPW.equals(mb_pw) && dbID.equals(mb_id)) 
 //                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
 //                else                  
 //                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
@@ -166,7 +162,7 @@ public class MbDAO {
 		MbDTO[] arr = null;
 		
 		try {
-			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);
+			pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
 			arr = createLoginArr(rs);
@@ -221,10 +217,8 @@ public class MbDAO {
 	
 	// 1-1.
 	public MbDTO[] selectId(String mb_name, String mb_email) throws SQLException {
-		//int x = -1;
-		
-//		String dbName = null;
-//		String dbEmail = null;
+		String dbName = null;
+		String dbEmail = null;
 		
 		MbDTO[] arr = null;
 		
@@ -233,20 +227,19 @@ public class MbDAO {
 			pstmt.setString(1, mb_name);
 			pstmt.setString(2, mb_email);
 			rs = pstmt.executeQuery();
-			arr = createSelectIdArray(rs);
-//			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
-//            {
-//				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
-//                dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
-// 
-//                if (dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
-//                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-//                else                  
-//                    x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-//                
-//            } else {
-//                x = -1; // 해당 아이디가 없을 경우
-//            }
+			if (rs.next()) // 입려된 아이디와 이메일에 해당하는 비번 있을경우
+            {
+				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
+                dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
+ 
+                if (dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
+                	arr = createSelectIdArray(rs);
+                else                  
+                    return arr; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+                
+            } else {
+                return arr; // 해당 아이디가 없을 경우
+            }
  
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -277,11 +270,9 @@ public class MbDAO {
 	}
 	
 	public MbDTO[] selectPw(String mb_id, String mb_name, String mb_email) throws SQLException {
-		//int x = -1;
-		
-//		String dbId = null;
-//		String dbName = null;
-//		String dbEmail = null;
+		String dbId = null;
+		String dbName = null;
+		String dbEmail = null;
 		
 		MbDTO[] arr = null;
 		
@@ -292,20 +283,20 @@ public class MbDAO {
 			pstmt.setString(3, mb_email);
 			rs = pstmt.executeQuery();
 			
-//			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
-//			{
-//				dbId = rs.getString("mb_id"); // 비번을 변수에 넣는다.
-//				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
-//				dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
-//				
-//				if (dbId.equals(mb_id) && dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
-//					x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
-//				else                  
-//					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-//				
-//			} else {
-//				x = -1; // 해당 아이디가 없을 경우
-//			}
+			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+			{
+				dbId = rs.getString("mb_id"); // 비번을 변수에 넣는다.
+				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
+				dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
+				
+				if (dbId.equals(mb_id) && dbName.equals(mb_name) && dbEmail.equals(mb_email))
+					arr = createSelectPwArray(rs);
+				else                  
+					return arr; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
+				
+			} else {
+				return arr; // 해당 아이디가 없을 경우
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

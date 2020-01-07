@@ -12,7 +12,7 @@ public class AdminInsViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		ClassDTO [] insArr = null; 
 		AdminClassDAO dao = new AdminClassDAO();
 
@@ -24,7 +24,10 @@ public class AdminInsViewCommand implements Command {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}	
 
 }
+
+
+

@@ -14,6 +14,12 @@ public interface D {
 	// 로그인
 	public static final String SQL_SELECT_LOGIN =
 			"SELECT mb_uid, mb_id,  mb_pw, mb_level, mb_img FROM mb WHERE id = ? AND pw = ?";
+
+	// 로그인 확인
+//	public static final String SQL_SELECT_LOGINOK =
+//			"SELECT mb_uid, mb_id, mb_pw FROM mb WHERE ID = ?";
+	
+	
 	
 	// 회원가입
 	public static final String SQL_INSERT_JOIN =
@@ -194,13 +200,17 @@ public interface D {
 	
 	// 학원등록
 	public static final String SQL_INSERT_INS =
-		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
-		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
+		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img, ins_x, ins_y)"
+		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
+	// 수정 할 학원 불러오기
+	public static final String SQL_SELECT_INS_BY_UID_FOR_UPDATE =
+		"SELECT * FROM ins WHERE ins_uid = ?";
 	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=
 		"UPDATE ins"
-		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?, ins_img = ?"
+		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?, ins_img = ?, ins_x = ?, ins_y = ?"
 		+ " WHERE ins_uid = ?";
 	
 	// 학원 이미지 삭제(기본 이미지로 변경)
@@ -236,6 +246,7 @@ public interface D {
 	"INSERT INTO cur"
 	+ "(cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6)"
 	+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
 	
 	
 	// 과정 내 수업 수정
@@ -296,7 +307,7 @@ public interface D {
 	// 댓글 작성
 	public static final String SQL_INSERT_REVIEW = 
 		"INSERT INTO review_brd (mb_uid, mb_id, mb_img, review_brd_title,"
-		+ "review_brd_content, review_brd_regdate) VALUES (?, ?, ?, ?, ?, ?)";
+		+ "review_brd_content) VALUES (?, ?, ?, ?, ?)";
 	
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 

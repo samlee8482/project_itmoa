@@ -344,6 +344,3 @@ public class ClassDAO {
 	}
 	
 }
-
-
-
