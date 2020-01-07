@@ -20,15 +20,16 @@ public class FindPwViewCommand implements Command{
 		String mb_name = request.getParameter("mb_name");
 		String mb_email = request.getParameter("mb_email");    
 
+		
 		try {
 			arr = dao.selectPw(mb_id, mb_name, mb_email);
+			if(arr.length == 1) {
+				request.setAttribute("findPwView", arr);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("findPwView", arr);
-		
 	}
 
 }

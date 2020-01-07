@@ -24,13 +24,13 @@ public class AdminMemberOkCommand implements Command {
 		int cnt = 0;
 		
 
-		if (mb_pw != null && mb_pw.length() > 0 && !mb_pw.equals("")
-		&& mb_img != null && mb_img.length() > 0 && !mb_img.equals("")
+		if (mb_pw != null && mb_pw.length() > 0 && !mb_pw.trim().equals("")
+		&& mb_img != null && mb_img.length() > 0 && !mb_img.trim().equals("")
 		&& mb_level > 0
-		&& mb_email != null && mb_email.length() > 0 && !mb_email.equals("")
+		&& mb_email != null && mb_email.length() > 0 && !mb_email.trim().equals("")
 		&& mb_zip > 0
-		&& mb_add1 != null && mb_add1.length() > 0 && !mb_add1.equals("")
-		&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.equals("")
+		&& mb_add1 != null && mb_add1.length() > 0 && !mb_add1.trim().equals("")
+		&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.trim().equals("")
 		&& mb_uid > 0) {
 			try {
 				cnt = dao.updateMbByUid(mb_pw, mb_img, mb_level, mb_email, mb_zip, mb_add1, mb_add2, mb_uid);

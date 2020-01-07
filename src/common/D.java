@@ -14,6 +14,12 @@ public interface D {
 	// 로그인
 	public static final String SQL_SELECT_LOGIN =
 			"SELECT mb_uid, mb_id,  mb_pw, mb_level, mb_img FROM mb WHERE id = ? AND pw = ?";
+
+	// 로그인 확인
+//	public static final String SQL_SELECT_LOGINOK =
+//			"SELECT mb_uid, mb_id, mb_pw FROM mb WHERE ID = ?";
+	
+	
 	
 	// 회원가입
 	public static final String SQL_INSERT_JOIN =
@@ -195,7 +201,7 @@ public interface D {
 	// 학원등록
 	public static final String SQL_INSERT_INS =
 		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
-		+ " VALUES( ?, ?, ?, ?, ?, ?)";
+		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=

@@ -19,7 +19,7 @@ public class NewsListCommand implements Command {
 		NewsDTO [] arr = null;
 		
 		if (option_news > 0
-		&& keyword != null && keyword.length() > 0 && !keyword.equals("")) {
+		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
 			try {
 				arr = dao.selectNewsList(option_news, keyword);
 				request.setAttribute("NewsList", arr);

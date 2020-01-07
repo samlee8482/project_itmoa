@@ -235,13 +235,13 @@ public class controller {
 			break;
 		
 //		- 학원관리
-		case "/adminInsList.do":  // 관리자 학원 리스트 출력
+		case "/adminInsList.do":  // 관리자 학원 리스트 출력. 관리자페이지 초기화면
 			command = new AdminInsListCommand();
 			command.execute(request, response);
 			viewPage = "adminInsList.jsp";
 			break;
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
-		case "/adminInsView.do":  // 관리자 학원 상세 정보 출력
+		case "/adminInsView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
 			command = new AdminInsViewCommand();
 			command.execute(request, response);
 			viewPage = "adminInsView.jsp";
@@ -257,12 +257,12 @@ public class controller {
 			viewPage = "adminInsOk.jsp";
 			break;
 //		* insert 같이 사용
-		case "/adminClassList.do":  // 관리자 Class 출력
+		case "/adminClassList.do":  // 관리자 Class 출력. 과정 관리 화면
 			command = new AdminCurListCommand();
 			command.execute(request, response);
 			viewPage = "adminClassList.jsp";
 			break;
-		case "/adminCurView.do":  // 관리자 Cur 출력
+		case "/adminCurView.do":  // 관리자 Cur 출력. 과정 수정할 때
 			command = new AdminCurViewCommand();
 			command.execute(request, response);
 			viewPage = "adminCurView.jsp";

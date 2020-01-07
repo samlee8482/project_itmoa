@@ -15,8 +15,8 @@ public class LoginOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		MbDTO[] arr = null;
 		MbDAO dao = new MbDAO();
+		MbDTO[] arr = null;
 		
 		//입력한 값을 받아오기
 		String mb_id = request.getParameter("mb_id");
@@ -24,11 +24,12 @@ public class LoginOkCommand implements Command {
 		
 		try {			
 			arr = dao.login(mb_id, mb_pw);
-			if(arr[0].getMb_id().equals(mb_id) && arr[0].getMb_pw().equals(mb_pw)) {
+			
+			if(arr.length == 1) {
+				// arr 이 loginOk 페이지로 넘어감 -> arr.length > 0 성공 -> 성공했을시 메인페이지로 화면전환되고 arr에 있는 이미지를 가져오기 
 				request.setAttribute("loginOk", arr);
 			} else {
-				arr = null;
-				request.setAttribute("loginOk", arr);
+				System.out.println("로그인 실패");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

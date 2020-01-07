@@ -12,8 +12,7 @@ public class AdminInsListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+
 		
 		int option = Integer.parseInt(request.getParameter("option"));
 		String keyword = request.getParameter("keyword");
