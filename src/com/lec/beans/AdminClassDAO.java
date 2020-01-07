@@ -121,7 +121,7 @@ public class AdminClassDAO {
 	
 	// 관리자페이지 학원등록
 	public int insertIns(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
-			String ins_branch, String ins_location) throws SQLException{
+			String ins_branch, String ins_location, double ins_x, double ins_y) throws SQLException{
 
 		int cnt = 0;
 		
@@ -135,6 +135,8 @@ public class AdminClassDAO {
 			pstmt.setString(6, ins_img);
 			pstmt.setString(7, ins_branch);
 			pstmt.setString(8, ins_location);
+			pstmt.setDouble(9, ins_x);
+			pstmt.setDouble(10, ins_y);
 			
 			cnt = pstmt.executeUpdate();
 	
@@ -167,13 +169,11 @@ public class AdminClassDAO {
 		
 		return arr;
 	}
-	
-	
 
-	
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,
-			String ins_location, String ins_branch, String ins_img, int ins_uid) throws SQLException{
+			String ins_location, String ins_branch, String ins_img, int ins_uid, double ins_x, double ins_y) throws SQLException{
+		
 		int cnt = 0;
 		
 		try {
@@ -187,6 +187,8 @@ public class AdminClassDAO {
 			pstmt.setString(7, ins_branch);
 			pstmt.setString(8, ins_img);
 			pstmt.setInt(9, ins_uid);
+			pstmt.setDouble(10, ins_x);
+			pstmt.setDouble(11, ins_y);
 			
 			cnt = pstmt.executeUpdate();
 			
@@ -286,8 +288,61 @@ public class AdminClassDAO {
 	
 	
 
-	
 	// 2. 과정 수정
+	
+	
+	public ClassDTO[] createClassArrayByUid(ResultSet rs) throws SQLException {
+
+		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+
+		while (rs.next()) {
+			String cur_name = rs.getString("cur_name");
+			int cur_hours = rs.getInt("cur_hours");
+			int cur_months = rs.getInt("cur_months");
+			String cur_month1 = rs.getString("cur_month1");
+			String cur_month2 = rs.getString("cur_month2");
+			String cur_month3 = rs.getString("cur_month3");
+			String cur_month4 = rs.getString("cur_month4");
+			String cur_month5 = rs.getString("cur_month5");
+			String cur_month6 = rs.getString("cur_month6");
+			String ins_name = rs.getString("ins_name");
+			String ins_tel = rs.getString("ins_tel");
+			String ins_img = rs.getString("ins_img");
+			
+			ClassDTO dto = new ClassDTO( cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
+					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img);
+			list.add(dto);
+		}
+
+		int size = list.size();
+		ClassDTO[] arr = new ClassDTO[size];
+		list.toArray(arr);
+		return arr;
+	}
+
+	
+	// 특정학원의 수정할 class정보 불러오기
+	public ClassDTO[] selectClassByUid(int ins_uid) throws SQLException {
+		ClassDTO[] arr = null ;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
+			pstmt.setInt(1, ins_uid);
+			rs = pstmt.executeQuery();
+			arr = createClassArrayByUid(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
+
+	
+
+
+	// 클래스 정보 수정
 	public int updateClass(int cur_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
 			String cur_month4, String cur_month5, String cur_month6) throws SQLException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
 		

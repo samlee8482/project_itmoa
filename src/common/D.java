@@ -200,17 +200,17 @@ public interface D {
 	
 	// 학원등록
 	public static final String SQL_INSERT_INS =
-		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img)"
-		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?)";
+		"INSERT INTO ins(ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img, ins_x, ins_y)"
+		+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	// 수정 할 학원 불러오기
-		public static final String SQL_SELECT_INS_BY_UID_FOR_UPDATE =
-			"SELECT * FROM ins WHERE ins_uid = ?";
+	public static final String SQL_SELECT_INS_BY_UID_FOR_UPDATE =
+		"SELECT * FROM ins WHERE ins_uid = ?";
 	
 	// 학원수정
 	public static final String SQL_UPDATE_INS=
 		"UPDATE ins"
-		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?, ins_img = ?"
+		+ " SET ins_name= ?, ins_tel= ?,  ins_zip = ?, ins_add1 = ?, ins_add2 = ?, ins_location = ?, ins_branch = ?, ins_img = ?, ins_x = ?, ins_y = ?"
 		+ " WHERE ins_uid = ?";
 	
 	// 학원 이미지 삭제(기본 이미지로 변경)
