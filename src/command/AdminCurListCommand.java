@@ -20,7 +20,7 @@ public class AdminCurListCommand implements Command {
 		
 		if(option_ins > 0 ) {
 			try {
-				curArr = dao.selectCurList(option_ins, keyword);
+				curArr = dao.selectInsList(option_ins, keyword);
 				request.setAttribute("adminCurList",curArr);
 			} catch (SQLException e) {
 				e.printStackTrace();
