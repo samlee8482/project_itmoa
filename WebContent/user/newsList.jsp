@@ -132,23 +132,23 @@
                     </aside>
                     <div class="col-sm-8 col-sm-pull-4">
                         <div class="blog">
-                        	<c:forEach var="dto" items="${NewsList }">
+                        	<c:forEach var="dto" items="${newsList }">
 	                            <div class="blog-item">
 	                                <div class="blog-featured-image">
 	                                    <img class="img-responsive img-blog" src="http://www.itworld.co.kr/${dto.news_brd_img }" alt="" />
 	                                    <div class="overlay">
-	                                        <a class="preview btn btn-outlined btn-primary" href="blog-item.html" rel="prettyPhoto"><i class="fa fa-link"></i></a>
+	                                        <a class="preview btn btn-outlined btn-primary" href="/Project_itmoa/user/newsView.do?news_brd_uid=${dto.news_brd_uid }" rel="prettyPhoto"><i class="fa fa-link"></i></a>
 	                                    </div>
 	                                </div>
 	                                <div class="blog-content">
-	                                <a href="blog-item.html"><h3 class="main-title">${dto.news_brd_title }</h3></a>
+	                                <a href="/Project_itmoa/user/newsView.do?news_brd_uid=${dto.news_brd_uid }"><h3 class="main-title">${dto.news_brd_title }</h3></a>
 	                                    <div class="entry-meta">
-	                                        <span><i class="fa fa-user"></i> <a href="#">${dto.news_brd_viewcnt }</a></span>
+	                                        <span><i class="fa fa-user"></i> <a href="#"> ${dto.news_brd_viewcnt }</a></span>
 	                                    </div>
 	                                    
 	                                    <p>${dto.news_brd_content }</p>
 	                                    <div class="read-more-wrapper">
-	                                        <a class="btn btn-outlined btn-primary" href="blog-item.html">Read More</a>
+	                                        <a class="btn btn-outlined btn-primary" href="/Project_itmoa/user/newsView.do?news_brd_uid=${dto.news_brd_uid }">Read More</a>
 	                                    </div>
 	                                </div>
 	                            </div><!--/.blog-item-->

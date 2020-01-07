@@ -220,7 +220,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "newsList.jsp";
 			break;
-		case "/newsView.do":  // 뉴스 상세페이지 출력
+		case "/user/newsView.do":  // 뉴스 상세페이지 출력
 			command = new NewsViewCommand();
 			command.execute(request, response);
 			viewPage = "newsView.jsp";

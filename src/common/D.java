@@ -336,7 +336,6 @@ public interface D {
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
 	public static final String SQL_INSERT_REP = 
-
 		"INSERT INTO rep(mb_uid, rep_content) VALUES (? ?)";
 
 	// 댓글 수정
@@ -385,6 +384,9 @@ public interface D {
 	// 뉴스 검색 결과 정렬
 	public static final String SQL_ORDER_BY_NEWS_BRD = 
 		" ORDER BY news_brd_uid DESC";
+	
+	public static final String SQL_COUNT_NEWS_BRD =
+		"SELECT COUNT(*) FROM news_brd";
 	
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 

@@ -14,15 +14,16 @@ public class NewsListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int option_news = Integer.parseInt(request.getParameter("option_news"));
 		String keyword = request.getParameter("keyword");
-		
+
 		NewsDAO dao = new NewsDAO();
 		NewsDTO [] arr = null;
 		
 		if (option_news > 0
 		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
 			try {
+		
 				arr = dao.selectNewsList(option_news, keyword);
-				request.setAttribute("NewsList", arr);
+				request.setAttribute("newsList", arr);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
