@@ -24,6 +24,8 @@ public class ClassDTO {
 	private String ins_img;
 	private String ins_branch;
 	private String ins_location;
+	private double ins_x;
+	private double ins_y;
 	// 생성자
 	public ClassDTO() {
 		super();
@@ -33,7 +35,8 @@ public class ClassDTO {
 	
 	//전체 매개변수 생성자
 	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
-			String cur_month3, String cur_month4, String cur_month5, String cur_month6, String ins_name, String ins_tel, String ins_img) {
+			String cur_month3, String cur_month4, String cur_month5, String cur_month6, String ins_name, String ins_tel, String ins_img
+			, double ins_x, double ins_y) {
 		super();
 		this.cur_name = cur_name;
 		this.cur_hours = cur_hours;
@@ -47,6 +50,8 @@ public class ClassDTO {
 		this.ins_name = ins_name;
 		this.ins_tel = ins_tel;
 		this.ins_img = ins_img;
+		this.ins_x = ins_x;
+		this.ins_y = ins_y;
 	}
 
 
@@ -86,8 +91,21 @@ public class ClassDTO {
 	}
 	
 	
-	//AdminInsViewCommand를 위한 생성자
-
+	//관리자 학원과정 수정
+	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
+			String cur_month3, String cur_month4, String cur_month5, String cur_month6) {
+		super();
+		this.cur_name = cur_name;
+		this.cur_hours = cur_hours;
+		this.cur_months = cur_months;
+		this.cur_month1 = cur_month1;
+		this.cur_month2 = cur_month2;
+		this.cur_month3 = cur_month3;
+		this.cur_month4 = cur_month4;
+		this.cur_month5 = cur_month5;
+		this.cur_month6 = cur_month6;
+	}
+	
 
 
 	//지역 생성자
@@ -96,6 +114,9 @@ public class ClassDTO {
 		this.ins_branch = ins_branch;
 	}
 	
+
+
+
 
 
 
@@ -269,6 +290,22 @@ public class ClassDTO {
 
 	public void setIns_location(String ins_location) {
 		this.ins_location = ins_location;
+	}
+	
+	public double getIns_x() {
+		return ins_x;
+	}
+	
+	public void setIns_x(double ins_x) {
+		this.ins_x = ins_x;
+	}
+	
+	public double getIns_y() {
+		return ins_y;
+	}
+	
+	public void setIns_y(double ins_y) {
+		this.ins_y = ins_y;
 	}
 	
 }

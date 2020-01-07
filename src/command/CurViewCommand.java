@@ -12,7 +12,6 @@ public class CurViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 
 	
 		int class_uid = Integer.parseInt(request.getParameter("class_uid"));
@@ -29,7 +28,6 @@ public class CurViewCommand implements Command {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
