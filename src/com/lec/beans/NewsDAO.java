@@ -69,32 +69,46 @@ public class NewsDAO {
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		switch(option_news) {
-			case 1: 
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
-				break;
-			case 2:
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
-				break;
-			case 3:
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
-				break;
-			default:
-				break;
+		if (option_news > 0
+		&& keyword != null && !keyword.trim().equals("")) {
+			switch(option_news) {
+				case 1: 
+					selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
+					selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+					pstmt = conn.prepareStatement(selectNews);
+					int keywordInt = Integer.parseInt(keyword);
+					pstmt.setInt(1, keywordInt);
+					break;
+				case 2:
+					selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+					if (keyword.) {						
+						selectNews += "'%";
+						selectNews += keyword;
+						selectNews += "%'";
+					} else {
+						selectNews += "% %";
+					}
+					selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+					pstmt = conn.prepareStatement(selectNews);
+					break;
+				case 3:
+					selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+					selectNews += "'%";
+					selectNews += keyword;
+					selectNews += "%'";
+					selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+					pstmt = conn.prepareStatement(selectNews);
+					break;
+				case 4:
+					selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+					pstmt = conn.prepareStatement(selectNews);
+				default:
+					break;
+			}
 		}
-		
-		// 정렬
-		selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+
 		
 		try {
-			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
-			if(keyword != null && !keyword.equals("")) {
-				pstmt = conn.prepareStatement(selectNews);
-				pstmt.setString(1, keyword);
-			}else { 
-				pstmt = conn.prepareStatement(selectNews);
-			}
-
 			rs = pstmt.executeQuery();
 			arr = createNewsArray(rs);
 		} finally {

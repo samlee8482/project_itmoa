@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,7 +48,13 @@ import command.ReviewViewCommand;
 import command.ReviewWriteOkCommand;
 import command.ZZimOkCommand;
 
-public class controller {
+@WebServlet("*.do")
+public class controller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public controller() {
+        super();
+    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -54,18 +62,20 @@ public class controller {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
-
+	
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("actionDo() 호출");
+		System.out.println("actionDo 호출");
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String viewPage = null;
 		Command command = null;
+		String viewPage = null;
 		
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
+		
+		System.out.println(uri + "\n" + conPath + "\n" + com);
 		
 		switch (com) {
 		
@@ -205,7 +215,7 @@ public class controller {
 			break;
 
 //		- 뉴스
-		case "/newsList.do":  // 뉴스 리스트 출력
+		case "/user/newsList.do":  // 뉴스 리스트 출력
 			command = new NewsListCommand();
 			command.execute(request, response);
 			viewPage = "newsList.jsp";

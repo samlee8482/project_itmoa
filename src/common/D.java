@@ -376,15 +376,15 @@ public interface D {
 
 	// 뉴스 검색 조건) 뉴스 제목
 	public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
-		" WHERE news_brd_title LIKE ('%?%')";
+		" WHERE news_brd_title LIKE ";
 
 	// 뉴스 검색 조건) 뉴스 내용
 	public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
-		" WHERE news_brd_content LIKE ('%?%')";
+		" WHERE news_brd_content LIKE ";
 	
 	// 뉴스 검색 결과 정렬
 	public static final String SQL_ORDER_BY_NEWS_BRD = 
-		" ORDER BY ? ?";
+		" ORDER BY news_brd_uid DESC";
 	
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
