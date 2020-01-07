@@ -271,9 +271,11 @@ public class ClassDAO {
 			String ins_name = rs.getString("ins_name");
 			String ins_tel = rs.getString("ins_tel");
 			String ins_img = rs.getString("ins_img");
+			double ins_x = rs.getDouble("ins_x");
+			double ins_y = rs.getDouble("ins_y");
 			
 			ClassDTO dto = new ClassDTO( cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
-					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img);
+					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img, ins_x, ins_y);
 			list.add(dto);
 		}
 

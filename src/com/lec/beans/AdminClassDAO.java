@@ -290,7 +290,6 @@ public class AdminClassDAO {
 	
 	// 학원 과정 관리 
 	// 1. 과정 추가 
-
 	public int insertCur(int ins_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
 			String cur_month4, String cur_month5, String cur_month6) throws SQLException{
 		
@@ -337,8 +336,6 @@ public class AdminClassDAO {
 	
 
 	// 2. 과정 수정
-	
-	
 	public ClassDTO[] createClassArrayByUid(ResultSet rs) throws SQLException {
 
 		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
@@ -353,12 +350,10 @@ public class AdminClassDAO {
 			String cur_month4 = rs.getString("cur_month4");
 			String cur_month5 = rs.getString("cur_month5");
 			String cur_month6 = rs.getString("cur_month6");
-			String ins_name = rs.getString("ins_name");
-			String ins_tel = rs.getString("ins_tel");
-			String ins_img = rs.getString("ins_img");
+
 			
-			ClassDTO dto = new ClassDTO( cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
-					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img);
+			ClassDTO dto = new ClassDTO(cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
+					 cur_month3,  cur_month4,  cur_month5,  cur_month6);
 			list.add(dto);
 		}
 
