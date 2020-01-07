@@ -1,0 +1,110 @@
+@charset "UTF-8";
+hr {
+	width: 400px;
+}
+form{
+	text-align: center;
+}
+
+#login-content{
+	margin: 10% 30%;
+	text-align: center;
+}
+
+#logo {
+	width: 300px;
+	height: 150px;
+}
+
+#login-info {
+	padding: 30px;
+	margin-top: 10px;
+}
+
+#id-pw {
+	padding: 10px;
+	margin: 5px;
+}
+
+input.login-info {
+	width: 350px;
+	height: 60px;
+	margin: 5px;
+	border-radius: 7px;
+}
+
+#login-btn, #join-btn, #find-id-btn, #find-pw-btn {
+	margin: 10px;
+	width: 350px;
+	height: 50px;
+	border-radius: 7px;
+	background-color: #bbc4bc;
+}
+
+#login-btn:hover {
+	background-color: rgb(163, 163, 194);
+}
+
+#other-op {
+	margin-top: 20px;
+}
+
+#join-content{
+	margin: 7% 35%;
+	text-align: center;
+}
+
+input.join-info {
+	text-align: center;
+}
+
+#join-info {
+	text-align: center;
+	margin: 10px;
+}
+
+#info1, #info_addr{
+	text-align: left;
+}
+
+input.info1, input.addr {
+	margin: 5px;
+	width: 400px;
+	height: 40px;
+	border-radius: 7px;
+}
+
+#join-btn:hover {
+	background-color: rgb(163, 163, 194);
+}
+
+@media screen and (max-width: 1350px){
+	 #join-content{
+	margin: 10% 20%;
+	float:left;
+	}
+}
+@media screen and (max-width: 1000px){
+	#login-content, #join-content{
+	margin: 10% 20%;
+	float:inherit;
+	}
+	
+	#id-pw {
+	text-align: center;
+	}
+	
+}
+@media screen and (max-width: 700px){
+	#login-content, #join-content{
+	margin: 10% 10%;
+	float:left;
+	}
+	
+	#id-pw {
+	text-align: center;
+	}
+	
+}
+
+
