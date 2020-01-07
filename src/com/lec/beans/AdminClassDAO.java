@@ -120,20 +120,6 @@ public class AdminClassDAO {
 	
 	
 	// 관리자페이지 학원등록
-	// 1.
-	public int insertIns(ClassDTO dto) throws SQLException {
-		String ins_name = dto.getIns_name();
-		String ins_tel = dto.getIns_tel();
-		int ins_zip = dto.getIns_zip();
-		String ins_add1 = dto.getIns_add1();
-		String ins_add2 = dto.getIns_add2();
-		String ins_location = dto.getIns_location();
-		String ins_branch = dto.getIns_branch();
-		String ins_img = dto.getIns_img();
-		return this.insertIns(ins_name, ins_zip, ins_add1, ins_add2, ins_tel, ins_img, ins_branch, ins_location);
-	}
-	
-	// 1-1.
 	public int insertIns(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
 			String ins_branch, String ins_location) throws SQLException{
 
@@ -162,8 +148,28 @@ public class AdminClassDAO {
 	
 	
 	
+	// 수정할 학원정보 불러오기
+	public ClassDTO[] selectInsByUid(int ins_uid) throws SQLException{
+
+		ClassDTO [] arr = null;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID_FOR_UPDATE);
+			pstmt.setInt(1, ins_uid);
+			
+			rs = pstmt.executeQuery();
+			
+			arr = createCurArray(rs);
+			
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
 	
 	
+
 	
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,
@@ -190,7 +196,6 @@ public class AdminClassDAO {
 		
 		return cnt;
 	}
-	
 	
 	
 	
@@ -235,23 +240,7 @@ public class AdminClassDAO {
 	
 	// 학원 과정 관리 
 	// 1. 과정 추가 
-	public int insertCur(int ins_uid, ClassDTO dto) throws SQLException{
-		
-		String cur_name = dto.getCur_name();
-		int cur_hours = dto.getCur_hours();
-		int cur_months = dto.getCur_months();
-		String cur_month1 = dto.getCur_month1();
-		String cur_month2 = dto.getCur_month2();
-		String cur_month3 = dto.getCur_month3();
-		String cur_month4 = dto.getCur_month4();
-		String cur_month5 = dto.getCur_month5();
-		String cur_month6 = dto.getCur_month6();	
-		
-		return this.insertCur(ins_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
-	}
-	
-	
-	// 1-1. 
+
 	public int insertCur(int ins_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
 			String cur_month4, String cur_month5, String cur_month6) throws SQLException{
 		
