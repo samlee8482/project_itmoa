@@ -20,12 +20,12 @@ public class FindIdViewCommand implements Command {
 
 		try {
 			arr = dao.selectId(mb_name, mb_email);
+			if(arr.length == 1) {
+				request.setAttribute("findIdView", arr);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("findIdView", arr);
 	}
-
 }
