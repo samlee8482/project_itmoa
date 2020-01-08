@@ -161,6 +161,10 @@ public interface D {
 	  	SQL_SELECT_CLASS + SQL_SELECT_CLASS_BY_INS_BRANCH + SQL_SELECT_CLASS_BY_CUR_NAME +SQL_ORDER_BY_CLASS_UID;
 
 	 */
+	
+	
+	public static final String SQL_SELECT_LOCATION =
+			"SELECT DISTINCT ins_branch FROM ins WHERE ins_location = ? ORDER BY ins_name";
 
 	
 	// 학원 상세 페이지

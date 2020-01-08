@@ -5,28 +5,37 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.beans.ReviewDAO;
-import com.lec.beans.ReviewDTO;
+import com.lec.beans.ClassDAO;
+import com.lec.beans.ClassDTO;
 
 public class CurListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int option_review = Integer.parseInt(request.getParameter("option_review"));
-		String keyword = request.getParameter("keyword");
 		
-		ReviewDAO dao = new ReviewDAO();
-		ReviewDTO [] arr = null;
+		String option_location = request.getParameter("option_location");
+		String option_branch = request.getParameter("option_branch");
+		String option_curName = request.getParameter("option_curName");
 		
-		if (option_review > 0
-		&& keyword != null && keyword.length() > 0 && !keyword.trim().equals("")) {
-			try {
-				arr = dao.selectReviewList(option_review, keyword);
-				request.setAttribute("curList", arr);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
+		ClassDAO dao = new ClassDAO();
+		
+		ClassDTO [] arr = null;
+
+		
+		try {
+			
+			arr = dao.selectClassList(option_location, option_branch, option_curName);	
+			request.setAttribute("classList", arr);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		
+	//	int option_branch = Integer.parseInt(request.getParameter("option_branch"));
+		
+		
 	}
 
 }
