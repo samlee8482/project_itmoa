@@ -12,16 +12,28 @@ public class AdminNewsListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int option_news_1 = Integer.parseInt(request.getParameter("option_news_1"));
-		int option_news_2 = Integer.parseInt(request.getParameter("option_news_2"));
+		String opn1 = request.getParameter("option_news_1");
+		String opn2 = request.getParameter("option_news_2");
 		String option_news_3 = request.getParameter("option_news_3");
+		
+		int option_news_1 = 0;
+		int option_news_2 = 0;
+		
+		if (opn1 == null || opn2 == null) {
+			option_news_1 = 1;
+			option_news_2 = 4;
+			option_news_3 = "all";
+		} else {
+			option_news_1 = Integer.parseInt(request.getParameter("option_news_1"));
+			option_news_2 = Integer.parseInt(request.getParameter("option_news_2"));
+		}
 		
 		AdminNewsDAO dao = new AdminNewsDAO();
 		NewsDTO [] arr = null;
 		
 		if (option_news_1 > 0
 		&& option_news_2 > 0
-		&& option_news_3 != null && option_news_3.length() > 0 && !option_news_3.trim().equals("")) {
+		&& option_news_3 != null && !option_news_3.trim().equals("")) {
 			try {
 				arr = dao.selectNews(option_news_1, option_news_2, option_news_3);
 				request.setAttribute("adminNewsList", arr);

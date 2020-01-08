@@ -20,6 +20,8 @@ import command.AdminInsViewCommand;
 import command.AdminMemberListCommand;
 import command.AdminMemberOkCommand;
 import command.AdminMemberViewCommand;
+import command.AdminNewsDeleteOkCommand;
+import command.AdminNewsFileUploadCommand;
 import command.AdminNewsListCommand;
 import command.AdminNewsUpdateOkCommand;
 import command.AdminNewsViewCommand;
@@ -302,23 +304,40 @@ public class controller extends HttpServlet {
 			break;
 				
 //		- IT뉴스 관리
-		case "/adminNewsList.do":  // 관리자 뉴스 리스트 출력
+		case "/admin/adminNewsList.do":  // 관리자 뉴스 리스트 출력
 			command = new AdminNewsListCommand();
 			command.execute(request, response);
-			viewPage = "adminITNewsList.jsp";
+			viewPage = "adminNewsList.jsp";
 			break;
 //		* 검색 조건 추가는 adminNewsList.do 뒤에 쿼리 추가해서 다시 request
-		case "/adminNewsView.do":  // 관리자 뉴스 상세 내용 출력
+		case "/admin/adminNewsView.do":  // 관리자 뉴스 상세 내용 출력
 			command = new AdminNewsViewCommand();
 			command.execute(request, response);
-			viewPage = "adminITNewsView.jsp";
+			viewPage = "adminNewsView.jsp";
 			break;
-		case "/adminNewsUpdateOk.do":  // 관리자 뉴스 상세 내용 수정 (체크)
+		case "/admin/adminNewsWrite.do":  // 관리자 뉴스 상세 내용 수정 (체크)
+			viewPage = "adminNewsWrite.jsp";
+			break;
+		case "/admin/adminNewsUpdateView.do":  // 관리자 뉴스 상세 내용 수정 (체크)
+			command = new AdminNewsViewCommand();
+			command.execute(request, response);
+			viewPage = "adminNewsUpdateView.jsp";
+			break;
+		case "/admin/adminNewsUpdateOk.do":  // 관리자 뉴스 상세 내용 수정 (체크)
 			command = new AdminNewsUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "adminITNewsUpdateOk.jsp";
+			viewPage = "adminNewsUpdateOk.jsp";
 			break;
 //		* insert도 같이 사용
+		case "/admin/adminNewsDeleteOk.do":  // 관리자 뉴스 상세 내용 수정 (체크)
+			command = new AdminNewsDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminNewsDeleteOk.jsp";
+			break;
+		case "/admin/adminNewsFileUplaod.do":
+			command = new AdminNewsFileUploadCommand();
+			command.execute(request, response);
+			break;
 		}
 		
 		if (viewPage != null) {

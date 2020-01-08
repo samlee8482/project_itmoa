@@ -65,15 +65,22 @@ public class AdminNewsDAO {
 		NewsDTO[] arr = null;
 		String SELECT_NEWS_BRD = D.SQL_SELECT_NEWS_BRD;
 		
+		int setStr1 = 0;
+		
 		switch(option_news_2) {
 		case 1:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
+			setStr1 = 1;
 			break;
 		case 2:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+			setStr1 = 1;
 			break;
 		case 3:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+			setStr1 = 1;
+			break;
+		case 4:
 			break;
 		}
 		
@@ -81,21 +88,28 @@ public class AdminNewsDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(SELECT_NEWS_BRD);
-			pstmt.setString(1, option_news_3);
+			option_news_3 = "%" + option_news_3 + "%";
+			if (setStr1 == 1) pstmt.setString(setStr1, option_news_3);
 			switch(option_news_1) {
 			case 1: // 최근순
-				pstmt.setString(2, "news_brd_uid");				
-				pstmt.setString(3, "DESC");					
+				if (setStr1 == 1) {
+					pstmt.setString(2, "news_brd_uid");
+					pstmt.setString(3, "DESC");
+				} else {
+					pstmt.setString(1, "news_brd_uid");
+					pstmt.setString(2, "DESC");
+				}
 				break;
 			case 2: // 오래된 순
-				pstmt.setString(2, "news_brd_uid");					
-				pstmt.setString(3, "ASC");					
+					pstmt.setString(2, "news_brd_uid");					
+					pstmt.setString(3, "ASC");					
 				break;
 			case 3: // 조회수 순
 				pstmt.setString(2, "news_brd_viewcnt");					
 				pstmt.setString(3, "DESC");					
 				break;
 			}
+			System.out.println(pstmt);
 			rs = pstmt.executeQuery();
 			arr = createNewsArr(rs);
 		} catch (SQLException e) {
@@ -132,8 +146,6 @@ public class AdminNewsDAO {
 		NewsDTO[] arr = null;
 		String SELECT_NEWS_BRD_BY_UID = D.SQL_SELECT_NEWS_BRD_CONTENT;
 		
-		SELECT_NEWS_BRD_BY_UID += D.SQL_ORDER_BY_NEWS_BRD;
-		
 		try {
 			pstmt = conn.prepareStatement(SELECT_NEWS_BRD_BY_UID);
 			pstmt.setInt(1, news_brd_uid);
@@ -169,12 +181,12 @@ public class AdminNewsDAO {
 	}
 	
 	// 관리자페이지 뉴스 삭제
-	public int deleteNewsByUid(int mb_uid) throws SQLException{
+	public int deleteNewsByUid(int news_brd_uid) throws SQLException{
 		int cnt = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_DELETE_NEWS_BRD_BY_UID);
-			pstmt.setInt(1, mb_uid);
+			pstmt.setInt(1, news_brd_uid);
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
