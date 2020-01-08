@@ -33,7 +33,7 @@
 
 	
 		<!-- Side Menu -->
-		<jsp:include page="sidemenu.jsp"/>
+		<jsp:include page="sideMenu.jsp"/>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">

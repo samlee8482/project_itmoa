@@ -69,39 +69,62 @@ public class NewsDAO {
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		switch(option_news) {
-			case 1: 
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
-				break;
-			case 2:
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
-				break;
-			case 3:
-				selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
-				break;
-			default:
-				break;
-		}
-		
-		// 정렬
-		selectNews += D.SQL_ORDER_BY_NEWS_BRD;
-		
-		try {
-			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
-			if(keyword != null && !keyword.equals("")) {
-				pstmt = conn.prepareStatement(selectNews);
-				pstmt.setString(1, keyword);
-			}else { 
-				pstmt = conn.prepareStatement(selectNews);
+		if (option_news > 0
+		&& keyword != null && !keyword.trim().equals("")) {
+			try {
+				switch(option_news) {
+					case 1: 
+						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+						pstmt = conn.prepareStatement(selectNews);
+						int keywordInt = Integer.parseInt(keyword);
+						pstmt.setInt(1, keywordInt);
+						break;
+					case 2:
+						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+						selectNews += "'%";
+						selectNews += keyword;
+						selectNews += "%'";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+						pstmt = conn.prepareStatement(selectNews);
+						break;
+					case 3:
+						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+						selectNews += "'%";
+						selectNews += keyword;
+						selectNews += "%'";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+						pstmt = conn.prepareStatement(selectNews);
+						break;
+					case 4:
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
+						pstmt = conn.prepareStatement(selectNews);
+					default:
+						break;
+				}
+				rs = pstmt.executeQuery();
+				arr = createNewsArray(rs);
+			} finally {
+				close();
 			}
 
+		}
+		return arr;
+	}
+	
+	public int countNews() throws SQLException {
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_COUNT_NEWS_BRD);
 			rs = pstmt.executeQuery();
-			arr = createNewsArray(rs);
+			rs.next();
+			cnt = rs.getInt(1);
 		} finally {
 			close();
-		}		
+		}
 		
-		return arr;
+		return cnt;
 	}
 	
 	// 2. 특정 뉴스 불러오기 NewsDTO ->  Array로 변경 
@@ -164,7 +187,6 @@ public class NewsDAO {
 		
 		try {
 			// 트랜잭션 처리
-			pstmt.close();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_NEWS_BRD_CONTENT);
 			pstmt.setInt(1, news_brd_uid);
 			rs = pstmt.executeQuery();

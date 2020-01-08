@@ -12,8 +12,6 @@ DROP TABLE IF EXISTS mb;
 DROP TABLE IF EXISTS news_brd;
 
 
-
-
 /* Create Tables */
 
 CREATE TABLE class
@@ -179,8 +177,8 @@ ALTER TABLE zzim
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
- 
- 
+
+
 ALTER TABLE rep
 	ADD FOREIGN KEY (review_brd_uid)
 	REFERENCES review_brd (review_brd_uid)
@@ -188,8 +186,5 @@ ALTER TABLE rep
 	ON DELETE RESTRICT
 ;
 
-
-
-
-SELECT * FROM mb;
+select * from mb;
 

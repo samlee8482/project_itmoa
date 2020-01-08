@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -32,7 +34,7 @@
 	<div id="wrapper">
 	
 		<!-- Side Menu -->
-		<jsp:include page="sidemenu.jsp"/>
+		<jsp:include page="sideMenu.jsp"/>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -91,12 +93,27 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">.</h6>
+									<h6 class="m-0 font-weight-bold text-primary">회원구분</h6>
+									<input type="radio" name="option_mb_1" value="0" checked="checked" />전체
+									<input type="radio" name="option_mb_1" value="1" />일반회원
+									<input type="radio" name="option_mb_1" value="2" />슈퍼회원
+									<input type="radio" name="option_mb_1" value="3" />관리자
+									<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
+									<select>
+										<option name="option_mb_2" value="1">회원ID</option>
+										<option name="option_mb_2" value="2">회원명</option>
+										<option name="option_mb_2" value="3">회원번호</option>
+										<option name="option_mb_2" value="4">이메일</option>
+									</select>
+									<input type="text" name="option_mb_3" />
+									<button type="">검색</button>
+									<h6 class="m-0 font-weight-bold text-primary">총 x건의 데이터가 조회되었습니다.</h6>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
+											<c:forEach var="dto" items="${adminMemberList }">
 											<thead>
 												<tr>
 													<th width="5%">No</th>
@@ -112,12 +129,13 @@
 											<tbody>
 												<tr>
 													<td>1</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
+													<td style="text-align: center;"><a href="#">${dto.mb_uid }</a></td>
+													<td style="text-align: center;">${dto.mb_name }</td>
+													<td style="text-align: center;">${dto.mb_id }</td>
+													<td style="text-align: center;">${dto.mb_email }</td>
+													<td style="text-align: center;">${dto.mb_add1 }</td>
+													<td style="text-align: center;">${dto.mb_add2 }</td>
+													<td style="text-align: center;">${dto.mb_regdate }</td>
 													<td style="text-align: center;"><a href="#"
 														class="btn btn-danger btn-icon-split"> <span
 															class="icon text-white-50"> <i
@@ -126,11 +144,12 @@
 													</a></td>
 												</tr>
 											</tbody>
+											</c:forEach>
 											<tbody>
 												<tr>
 													<td>2</td>
-													<td>142</td>
-													<td>이새힘</td>
+													<td><a href="#">142</a></td>
+													<td style="text-align: center;">이새힘</td>
 													<td>saehim1111</td>
 													<td>saehim1111@gmail.com</td>
 													<td>서울특별시 관악구 남부순환로 1614</td>
@@ -138,147 +157,12 @@
 													<td style="text-align: center;"><a href="#"
 														class="btn btn-danger btn-icon-split"> <span
 															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
+																class="fas fa-trash">삭제하기</i>
 														</span>
 													</a></td>
 												</tr>
 											</tbody>
-											<tbody>
-												<tr>
-													<td>3</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>4</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>5</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>6</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>7</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>8</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>9</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>10</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
+											
 										</table>
 									</div>
 								</div>
