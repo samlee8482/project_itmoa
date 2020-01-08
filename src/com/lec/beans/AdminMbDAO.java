@@ -80,19 +80,19 @@ public class AdminMbDAO {
 		String SELECT_MB = D.SQL_SELECT_USER;
 		SELECT_MB += D.SQL_SELECT_USER_WHERE_LEVEL;
 		
+		int chkUid = 0;
 		// 검색조건 들어갈 switch문
 		switch(option_mb_2) {
 		case 1:
 			SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
 			break;
 		case 2:
-			System.out.println("oo");
 			SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
 			option_mb_3 = "%" + option_mb_3 + "%";
-			System.out.println("oo");
 			break;
 		case 3:
 			SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
+			chkUid = 4;
 			break;
 		case 4:
 			SELECT_MB += D.SQL_SELECT_USER_WHERE_EMAIL;
@@ -132,7 +132,13 @@ public class AdminMbDAO {
 				pstmt.setInt(3, 0);		
 				break;
 			}
-			if(!option_mb_3.equals("a")) {
+			
+			if(chkUid == 4) {
+				pstmt.setInt(chkUid, Integer.parseInt(option_mb_3));
+				rs = pstmt.executeQuery();
+				arr = createMbArr(rs);
+				System.out.println(arr.length);
+			} else if(!option_mb_3.equals("a")) {
 				pstmt.setString(4, option_mb_3);
 				rs = pstmt.executeQuery();
 				arr = createMbArr(rs);

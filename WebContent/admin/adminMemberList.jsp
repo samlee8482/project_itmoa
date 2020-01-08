@@ -122,6 +122,7 @@
 													<th width="10%">아이디</th width="5%">
 													<th width="15%">이메일</th width="5%">
 													<th width="24%">주소</th width="5%">
+													<th width="24%">상세주소</th width="5%">
 													<th width="20%">최초생성일</th width="5%">
 													<th width="6%" style="text-align: center;">회원삭제</th width="5%">
 												</tr>
@@ -145,36 +146,6 @@
 													</a></td>
 												</tr>
 											</c:forEach>
-												<tr>
-													<td>2</td>
-													<td><a href="#">${dto[0].mb_uid}</a></td>
-													<td style="text-align: center;">${dto[0].mb_name}</td>
-													<td>saehim</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash">삭제하기</i>
-														</span>
-													</a></td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td><a href="#">${dto[0].mb_uid}</a></td>
-													<td style="text-align: center;">이새힘</td>
-													<td>saehim1111</td>
-													<td>saehim1111@gmail.com</td>
-													<td>서울특별시 관악구 남부순환로 1614</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash">삭제하기</i>
-														</span>
-													</a></td>
-												</tr>
 										</table>
 									</div>
 								</div>

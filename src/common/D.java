@@ -77,19 +77,19 @@ public interface D {
 		" WHERE mb_level IN(?, ?, ?)";
 	// 회원 검색 조건) 회원번호
 	public static final String SQL_SELECT_USER_WHERE_UID =
-		" AND mb_uid LIKE ";	
+		" AND mb_uid = ?";	
 	
 	// 회원 검색 조건) 회원ID
 	public static final String SQL_SELECT_USER_WHERE_ID =
-		" AND mb_id LIKE ";
+		" AND mb_id = ?";
 
 	// 회원 검색 조건) 회원이름
 	public static final String SQL_SELECT_USER_WHERE_NAME =
-		" AND mb_name LIKE ";
+		" AND mb_name LIKE ?";
 
 	// 회원 검색 조건) 회원이메일
 	public static final String SQL_SELECT_USER_WHERE_EMAIL =
-		" AND mb_email LIKE ";
+		" AND mb_email = ?";
 
 	// 회원 검색 결과 정렬
 	public static final String SQL_USER_ORDER_BY =
@@ -161,6 +161,10 @@ public interface D {
 	  	SQL_SELECT_CLASS + SQL_SELECT_CLASS_BY_INS_BRANCH + SQL_SELECT_CLASS_BY_CUR_NAME +SQL_ORDER_BY_CLASS_UID;
 
 	 */
+	
+	
+	public static final String SQL_SELECT_LOCATION =
+			"SELECT DISTINCT ins_branch FROM ins WHERE ins_location = ? ORDER BY ins_name";
 
 	
 	// 학원 상세 페이지
@@ -370,24 +374,27 @@ public interface D {
 		+ " WHERE news_brd_uid = ?"; 
 	
 	// 뉴스 검색 조건) 뉴스UID
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
-		" WHERE news_brd_uid = ?";
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
+			" WHERE news_brd_uid = ?";
 
-	// 뉴스 검색 조건) 뉴스 제목
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
-		" WHERE news_brd_title LIKE ";
+		// 뉴스 검색 조건) 뉴스 제목
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
+			" WHERE news_brd_title LIKE ?";
 
-	// 뉴스 검색 조건) 뉴스 내용
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
-		" WHERE news_brd_content LIKE ";
-	
-	// 뉴스 검색 결과 정렬
-	public static final String SQL_ORDER_BY_NEWS_BRD = 
-		" ORDER BY news_brd_uid DESC";
-	
-	public static final String SQL_COUNT_NEWS_BRD =
-		"SELECT COUNT(*) FROM news_brd";
-	
+		// 뉴스 검색 조건) 뉴스 내용
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
+			" WHERE news_brd_content LIKE ?";
+		
+		// 뉴스 검색 결과 정렬
+		public static final String SQL_ORDER_BY_NEWS_BRD_UID = 
+			" ORDER BY news_brd_uid DESC";
+		
+		public static final String SQL_ORDER_BY_NEWS_BRD = 
+				" ORDER BY ? ?";
+		
+		public static final String SQL_COUNT_NEWS_BRD =
+				"SELECT COUNT(*) FROM news_brd";
+		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
 		"UPDATE news_brd "

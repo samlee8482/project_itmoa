@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,13 +92,14 @@
                             <form role="frm" method="get" action="/Project_itmoa/user/newsList.do">
                                 <div class="input-group">
 	                               	<div style="width: 100%">
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="1" checked="checked" />뉴스 번호</label>
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="2" />뉴스 제목</label>
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="3" />뉴스 내용</label>
+	                               		<select name="option_news">
+		                               		<option value="1">뉴스 제목</option>
+		                               		<option value="2">뉴스 내용</option>
+	                               		</select>	                                	
 	                               	</div>
 	                            </div>
                                 <div class="input-group">
-                                	 <input type="text" name="keyword" class="form-control" autocomplete="off" placeholder="Search">
+                                	 <input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary btn-outlined" type="submit" onclick="chkSubmit()"><i class="fa fa-search"></i></button>
                                     </span>
@@ -143,6 +144,17 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/init.js"></script>
+    <script>
+	    function chkSubmit() {
+			var keyword = $(":text[name='keyword']").val().length;
+			if(keyword > 0) {
+				return true;
+			}
+			
+			alert("검색어를 입력하세요");
+			return false;
+		}
+    </script>
 </body>
 </html>
     
