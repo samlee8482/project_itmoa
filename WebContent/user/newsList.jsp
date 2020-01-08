@@ -92,13 +92,14 @@
                             <form role="frm" method="get" action="/Project_itmoa/user/newsList.do">
                                 <div class="input-group">
 	                               	<div style="width: 100%">
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="1" checked="checked" />뉴스 번호</label>
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="2" />뉴스 제목</label>
-	                                	<label style="padding: 5px"><input type="radio" name="option_news" value="3" />뉴스 내용</label>
+	                               		<select name="option_news">
+		                               		<option value="1">뉴스 제목</option>
+		                               		<option value="2">뉴스 내용</option>
+	                               		</select>	                                	
 	                               	</div>
 	                            </div>
                                 <div class="input-group">
-                                	 <input type="text" name="keyword" class="form-control" autocomplete="off" placeholder="Search">
+                                	 <input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary btn-outlined" type="submit" onclick="chkSubmit()"><i class="fa fa-search"></i></button>
                                     </span>

@@ -62,33 +62,28 @@ public class NewsDAO {
 	}
 	
 	// 1-2.
-	public NewsDTO[] selectNewsList(int option_news, String keyword) throws SQLException {
+	public NewsDTO[] selectNewsList(String option_news, String keyword, int from, int rows) throws SQLException {
 		
 		NewsDTO [] arr = null;
 		String selectNews = D.SQL_SELECT_NEWS_BRD;
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		if (option_news > 0
+		if (option_news != null && !option_news.trim().equals("")
 		&& keyword != null && !keyword.trim().equals("")) {
 			try {
 				switch(option_news) {
-					case 1: 
-						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
-						pstmt = conn.prepareStatement(selectNews);
-						int keywordInt = Integer.parseInt(keyword);
-						pstmt.setInt(1, keywordInt);
-						break;
-					case 2:
+					case "1": 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
 						selectNews += "'%";
 						selectNews += keyword;
 						selectNews += "%'";
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						pstmt = conn.prepareStatement(selectNews);
+						pstmt.setInt(1, from);
+						pstmt.setInt(2, rows);
 						break;
-					case 3:
+					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
 						selectNews += "'%";
 						selectNews += keyword;
@@ -96,11 +91,9 @@ public class NewsDAO {
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						pstmt = conn.prepareStatement(selectNews);
 						break;
-					case 4:
+					case "3":
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						pstmt = conn.prepareStatement(selectNews);
-					default:
-						break;
 				}
 				rs = pstmt.executeQuery();
 				arr = createNewsArray(rs);
