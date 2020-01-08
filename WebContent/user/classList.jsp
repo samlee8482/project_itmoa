@@ -134,10 +134,10 @@
 					   var location = select.options[select.selectedIndex].value;
 					   var selected_location;
 					   
-					   if( location == "전체"){
-						   selected_location = "<select name='option_branch' size='1'><option value='all' selected>전체</option></select>";
+					   if(location == "전체"){
+						   selected_location = "<select name='option_branch' size='1'><option value='전체' selected>전체</option></select>";
 					   }else if( location == "서울" ){
-						   selected_location = "<select name='option_branch' size='1'> <option value='all' selected>전체</option> <option value='강남' >강남</option><option value='신촌' >신촌</option><option value='종로' >종로</option><option value='사당' >사당</option><option value='노량진' >노량진</option><option value='기타' >기타</option></select>";
+						   selected_location = "<select name='option_branch' size='1'> <option value='전체' selected>전체</option> <option value='강남' >강남</option><option value='신촌' >신촌</option><option value='종로' >종로</option><option value='사당' >사당</option><option value='노량진' >노량진</option><option value='기타' >기타</option></select>";
 					   }else if( location == "경기"){
 						   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='고양' >고양</option><option value='안양' >안양</option><option value='부천' >부천</option><option value='성남' >성남</option><option value='구리' >구리</option><option value='광명' >광명</option></select>";   
 					   }else if( location == "인천"){
@@ -177,7 +177,7 @@
 				
 				
 				<ul class="portfolio-filter fade-down center">
-					<li><a class="btn btn-outlined btn-primary active" href="#"
+					<li><a class="btn btn-outlined btn-primary active" href="${pageContext.request.contextPath}CurListCommand.java"
 						data-filter="*">전체과정</a></li>
 					<li><a class="btn btn-outlined btn-primary" href="#"
 						data-filter=".bootstrap">웹앱</a></li>
@@ -200,16 +200,17 @@
 				<!--/#portfolio-filter-->
 
 
-
-
 				<ul class="portfolio-items col-3 isotope fade-up">
 					
-				    <c:forEach var="list" items="${classList }">
+				    <c:forEach var="dto" items="${classList }">
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-								<img src="http://placehold.it/800x600" alt="">
-								<h5>Lorem ipsum dolor sit amet</h5>
+								<img src="${dto.ins_img }" alt="">
+								<h5>${dto.ins_name }</h5>
+								<h5>${dto.cur_name }</h5>
+								<h5>${dto.class_zzimcnt }</h5>
+								<!-- <h5>${dto.class_zzimcnt }</h5> -->
 								<div class="overlay">
 									<a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i	class="fa fa-eye"></i></a>
 								</div>
