@@ -362,7 +362,7 @@ public interface D {
 	// 뉴스 리스트, 등록된 시간 순서로 조회
 
 	public static final String SQL_SELECT_NEWS_BRD = 
-		"SELECT * FROM news_brd";
+		"SELECT * FROM news_brd LIMIT ?, ?";
 	
 	// 뉴스 조회
 	public static final String SQL_SELECT_NEWS_BRD_CONTENT =
