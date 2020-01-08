@@ -384,7 +384,7 @@ public class ClassDAO {
 			 *   6 :    선택    +  선택     +  O 
 			 *  
 			 */
-			
+			    
 			// 지역 조건이 '전체'가 아니라면, 지점조건을 따질것
 			if(!option_location.equals("전체")) {
 
