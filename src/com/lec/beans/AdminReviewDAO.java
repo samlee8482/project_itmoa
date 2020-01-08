@@ -1,11 +1,14 @@
 package com.lec.beans;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import common.D;
@@ -50,17 +53,16 @@ public class AdminReviewDAO {
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		
 		while(rs.next()){
-
 			int review_brd_uid = rs.getInt("review_brd_uid");
 			String mb_id = rs.getString("mb_id");
-			String mb_name = rs.getString("mb_name");
 			String ins_name = rs.getString("ins_name");
-			String review_brd_regdate = rs.getString("review_brd_regdate");
 			String review_brd_title = rs.getString("review_brd_title");
+			Date d = rs.getDate("review_brd_regdate");
+			Time t = rs.getTime("review_brd_regdate");
+			String review_brd_regdate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " | " + new SimpleDateFormat("hh:mm:ss").format(t);
 			int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
-			
-			ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, mb_name, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt);
-			reviewList.add(dto);			
+			ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt);
+			reviewList.add(dto);
 		}
 		
 		int size = reviewList.size();
@@ -78,39 +80,40 @@ public class AdminReviewDAO {
 	// 리뷰 목록 
 	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
 		
-	
 		ReviewDTO [] arr = null;
 		String selectReview = D.SQL_SELECT_REVIEW;
 		
 		// 리뷰 검색 조건 (1)회원ID  (2)리뷰제목   (3)리뷰내용
+
+		int setStr1 = 0;
 		
 		switch(option_review) {
 			case 1: 
 				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
+				keyword = "%" + keyword + "%";
+				setStr1 = 1;
 				break;
 			case 2:
 				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
+				keyword = "%" + keyword + "%";
+				setStr1 = 1;
 				break;
 			case 3:
 				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
+				keyword = "%" + keyword + "%";
+				setStr1 = 1;
 				break;
-			default:
+			case 4:
 				break;
 		}
 		
 		// 정렬
 		selectReview += D.SQL_ORDER_REVIEW;
 		
-		
 		try {
-			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
-			if(keyword != null && !keyword.equals("")) {
-				pstmt = conn.prepareStatement(selectReview);
-				pstmt.setString(1, keyword);
-			}else { 
-				pstmt = conn.prepareStatement(selectReview);
-			}
-
+			pstmt = conn.prepareStatement(selectReview);
+			if (setStr1 == 1) pstmt.setString(setStr1, keyword); 
+			System.out.println(pstmt);
 			rs = pstmt.executeQuery();
 			arr = createReviewArray(rs);
 		} finally {
@@ -131,9 +134,9 @@ public class AdminReviewDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_DELETE_REVIEW_BY_UID);
+			System.out.println(pstmt);
 			pstmt.setInt(1, review_uid);
 			cnt = pstmt.executeUpdate();
-			
 		} finally {
 			close();
 		}

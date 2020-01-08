@@ -129,11 +129,12 @@
 														<td>${dto.news_brd_title }</td>
 														<td>${dto.news_brd_viewcnt }</td>
 														<td style="text-align: center;">
-														<a href="/Project_itmoa/admin/adminNewsDeleteOk.do?news_brd_uid=${dto.news_brd_uid }" class="btn btn-danger btn-icon-split"> 
-														<span class="icon text-white-50"> 
-															<i class="fas fa-trash"></i>
-														</span>
-														</a></td>
+															<a href="/Project_itmoa/admin/adminNewsDeleteOk.do?news_brd_uid=${dto.news_brd_uid }" class="btn btn-danger btn-icon-split"> 
+																<span class="icon text-white-50"> 
+																	<i class="fas fa-trash"></i>
+																</span>
+															</a>
+														</td>
 													</tr>
 												</tbody>	
 				                        	</c:forEach>
@@ -232,10 +233,10 @@
 			var option_news_3 = $(":text[name='option_news_3']").val().length;
 			if(option_news_3 > 0) {
 				return true;
+			} else {
+				alert("검색어를 입력하세요");
+				return false;	
 			}
-			
-			alert("검색어를 입력하세요");
-			return false;
 		}
 	</script>
 	
