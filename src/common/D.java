@@ -271,7 +271,7 @@ public interface D {
 	
 	// 리뷰 목록
 	public static final String SQL_SELECT_REVIEW =  
-		"SELECT r.review_brd_uid, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_viewcnt"
+		"SELECT r.review_brd_uid, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_regdate, r.review_brd_viewcnt"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
@@ -280,15 +280,15 @@ public interface D {
 	
 	// 리뷰 검색 조건) 회원ID
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_USER_ID =  
-		" AND m.mb_id LIKE ('%?%')";
+		" AND m.mb_id LIKE ?";
 	
 	// 리뷰 검색 조건) 리뷰제목
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE = 
-	  	" AND r.review_title LIKE ('%?%')";
+	  	" AND r.review_title LIKE ?";
 	
 	// 리뷰 검색 조건) 리뷰내용
 	 public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT = 
-		" AND r.review_content LIKE ('%?%')";
+		" AND r.review_content LIKE ?";
 	
 	// 리뷰 목록 정렬
 	public static final String SQL_ORDER_REVIEW =  
@@ -297,7 +297,7 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.review_brd_title, m.mb_id,  r.review_content, r.review_brd_viewcnt, re.rep_uid"
+		"SELECT i.ins_name, r.* , m.mb_id, re.rep_uid"
 		+ " FROM review_brd r, mb m, class cl, ins i, rep re"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
@@ -330,9 +330,9 @@ public interface D {
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID =  
-			"SELECT m.mb_id, re.rep.*"
-			+ " FROM rep re, review_brd r"
-			+ " WHERE review_brd_uid = ?"
+			"SELECT m.mb_id, re.*"
+			+ " FROM review_brd r, mb m, rep re"
+			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
 			+ " AND re.mb_uid = m.mb_uid";
 	

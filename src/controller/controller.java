@@ -165,12 +165,12 @@ public class controller extends HttpServlet {
 			break;
 			
 //		- 리뷰
-		case "/reviewList.do":  // 리뷰 리스트 출력 (댓글도)
+		case "/user/reviewList.do":  // 리뷰 리스트 출력 (댓글도)
 			command = new ReviewListCommand();
 			command.execute(request, response);
 			viewPage = "reviewList.jsp";
 			break;
-		case "/reviewView.do":  // 리뷰 상세페이지 출력
+		case "/user/reviewView.do":  // 리뷰 상세페이지 출력
 			command = new ReviewViewCommand();
 			command.execute(request, response);
 			viewPage = "reviewView.jsp";
@@ -291,13 +291,13 @@ public class controller extends HttpServlet {
 			break;
 			
 //		- 리뷰관리
-		case "/adminReviewList.do":  // 관리자 리뷰 리스트 출력
+		case "/admin/adminReviewList.do":  // 관리자 리뷰 리스트 출력
 			command = new AdminReviewListCommand();
 			command.execute(request, response);
 			viewPage = "adminReviewList.jsp";
 			break;
 //		* 검색 조건 추가는 adminReviewList.do 뒤에 쿼리 추가해서 다시 request
-		case "/adminReviewDeleteOk.do":  // 관리자 리뷰 삭제 (체크)
+		case "/admin/adminReviewDeleteOk.do":  // 관리자 리뷰 삭제 (체크)
 			command = new AdminReviewDeleteOkCommand();
 			command.execute(request, response);
 			viewPage = "adminReviewDeleteOk.jsp";
