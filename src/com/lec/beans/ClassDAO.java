@@ -463,7 +463,6 @@ public class ClassDAO {
 					pstmt.setString(3, option_curName);
 					break;
 				}
-				
 
 				rs = pstmt.executeQuery();
 				arr = createClassArray(rs);

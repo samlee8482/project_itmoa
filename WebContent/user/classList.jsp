@@ -42,23 +42,7 @@
             "http://placehold.it/800x600"
         ], {duration: 5000, fade: 500});
 
-        $("#mapwrapper").gMap({ controls: false,
-            scrollwheel: false,
-            markers: [{
-                latitude:40.7566,
-                longitude: -73.9863,
-            icon: { image: "images/marker.png",
-                iconsize: [44,44],
-                iconanchor: [12,46],
-                infowindowanchor: [12, 0] } }],
-            icon: {
-                image: "images/marker.png",
-                iconsize: [26, 46],
-                iconanchor: [12, 46],
-                infowindowanchor: [12, 0] },
-            latitude:40.7566,
-            longitude: -73.9863,
-            zoom: 14 });
+        $("#mapwrapper").gMap({ controls: false,  scrollwheel: false, markers: [{ latitude:40.7566, longitude: -73.9863, icon: { image: "images/marker.png", iconsize: [44,44], iconanchor: [12,46], infowindowanchor: [12, 0] } }], icon: {image: "images/marker.png",iconsize: [26, 46], iconanchor: [12, 46],  infowindowanchor: [12, 0] }, latitude:40.7566, longitude: -73.9863, zoom: 14 });
     });
     
     </script>
@@ -257,10 +241,11 @@
 			  
 			  alert(option_location+ " " + option_branch + " " +option_curName);
 			  
-			  var url = 'classList.jsp?option_location=' + encodeURI(option_location) + '&?option_branch=' + encodeURI(option_branch) + '&?option_curName=' + encodeURI(option_curName);
-			  window.location.href = url;
+			  var url = 'classList.jsp?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
+			  
+			  window.location.href = "/Project_itmoa/user/"+url;
 
-			 
+			  
 			  
 		  });
 			
