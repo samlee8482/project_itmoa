@@ -186,5 +186,5 @@ ALTER TABLE rep
 	ON DELETE RESTRICT
 ;
 
-
+select * from mb;
 
