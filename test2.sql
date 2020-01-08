@@ -12,8 +12,6 @@ DROP TABLE IF EXISTS mb;
 DROP TABLE IF EXISTS news_brd;
 
 
-
-
 /* Create Tables */
 
 CREATE TABLE class
