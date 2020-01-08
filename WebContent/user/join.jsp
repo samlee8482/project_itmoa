@@ -10,8 +10,6 @@
     <title>JOIN</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/pe-icons.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style2.css" rel="stylesheet">
@@ -118,22 +116,26 @@
     			alert("주소를 입력해주세요.");
     			frm["mb_add2"].focus();
     			return false;
+    		} if(mb_pw != mb_pwOk){
+    			alert("비밀번호를 제대로 입력해주세요");
+    			frm["mb_pwOk"].focus();
+    			return false;
     		} 
-    		
     		
     			return true;
     	}
+        
         </script>
         
     </header><!--/header-->
-    <form id="join-content" action="joinOk.jsp" name="frm" method="post" onsubmit="return chkSubmit()">
+    <form id="join-content" action="joinOk.do" name="frm" method="post" onsubmit="return chkSubmit()">
     <div id="join-info">
     	<div id="info1">
-    		이름 <br><input class="info1" id="name" name="mb_name" type="text" placeholder="이름을 입력해주세요."><br>
-    		아이디<br> <input class="info1 id="id" name="mb_id" type="text" placeholder="아이디를 입력해주세요."><br>
-    		비밀번호<br> <input class="info1 id="pw" name="mb_pw" type="text" placeholder="비밀번호 를 입력해주세요."><br>
-    		비밀번호 확인<br> <input class="info1 id="pwcheck" name="mb_pwOk" type="text" placeholder="비밀번호를 입력해주세요."><br>
-    		e-mail<br> <input class="info1 id="email" name="mb_email" type="text" placeholder="이메일을 입력해주세요."><br>
+    		이름 <br><input class="info1" name="mb_name" type="text" placeholder="이름을 입력해주세요."><br>
+    		아이디<br> <input class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."><br>
+    		비밀번호<br> <input class="info1" name="mb_pw" type="text" placeholder="비밀번호 를 입력해주세요."><br>
+    		비밀번호 확인<br> <input class="info1" name="mb_pwOk" type="text" placeholder="비밀번호를 입력해주세요."><br>
+    		e-mail<br> <input class="info1" name="mb_email" type="text" placeholder="이메일을 입력해주세요."><br>
     	</div>
     	<div id="info_addr">
 	    	주소<br>
@@ -141,7 +143,7 @@
 			<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 			<input class="addr" type="text" id="sample6_address" name="mb_add1" placeholder="주소"><br>
 			<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" placeholder="상세주소">
-			<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="참고항목">
+			<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">
     	</div>
     	<input id="join-btn" type="submit" value="회원가입">
     </div>
@@ -201,10 +203,6 @@
  
 </script>
 
-	 
-
-
- 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/plugins.js"></script>
