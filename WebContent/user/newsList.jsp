@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,6 +144,17 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/init.js"></script>
+    <script>
+	    function chkSubmit() {
+			var keyword = $(":text[name='keyword']").val().length;
+			if(keyword > 0) {
+				return true;
+			}
+			
+			alert("검색어를 입력하세요");
+			return false;
+		}
+    </script>
 </body>
 </html>
     
