@@ -7,7 +7,7 @@ ${adminMemberUpdateOk }
 		<script>
 			alert("수정 실패");
 			history.back();
-		</script>
+		</script>  
 	</c:when>
 	<c:when test="${adminMemberUpdateOk == 1 }">
 		<script>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.beans.AdminMbDAO;
 
 public class AdminMemberUpdateOkCommand implements Command {
-
+  
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int mb_level = Integer.parseInt(request.getParameter("mb_level"));
