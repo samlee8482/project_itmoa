@@ -41,7 +41,6 @@ public class AdminNewsListCommand implements Command {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -18,17 +18,21 @@ public class ReviewViewCommand implements Command {
 		ReviewDTO [] arr2 = null;
 		
 		int review_brd_uid = Integer.parseInt(request.getParameter("review_brd_uid"));
+		int rep = 0;
 		
 		if (review_brd_uid > 0) {
 			try {
 				arr = dao.readReviewByUid(review_brd_uid);
 				arr2 = dao.selectRepByUid(review_brd_uid);
 				request.setAttribute("reviewView", arr);
-				request.setAttribute("repView", arr2);
+				if (arr2.length != 0) {
+					rep = 1;
+					request.setAttribute("repView", arr2);
+				}
+				request.setAttribute("rep", rep);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 		}

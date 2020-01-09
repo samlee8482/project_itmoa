@@ -299,25 +299,23 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.* , m.mb_id, re.rep_uid"
-		+ " FROM review_brd r, mb m, class cl, ins i, rep re"
+		"SELECT i.ins_name, r.* , m.mb_id"
+		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
-		+ " AND cl.ins_uid = i.ins_uid"
-		+ " AND re.mb_uid = m.mb_uid"
-		+ " AND r.review_brd_uid = re.review_brd_uid";
-	
-	
+		+ " AND cl.ins_uid = i.ins_uid";	
 	
 	// 댓글 작성
 	public static final String SQL_INSERT_REVIEW = 
-		"INSERT INTO review_brd (mb_uid, mb_id, mb_img, review_brd_title,"
-		+ "review_brd_content) VALUES (?, ?, ?, ?, ?)";
+		"INSERT INTO review_brd (mb_uid, class_uid, review_brd_title, review_brd_content)"
+		+ " VALUES (?, ?, ?, ?)";
 	
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
-		"UPDATE review_brd SET review_brd_title=?, review_brd_content = ? WHERE review_brd_uid = ?";
+		"UPDATE review_brd"
+		+ " SET review_brd_title = ?, review_brd_content = ? "
+		+ " WHERE review_brd_uid = ?";
 		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_REVIEW_INC_VIEWCNT = 
@@ -336,13 +334,14 @@ public interface D {
 			+ " FROM review_brd r, mb m, rep re"
 			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
-			+ " AND re.mb_uid = m.mb_uid";
+			+ " AND re.mb_uid = m.mb_uid"
+			+ " ORDER BY re.rep_regdate DESC";
 	
 	
 	// 댓글의 URD는 로그인된 회원과 동일한 UID/ID를 가질때?
 	// 댓글 작성
 	public static final String SQL_INSERT_REP = 
-		"INSERT INTO rep(mb_uid, rep_content) VALUES (? ?)";
+		"INSERT INTO rep(mb_uid, review_brd_uid, rep_content) VALUES (?, ?, ?)";
 
 	// 댓글 수정
 	public static final String SQL_UPDATE_REP_BY_UID = 
@@ -388,11 +387,14 @@ public interface D {
 			" WHERE news_brd_content LIKE ?";
 		
 		// 뉴스 검색 결과 정렬
-		public static final String SQL_ORDER_BY_NEWS_BRD_UID = 
-			" ORDER BY news_brd_uid DESC";
+		public static final String SQL_ORDER_BY_NEWS_BRD_UID_DESC = 
+				" ORDER BY news_brd_uid DESC";
 		
-		public static final String SQL_ORDER_BY_NEWS_BRD = 
-				" ORDER BY ? ?";
+		public static final String SQL_ORDER_BY_NEWS_BRD_UID_ASC = 
+				" ORDER BY news_brd_uid ASC";
+		
+		public static final String SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC = 
+				" ORDER BY news_brd_viewcnt ASC";
 		
 		public static final String SQL_COUNT_NEWS_BRD =
 				"SELECT COUNT(*) FROM news_brd";

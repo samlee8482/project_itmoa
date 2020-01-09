@@ -43,10 +43,6 @@ public class AdminReviewDAO {
 		if(conn != null) conn.close();
 	}
 	
-	
-	
-	
-	
 	// ResultSet --> DTO 배열로 변환 리턴
 	public ReviewDTO [] createReviewArray(ResultSet rs) throws SQLException {
 		
@@ -159,14 +155,12 @@ public class AdminReviewDAO {
 			if(keyword != null && !keyword.equals("")) {
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectReview);
-				pstmt.setString(1, keyword);
-			}else { 
+				if (setStr1 == 1) pstmt.setString(setStr1, keyword); 
+			} else { 
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectReview);
 			}
 
-			pstmt = conn.prepareStatement(selectReview);
-			if (setStr1 == 1) pstmt.setString(setStr1, keyword); 
 			System.out.println(pstmt);
 			rs = pstmt.executeQuery();
 			arr = createReviewArray(rs);

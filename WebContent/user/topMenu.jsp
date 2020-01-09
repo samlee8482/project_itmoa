@@ -55,21 +55,10 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html">메인</a></li>
-					<li><a href="portfolio copy 4.html">국비</a></li>
-					<li><a href="portfolio copy 4.html">정규</a></li>
-					<li><a href="portfolio copy 4.html">단과</a></li>
-					<!-- <li><a href="blog.html">커뮤니티</a></li>-->
-					<li><a href="contact-us.html">Contact</a></li>
-					<li class="dropdown active"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown">커뮤니티 <i
-							class="icon-angle-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="blog copy 2.html">it뉴스</a></li>
-							<li><a href="blog copy 3.html">리뷰게시판</a></li>
-							<li><a href="blog copy 4.html">Project Single</a></li>
-						</ul></li>
-					<li><span class="search-trigger"><i
-							class="fa fa-search"></i></span></li>
+					<li><a href="/Project_itmoa/user/insList.do">학원 찾기</a></li>
+					<li><a href="/Project_itmoa/user/reviewList.do">학원 후기</a></li>
+					<li><a href="/Project_itmoa/user/newsList.do">IT News</a></li>
+					<li><span class="search-trigger"><i class="fa fa-search"></i></span></li>
 				</ul>
 			</div>
 		</div>

@@ -65,52 +65,39 @@ public class AdminNewsDAO {
 		NewsDTO[] arr = null;
 		String SELECT_NEWS_BRD = D.SQL_SELECT_NEWS_BRD;
 		
-		int setStr1 = 0;
+		int setStr1 = 1;
 		
 		switch(option_news_2) {
 		case 1:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
-			setStr1 = 1;
 			break;
 		case 2:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
-			setStr1 = 1;
 			break;
 		case 3:
 			SELECT_NEWS_BRD += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
-			setStr1 = 1;
 			break;
 		case 4:
+			setStr1 = 0;
 			break;
 		}
 		
-		SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD;
-		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SELECT_NEWS_BRD);
 			option_news_3 = "%" + option_news_3 + "%";
-			if (setStr1 == 1) pstmt.setString(setStr1, option_news_3);
 			switch(option_news_1) {
 			case 1: // 최근순
-				if (setStr1 == 1) {
-					pstmt.setString(2, "news_brd_uid");
-					pstmt.setString(3, "DESC");
-				} else {
-					pstmt.setString(1, "news_brd_uid");
-					pstmt.setString(2, "DESC");
-				}
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_ASC;
 				break;
 			case 2: // 오래된 순
-					pstmt.setString(2, "news_brd_uid");					
-					pstmt.setString(3, "ASC");					
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 				break;
 			case 3: // 조회수 순
-				pstmt.setString(2, "news_brd_viewcnt");					
-				pstmt.setString(3, "DESC");					
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC;
 				break;
 			}
-			System.out.println(pstmt);
+			pstmt = conn.prepareStatement(SELECT_NEWS_BRD);
+			if (setStr1 == 1) pstmt.setString(setStr1, option_news_3);
 			rs = pstmt.executeQuery();
 			arr = createNewsArr(rs);
 		} catch (SQLException e) {

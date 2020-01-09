@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -95,6 +96,9 @@
                                     	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
                                     		후기 수정
                                     	</button>
+                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+                                    		후기 삭제
+                                    	</button>
                                     </h3>
                                     <div class="entry-meta">
                                         <span><i class="fa fa-user"></i> <a href="#"> ${reviewView[0].review_brd_viewcnt }</a></span>
@@ -111,9 +115,12 @@
                                                 <div class="media-heading">
                                                     <strong>사용자 이름</strong>
                                                 </div>
-                                                <form>
-	                                                <textarea style="width: 100%"></textarea>
-	                                                <button type="submit" style="float: right">댓글 작성</button>                                                
+                                                <form method="get" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
+                                                	<input type="hidden" name="ifNew" value="true" />
+                                                	<input type="hidden" name="mb_uid" value="1" />
+                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
+	                                                <textarea style="width: 100%; resize: none;" name="rep_content"></textarea>
+	                                                <button type="submit" style="float: right">댓글 작성</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -121,23 +128,49 @@
 
                                     <div id="comments">
                                         <div id="comments-list">
-                                            <h3>3 Comments</h3>
-		                        			<c:forEach var="dto" items="${repView }" varStatus="status">
-	                                            <div class="media">
-	                                                <div class="pull-left">
-	                                                    <img class="avatar img-thumbnail comment-avatar" src="http://placehold.it/400x400" alt="">
-	                                                </div>
-	                                                <div class="media-body">
-	                                                    <div class="well">
-	                                                        <div class="media-heading">
-	                                                            <strong>${dto.mb_id }</strong>&nbsp; <small>30th Jan, 2014</small>
-	                                                        </div>
-	                                                        <p>${dto.rep_content }</p>
-	                                                    </div>
-	                                                </div>
-	                                            </div><!--/.media-->
-	                                    	</c:forEach>
+                                            <c:choose>
+	                                           	<c:when test="${rep == 1 }">
+                                     				<h3>${fn:length(repView) } Comments</h3>
+				                        			<c:forEach var="dto" items="${repView }" varStatus="status">
+			                                            <div class="media">
+			                                                <div class="pull-left">
+			                                                    <img class="avatar img-thumbnail comment-avatar" src="http://placehold.it/400x400" alt="">
+			                                                </div>
+			                                                <div class="media-body">
+			                                                    <div class="well">
+			                                                    	<form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()" style="text-align: left">
+					                                                	<input type="hidden" name="ifNew" value="false" />
+					                                                	<input type="hidden" name="mb_uid" value="1" />
+					                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
+					                                                	<input type="hidden" name="rep_uid" value="${dto.rep_uid }" />
+				                                                    	<div class="media-heading">
+				                                                        	<span>
+				                                                        		<strong>${dto.mb_id }</strong>&nbsp; <small>${dto.rep_regdate }</small>
+				                                                        	</span>
+				                                                            <button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">
+				                                                            	댓글 수정
+				                                                            </button>
+				                                                            <button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${dto.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">
+				                                                        		댓글 삭제
+				                                                        	</button>
+				                                                        </div>
+				                                                        <span class="rep_content">
+					                                                        <p>${dto.rep_content }</p>			                                                        
+				                                                        </span>
+				                                                        <span class="submit">
+				                                                        	<button type="submit" style="display: none;">수정 완료</button>
+				                                                        </span>
+				                                                	</form>
+			                                                    </div>
+			                                                </div>
+			                                            </div><!--/.media-->
+			                                    	</c:forEach>
+			                                    </c:when>
+			                            	</c:choose>
                                         </div><!--/#comments-list-->
+                                        <button type="button" onclick="location.href='/Project_itmoa/user/reviewList.do'">
+											목록으로
+                                        </button>
                                         <div class="gap"></div>
                                 	</div>
                                 </div>
@@ -227,5 +260,25 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/init.js"></script>
+    
+    <script>
+    	function repUpdate(rep_uid) {
+    		var rep_content = $(".well > form > span > p").eq(rep_uid).text();
+    		$(".repUpdateButton").css("display", "none");
+    		$(".well > form > span[class='rep_content']").eq(rep_uid).html("<textarea name='rep_content' style='resize: none;'>" + rep_content + "</textarea>");
+    		$(".well > form > span[class='submit'] > button").eq(rep_uid).css("display", "block");
+    	}
+    	
+    	function chkSubmit() {
+    		var keyword = $("textarea[name='rep_content']").val().length;
+			if(keyword > 0) {
+				return true;
+			}
+			
+			alert("댓글을 입력하세요");
+			return false;
+    	}
+    </script>
+    
 </body>
 </html>

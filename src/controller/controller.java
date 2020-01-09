@@ -40,7 +40,6 @@ import command.NewsListCommand;
 import command.NewsViewCommand;
 import command.RepDeleteOkCommand;
 import command.RepUpdateOkCommand;
-import command.RepWriteOkCommand;
 import command.ReserveOkCommand;
 import command.ReviewDeleteOkCommand;
 import command.ReviewListCommand;
@@ -201,14 +200,10 @@ public class controller extends HttpServlet {
 
 //		- 댓글
 // 		* 댓글 불러오기는 jQuery .click() 함수로 대체
-		case "/user/repWriteOk.do":  // 댓글 작성 (체크)
-			command = new RepWriteOkCommand();
-			command.execute(request, response);
-			viewPage = "repDeleteOk.jsp";
 		case "/user/repUpdateOk.do":  // 댓글 수정 (체크)
 			command = new RepUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "repDeleteOk.jsp";
+			viewPage = "repUpdateOk.jsp";
 			break;
 		case "/user/repDeleteOk.do":  // 댓글 삭제 (체크)
 			command = new RepDeleteOkCommand();

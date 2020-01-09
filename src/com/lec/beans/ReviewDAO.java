@@ -235,21 +235,8 @@ public class ReviewDAO {
    
 
    // 학원후기 삽입
-   // 1.
-   public int insertReview(ReviewDTO dto) throws SQLException, NamingException {
-      int mb_uid = dto.getMb_uid();
-      String mb_id = dto.getMb_id();
-      String mb_img = dto.getMb_img();
-      String review_brd_title = dto.getReview_brd_title();
-      String review_brd_content = dto.getReview_brd_content();
-      String review_brd_regdate = dto.getReview_brd_regdate();
-      
-      return this.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content);
-   }
-   
-   
-   // 1-1.
-   public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content) throws SQLException, NamingException{
+   // 1
+   public int insertReview(int mb_uid, int class_uid, String review_brd_title, String review_brd_content) throws SQLException, NamingException{
 
       int cnt = 0;
       
@@ -257,10 +244,9 @@ public class ReviewDAO {
     	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_INSERT_REVIEW);
          pstmt.setInt(1, mb_uid);
-         pstmt.setString(2, mb_id);
-         pstmt.setString(3, mb_img);
-         pstmt.setString(4, review_brd_title);
-         pstmt.setString(5, review_brd_content);
+         pstmt.setInt(2, class_uid);
+         pstmt.setString(3, review_brd_title);
+         pstmt.setString(4, review_brd_content);
          cnt = pstmt.executeUpdate();
       } finally {
          close();
@@ -272,22 +258,15 @@ public class ReviewDAO {
 
    // 댓글
    // 1. 댓글 삽입
-   public int insertRep(ReviewDTO dto) throws SQLException, NamingException {
-      int mb_uid = dto.getMb_uid();
-      String rep_content = dto.getRep_content();
-      
-      return this.insertRep(mb_uid, rep_content);
-   }
-   
-   // 1-1.
-   public int insertRep(int mb_uid, String rep_content) throws SQLException, NamingException{
+   public int insertRep(int mb_uid, int review_brd_uid, String rep_content) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
     	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_INSERT_REP);
          pstmt.setInt(1, mb_uid);
-         pstmt.setString(2, rep_content);
+         pstmt.setInt(2, review_brd_uid);
+         pstmt.setString(3, rep_content);
          cnt = pstmt.executeUpdate();
       } finally {
          close();
@@ -301,7 +280,7 @@ public class ReviewDAO {
       int cnt = 0;
       
       try {
-    	  conn = getConnection();
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_UPDATE_REP_BY_UID);
          pstmt.setString(1, rep_content);
          pstmt.setInt(2, rep_uid);
@@ -319,7 +298,7 @@ public class ReviewDAO {
       int cnt = 0;
       
       try {
-    	  conn = getConnection();
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_DELETE_REP_BY_UID);
          pstmt.setInt(1, rep_uid);
          cnt = pstmt.executeUpdate();
@@ -339,10 +318,14 @@ public class ReviewDAO {
       while(rs.next()){
 
          int review_brd_uid = rs.getInt("review_brd_uid");
+         int rep_uid = rs.getInt("rep_uid");
          String mb_id = rs.getString("mb_id");
          String rep_content = rs.getString("rep_content");
+	     Date d = rs.getDate("rep_regdate");
+	     Time t = rs.getTime("rep_regdate");
+	     String rep_regdate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " | " + new SimpleDateFormat("hh:mm:ss").format(t);
          
-         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, rep_content);
+         ReviewDTO dto = new ReviewDTO(review_brd_uid, rep_uid, mb_id, rep_content, rep_regdate);
          reviewList.add(dto);         
       }
       
@@ -359,18 +342,14 @@ public class ReviewDAO {
       
       ReviewDTO[] arr = null;
       
-      
       try {
-    	  conn = getConnection();
+    	 conn = getConnection();
 		 conn.setAutoCommit(false);
 		 
          pstmt = conn.prepareStatement(D.SQL_SELECT_REP_BY_UID);
          pstmt.setInt(1, review_brd_uid);
          rs = pstmt.executeQuery();
-		 pstmt.close();
-		 
          arr = createRepArray(rs);
-         
 		 conn.commit();
       } finally {
          close();
