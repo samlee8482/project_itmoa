@@ -40,6 +40,20 @@
 				"port": "3306",
 				"database": "itmoa",
 				"url": "jdbc:mysql://localhost:3306/itmoa",
+				"type": "dev"
+			}
+		},
+		"mariaDB-16f86a5160a-72dd0a0f8d3b9c89": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - itmoa 4",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "itmoa",
+				"url": "jdbc:mysql://localhost:3306/itmoa",
 				"type": "dev",
 				"handlers": {}
 			}

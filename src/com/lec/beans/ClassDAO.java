@@ -1,6 +1,5 @@
 package com.lec.beans;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,7 +21,7 @@ public class ClassDAO {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminReview 객체 생성, 데이터베이스 연결");
+			System.out.println("ClassDAO 객체 생성, 데이터베이스 연결");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -32,14 +31,11 @@ public class ClassDAO {
 
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
-		if (rs != null)
-			rs.close();
-		if (pstmt != null)
-			pstmt.close();
-		if (stmt != null)
-			stmt.close();
-		if (conn != null)
-			conn.close();
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(stmt != null) stmt.close();
+		if(conn != null) conn.close();
+
 	}
 
 	
@@ -477,5 +473,30 @@ public class ClassDAO {
 			return arr;
 		}
 
+		
+		
+		public ClassDTO[] selectClassList() throws SQLException{
+
+			ClassDTO [] arr = null;
+			String selectClass = D.SQL_SELECT_CLASS;
+		
+			
+			try {
+				
+				selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+				pstmt = conn.prepareStatement(selectClass);
+					
+				rs = pstmt.executeQuery();
+				arr = createClassArray(rs);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			
+			return arr;
+		}
 	
 }

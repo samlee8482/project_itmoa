@@ -156,7 +156,7 @@
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-								<img src="${dto.ins_img }" alt="">
+								<img src="" alt="">
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.class_zzimcnt }</h5>
@@ -186,7 +186,7 @@
     
     <!-- 지역에 따른 지점 출력 함수 -->
 	<script>
-	$(document).ready(function changeBranchSelect(){
+	function changeBranchSelect(){
 	   $('#option_location').on('change', function(){
 		
 		   var select = document.getElementById("option_location");
@@ -216,15 +216,14 @@
 		   }
 
 		   $('#option_branch').html(selected_location);
-		  
-
+		 
 	   });
 	  
-	});
+	};
 
 	
 	
-	  $(document).ready(function show(){
+	 function show(){
 		
 		  $('#curName').on('click', function(){
 			  
@@ -241,16 +240,15 @@
 			  
 			  alert(option_location+ " " + option_branch + " " +option_curName);
 			  
-			  var url = 'classList.jsp?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
 			  
-			  window.location.href = "/Project_itmoa/user/"+url;
+			  var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
+			  
+			  window.location.href = url;
 
 			  
-			  
 		  });
-			
-		 
-	  });
+
+	  };
 	
 	</script>
 </body>

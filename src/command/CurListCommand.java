@@ -12,29 +12,43 @@ public class CurListCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		String option_location = request.getParameter("option_location");
-		String option_branch = request.getParameter("option_branch");
-		String option_curName = request.getParameter("option_curName");
-		
 
 		ClassDAO dao = new ClassDAO();
-		
 		ClassDTO [] arr = null;
-
 		
-		try {
-			
-			arr = dao.selectClassList(option_location, option_branch, option_curName);	
-			request.setAttribute("classList", arr);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
-
+//		String option_location = request.getParameter("option_location");
+//		String option_branch = request.getParameter("option_branch");
+//		String option_curName = request.getParameter("option_curName");
+//
+//		
+//		
+//		if(!option_location.equals("") && !option_branch.equals("") && !option_curName.equals("") 
+//				&& option_location != null  && option_branch != null && option_curName != null ) {
+//			try {
+//				
+//				arr = dao.selectClassList(option_location, option_branch, option_curName);	
+//				request.setAttribute("classList", arr);
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		
+//		}else {
+			try {
+				
+				arr = dao.selectClassList();	
+				request.setAttribute("classList", arr);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+//		}
 		
 		
 	}
+	
+	
 
 }
