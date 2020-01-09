@@ -1,6 +1,5 @@
 package com.lec.beans;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import common.D;
 
@@ -18,28 +22,25 @@ public class ClassDAO {
 	Statement stmt;
 	ResultSet rs;
 
-	public ClassDAO() {
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminReview 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
+		
+		return ds.getConnection();
+
 	}
+	
+	
 
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
-		if (rs != null)
-			rs.close();
-		if (pstmt != null)
-			pstmt.close();
-		if (stmt != null)
-			stmt.close();
-		if (conn != null)
-			conn.close();
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(stmt != null) stmt.close();
+		if(conn != null) conn.close();
+
 	}
 
 	
@@ -78,6 +79,7 @@ public class ClassDAO {
 
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
+			conn = getConnection();
 			pstmt = conn.prepareStatement(selectCur);
 			rs = pstmt.executeQuery();
 			arr = createClassArray(rs);
@@ -291,10 +293,11 @@ public class ClassDAO {
 
 	
 	
-	public ClassDTO[] selectClassByUid(int class_uid) throws SQLException {
+	public ClassDTO[] selectClassByUid(int class_uid) throws SQLException, NamingException {
 		ClassDTO[] arr = null ;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID);
 			pstmt.setInt(1, class_uid);
 			rs = pstmt.executeQuery();
@@ -310,10 +313,11 @@ public class ClassDAO {
 	
 	
 	
-	public int updateMemberByUid(int mb_uid) throws SQLException {
+	public int updateMemberByUid(int mb_uid) throws SQLException, NamingException {
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_MB_LEVEL);
 			pstmt.setInt(1, mb_uid);
 			cnt = pstmt.executeUpdate();
@@ -328,10 +332,11 @@ public class ClassDAO {
 	
 	
 	
-	public int insertZZim(int mb_uid, int class_uid) throws SQLException {
+	public int insertZZim(int mb_uid, int class_uid) throws SQLException, NamingException {
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_INSERT_ZZIM);
 			pstmt.setInt(1, mb_uid);
 			pstmt.setInt(2, class_uid);
@@ -345,10 +350,11 @@ public class ClassDAO {
 		return cnt;
 	}
 	
-	public int deleteZZim(int zzim_uid) throws SQLException {
+	public int deleteZZim(int zzim_uid) throws SQLException, NamingException {
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_DELETE_ZZIM);
 			pstmt.setInt(1, zzim_uid);
 			cnt = pstmt.executeUpdate();
@@ -422,17 +428,20 @@ public class ClassDAO {
 				switch(option) {
 				case 1:
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					break;
 				case 2:
 					selectClass += D.SQL_SELECT_CLASS_WHERE_CUR_NAME;
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					pstmt.setString(1, option_curName);
 					break;
 				case 3:
 					selectClass += D.SQL_SELECT_CLASS_WHERE_INS_LOCATION; 
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					pstmt.setString(1, option_location);
 					break;
@@ -440,6 +449,7 @@ public class ClassDAO {
 					selectClass += D.SQL_SELECT_CLASS_WHERE_INS_LOCATION;
 					selectClass += D.SQL_SELECT_CLASS_WHERE_CUR_NAME;
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					pstmt.setString(1, option_location);
 					pstmt.setString(2, option_curName);
@@ -448,6 +458,7 @@ public class ClassDAO {
 					selectClass += D.SQL_SELECT_CLASS_WHERE_INS_LOCATION;
 					selectClass += D.SQL_SELECT_CLASS_WHERE_INS_BRANCH; 
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					pstmt.setString(1, option_location);
 					pstmt.setString(2, option_branch);
@@ -457,13 +468,13 @@ public class ClassDAO {
 					selectClass += D.SQL_SELECT_CLASS_WHERE_INS_BRANCH; 
 					selectClass += D.SQL_SELECT_CLASS_WHERE_CUR_NAME;
 					selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+					conn = getConnection();
 					pstmt = conn.prepareStatement(selectClass);
 					pstmt.setString(1, option_location);
 					pstmt.setString(2, option_branch);
 					pstmt.setString(3, option_curName);
 					break;
 				}
-				
 
 				rs = pstmt.executeQuery();
 				arr = createClassArray(rs);
@@ -478,5 +489,31 @@ public class ClassDAO {
 			return arr;
 		}
 
+		
+		
+		public ClassDTO[] selectClassList() throws SQLException{
+
+			ClassDTO [] arr = null;
+			String selectClass = D.SQL_SELECT_CLASS;
+		
+			
+			try {
+				
+				selectClass += D.SQL_ORDER_CLASS_UID; //정렬
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectClass);
+					
+				rs = pstmt.executeQuery();
+				arr = createClassArray(rs);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			
+			return arr;
+		}
 	
 }

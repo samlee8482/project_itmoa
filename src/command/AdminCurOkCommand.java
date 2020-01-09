@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,6 +34,8 @@ public class AdminCurOkCommand implements Command {
 			try {
 				dao.insertCur(ins_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
 				request.setAttribute("adminCurOk", cnt);
+			}  catch (NamingException e) {
+				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

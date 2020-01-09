@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class NewsDAO {
@@ -17,16 +22,12 @@ public class NewsDAO {
 	Statement stmt;
 	ResultSet rs;
 	
-	public NewsDAO() {
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("NewsDAO() 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
+		
+		return ds.getConnection();
 	}
 	
 	// DB 자원 반납 메소드
@@ -62,7 +63,7 @@ public class NewsDAO {
 	}
 	
 	// 1-2.
-	public NewsDTO[] selectNewsList(String option_news, String keyword) throws SQLException {
+	public NewsDTO[] selectNewsList(String option_news, String keyword) throws SQLException, NamingException {
 		
 		NewsDTO [] arr = null;
 		String selectNews = D.SQL_SELECT_NEWS_BRD;
@@ -75,20 +76,32 @@ public class NewsDAO {
 				switch(option_news) {
 					case "1": 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+						selectNews += "'%";
+						selectNews += keyword;
+						selectNews += "%'";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
 						break;
+						
 					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+						selectNews += "'%";
+						selectNews += keyword;
+						selectNews += "%'";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
 						break;
 					case "3":
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 				}
 				rs = pstmt.executeQuery();
@@ -101,10 +114,11 @@ public class NewsDAO {
 		return arr;
 	}
 	
-	public int countNews() throws SQLException {
+	public int countNews() throws SQLException, NamingException {
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_COUNT_NEWS_BRD);
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -141,11 +155,12 @@ public class NewsDAO {
 	}
 	
 	// 2-1. 특정 학원후기 불러오기 (조회수 증가o) news_brd_uid로 review
-	public NewsDTO[] selectNewsByUid(int news_brd_uid) throws SQLException{
+	public NewsDTO[] selectNewsByUid(int news_brd_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		NewsDTO[] arr = null;
 		
 		try {
+			conn = getConnection();
 			conn.setAutoCommit(false);
 			
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_NEWS_BRD_INC_VIEWCNT);
@@ -171,11 +186,12 @@ public class NewsDAO {
 	}
 	
 	// 2-2. 특정 학원후기 불러오기 (조회수 증가x)
-	public NewsDTO[] readNewsByUid(int news_brd_uid) throws SQLException {
+	public NewsDTO[] readNewsByUid(int news_brd_uid) throws SQLException, NamingException {
 		NewsDTO [] arr = null;
 		
 		try {
 			// 트랜잭션 처리
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_NEWS_BRD_CONTENT);
 			pstmt.setInt(1, news_brd_uid);
 			rs = pstmt.executeQuery();

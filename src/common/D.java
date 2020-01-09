@@ -13,7 +13,7 @@ public interface D {
 	
 	// 로그인
 	public static final String SQL_SELECT_LOGIN =
-			"SELECT mb_uid, mb_id,  mb_pw, mb_level, mb_img FROM mb WHERE id = ? AND pw = ?";
+			"SELECT mb_uid, mb_id,  mb_pw, mb_level, mb_img FROM mb WHERE mb_id = ? AND mb_pw = ?";
 
 	// 로그인 확인
 //	public static final String SQL_SELECT_LOGINOK =
@@ -33,6 +33,8 @@ public interface D {
 	public static final String SQL_SELECT_FIND_ACCOUNT_PWD =
 			"SELECT mb_id, mb_name, mb_email FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
 
+	
+	
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
 		"SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name"

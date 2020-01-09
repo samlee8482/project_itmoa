@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,6 +23,8 @@ public class AdminCurListCommand implements Command {
 			try {
 				curArr = dao.selectInsList(option_ins, keyword);
 				request.setAttribute("adminCurList",curArr);
+			} catch (NamingException e) {
+				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

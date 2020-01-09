@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,6 +30,9 @@ public class ReviewWriteOkCommand implements Command {
 				cnt = dao.insertReview(mb_uid, mb_id, mb_img, review_brd_title, review_brd_content);
 				request.setAttribute("reviewDeleteOk", cnt);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

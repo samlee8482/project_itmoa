@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +14,7 @@ public class AdminInsListCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		
+
 		int option = Integer.parseInt(request.getParameter("option"));
 		String keyword = request.getParameter("keyword");
 		
@@ -22,7 +23,7 @@ public class AdminInsListCommand implements Command {
 		ClassDTO [] arr = null;
 		
 		
-		if(keyword.equals("") || keyword == null ) { option = 4; }  // keyword 빈값이면 4, 전체 
+		if(keyword.equals("") || keyword == null ) { option = 4; }  
 		
 		
 		try {
@@ -31,6 +32,8 @@ public class AdminInsListCommand implements Command {
 			request.setAttribute("adminInsList", arr);
 			
 			
+		} catch (NamingException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

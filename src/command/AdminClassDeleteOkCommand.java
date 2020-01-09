@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +21,9 @@ public class AdminClassDeleteOkCommand implements Command {
 		try {			
 			cnt = dao.deleteClassByUid(class_uid);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

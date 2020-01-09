@@ -3,6 +3,7 @@ package command;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -52,16 +53,18 @@ public class JoinOkCommand implements Command {
 		try {
 			if(idMatches && pwMatches && emailMatches) {
 				cnt = dao.join(mb_name, mb_id, mb_pwOk, mb_email, mb_zip, mb_add1, mb_add2);
-				if(cnt >= 0) {
-					request.setAttribute("joinOk", cnt);
-				}
 			} else {
 				System.out.println("정규표현식 매치 안됨 " + idMatches + " : " + pwMatches + " : " + emailMatches);
+				System.out.println(cnt);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+		request.setAttribute("joinOk", cnt);
 
 	}
 

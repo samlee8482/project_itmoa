@@ -42,23 +42,7 @@
             "http://placehold.it/800x600"
         ], {duration: 5000, fade: 500});
 
-        $("#mapwrapper").gMap({ controls: false,
-            scrollwheel: false,
-            markers: [{
-                latitude:40.7566,
-                longitude: -73.9863,
-            icon: { image: "images/marker.png",
-                iconsize: [44,44],
-                iconanchor: [12,46],
-                infowindowanchor: [12, 0] } }],
-            icon: {
-                image: "images/marker.png",
-                iconsize: [26, 46],
-                iconanchor: [12, 46],
-                infowindowanchor: [12, 0] },
-            latitude:40.7566,
-            longitude: -73.9863,
-            zoom: 14 });
+        $("#mapwrapper").gMap({ controls: false,  scrollwheel: false, markers: [{ latitude:40.7566, longitude: -73.9863, icon: { image: "images/marker.png", iconsize: [44,44], iconanchor: [12,46], infowindowanchor: [12, 0] } }], icon: {image: "images/marker.png",iconsize: [26, 46], iconanchor: [12, 46],  infowindowanchor: [12, 0] }, latitude:40.7566, longitude: -73.9863, zoom: 14 });
     });
     
     </script>
@@ -143,24 +127,24 @@
 				
 				
 				<ul class="portfolio-filter fade-down center">
-					<li><a id="curName" class="btn btn-outlined btn-primary active" href="#"
-						data-filter="*" onclick="show()">전체과정</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".bootstrap">웹앱</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".html">보안</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".wordpress">네트워크</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">AI</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">디자인</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">영상</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">빅데이터</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">게임</a></li>
+					<li><a class="curName btn btn-outlined btn-primary active" href="#"
+						onclick="show()">전체과정</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">웹앱</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">보안</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">네트워크</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">AI</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">디자인</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">영상</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">빅데이터</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">게임</a></li>
 
 				</ul>
 				<!--/#portfolio-filter-->
@@ -172,7 +156,7 @@
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-								<img src="${dto.ins_img }" alt="">
+								<img src="${dto.ins_img}" alt="">
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.class_zzimcnt }</h5>
@@ -202,7 +186,7 @@
     
     <!-- 지역에 따른 지점 출력 함수 -->
 	<script>
-	$(document).ready(function changeBranchSelect(){
+	function changeBranchSelect(){
 	   $('#option_location').on('change', function(){
 		
 		   var select = document.getElementById("option_location");
@@ -232,20 +216,18 @@
 		   }
 
 		   $('#option_branch').html(selected_location);
-		  
-
+		 
 	   });
 	  
-	});
+	};
 
 	
 	
-	  $(document).ready(function show(){
+	 function show(){
 		
-		  $('#curName').on('click', function(){
+		  $('.curName').on('click', function(){
 			  
-			
-			  
+
 			  var option_location = document.getElementById("option_location");
 			  option_location = option_location.options[option_location.selectedIndex].value;
 			  
@@ -257,15 +239,15 @@
 			  
 			  alert(option_location+ " " + option_branch + " " +option_curName);
 			  
-			  var url = 'classList.jsp?option_location=' + encodeURI(option_location) + '&?option_branch=' + encodeURI(option_branch) + '&?option_curName=' + encodeURI(option_curName);
+			  
+			  var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
+			  
 			  window.location.href = url;
 
-			 
 			  
 		  });
-			
-		 
-	  });
+
+	  };
 	
 	</script>
 </body>
