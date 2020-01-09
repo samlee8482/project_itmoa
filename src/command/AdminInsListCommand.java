@@ -13,7 +13,7 @@ public class AdminInsListCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		
+
 		int option = Integer.parseInt(request.getParameter("option"));
 		String keyword = request.getParameter("keyword");
 		
@@ -22,7 +22,7 @@ public class AdminInsListCommand implements Command {
 		ClassDTO [] arr = null;
 		
 		
-		if(keyword.equals("") || keyword == null ) { option = 4; }  // keyword 빈값이면 4, 전체 
+		if(keyword.equals("") || keyword == null ) { option = 4; }  
 		
 		
 		try {

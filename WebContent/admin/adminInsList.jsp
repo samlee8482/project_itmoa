@@ -97,14 +97,14 @@
 								<div class="card-body">
 								<form action="adminInsList.do" method="get">
 								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-								<select name="option_ins">
+								<select id="option">
 										<!-- 값 입력 없으면 전체검색이쥬 -->
-										<option value="1">학원명</option>
-										<option value="2">학원코드</option>
-									</select>
-								<input type="text" name="keyword" value="" ></input>
-								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50">검색</span></a>
-								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50">학원등록</span></a>
+										<option value="학원명">학원명</option>
+										<option value="학원코드">학원코드</option>
+								</select>
+								<input type="text" id="keyword" value="" ></input>
+								<a id="searchbtn" class="btn btn-info btn-icon-split" onclick="show()"><span class="icon text-white-100">검색</span></a>
+								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
 								</form>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
@@ -222,6 +222,43 @@
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
 
+
+
+
+
+
+   <!-- 지역에 따른 지점 출력 함수 -->
+	<script>
+	
+	 function show(){
+		
+		  $('#searchbtn').on('click', function(){
+
+			  
+			  var option = document.getElementById("option");
+			  option = option.options[option.selectedIndex].value;
+			
+			  
+			  var keyword = document.getElementById("keyword").value; 
+			  
+			  
+			  if(keyword !== "" && keyword != null){
+				  alert(option + " " + keyword );
+			  }else{
+				  
+			  }
+			  
+			  
+			 // var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
+			  
+			  //window.location.href = url;
+
+			  
+		  });
+
+	  };
+	
+	</script>
 </body>
 
 </html>

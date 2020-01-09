@@ -127,23 +127,23 @@
 				
 				
 				<ul class="portfolio-filter fade-down center">
-					<li><a class="curName" class="btn btn-outlined btn-primary active" href="#"
+					<li><a class="curName btn btn-outlined btn-primary active" href="#"
 						onclick="show()">전체과정</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">웹앱</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">보안</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">네트워크</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">AI</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">디자인</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">영상</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">빅데이터</a></li>
-					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
 						onclick="show()">게임</a></li>
 
 				</ul>
@@ -156,7 +156,7 @@
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-								<img src="" alt="">
+								<img src="${dto.ins_img}" alt="">
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.class_zzimcnt }</h5>
@@ -227,8 +227,7 @@
 		
 		  $('.curName').on('click', function(){
 			  
-			
-			  
+
 			  var option_location = document.getElementById("option_location");
 			  option_location = option_location.options[option_location.selectedIndex].value;
 			  
