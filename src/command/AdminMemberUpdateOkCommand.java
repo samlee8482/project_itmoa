@@ -5,18 +5,19 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.beans.AdminNewsDAO;
+import com.lec.beans.AdminMbDAO;
 
-public class AdminNewsUpdateOkCommand implements Command {
+public class AdminMemberUpdateOkCommand implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	
 		boolean ifNew = Boolean.parseBoolean(request.getParameter("ifNew"));
 		String news_brd_title = request.getParameter("news_brd_title");
 		String news_brd_content = request.getParameter("news_brd_content");
 		String news_brd_img = request.getParameter("news_brd_img");
 		
-		AdminNewsDAO dao = new AdminNewsDAO();
+		AdminMbDAO dao = new AdminMbDAO();
 		int cnt = 0;
 		if (ifNew) {
 			if (news_brd_title != null && !news_brd_title.trim().equals("")

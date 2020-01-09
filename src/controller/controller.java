@@ -17,6 +17,7 @@ import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
 import command.AdminInsOkCommand;
 import command.AdminInsViewCommand;
+import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
 import command.AdminMemberOkCommand;
 import command.AdminMemberViewCommand;
@@ -230,8 +231,9 @@ public class controller extends HttpServlet {
 			
 //		관리자
 //		- 회원관리
-		case "/adminMemberList.do":  // 관리자 회원 리스트 출력
+		case "/admin/adminMemberList.do":  // 관리자 회원 리스트 출력
 			command = new AdminMemberListCommand();
+			command.execute(request, response);
 			viewPage = "adminMemberList.jsp";
 			break;
 //		* 검색 조건 추가는 adminMemberList.do 뒤에 쿼리 추가해서 다시 request
@@ -245,7 +247,11 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminMemberOk.jsp";
 			break;
-		
+		case "/admin/adminMemberDeleteOk.do":
+			command = new AdminMemberDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminMemberDeleteOk.jsp";
+			break;
 //		- 학원관리
 		case "/adminInsList.do":  // 관리자 학원 리스트 출력. 관리자페이지 초기화면
 			command = new AdminInsListCommand();

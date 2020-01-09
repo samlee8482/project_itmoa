@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>JOIN</title>
-<<<<<<< HEAD
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
@@ -25,9 +24,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
 
-=======
-   
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 </head><!--/head-->
 <body>
 
