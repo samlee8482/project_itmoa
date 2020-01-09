@@ -19,7 +19,7 @@ import command.AdminInsOkCommand;
 import command.AdminInsViewCommand;
 import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
-import command.AdminMemberOkCommand;
+import command.AdminMemberUpdateOkCommand;
 import command.AdminMemberViewCommand;
 import command.AdminNewsDeleteOkCommand;
 import command.AdminNewsFileUploadCommand;
@@ -232,10 +232,10 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminMemberUpdateView.jsp";
 			break;
-		case "/admin/adminMemberOk.do":  // 관리자 회원 상세 정보 수정 (체크)
-			command = new AdminMemberOkCommand();
+		case "/admin/adminMemberUpdateOk.do":  // 관리자 회원 상세 정보 수정 (체크)
+			command = new AdminMemberUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "adminMemberOk.jsp";
+			viewPage = "adminMemberUpdateOk.jsp";
 			break;
 		case "/admin/adminMemberDeleteOk.do":
 			command = new AdminMemberDeleteOkCommand();
