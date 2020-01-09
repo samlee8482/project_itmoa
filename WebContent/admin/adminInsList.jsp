@@ -95,6 +95,17 @@
 									<h6 class="m-0 font-weight-bold text-primary">.</h6>
 								</div>
 								<div class="card-body">
+								<form action="adminInsList.do" method="get">
+								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
+								<select name="option_ins">
+										<!-- 값 입력 없으면 전체검색이쥬 -->
+										<option value="1">학원명</option>
+										<option value="2">학원코드</option>
+									</select>
+								<input type="text" name="keyword" value="" ></input>
+								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50">검색</span></a>
+								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50">학원등록</span></a>
+								</form>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
@@ -127,231 +138,6 @@
 															class="icon text-white-50"> <i
 																class="fas fa-info-circle"></i>
 														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>2</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>3</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>4</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>5</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>6</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>7</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>8</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>9</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>10</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td style="text-align: center;">
 													<td style="text-align: center;"><a href="#"
 														class="btn btn-danger btn-icon-split"> <span
 															class="icon text-white-50"> <i
