@@ -128,64 +128,64 @@ CREATE TABLE zzim
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (cur_uid)
 	REFERENCES cur (cur_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (ins_uid)
 	REFERENCES ins (ins_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE rep
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
  
  
 ALTER TABLE rep
 	ADD FOREIGN KEY (review_brd_uid)
 	REFERENCES review_brd (review_brd_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 ;
 
 
@@ -193,3 +193,56 @@ ALTER TABLE rep
 
 SELECT * FROM mb;
 
+
+insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
+values ('user1', 'abc123', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');
+insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
+values ('user2', 'bsd912', '이새힘', 'teste@yahoo.com', 03210, '서울시', '관악구');
+insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
+values ('user3', 'dsrrws1', '박지민', 'emmail@gmail.com', 14410, '인천광역시', '팔달구');
+insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
+values ('user4', 'retw_12', '박우람', 'abced@hanmail.net', 01035, '경기도', '평택');
+insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
+values ('user5', '12_dsf', '김민하', 'ddsf133@hanmail.net', 91105, '부천시', '원미구');
+
+
+
+insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
+values ('코리아IT', '02-991-2321', '서울시 관악구', '행복동', '서울', '관악');
+insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
+values ('그린IT', '031-323-3242', '경기도', '부천시', '경기', '부천');
+insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
+values ('비트캠프', '02-542-9422', '서울시 강남구', '서초동', '서울', '강남');
+insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
+values ('KG&G', '02-3238-1299', '서울시 동작구', '노량진동', '서울', '노량진');
+
+
+
+insert into cur (cur_name, cur_months, cur_hours) 
+values ('웹/앱', 3, 210);
+insert into cur (cur_name, cur_months, cur_hours)
+values ('보안', 8, 390);
+insert into cur (cur_name, cur_months, cur_hours) 
+values ('네트워크', 2, 90);
+insert into cur (cur_name, cur_months, cur_hours)
+values ('안드로이드', 1, 40);
+insert into cur (cur_name, cur_months, cur_hours) 
+values ('자바', 6, 400);
+
+
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(1, 1, 10);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(1, 3, 121);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(2, 5, 90);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(2, 3, 430);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(3, 3, 44);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(3, 1, 64);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(4, 5, 4334);
+insert into class(ins_uid, cur_uid, class_zzimcnt)
+values(4, 2, 144);

@@ -63,17 +63,22 @@ public class NewsDAO {
 	}
 	
 	// 1-2.
+<<<<<<< HEAD
 	public NewsDTO[] selectNewsList(int option_news, String keyword) throws SQLException, NamingException {
+=======
+	public NewsDTO[] selectNewsList(String option_news, String keyword) throws SQLException {
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 		
 		NewsDTO [] arr = null;
 		String selectNews = D.SQL_SELECT_NEWS_BRD;
 		
 		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
 		
-		if (option_news > 0
+		if (option_news != null && !option_news.trim().equals("")
 		&& keyword != null && !keyword.trim().equals("")) {
 			try {
 				switch(option_news) {
+<<<<<<< HEAD
 					case 1: 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_UID;
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
@@ -83,29 +88,47 @@ public class NewsDAO {
 						pstmt.setInt(1, keywordInt);
 						break;
 					case 2:
+=======
+					case "1": 
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+<<<<<<< HEAD
 						selectNews += "'%";
 						selectNews += keyword;
 						selectNews += "%'";
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						conn = getConnection();
+=======
+						keyword = "%" + keyword + "%";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 						pstmt = conn.prepareStatement(selectNews);
+						pstmt.setString(1, keyword);
 						break;
-					case 3:
+					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+<<<<<<< HEAD
 						selectNews += "'%";
 						selectNews += keyword;
 						selectNews += "%'";
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						conn = getConnection();
+=======
+						keyword = "%" + keyword + "%";
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 						pstmt = conn.prepareStatement(selectNews);
+						pstmt.setString(1, keyword);
 						break;
+<<<<<<< HEAD
 					case 4:
 						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						conn = getConnection();
+=======
+					case "3":
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 						pstmt = conn.prepareStatement(selectNews);
-					default:
-						break;
 				}
 				rs = pstmt.executeQuery();
 				arr = createNewsArray(rs);

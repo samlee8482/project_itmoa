@@ -15,13 +15,16 @@ public class ReviewViewCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO [] arr = null;
+		ReviewDTO [] arr2 = null;
 		
 		int review_brd_uid = Integer.parseInt(request.getParameter("review_brd_uid"));
 		
 		if (review_brd_uid > 0) {
 			try {
 				arr = dao.readReviewByUid(review_brd_uid);
+				arr2 = dao.selectRepByUid(review_brd_uid);
 				request.setAttribute("reviewView", arr);
+				request.setAttribute("repView", arr2);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {
@@ -29,6 +32,7 @@ public class ReviewViewCommand implements Command {
 				e.printStackTrace();
 			}	
 		}
+		
 	}
 
 }

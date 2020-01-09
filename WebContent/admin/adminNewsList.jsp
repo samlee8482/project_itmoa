@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
+=======
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -25,7 +30,6 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -91,6 +95,7 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
+<<<<<<< HEAD
 									<!-- Area Chart -->
 											<form
 												action="${pageContext.request.contextPath}/adminMemberList.jsp }">
@@ -260,6 +265,56 @@
 												</tbody>
 											</table>
 										</div>
+=======
+									<form method="get" action="/Project_itmoa/admin/adminNewsList.do">
+										<h6 class="m-0 font-weight-bold text-primary">정렬기준</h6>
+										<label class="p-2"><input type="radio" name="option_news_1" value="1" checked="checked" /> 최근 순</label>
+										<label class="p-2"><input type="radio" name="option_news_1" value="2" /> 오래된 순</label>
+										<label class="p-2"><input type="radio" name="option_news_1" value="3" /> 조회수 순</label>
+										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
+										<select name="option_news_2">
+											<option value="1">뉴스 번호</option>
+											<option value="2">뉴스 제목</option>
+											<option value="3">뉴스 내용</option>
+										</select>
+										<input type="text" name="option_news_3" />
+										<button type="submit" onclick="chkSubmit()">검색</button>
+									</form>
+								</div>
+								<div class="card-body">
+									<h6 class="font-weight-bold text-primary">총 x건의 데이터가 조회되었습니다.</h6>
+									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'">뉴스 작성</button>
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th width="5%">No</th>
+													<th width="10%">뉴스 번호</th width="5%">
+													<th width="69%">뉴스 제목</th width="5%">
+													<th width="10%">조회수</th width="5%">
+													<th width="6%" style="text-align: center;">뉴스삭제</th width="5%">
+												</tr>
+											</thead>									
+				                        	<c:forEach var="dto" items="${adminNewsList }" varStatus="status">
+												<tbody>
+													<tr onclick="location.href='/Project_itmoa/admin/adminNewsUpdateView.do?news_brd_uid=${dto.news_brd_uid }'">
+														<td>${status.index + 1 }</td>
+														<td>${dto.news_brd_uid }</td>
+														<td>${dto.news_brd_title }</td>
+														<td>${dto.news_brd_viewcnt }</td>
+														<td style="text-align: center;">
+															<a href="/Project_itmoa/admin/adminNewsDeleteOk.do?news_brd_uid=${dto.news_brd_uid }" class="btn btn-danger btn-icon-split"> 
+																<span class="icon text-white-50"> 
+																	<i class="fas fa-trash"></i>
+																</span>
+															</a>
+														</td>
+													</tr>
+												</tbody>	
+				                        	</c:forEach>
+										</table>
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 									</div>
 								</div>
 
@@ -330,10 +385,44 @@
 		<!-- Page level plugins -->
 		<script src="vendor/chart.js/Chart.min.js"></script>
 
+<<<<<<< HEAD
 		<!-- Page level custom scripts -->
 		<script src="js/demo/chart-area-demo.js"></script>
 		<script src="js/demo/chart-pie-demo.js"></script>
 		<script src="js/demo/chart-bar-demo.js"></script>
+=======
+	<!-- Page level custom scripts -->
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="js/demo/chart-pie-demo.js"></script>
+	<script src="js/demo/chart-bar-demo.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('tbody tr').hover(function() {
+				$(this).css({
+					"cursor": "pointer",
+					"background-color": "#F2F2F2"
+				})
+			}, function() {
+				$(this).css({
+					"cursor": "default",
+					"background-color": "#fff"
+				})
+			})
+		})
+		
+		function chkSubmit() {
+			var option_news_3 = $(":text[name='option_news_3']").val().length;
+			if(option_news_3 > 0) {
+				return true;
+			} else {
+				alert("검색어를 입력하세요");
+				return false;	
+			}
+		}
+	</script>
+	
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 </body>
 
 </html>

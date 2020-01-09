@@ -33,6 +33,8 @@ public interface D {
 	public static final String SQL_SELECT_FIND_ACCOUNT_PWD =
 			"SELECT mb_id, mb_name, mb_email FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
 
+	
+	
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
 		"SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name"
@@ -161,6 +163,10 @@ public interface D {
 	  	SQL_SELECT_CLASS + SQL_SELECT_CLASS_BY_INS_BRANCH + SQL_SELECT_CLASS_BY_CUR_NAME +SQL_ORDER_BY_CLASS_UID;
 
 	 */
+	
+	
+	public static final String SQL_SELECT_LOCATION =
+			"SELECT DISTINCT ins_branch FROM ins WHERE ins_location = ? ORDER BY ins_name";
 
 	
 	// 학원 상세 페이지
@@ -267,7 +273,7 @@ public interface D {
 	
 	// 리뷰 목록
 	public static final String SQL_SELECT_REVIEW =  
-		"SELECT r.review_brd_uid, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_viewcnt"
+		"SELECT r.review_brd_uid, m.mb_id, i.ins_name, r.review_brd_title, r.review_brd_regdate, r.review_brd_viewcnt"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE m.mb_uid = r.mb_uid"
 		+ " AND cl.class_uid = r.class_uid"
@@ -276,15 +282,15 @@ public interface D {
 	
 	// 리뷰 검색 조건) 회원ID
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_USER_ID =  
-		" AND m.mb_id LIKE ('%?%')";
+		" AND m.mb_id LIKE ?";
 	
 	// 리뷰 검색 조건) 리뷰제목
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE = 
-	  	" AND r.review_title LIKE ('%?%')";
+	  	" AND r.review_title LIKE ?";
 	
 	// 리뷰 검색 조건) 리뷰내용
 	 public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT = 
-		" AND r.review_content LIKE ('%?%')";
+		" AND r.review_content LIKE ?";
 	
 	// 리뷰 목록 정렬
 	public static final String SQL_ORDER_REVIEW =  
@@ -293,7 +299,7 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.review_brd_title, m.mb_id,  r.review_content, r.review_brd_viewcnt, re.rep_uid"
+		"SELECT i.ins_name, r.* , m.mb_id, re.rep_uid"
 		+ " FROM review_brd r, mb m, class cl, ins i, rep re"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
@@ -326,9 +332,9 @@ public interface D {
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID =  
-			"SELECT m.mb_id, re.rep.*"
-			+ " FROM rep re, review_brd r"
-			+ " WHERE review_brd_uid = ?"
+			"SELECT m.mb_id, re.*"
+			+ " FROM review_brd r, mb m, rep re"
+			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
 			+ " AND re.mb_uid = m.mb_uid";
 	
@@ -370,24 +376,27 @@ public interface D {
 		+ " WHERE news_brd_uid = ?"; 
 	
 	// 뉴스 검색 조건) 뉴스UID
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
-		" WHERE news_brd_uid = ?";
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
+			" WHERE news_brd_uid = ?";
 
-	// 뉴스 검색 조건) 뉴스 제목
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
-		" WHERE news_brd_title LIKE ";
+		// 뉴스 검색 조건) 뉴스 제목
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
+			" WHERE news_brd_title LIKE ?";
 
-	// 뉴스 검색 조건) 뉴스 내용
-	public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
-		" WHERE news_brd_content LIKE ";
-	
-	// 뉴스 검색 결과 정렬
-	public static final String SQL_ORDER_BY_NEWS_BRD = 
-		" ORDER BY news_brd_uid DESC";
-	
-	public static final String SQL_COUNT_NEWS_BRD =
-		"SELECT COUNT(*) FROM news_brd";
-	
+		// 뉴스 검색 조건) 뉴스 내용
+		public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
+			" WHERE news_brd_content LIKE ?";
+		
+		// 뉴스 검색 결과 정렬
+		public static final String SQL_ORDER_BY_NEWS_BRD_UID = 
+			" ORDER BY news_brd_uid DESC";
+		
+		public static final String SQL_ORDER_BY_NEWS_BRD = 
+				" ORDER BY ? ?";
+		
+		public static final String SQL_COUNT_NEWS_BRD =
+				"SELECT COUNT(*) FROM news_brd";
+		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
 		"UPDATE news_brd "

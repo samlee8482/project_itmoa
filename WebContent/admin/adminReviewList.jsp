@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -91,7 +92,16 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">.</h6>
+									<form method="get" action="/Project_itmoa/admin/adminReviewList.do">
+										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
+										<select name="option_review">
+											<option value="1">작성자 아이디</option>
+											<option value="2">리뷰 제목</option>
+											<option value="3">리뷰 내용</option>
+										</select>
+										<input type="text" name="keyword" />
+										<button type="submit" onclick="chkSubmit()">검색</button>
+									</form>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
@@ -100,185 +110,33 @@
 											<thead>
 												<tr>
 													<th width="5%">No</th>
-													<th width="10%">리뷰 번호</th width="5%">
-													<th width="15%">작성자 이름</th width="5%">
-													<th width="15%">작성자 아이디</th width="5%">
-													<th width="15%">학원명</th width="5%">
-													<th width="19%">리뷰제목</th width="5%">
-													<th width="15%">리뷰작성일</th width="5%">
-													<th width="6%" style="text-align: center;">리뷰삭제</th width="5%">
+													<th width="14%">리뷰 번호</th>
+													<th width="15%">작성자 아이디</th>
+													<th width="15%">학원명</th>
+													<th width="25%">리뷰제목</th>
+													<th width="25%">리뷰작성일</th>
+													<th width="6%" style="text-align: center;">리뷰삭제</th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>2</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>3</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>4</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>5</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>6</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>7</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>8</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>9</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>10</td>
-													<td>142</td>
-													<td>이새힘</td>
-													<td>saehim1111</td>
-													<td>코리아IT아카데미</td>
-													<td>리뷰입니다</td>
-													<td>2020-01-05</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
-													</a></td>
-												</tr>
-											</tbody>
+				                        	<c:forEach var="dto" items="${adminReviewList }" varStatus="status">											
+												<tbody>
+													<tr onclick="location.href='/Project_itmoa/user/reviewView.do?review_brd_uid=${dto.review_brd_uid }'">
+														<td>${status.index + 1 }</td>
+														<td>${dto.review_brd_uid }</td>
+														<td>${dto.mb_id }</td>
+														<td>${dto.ins_name }</td>
+														<td>${dto.review_brd_title }</td>
+														<td>${dto.review_brd_regdate }</td>
+														<td style="text-align: center;">
+															<a href="/Project_itmoa/admin/adminReviewDeleteOk.do?review_brd_uid=${dto.review_brd_uid }" class="btn btn-danger btn-icon-split"> 
+																<span class="icon text-white-50"> 
+																	<i class="fas fa-trash"></i>
+																</span>
+															</a>
+														</td>
+													</tr>
+												</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -354,6 +212,32 @@
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('tbody tr').hover(function() {
+				$(this).css({
+					"cursor": "pointer",
+					"background-color": "#F2F2F2"
+				})
+			}, function() {
+				$(this).css({
+					"cursor": "default",
+					"background-color": "#fff"
+				})
+			})
+		})
+		
+		function chkSubmit() {
+			var option_news_3 = $(":text[name='option_news_3']").val().length;
+			if(option_news_3 > 0) {
+				return true;
+			}
+			
+			alert("검색어를 입력하세요");
+			return false;
+		}
+	</script>
 
 </body>
 

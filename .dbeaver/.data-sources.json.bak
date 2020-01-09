@@ -12,6 +12,48 @@
 				"port": "3306",
 				"database": "itmoa",
 				"url": "jdbc:mysql://localhost:3306/itmoa",
+				"type": "dev"
+			}
+		},
+		"mariaDB-16f8237d97f-320a0f373e7b2883": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - itmoa 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "itmoa",
+				"url": "jdbc:mysql://localhost:3306/itmoa",
+				"type": "dev"
+			}
+		},
+		"mariaDB-16f8623eec7-3cf511c22c690e28": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - itmoa 3",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "itmoa",
+				"url": "jdbc:mysql://localhost:3306/itmoa",
+				"type": "dev"
+			}
+		},
+		"mariaDB-16f86a5160a-72dd0a0f8d3b9c89": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - itmoa 4",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "itmoa",
+				"url": "jdbc:mysql://localhost:3306/itmoa",
 				"type": "dev",
 				"handlers": {}
 			}
