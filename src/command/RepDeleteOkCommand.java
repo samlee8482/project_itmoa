@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +22,9 @@ public class RepDeleteOkCommand implements Command {
 				cnt = dao.deleteRepByUid(rep_uid);
 				request.setAttribute("repDeleteOk", cnt);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

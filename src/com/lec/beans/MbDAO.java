@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class MbDAO {
@@ -17,18 +22,14 @@ public class MbDAO {
 	ResultSet rs;
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다!
-	public MbDAO() {
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
 		
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("MbDAO 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		return ds.getConnection();
 	}
+	
 	
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
@@ -59,10 +60,11 @@ public class MbDAO {
 		return arr;
 	}
 	
-	public MbDTO[] login(String mb_id, String mb_pw) throws SQLException {
+	public MbDTO[] login(String mb_id, String mb_pw) throws SQLException, NamingException {
 		MbDTO[] arr = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_LOGIN);	// 검증 어떤식으로? 이미지는 마이페이지에서, 레벨은 게시글 쓸떄필요한게 아닌가?
 			pstmt.setString(1, mb_id);
 			pstmt.setString(2, mb_pw);
@@ -107,10 +109,11 @@ public class MbDAO {
 //	}
 	
 	// 회원가입
-	public int join(String mb_name, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2) throws SQLException {
+	public int join(String mb_name, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2) throws SQLException, NamingException {
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_INSERT_JOIN);
 			pstmt.setString(1, mb_name);
 			pstmt.setString(2, mb_id);
@@ -158,10 +161,11 @@ public class MbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] myPage(int mb_uid) throws SQLException {
+	public MbDTO[] myPage(int mb_uid) throws SQLException, NamingException {
 		MbDTO[] arr = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
@@ -176,10 +180,11 @@ public class MbDAO {
 	}
 	
 	// 회원정보 수정
-	public int update(String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, int mb_uid) throws SQLException{
+	public int update(String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, int mb_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_MYPAGE);
 			pstmt.setString(1, mb_pw);
 			pstmt.setString(2, mb_email);
@@ -216,13 +221,14 @@ public class MbDAO {
 	}
 	
 	// 1-1.
-	public MbDTO[] selectId(String mb_name, String mb_email) throws SQLException {
+	public MbDTO[] selectId(String mb_name, String mb_email) throws SQLException, NamingException {
 		String dbName = null;
 		String dbEmail = null;
 		
 		MbDTO[] arr = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELET_FIND_ACCOUNT_ID);
 			pstmt.setString(1, mb_name);
 			pstmt.setString(2, mb_email);
@@ -269,7 +275,7 @@ public class MbDAO {
 		return arr;
 	}
 	
-	public MbDTO[] selectPw(String mb_id, String mb_name, String mb_email) throws SQLException {
+	public MbDTO[] selectPw(String mb_id, String mb_name, String mb_email) throws SQLException, NamingException {
 		String dbId = null;
 		String dbName = null;
 		String dbEmail = null;
@@ -277,6 +283,7 @@ public class MbDAO {
 		MbDTO[] arr = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_FIND_ACCOUNT_PWD);
 			pstmt.setString(1, mb_id);
 			pstmt.setString(2, mb_name);

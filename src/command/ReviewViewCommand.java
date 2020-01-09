@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +26,9 @@ public class ReviewViewCommand implements Command {
 				request.setAttribute("reviewView", arr);
 				request.setAttribute("repView", arr2);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 		}

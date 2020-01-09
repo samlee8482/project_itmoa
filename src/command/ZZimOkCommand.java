@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,12 +29,18 @@ public class ZZimOkCommand implements Command {
 					request.setAttribute("zzimOk", cnt);
 				} catch (SQLException e) {
 					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			} else if (ifZZim == false) {
 				try {
 					cnt = dao.insertZZim(mb_uid, class_uid);
 					request.setAttribute("zzimOk", cnt);
 				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

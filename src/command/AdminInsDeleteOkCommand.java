@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +20,8 @@ public class AdminInsDeleteOkCommand implements Command {
 		
 		try {			
 			cnt = dao.deleteInsByUid(ins_uid);
+		} catch (NamingException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -192,6 +192,9 @@ ALTER TABLE rep
 
 
 SELECT * FROM mb;
+SELECT * FROM class;
+SELECT * FROM cur;
+select * from ins;
 
 
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
@@ -215,11 +218,12 @@ insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch
 values ('비트캠프', '02-542-9422', '서울시 강남구', '서초동', '서울', '강남');
 insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
 values ('KG&G', '02-3238-1299', '서울시 동작구', '노량진동', '서울', '노량진');
-
+insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
+values ('SBS아카데미', '064-548-4639', '광주광역시 서구', '떙땡', '광주', '서구');
 
 
 insert into cur (cur_name, cur_months, cur_hours) 
-values ('웹/앱', 3, 210);
+values ('웹앱', 3, 50);
 insert into cur (cur_name, cur_months, cur_hours)
 values ('보안', 8, 390);
 insert into cur (cur_name, cur_months, cur_hours) 

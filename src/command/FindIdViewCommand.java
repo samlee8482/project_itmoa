@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,9 @@ public class FindIdViewCommand implements Command {
 				request.setAttribute("findIdView", arr);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

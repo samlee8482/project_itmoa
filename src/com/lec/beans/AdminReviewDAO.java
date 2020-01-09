@@ -11,6 +11,11 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class AdminReviewDAO {
@@ -22,16 +27,11 @@ public class AdminReviewDAO {
 	
 	
 	
-	public AdminReviewDAO() {
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminReview 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
+		return ds.getConnection();
 	}
 	
 	
@@ -100,12 +100,13 @@ public class AdminReviewDAO {
 	   }
 	
 	   // 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
-	   public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException{
+	   public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException, NamingException{
 	      
 	      ReviewDTO[] arr = null;
 	      
 	      
 	      try {
+	    	 conn = getConnection();
 	         pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
 	         pstmt.setInt(1, review_brd_uid);
 	         
@@ -121,7 +122,7 @@ public class AdminReviewDAO {
 	
 	
 	// 리뷰 목록 
-	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
+	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException, NamingException {
 		
 		ReviewDTO [] arr = null;
 		String selectReview = D.SQL_SELECT_REVIEW;
@@ -154,6 +155,16 @@ public class AdminReviewDAO {
 		selectReview += D.SQL_ORDER_REVIEW;
 		
 		try {
+			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
+			if(keyword != null && !keyword.equals("")) {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectReview);
+				pstmt.setString(1, keyword);
+			}else { 
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectReview);
+			}
+
 			pstmt = conn.prepareStatement(selectReview);
 			if (setStr1 == 1) pstmt.setString(setStr1, keyword); 
 			System.out.println(pstmt);
@@ -171,11 +182,12 @@ public class AdminReviewDAO {
 	
 	
 	// 리뷰 삭제
-	public int deleteReview(int review_uid) throws SQLException {
+	public int deleteReview(int review_uid) throws SQLException, NamingException {
 		
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_DELETE_REVIEW_BY_UID);
 			System.out.println(pstmt);
 			pstmt.setInt(1, review_uid);

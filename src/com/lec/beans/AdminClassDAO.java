@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class AdminClassDAO {
@@ -16,16 +21,12 @@ public class AdminClassDAO {
 	Statement stmt;
 	ResultSet rs;
 
-	public AdminClassDAO() {
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminClassDAO() 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
+		
+		return ds.getConnection();
 	}
 
 	// DB 자원 반납 메소드
@@ -91,12 +92,12 @@ public class AdminClassDAO {
 	}
 	
 	//관리자페이지 학원 수정할 경우 화면에 띄워주기
-	public ClassDTO[] insView() throws SQLException {
+	public ClassDTO[] insView() throws SQLException, NamingException {
 		
 		ClassDTO [] insArr = null ;
 		
 		try {
-			
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_INS);
 			rs = pstmt.executeQuery();
 			insArr = createInsArray(rs);
@@ -116,7 +117,7 @@ public class AdminClassDAO {
 	
 	// 관리자페이지 학원검색 전체 + 조건
 
-	public ClassDTO[] selectInsList(int option_ins, String keyword) throws SQLException {
+	public ClassDTO[] selectInsList(int option_ins, String keyword) throws SQLException, NamingException {
 
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
@@ -145,9 +146,11 @@ public class AdminClassDAO {
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
 			if(keyword != null && !keyword.equals("")) {
+				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
 			}else { 
+				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 			}
 
@@ -168,11 +171,12 @@ public class AdminClassDAO {
 	
 	// 관리자페이지 학원등록
 	public int insertIns(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
-			String ins_branch, String ins_location, double ins_x, double ins_y) throws SQLException{
+			String ins_branch, String ins_location, double ins_x, double ins_y) throws SQLException, NamingException{
 
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_INSERT_INS);
 			pstmt.setString(1, ins_name);
 			pstmt.setInt(2, ins_zip);
@@ -198,11 +202,12 @@ public class AdminClassDAO {
 	
 	
 	// 수정할 학원정보 불러오기
-	public ClassDTO[] selectInsByUid(int ins_uid) throws SQLException{
+	public ClassDTO[] selectInsByUid(int ins_uid) throws SQLException, NamingException{
 
 		ClassDTO [] arr = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID_FOR_UPDATE);
 			pstmt.setInt(1, ins_uid);
 			
@@ -220,11 +225,12 @@ public class AdminClassDAO {
 
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,
-			String ins_location, String ins_branch, String ins_img, double ins_x, double ins_y, int ins_uid) throws SQLException{
+			String ins_location, String ins_branch, String ins_img, double ins_x, double ins_y, int ins_uid) throws SQLException, NamingException{
 		
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_INS);
 			pstmt.setString(1, ins_name);
 			pstmt.setString(2, ins_tel);
@@ -268,10 +274,11 @@ public class AdminClassDAO {
 		return cnt;
 	}
 	
-	public int deleteInsByUid(int ins_uid) throws SQLException{
+	public int deleteInsByUid(int ins_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_DELETE_INS);
 			pstmt.setInt(1, ins_uid);
 			
@@ -291,7 +298,7 @@ public class AdminClassDAO {
 	// 학원 과정 관리 
 	// 1. 과정 추가 
 	public int insertCur(int ins_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
-			String cur_month4, String cur_month5, String cur_month6) throws SQLException{
+			String cur_month4, String cur_month5, String cur_month6) throws SQLException, NamingException{
 		
 		int cnt = 0;
 		int cur_uid = 0;
@@ -299,7 +306,7 @@ public class AdminClassDAO {
 		try {
 			
 			String [] generetedCols = {"cur_uid"};
-			
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_INSERT_CUR, generetedCols);   
 			pstmt.setString(1, cur_name);
 			pstmt.setInt(2, cur_hours);
@@ -365,10 +372,11 @@ public class AdminClassDAO {
 
 	
 	// 특정학원의 수정할 class정보 불러오기
-	public ClassDTO[] selectClassByUid(int ins_uid) throws SQLException {
+	public ClassDTO[] selectClassByUid(int ins_uid) throws SQLException, NamingException {
 		ClassDTO[] arr = null ;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
 			pstmt.setInt(1, ins_uid);
 			rs = pstmt.executeQuery();
@@ -387,12 +395,12 @@ public class AdminClassDAO {
 
 	// 클래스 정보 수정
 	public int updateClass(int cur_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2, String cur_month3, 
-			String cur_month4, String cur_month5, String cur_month6) throws SQLException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
+			String cur_month4, String cur_month5, String cur_month6) throws SQLException, NamingException{ // 선택된 클래스가 가지고 있는 cur_uid를 인자로 줄것
 		
 		int cnt = 0;
 		
 		try {
-			
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_CUR);
 			pstmt.setString(1, cur_name);
 			pstmt.setInt(2, cur_hours);
@@ -419,12 +427,12 @@ public class AdminClassDAO {
 	
 	
 	// 3. 과정 삭제
-	public int deleteClassByUid(int class_uid) throws SQLException{
+	public int deleteClassByUid(int class_uid) throws SQLException, NamingException{
 		
 		int cnt = 0;
 		
 		try {
-			
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_DELETE_CLASS);
 			pstmt.setInt(1, class_uid);
 		

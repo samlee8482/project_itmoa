@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +24,9 @@ public class RepUpdateOkCommand implements Command {
 				cnt = dao.updateRepByUid(rep_uid, rep_content);
 				request.setAttribute("repUpdateOk", cnt);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

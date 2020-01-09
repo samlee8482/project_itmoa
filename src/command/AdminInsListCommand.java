@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +32,8 @@ public class AdminInsListCommand implements Command {
 			request.setAttribute("adminInsList", arr);
 			
 			
+		} catch (NamingException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

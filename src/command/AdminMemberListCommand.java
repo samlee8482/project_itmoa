@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,6 +27,9 @@ public class AdminMemberListCommand implements Command {
 				arr = dao.selectMb(option_mb_1, option_mb_2, option_mb_3);
 				request.setAttribute("adminMemberList", arr);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

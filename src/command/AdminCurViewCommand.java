@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,6 +23,8 @@ public class AdminCurViewCommand implements Command {
 			try {
 				arr = dao.selectClassByUid(class_uid);
 				request.setAttribute("adminCurView", arr);
+			} catch (NamingException e) {
+				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

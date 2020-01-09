@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,6 +30,9 @@ public class AdminNewsUpdateOkCommand implements Command {
 					request.setAttribute("adminNewsUpdateOk", cnt);
 				} catch (SQLException e) {
 					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		} else if (!ifNew) {
@@ -43,6 +47,9 @@ public class AdminNewsUpdateOkCommand implements Command {
 					if (cnt == 1) cnt = 3;
 					request.setAttribute("adminNewsUpdateOk", cnt);
 				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
