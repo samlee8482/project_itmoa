@@ -2,52 +2,48 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.AdminMbDAO;
 
-public class AdminMemberUpdateOkCommand implements Command{
+public class AdminMemberOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-	
-		boolean ifNew = Boolean.parseBoolean(request.getParameter("ifNew"));
-		String news_brd_title = request.getParameter("news_brd_title");
-		String news_brd_content = request.getParameter("news_brd_content");
-		String news_brd_img = request.getParameter("news_brd_img");
+		String mb_pw = request.getParameter("mb_pw");
+		String mb_img = request.getParameter("mb_img");
+		int mb_level = Integer.parseInt(request.getParameter("mb_level"));
+		String mb_email = request.getParameter("mb_email");
+		int mb_zip = Integer.parseInt(request.getParameter("mb_zip"));
+		String mb_add1 = request.getParameter("mb_add1");
+		String mb_add2 = request.getParameter("mb_add2");
+		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
 		
 		AdminMbDAO dao = new AdminMbDAO();
 		int cnt = 0;
-		if (ifNew) {
-			if (news_brd_title != null && !news_brd_title.trim().equals("")
-				&& news_brd_content != null && !news_brd_content.trim().equals("")
-				&& news_brd_img != null && !news_brd_img.trim().equals("")) {
-				try {
-					cnt = dao.insertNews(news_brd_title, news_brd_img, news_brd_content);
-					if (cnt == 1) cnt = 1;
-					if (cnt == 0) cnt = 0;
-					request.setAttribute("adminNewsUpdateOk", cnt);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		} else if (!ifNew) {
-			int news_brd_uid = Integer.parseInt(request.getParameter("news_brd_uid"));
-			if (news_brd_uid > 0
-				&& news_brd_title != null && news_brd_title.length() > 0 && !news_brd_title.trim().equals("")
-				&& news_brd_content != null && news_brd_content.length() > 0 && !news_brd_content.trim().equals("")
-				&& news_brd_img != null && news_brd_img.length() > 0 && !news_brd_img.trim().equals("")) {
-				try {
-					cnt = dao.updateNewsByUid(news_brd_uid, news_brd_title, news_brd_content, news_brd_img);
-					if (cnt == 0) cnt = 2;
-					if (cnt == 1) cnt = 3;
-					request.setAttribute("adminNewsUpdateOk", cnt);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+		
+
+		if (mb_pw != null && mb_pw.length() > 0 && !mb_pw.trim().equals("")
+		&& mb_img != null && mb_img.length() > 0 && !mb_img.trim().equals("")
+		&& mb_level > 0
+		&& mb_email != null && mb_email.length() > 0 && !mb_email.trim().equals("")
+		&& mb_zip > 0
+		&& mb_add1 != null && mb_add1.length() > 0 && !mb_add1.trim().equals("")
+		&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.trim().equals("")
+		&& mb_uid > 0) {
+			try {
+				cnt = dao.updateMbByUid(mb_pw, mb_img, mb_level, mb_email, mb_zip, mb_add1, mb_add2, mb_uid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
+
+		request.setAttribute("adminMemberOk", cnt);
 	}
 
 }
