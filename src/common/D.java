@@ -80,6 +80,10 @@ public interface D {
 	// 회원 검색 조건) 회원번호
 	public static final String SQL_SELECT_USER_WHERE_UID =
 		" AND mb_uid = ?";	
+
+	// 회원 검색 조건) 회원번호(수정)
+	public static final String SQL_SELECT_USER_WHERE_UID2 =
+			" WHERE mb_uid = ?";	
 	
 	// 회원 검색 조건) 회원ID
 	public static final String SQL_SELECT_USER_WHERE_ID =

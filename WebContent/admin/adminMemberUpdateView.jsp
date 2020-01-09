@@ -74,11 +74,7 @@
    			alert("주소2를 입력해주세요.");
    			frm["mb_add2"].focus();
    			return false;
-   		} if(mb_pw != mb_pwOk){
-   			alert("비밀번호를 제대로 입력해주세요");
-   			frm["mb_pwOk"].focus();
-   			return false;
-   		} 
+   		}
    		
    			return true;
    	}
@@ -158,11 +154,11 @@
 									<form method="post" action="/Project_itmoa/admin/adminMemberUpdateOk.do">
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">아이디</h6>
-										<input type="text" name="mb_id" placeholder="${dto.mb_id }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;" disabled>
+										<input type="text" name="mb_id" placeholder="${adminMemberUpdateView[0].mb_id }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;" disabled>
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">회원번호</h6>
-										<input type="text" name="mb_uid" placeholder="${dto.mb_uid }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;" disabled>
+										<input type="text" name="mb_uid" placeholder="${adminMemberUpdateView[0].mb_uid }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;" disabled>
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">회원유형</h6>
@@ -174,21 +170,21 @@
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">이메일</h6>
-										<input type="text" name="mb_uid" placeholder="${dto.mb_email }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;">
+										<input type="text" name="mb_uid" placeholder="${adminMemberUpdateView[0].mb_email }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;">
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
-										<input type="text" id="sample6_postcode" name="mb_zip" placeholder="우편번호" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;" disabled>
+										<input type="text" id="sample6_postcode" name="mb_zip" placeholder="${adminMemberUpdateView[0].mb_zip }" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;" disabled>
 										<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 										</div>
-										<div class="ooo" style="margin-left: 50px">
-										<input class="addr" type="text" id="sample6_address" name="mb_add1" placeholder="주소"><br>
-										<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" placeholder="상세주소">
+										<div class="ooo" style="margin-left: 100px">
+										<input class="addr" type="text" id="sample6_address" name="mb_add1" placeholder="${adminMemberUpdateView[0].mb_add1 }"><br>
+										<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" placeholder="${adminMemberUpdateView[0].mb_add2 }">
 										<!--<input style="left: 200px" class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">-->
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="mb_img" style="left: 200px" />
+										<input type="file" name="mb_img" style="left: 200px" placeholder="${adminMemberUpdateView[0].mb_img }" />
 										<input type="hidden" name="ifNew" value="true" style="left: 200px" />
 										</div>
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>

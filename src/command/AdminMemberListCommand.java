@@ -42,7 +42,10 @@ public class AdminMemberListCommand implements Command {
             request.setAttribute("adminMemberList", arr);
          } catch (SQLException e) {
             e.printStackTrace();
-         }
+         } catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
       }
    }
 

@@ -130,7 +130,7 @@
                                  <c:forEach var="dto" items="${adminMemberList }" varStatus="status">
                                     <tr>
                                        <td>${status.index + 1}</td>
-                                       <td style="text-align: center;"><a href="#">${dto.mb_uid }</a></td>
+                                       <td style="text-align: center;"><a href="/Project_itmoa/admin/adminMemberUpdateView.do?mb_uid=${dto.mb_uid }">${dto.mb_uid }</a></td>
                                        <td style="text-align: center;">${dto.mb_name }</td>
                                        <td style="text-align: center;">${dto.mb_id }</td>
                                        <td style="text-align: center;">${dto.mb_email }</td>
