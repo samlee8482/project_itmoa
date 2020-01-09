@@ -82,7 +82,7 @@ public class MbDTO {
 		this.mb_regdate = mb_regdate;
 	}
 
-	// 관리자페이지 회원상세정보(회원번호 눌렀을 때)
+	// 관리자페이지 회원상세정보(수정. 회원번호 눌렀을 때)
 	public MbDTO(int mb_uid, String mb_id, String mb_pw, String mb_name, String mb_email, int mb_level, int mb_zip, String mb_add1, String mb_add2,
 			String mb_img) {
 		super();

@@ -91,7 +91,7 @@ public class controller extends HttpServlet {
 		case "/user/login.do":  // 로그인 페이지
 			viewPage = "login.jsp";
 			break;
-		case "/loginOk.do":  // 로그인 (체크)
+		case "/user/loginOk.do":  // 로그인 (체크)
 			command = new LoginOkCommand();
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
@@ -101,7 +101,8 @@ public class controller extends HttpServlet {
 		case "/user/join.do":  // 회원가입 페이지
 			viewPage = "join.jsp";
 			break;
-		case "/joinOK.do":  // 회원가입 (체크)
+		case "/user/joinOk.do":  // 회원가입 (체크)
+			System.out.println("ddd");
 			command = new JoinOkCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
@@ -232,10 +233,10 @@ public class controller extends HttpServlet {
 			viewPage = "adminMemberList.jsp";
 			break;
 //		* 검색 조건 추가는 adminMemberList.do 뒤에 쿼리 추가해서 다시 request
-		case "/admin/adminMemberView.do":  // 관리자 회원 상세 정보 출력
+		case "/admin/adminMemberUpdateView.do":  // 관리자 회원 상세 정보 출력
 			command = new AdminMemberViewCommand();
 			command.execute(request, response);
-			viewPage = "adminMemberView.jsp";
+			viewPage = "adminMemberUpdateView.jsp";
 			break;
 		case "/admin/adminMemberOk.do":  // 관리자 회원 상세 정보 수정 (체크)
 			command = new AdminMemberOkCommand();

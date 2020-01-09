@@ -53,6 +53,7 @@ public class JoinOkCommand implements Command {
 		try {
 			if(idMatches && pwMatches && emailMatches) {
 				cnt = dao.join(mb_name, mb_id, mb_pwOk, mb_email, mb_zip, mb_add1, mb_add2);
+				System.out.println(cnt);
 			} else {
 				System.out.println("정규표현식 매치 안됨 " + idMatches + " : " + pwMatches + " : " + emailMatches);
 				System.out.println(cnt);
