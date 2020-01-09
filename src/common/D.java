@@ -11,7 +11,7 @@ public interface D {
   
 //  =============== 사용자용 ==============
 	
-	// 로그인
+	// 로그인  
 	public static final String SQL_SELECT_LOGIN =
 			"SELECT mb_uid, mb_id,  mb_pw, mb_level, mb_img FROM mb WHERE mb_id = ? AND mb_pw = ?";
 
@@ -104,7 +104,7 @@ public interface D {
    // 회원 정보 수정 
 	public static final String SQL_UPDATE_USER =
 		"UPDATE mb"
-		+ " SET mb_pw = ?, mb_img = ?, mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_level = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?, mb_img = ?"
 		+ " WHERE mb_uid = ?";
 	
 	// 회원 정보 삭제
