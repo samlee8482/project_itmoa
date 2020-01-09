@@ -34,7 +34,7 @@
 	<div id="wrapper">
 	
 		<!-- Side Menu -->
-		<jsp:include page="topMenu.jsp"/>
+		<jsp:include page="sideMenu.jsp"/>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">

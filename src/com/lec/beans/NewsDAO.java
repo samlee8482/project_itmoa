@@ -68,20 +68,13 @@ public class NewsDAO {
 		NewsDTO [] arr = null;
 		String selectNews = D.SQL_SELECT_NEWS_BRD;
 		
-		// 후기 검색 조건 (1)회원ID  (2)후기제목   (3)후기내용
-		
 		if (option_news != null && !option_news.trim().equals("")
 		&& keyword != null && !keyword.trim().equals("")) {
 			try {
 				switch(option_news) {
 					case "1": 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
-						selectNews += "'%";
-						selectNews += keyword;
-						selectNews += "%'";
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						keyword = "%" + keyword + "%";
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
@@ -89,20 +82,15 @@ public class NewsDAO {
 						
 					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
-						selectNews += "'%";
-						selectNews += keyword;
-						selectNews += "%'";
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD;
 						keyword = "%" + keyword + "%";
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
 						break;
 					case "3":
-						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID;
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
+						break;
 				}
 				rs = pstmt.executeQuery();
 				arr = createNewsArray(rs);
