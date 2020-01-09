@@ -183,7 +183,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "reviewWriteOk.jsp";
 			break;
-		case "/reviewUpdateView.do":  // 리뷰 수정 페이지 이동
+		case "/user/reviewUpdateView.do":  // 리뷰 수정 페이지 이동
 			command = new ReviewUpdateViewCommand();
 			command.execute(request, response);
 			viewPage = "reviewUpdateView.jsp";

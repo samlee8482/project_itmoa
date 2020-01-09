@@ -90,7 +90,12 @@
                         <div class="blog">
                             <div class="blog-item">
                                 <div class="blog-content">
-                                    <h3 class="main-title">${reviewView[0].review_brd_title }</h3>
+                                    <h3 class="main-title">
+                                    	${reviewView[0].review_brd_title }
+                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+                                    		후기 수정
+                                    	</button>
+                                    </h3>
                                     <div class="entry-meta">
                                         <span><i class="fa fa-user"></i> <a href="#"> ${reviewView[0].review_brd_viewcnt }</a></span>
                                     </div>
@@ -137,15 +142,6 @@
                                 	</div>
                                 </div>
                             </div>
-                            <ul class="pagination pagination-lg">
-                                <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul><!--/.pagination-->
                         </div>
                     </div><!--/.col-md-8-->
                 </div><!--/.row-->

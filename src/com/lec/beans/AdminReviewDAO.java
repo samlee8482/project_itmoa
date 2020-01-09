@@ -72,9 +72,52 @@ public class AdminReviewDAO {
 		
 		return arr;
 	}
+		
+		public ReviewDTO [] createReviewContentArray(ResultSet rs) throws SQLException {
+	      
+	      ArrayList<ReviewDTO> list = new ArrayList<ReviewDTO>();
+	      
+	      
+	      while(rs.next()){
+
+	         int review_brd_uid = rs.getInt("review_brd_uid");
+	         String mb_id = rs.getString("mb_id");
+	         String ins_name = rs.getString("ins_name");
+	         String review_brd_regdate = rs.getString("review_brd_regdate");
+	         String review_brd_title = rs.getString("review_brd_title");
+	         String review_brd_content =  rs.getString("review_brd_content");
+	         int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
+	         
+	         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_viewcnt, review_brd_title, review_brd_content);
+	         list.add(dto);
+	      }
+	      
+	      int size = list.size();
+	      ReviewDTO [] arr = new ReviewDTO[size];
+	      list.toArray(arr);
+	      
+	      return arr;
+	   }
 	
-	
-	
+	   // 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
+	   public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException{
+	      
+	      ReviewDTO[] arr = null;
+	      
+	      
+	      try {
+	         pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
+	         pstmt.setInt(1, review_brd_uid);
+	         
+	         rs = pstmt.executeQuery();
+	         arr = createReviewContentArray(rs);
+	   
+	      } finally {
+	         close();
+	      }      
+	      
+	      return arr;
+	   }
 	
 	
 	// 리뷰 목록 

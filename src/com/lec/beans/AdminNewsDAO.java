@@ -131,7 +131,7 @@ public class AdminNewsDAO {
 			String news_brd_content = rs.getString("news_brd_content");
 			int news_brd_viewcnt = rs.getInt("news_brd_viewcnt");
 			
-			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_img, news_brd_content, news_brd_viewcnt);
+			NewsDTO dto = new NewsDTO(news_brd_uid, news_brd_title, news_brd_content, news_brd_img, news_brd_viewcnt);
 			list.add(dto);
 		}
 		
@@ -151,7 +151,7 @@ public class AdminNewsDAO {
 			pstmt.setInt(1, news_brd_uid);
 			
 			rs = pstmt.executeQuery();
-			arr = createNewsArr(rs);
+			arr = createNewsArrByUid(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
