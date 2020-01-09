@@ -10,12 +10,12 @@ import java.util.Enumeration;
 import java.io.IOException;
 
 
-public class AdminNewsFileUploadCommand implements Command {
+public class ReviewFileUploadCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		final String SAVE_URL = "newsImg";
+		final String SAVE_URL = "reviewImg";
 		
 		// 실제 저장되는 물리적인 경로 확인하기
 		ServletContext context = request.getServletContext();

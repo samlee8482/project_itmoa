@@ -43,6 +43,7 @@ import command.RepDeleteOkCommand;
 import command.RepUpdateOkCommand;
 import command.ReserveOkCommand;
 import command.ReviewDeleteOkCommand;
+import command.ReviewFileUploadCommand;
 import command.ReviewListCommand;
 import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
@@ -187,6 +188,10 @@ public class controller extends HttpServlet {
 			command = new ReviewUpdateOkCommand();
 			command.execute(request, response);
 			viewPage = "reviewUpdateOk.jsp";
+			break;
+		case "/user/reviewFileUplaod.do":
+			command = new ReviewFileUploadCommand();
+			command.execute(request, response);
 			break;
 		case "/user/reviewDeleteOk.do":  // 리뷰 삭제 (체크)
 			command = new ReviewDeleteOkCommand();
