@@ -101,12 +101,13 @@
 								<div class="card-body">
 								<form action="adminInsList.do" method="get">
 								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-								<select id="option">
-										<option value="전체" selected>전체</option>
-										<option value="학원명">학원명</option>
-										<option value="학원코드">학원코드</option>
+								<select name="option">
+										<option value="1" selected>전체</option>
+										<option value="2">학원명</option>
+										<option value="3">학원코드</option>
 								</select>
-								<input type="text" id="keyword" value="" ></input>
+								<input type="text" name="keyword" value="" ></input>
+								<input type="submit" value="전송"></input>
 								<a class="btn btn-info btn-icon-split" onclick="show()"><span class="icon text-white-100">검색</span></a>
 								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
 								</form>
@@ -231,11 +232,20 @@
 			  
 			  var keyword = document.getElementById("keyword").value; 		  
 			  
+			  
+			  if(option == "" || option == null){
+					
+				  option = 1;
+				  
+			  }
+			  
+			  
 			  if(keyword == "" || keyword == null){
 		
 				  keyword = "없음";
 				  
 			  }
+
 			  
 			  alert(option + " " + keyword );
 			  

@@ -142,28 +142,29 @@ public class AdminClassDAO {
 	
 	// 관리자페이지 학원검색 전체 + 조건
 
-	public ClassDTO[] selectInsListByOption(String option, String keyword) throws SQLException, NamingException {
+	public ClassDTO[] selectInsListByOption(int option, String keyword) throws SQLException, NamingException {
 
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
-	
+		
+
 		try {
 			
 			switch(option) {
-			case "전체" :
+			case 1 :
 					selectIns += D.SQL_INS_WHERE_UID_OR_CUR_NAME;
 					conn = getConnection();
 					pstmt = conn.prepareStatement(selectIns);
 					pstmt.setString(1, keyword);
 					pstmt.setString(2, keyword);
 				
-			case "학원명" :	
+			case 2 :	
 				selectIns += D.SQL_INS_WHERE_NAME;
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
 				
-			case "학원코드" :
+			case 3 :
 				selectIns += D.SQL_INS_WHERE_UID;
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
