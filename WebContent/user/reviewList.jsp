@@ -89,7 +89,7 @@
                 <div class="row">
                     <aside class="col-sm-4 col-sm-push-8">
                         <div class="widget search">
-                            <form role="frm" method="get" action="/Project_itmoa/user/reviewList.do">
+                            <form role="frm" method="get" action="/Project_itmoa/user/reviewList.do" onSubmit="chkSubmit()">
                                 <div class="input-group">
 	                               	<div style="width: 100%">
 	                               		<select name="option_review">
@@ -102,7 +102,7 @@
                                 <div class="input-group">
                                 	<input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary btn-outlined" type="submit" onclick="chkSubmit()"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search"></i></button>
                                     </span>
                                 </div>
                             </form>
@@ -113,6 +113,7 @@
                     <div class="col-sm-8 col-sm-pull-4">
                         <div class="blog">
                         	<div class="table-responsive">
+                    			<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
 										<tr>
@@ -167,11 +168,10 @@
 		})
 		
 		function chkSubmit() {
-			var option_news_3 = $(":text[name='option_news_3']").val().length;
+			var option_news_3 = $(":text[name='keyword']").val().length;
 			if(option_news_3 > 0) {
 				return true;
 			}
-			
 			alert("검색어를 입력하세요");
 			return false;
 		}

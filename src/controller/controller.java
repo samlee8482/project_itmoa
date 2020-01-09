@@ -17,6 +17,7 @@ import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
 import command.AdminInsOkCommand;
 import command.AdminInsViewCommand;
+import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
 import command.AdminMemberOkCommand;
 import command.AdminMemberViewCommand;
@@ -40,14 +41,12 @@ import command.NewsListCommand;
 import command.NewsViewCommand;
 import command.RepDeleteOkCommand;
 import command.RepUpdateOkCommand;
-import command.RepWriteOkCommand;
 import command.ReserveOkCommand;
 import command.ReviewDeleteOkCommand;
 import command.ReviewListCommand;
 import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
 import command.ReviewViewCommand;
-import command.ReviewWriteOkCommand;
 import command.ZZimOkCommand;
 
 @WebServlet("*.do")
@@ -91,7 +90,7 @@ public class controller extends HttpServlet {
 		case "/user/login.do":  // 로그인 페이지
 			viewPage = "login.jsp";
 			break;
-		case "/loginOk.do":  // 로그인 (체크)
+		case "/user/loginOk.do":  // 로그인 (체크)
 			command = new LoginOkCommand();
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
@@ -101,7 +100,8 @@ public class controller extends HttpServlet {
 		case "/user/join.do":  // 회원가입 페이지
 			viewPage = "join.jsp";
 			break;
-		case "/joinOK.do":  // 회원가입 (체크)
+		case "/user/joinOk.do":  // 회원가입 (체크)
+			System.out.println("ddd");
 			command = new JoinOkCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
@@ -178,11 +178,6 @@ public class controller extends HttpServlet {
 		case "/user/reviewWrite.do":  // 리뷰 작성 페이지 이동
 			viewPage = "reviewWrite.jsp";
 			break;
-		case "/user/reviewWriteOk.do":  // 리뷰 작성 (체크)
-			command = new ReviewWriteOkCommand();
-			command.execute(request, response);
-			viewPage = "reviewWriteOk.jsp";
-			break;
 		case "/user/reviewUpdateView.do":  // 리뷰 수정 페이지 이동
 			command = new ReviewUpdateViewCommand();
 			command.execute(request, response);
@@ -201,14 +196,10 @@ public class controller extends HttpServlet {
 
 //		- 댓글
 // 		* 댓글 불러오기는 jQuery .click() 함수로 대체
-		case "/user/repWriteOk.do":  // 댓글 작성 (체크)
-			command = new RepWriteOkCommand();
-			command.execute(request, response);
-			viewPage = "repDeleteOk.jsp";
 		case "/user/repUpdateOk.do":  // 댓글 수정 (체크)
 			command = new RepUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "repDeleteOk.jsp";
+			viewPage = "repUpdateOk.jsp";
 			break;
 		case "/user/repDeleteOk.do":  // 댓글 삭제 (체크)
 			command = new RepDeleteOkCommand();
@@ -236,17 +227,21 @@ public class controller extends HttpServlet {
 			viewPage = "adminMemberList.jsp";
 			break;
 //		* 검색 조건 추가는 adminMemberList.do 뒤에 쿼리 추가해서 다시 request
-		case "/admin/adminMemberView.do":  // 관리자 회원 상세 정보 출력
+		case "/admin/adminMemberUpdateView.do":  // 관리자 회원 상세 정보 출력
 			command = new AdminMemberViewCommand();
 			command.execute(request, response);
-			viewPage = "adminMemberView.jsp";
+			viewPage = "adminMemberUpdateView.jsp";
 			break;
 		case "/admin/adminMemberOk.do":  // 관리자 회원 상세 정보 수정 (체크)
 			command = new AdminMemberOkCommand();
 			command.execute(request, response);
 			viewPage = "adminMemberOk.jsp";
 			break;
-		
+		case "/admin/adminMemberDeleteOk.do":
+			command = new AdminMemberDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminMemberDeleteOk.jsp";
+			break;
 //		- 학원관리
 		case "/admin/adminInsList.do":  // 관리자 학원 리스트 출력. 관리자페이지 초기화면
 			command = new AdminInsListCommand();

@@ -68,9 +68,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">Hot Off The Press</h2>
+                                    <h2 class="main-title">IT News</h2>
                                     <hr>
-                                    <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
+                                    <p>뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스</p>
                                 </div>
                             </div>
                         </div>
@@ -101,15 +101,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <ul class="pagination pagination-lg">
-                                <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul><!--/.pagination-->
                         </div>
                     </div><!--/.col-md-8-->
                 </div><!--/.row-->

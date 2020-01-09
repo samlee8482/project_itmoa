@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+{"resources":{"ERD/test2.sql":{"sql-editor-data-source-id":"mariaDB-16f8623eec7-3cf511c22c690e28"}}}
+=======
 {"resources":{"ERD/test2.sql":{"sql-editor-data-source-id":"mariaDB-16f86a5160a-72dd0a0f8d3b9c89"}}}
 =======
 <<<<<<< HEAD
@@ -12,11 +15,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 {"resources":{"ERD/test2.sql":{"sql-editor-data-source-id":"mariaDB-16f6628ceda-147e741d3581508e"}}}
-=======
-{"resources":{"test2.sql":{"sql-editor-data-source-id":"mariaDB-16f6628ceda-147e741d3581508e"}}}
 >>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 =======
-{"resources":{"ERD/test2.sql":{"sql-editor-data-source-id":"mariaDB-16f6628ceda-147e741d3581508e"}}}
+{"resources":{"ERD/test2.sql":{"sql-editor-data-source-id":"mariaDB-16f6628ceda-147e741d3581508e"},"test2.sql":{"sql-editor-data-source-id":"mariaDB-16f6628ceda-147e741d3581508e"}}}
 >>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 >>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 >>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git

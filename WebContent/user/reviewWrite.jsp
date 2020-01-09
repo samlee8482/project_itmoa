@@ -102,10 +102,10 @@
 								<div class="blog-content">
 									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do">
 										<h3 class="main-title">
-											<input name="review_brd_title" value="${reviewUpdateView[0].review_brd_title }" style="width: 100%; padding: 10px;" />
+											<input name="review_brd_title" placeholder="제목을 입력하세요" style="width: 100%; padding: 10px;" />
 										</h3>
 										<div style="padding: 30px 10px">
-											<textarea name="review_brd_content" id="editor1">${reviewUpdateView[0].review_brd_content }</textarea>
+											<textarea name="review_brd_content" id="editor1"></textarea>
 											<script>
 												CKEDITOR.replace('editor1', {
 													allowedContent: true,
@@ -115,8 +115,7 @@
 										</div>
 										<input type="hidden" name="mb_uid" value="1" />  <!-- mb_uid -->
 										<input type="hidden" name="class_uid" value="1" />  <!-- class_uid -->
-										<input type="hidden" name="review_brd_uid" value="${reviewUpdateView[0].review_brd_uid }" />
-										<input type="hidden" name="ifNew" value="false" />
+										<input type="hidden" name="ifNew" value="true" />
 										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
 									</form>
 								</div>

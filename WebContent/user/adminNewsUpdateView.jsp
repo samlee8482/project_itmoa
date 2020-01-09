@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Review</title>
+<title>ITMOA ADMIN - Member</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -24,16 +25,16 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="ckeditor/ckeditor.js"></script>
 </head>
 
 <body id="page-top">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
+	
 		<!-- Side Menu -->
-		<jsp:include page="sideMenu.jsp"/>
+		<jsp:include page="topMenu.jsp"/>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -52,7 +53,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					<div class="h4 m-0 ml-2 font-weight-bold text-primary">리뷰 관리</div>
+					<div class="h4 m-0 ml-2 font-weight-bold text-primary">뉴스 관리</div>
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -92,53 +93,26 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<form method="get" action="/Project_itmoa/admin/adminReviewList.do">
-										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
-										<select name="option_review">
-											<option value="1">작성자 아이디</option>
-											<option value="2">리뷰 제목</option>
-											<option value="3">리뷰 내용</option>
-										</select>
-										<input type="text" name="keyword" />
-										<button type="submit" onclick="chkSubmit()">검색</button>
-									</form>
+									<h6 class="m-0 font-weight-bold text-primary">뉴스 수정</h6>
 								</div>
 								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table table-bordered" id="dataTable"
-											width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th width="5%">No</th>
-													<th width="14%">리뷰 번호</th>
-													<th width="15%">작성자 아이디</th>
-													<th width="15%">학원명</th>
-													<th width="25%">리뷰제목</th>
-													<th width="25%">리뷰작성일</th>
-													<th width="6%" style="text-align: center;">리뷰삭제</th>
-												</tr>
-											</thead>
-				                        	<c:forEach var="dto" items="${adminReviewList }" varStatus="status">											
-												<tbody>
-													<tr onclick="location.href='/Project_itmoa/user/reviewView.do?review_brd_uid=${dto.review_brd_uid }'">
-														<td>${status.index + 1 }</td>
-														<td>${dto.review_brd_uid }</td>
-														<td>${dto.mb_id }</td>
-														<td>${dto.ins_name }</td>
-														<td>${dto.review_brd_title }</td>
-														<td>${dto.review_brd_regdate }</td>
-														<td style="text-align: center;">
-															<a href="/Project_itmoa/admin/adminReviewDeleteOk.do?review_brd_uid=${dto.review_brd_uid }" class="btn btn-danger btn-icon-split"> 
-																<span class="icon text-white-50"> 
-																	<i class="fas fa-trash"></i>
-																</span>
-															</a>
-														</td>
-													</tr>
-												</tbody>
-											</c:forEach>
-										</table>
-									</div>
+									<form method="post" action="/Project_itmoa/admin/adminNewsUpdateOk.do" enctpye="multipart/form-date">
+										<h6 class="m-0 font-weight-bold text-primary p-2">제목</h6>
+										<input type="text" name="news_brd_title" value="${adminNewsView[0].news_brd_title }" placeholder="제목을 입력하세요" class="p-2 mb-3 col-xl-12">
+										<textarea name="news_brd_content" id="editor1">${adminNewsView[0].news_brd_content }</textarea>
+										<script>
+											CKEDITOR.replace('editor1', {
+												allowedContent: true,
+												height: '700px',
+												filebrowserUploadUrl: '${pageContext.request.contextPath }/admin/adminNewsFileUplaod.do'
+											});
+										</script>
+										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
+										<input type="file" name="news_brd_img" />
+										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
+										<input type="hidden" name="ifNew" value="false" />
+										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
+									</form>
 								</div>
 							</div>
 
@@ -212,32 +186,6 @@
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			$('tbody tr').hover(function() {
-				$(this).css({
-					"cursor": "pointer",
-					"background-color": "#F2F2F2"
-				})
-			}, function() {
-				$(this).css({
-					"cursor": "default",
-					"background-color": "#fff"
-				})
-			})
-		})
-		
-		function chkSubmit() {
-			var option_news_3 = $(":text[name='keyword']").val().length;
-			if(option_news_3 > 0) {
-				return true;
-			}
-			
-			alert("검색어를 입력하세요");
-			return false;
-		}
-	</script>
 
 </body>
 

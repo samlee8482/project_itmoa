@@ -31,12 +31,12 @@ public class AdminReviewListCommand implements Command {
 		if (option_review > 0
 		&& keyword != null && !keyword.trim().equals("")) {
 			try {
+				System.out.println(keyword);
 				arr = dao.selectReviewList(option_review, keyword);
 				request.setAttribute("adminReviewList", arr);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
