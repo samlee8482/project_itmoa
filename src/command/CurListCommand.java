@@ -32,8 +32,7 @@ public class CurListCommand implements Command {
 			e.printStackTrace();
 		}
 		
-		
-	//	int option_branch = Integer.parseInt(request.getParameter("option_branch"));
+
 		
 		
 	}

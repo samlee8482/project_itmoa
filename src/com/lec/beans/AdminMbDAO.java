@@ -6,10 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import common.D;
 
@@ -25,7 +22,7 @@ public class AdminMbDAO {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("AdminMbDAO 객체 생성, 데이터베이스 연결");
+			System.out.println("DAO 객체 생성, 데이터베이스 연결");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -54,11 +51,7 @@ public class AdminMbDAO {
 			String mb_email = rs.getString("mb_email");
 			String mb_add1 = rs.getString("mb_add1");
 			String mb_add2 = rs.getString("mb_add2");
-			
-			Date d = rs.getDate("mb_regdate");
-			Time t = rs.getTime("mb_regdate");
-			String mb_regdate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " " 
-							+ new SimpleDateFormat("hh:mm:ss").format(t);
+			String mb_regdate = rs.getString("mb_regdate");
 			
 			
 			MbDTO dto = new MbDTO(mb_uid, mb_name, mb_id, mb_email, mb_add1, mb_add2, mb_regdate);
@@ -78,26 +71,19 @@ public class AdminMbDAO {
 		// option_mb_3 은 검색키워드
 		MbDTO[] arr = null;
 		String SELECT_MB = D.SQL_SELECT_USER;
-		SELECT_MB += D.SQL_SELECT_USER_WHERE_LEVEL;
 		
-		int chkUid = 0;
-		// 검색조건 들어갈 switch문
 		switch(option_mb_2) {
 		case 1:
-			SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
+			SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
 			break;
 		case 2:
-			SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
-			option_mb_3 = "%" + option_mb_3 + "%";
+			SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
 			break;
 		case 3:
-			SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
-			chkUid = 4;
+			SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
 			break;
 		case 4:
 			SELECT_MB += D.SQL_SELECT_USER_WHERE_EMAIL;
-			break;
-		case 5:
 			break;
 		}
 		
@@ -106,48 +92,31 @@ public class AdminMbDAO {
 		try {
 			pstmt = conn.prepareStatement(SELECT_MB);
 			
-			// ? 값들어갈 switch문
 			switch(option_mb_1) {
-			case 1:	// 전체회원
-				pstmt.setInt(1, 1);
-				System.out.println("o");
+			case 0:	// 전체회원
+				pstmt.setInt(1, 1);					
 				pstmt.setInt(2, 2);					
-				System.out.println("o");
 				pstmt.setInt(3, 3);	
-				System.out.println("o");
 				break;
-			case 2: // 일반회원일 때
-				pstmt.setInt(1, 1);	// 쿼리문이 IN이기 때문에 포함만 되면 됨. 따라서 첫번째 값에 걍 레벨값 넣어줌 		
+			case 1: // 일반회원일 때
+				pstmt.setInt(1, 1);				
 				pstmt.setInt(2, 0);					
 				pstmt.setInt(3, 0);		
 				break;
-			case 3: // 슈퍼회원일 때
+			case 2: // 슈퍼회원일 때
 				pstmt.setInt(1, 2);					
 				pstmt.setInt(2, 0);					
 				pstmt.setInt(3, 0);	
 				break;
-			case 4: // 관리자일 때
+			case 3: // 관리자일 때
 				pstmt.setInt(1, 3);					
 				pstmt.setInt(2, 0);					
 				pstmt.setInt(3, 0);		
 				break;
 			}
-			
-			if(chkUid == 4) {
-				pstmt.setInt(chkUid, Integer.parseInt(option_mb_3));
-				rs = pstmt.executeQuery();
-				arr = createMbArr(rs);
-				System.out.println(arr.length);
-			} else if(!option_mb_3.equals("a")) {
-				pstmt.setString(4, option_mb_3);
-				rs = pstmt.executeQuery();
-				arr = createMbArr(rs);
-				System.out.println(arr.length);
-			} else {
+			pstmt.setString(4, option_mb_3);
 			rs = pstmt.executeQuery();
 			arr = createMbArr(rs);
-			System.out.println(arr.length);
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

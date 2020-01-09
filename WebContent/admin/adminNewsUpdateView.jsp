@@ -93,7 +93,7 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">뉴스 작성</h6>
+									<h6 class="m-0 font-weight-bold text-primary">뉴스 수정</h6>
 								</div>
 								<div class="card-body">
 									<form method="post" action="/Project_itmoa/admin/adminNewsUpdateOk.do">
@@ -111,7 +111,7 @@
 										<input type="file" name="news_brd_img" />
 										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
 										<input type="hidden" name="ifNew" value="false" />
-										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>
+										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
 									</form>
 								</div>
 							</div>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
 <meta charset="utf-8">
@@ -92,28 +93,27 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-								<form action="adminMemberList.do" method="post">
 									<h6 class="m-0 font-weight-bold text-primary">회원구분</h6>
-									<input type="radio" name="option_mb_1" value="1" checked="checked" />전체
-									<input type="radio" name="option_mb_1" value="2" />일반회원
-									<input type="radio" name="option_mb_1" value="3" />슈퍼회원
-									<input type="radio" name="option_mb_1" value="4" />관리자
+									<input type="radio" name="option_mb_1" value="0" checked="checked" />전체
+									<input type="radio" name="option_mb_1" value="1" />일반회원
+									<input type="radio" name="option_mb_1" value="2" />슈퍼회원
+									<input type="radio" name="option_mb_1" value="3" />관리자
 									<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-									<select name="option_mb_2">
-										<option value="1">회원ID</option>
-										<option value="2">회원명</option>
-										<option value="3">회원번호</option>
-										<option value="4">이메일</option>
+									<select>
+										<option name="option_mb_2" value="1">회원ID</option>
+										<option name="option_mb_2" value="2">회원명</option>
+										<option name="option_mb_2" value="3">회원번호</option>
+										<option name="option_mb_2" value="4">이메일</option>
 									</select>
 									<input type="text" name="option_mb_3" />
-									<input type="submit" value="검색"/>
-									</form>
+									<button type="">검색</button>
 									<h6 class="m-0 font-weight-bold text-primary">총 x건의 데이터가 조회되었습니다.</h6>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
+											<c:forEach var="dto" items="${adminMemberList }">
 											<thead>
 												<tr>
 													<th width="5%">No</th>
@@ -122,15 +122,13 @@
 													<th width="10%">아이디</th width="5%">
 													<th width="15%">이메일</th width="5%">
 													<th width="24%">주소</th width="5%">
-													<th width="24%">상세주소</th width="5%">
 													<th width="20%">최초생성일</th width="5%">
 													<th width="6%" style="text-align: center;">회원삭제</th width="5%">
 												</tr>
 											</thead>
-											
-											<c:forEach var="dto" items="${adminMemberList }" varStatus="status">
+											<tbody>
 												<tr>
-													<td>${status.index + 1}</td>
+													<td>1</td>
 													<td style="text-align: center;"><a href="#">${dto.mb_uid }</a></td>
 													<td style="text-align: center;">${dto.mb_name }</td>
 													<td style="text-align: center;">${dto.mb_id }</td>
@@ -145,7 +143,26 @@
 														</span>
 													</a></td>
 												</tr>
+											</tbody>
 											</c:forEach>
+											<tbody>
+												<tr>
+													<td>2</td>
+													<td><a href="#">142</a></td>
+													<td style="text-align: center;">이새힘</td>
+													<td>saehim1111</td>
+													<td>saehim1111@gmail.com</td>
+													<td>서울특별시 관악구 남부순환로 1614</td>
+													<td>2020-01-05</td>
+													<td style="text-align: center;"><a href="#"
+														class="btn btn-danger btn-icon-split"> <span
+															class="icon text-white-50"> <i
+																class="fas fa-trash">삭제하기</i>
+														</span>
+													</a></td>
+												</tr>
+											</tbody>
+											
 										</table>
 									</div>
 								</div>

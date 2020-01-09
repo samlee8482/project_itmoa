@@ -60,6 +60,7 @@
             longitude: -73.9863,
             zoom: 14 });
     });
+    
     </script>
 </head>
 <!--/head-->
@@ -99,7 +100,7 @@
 				
 				<form> 
 				<!-- 지역 선택을 위한 select문 -->
-				<select name="option_location" id= "option_location" size="1" onchange="chageBranchSelect()">
+				<select name="option_location" id= "option_location" size="1" onchange="changeBranchSelect()" >
 					<option value="전체" selected>전체</option>
 					<option value="서울" >서울</option>
 					<option value="경기" >경기</option>
@@ -114,7 +115,7 @@
 				
 				<!-- 지점 선택을 위한 select문 -->
 				<select name="option_branch" id= "option_branch" size="1">
-					<option value ="all" id="test">전체</option>
+					<option value ="전체" id="test" selected>전체</option>
 				</select>
 				
 				
@@ -125,42 +126,7 @@
 				</select>
 	 -->		
 				
-				<!-- 지역에 따른 지점 출력 함수 -->
-				<script>
-				$(document).ready(function chageBranchSelect(){
-				   $('#option_location').on('change', function(){
-					
-					   var select = document.getElementById("option_location");
-					   var location = select.options[select.selectedIndex].value;
-					   var selected_location;
-					   
-					   if( location == "전체"){
-						   selected_location = "<select name='option_branch' size='1'><option value='all' selected>전체</option></select>";
-					   }else if( location == "서울" ){
-						   selected_location = "<select name='option_branch' size='1'> <option value='all' selected>전체</option> <option value='강남' >강남</option><option value='신촌' >신촌</option><option value='종로' >종로</option><option value='사당' >사당</option><option value='노량진' >노량진</option><option value='기타' >기타</option></select>";
-					   }else if( location == "경기"){
-						   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='고양' >고양</option><option value='안양' >안양</option><option value='부천' >부천</option><option value='성남' >성남</option><option value='구리' >구리</option><option value='광명' >광명</option></select>";   
-					   }else if( location == "인천"){
-						   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='부평' >부평</option><option value='송도' >송도</option><option value='기타' >기타</option></select>";
-					   }else if(location == "대전"){
-						   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='서구' >서구</option><option value='중구' >중구</option><option value='기타' >기타</option></select>";
-					   }else if(location == "대구"){
-						   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='중구' >중구</option>	option value='수성' >수성</option><option value='기타' >기타</option>	</select>";
-					   }else if(location == "부산"){
-						   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='진구' >진구</option>	<option value='연제구' >연제구</option><option value='해운대구' >해운대구</option><option value='기타' >기타</option></select>";
-					   }else if(location == "광주"){
-						   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='서구' >서구</option><option value='북구' >북구</option><option value='기타' >기타</option></select>";
-					   }else if(location == "울산"){
-						   selected_location = "<select name='ins_branch' size='1'>	<option value='전체' selected>전체</option><option value='남구' >남구</option><option value='기타' >기타</option></select>";
-					   }else{
-						   selected_location= "<select name='ins_branch' size='1'><option value='기타'>기타</option></select>";
-					   }
-			
-					   $('#option_branch').html(selected_location);
- 
-				   });
-				});
-				</script>
+				
 
 				</form>
 				
@@ -177,39 +143,40 @@
 				
 				
 				<ul class="portfolio-filter fade-down center">
-					<li><a class="btn btn-outlined btn-primary active" href="#"
-						data-filter="*">전체과정</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary active" href="#"
+						data-filter="*" onclick="show()">전체과정</a></li>
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".bootstrap">웹앱</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".html">보안</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".wordpress">네트워크</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".rami">AI</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".rami">디자인</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".rami">영상</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".rami">빅데이터</a></li>
-					<li><a class="btn btn-outlined btn-primary" href="#"
+					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
 						data-filter=".rami">게임</a></li>
 
 				</ul>
 				<!--/#portfolio-filter-->
 
 
-
-
 				<ul class="portfolio-items col-3 isotope fade-up">
 					
-				    <c:forEach var="list" items="${classList }">
+				    <c:forEach var="dto" items="${classList }">
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-								<img src="http://placehold.it/800x600" alt="">
-								<h5>Lorem ipsum dolor sit amet</h5>
+								<img src="${dto.ins_img }" alt="">
+								<h5>${dto.ins_name }</h5>
+								<h5>${dto.cur_name }</h5>
+								<h5>${dto.class_zzimcnt }</h5>
+								<!-- <h5>${dto.class_zzimcnt }</h5> -->
 								<div class="overlay">
 									<a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i	class="fa fa-eye"></i></a>
 								</div>
@@ -230,5 +197,76 @@
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/init.js"></script>
+	
+	  
+    
+    <!-- 지역에 따른 지점 출력 함수 -->
+	<script>
+	$(document).ready(function changeBranchSelect(){
+	   $('#option_location').on('change', function(){
+		
+		   var select = document.getElementById("option_location");
+		   var location = select.options[select.selectedIndex].value;
+		   var selected_location;
+		   
+		   if(location == "전체"){
+			   selected_location = "<select name='option_branch' size='1'><option value='전체' selected>전체</option></select>";
+		   }else if( location == "서울" ){
+			   selected_location = "<select name='option_branch' size='1'> <option value='전체' selected>전체</option> <option value='강남' >강남</option><option value='신촌' >신촌</option><option value='종로' >종로</option><option value='사당' >사당</option><option value='노량진' >노량진</option><option value='기타' >기타</option></select>";
+		   }else if( location == "경기"){
+			   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='고양' >고양</option><option value='안양' >안양</option><option value='부천' >부천</option><option value='성남' >성남</option><option value='구리' >구리</option><option value='광명' >광명</option></select>";   
+		   }else if( location == "인천"){
+			   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='부평' >부평</option><option value='송도' >송도</option><option value='기타' >기타</option></select>";
+		   }else if(location == "대전"){
+			   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='서구' >서구</option><option value='중구' >중구</option><option value='기타' >기타</option></select>";
+		   }else if(location == "대구"){
+			   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='중구' >중구</option>	option value='수성' >수성</option><option value='기타' >기타</option>	</select>";
+		   }else if(location == "부산"){
+			   selected_location= "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='진구' >진구</option>	<option value='연제구' >연제구</option><option value='해운대구' >해운대구</option><option value='기타' >기타</option></select>";
+		   }else if(location == "광주"){
+			   selected_location = "<select name='ins_branch' size='1'><option value='전체' selected>전체</option><option value='서구' >서구</option><option value='북구' >북구</option><option value='기타' >기타</option></select>";
+		   }else if(location == "울산"){
+			   selected_location = "<select name='ins_branch' size='1'>	<option value='전체' selected>전체</option><option value='남구' >남구</option><option value='기타' >기타</option></select>";
+		   }else{
+			   selected_location= "<select name='ins_branch' size='1'><option value='기타'>기타</option></select>";
+		   }
+
+		   $('#option_branch').html(selected_location);
+		  
+
+	   });
+	  
+	});
+
+	
+	
+	  $(document).ready(function show(){
+		
+		  $('#curName').on('click', function(){
+			  
+			
+			  
+			  var option_location = document.getElementById("option_location");
+			  option_location = option_location.options[option_location.selectedIndex].value;
+			  
+			  var option_branch = document.getElementById('option_branch');
+			  option_branch = option_branch.options[option_branch.selectedIndex].value;
+			  
+			  var option_curName = $(this).text(); 
+			  
+			  
+			  alert(option_location+ " " + option_branch + " " +option_curName);
+			  
+			  var url = 'classList.jsp?option_location=' + encodeURI(option_location) + '&?option_branch=' + encodeURI(option_branch) + '&?option_curName=' + encodeURI(option_curName);
+			  window.location.href = url;
+
+			 
+			  
+		  });
+			
+		 
+	  });
+	
+	</script>
 </body>
 </html>

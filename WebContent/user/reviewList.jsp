@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,117 +25,157 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
-    
-    
-	<script type="text/javascript">
-	    jQuery(document).ready(function($){
-	    'use strict';
-	        jQuery('body').backstretch([
-	            "http://placehold.it/800x600",
-	            "http://placehold.it/800x600",
-	            "http://placehold.it/800x600"
-	        ], {duration: 5000, fade: 500});
-	
-	        $("#mapwrapper").gMap({ controls: false,
-	            scrollwheel: false,
-	            markers: [{
-	                latitude:40.7566,
-	                longitude: -73.9863,
-	            icon: { image: "images/marker.png",
-	                iconsize: [44,44],
-	                iconanchor: [12,46],
-	                infowindowanchor: [12, 0] } }],
-	            icon: {
-	                image: "images/marker.png",
-	                iconsize: [26, 46],
-	                iconanchor: [12, 46],
-	                infowindowanchor: [12, 0] },
-	            latitude:40.7566,
-	            longitude: -73.9863,
-	            zoom: 14 });
-	        
-	    });
-	</script>
-</head>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+        
+    });
+</script>
+</head><!--/head-->
 <body>
-
-
 
 	<!-- TopMenu -->
 	<jsp:include page="topMenu.jsp"/>
-
+ 
 	<!-- Header Section -->
-	 <section id="single-page-slider" class="no-margin">
-	        <div class="carousel slide" data-ride="carousel">
-	            <div class="carousel-inner">
-	                <div class="item active">
-	                    <div class="container">
-	                        <div class="row">
-	                            <div class="col-md-12">
-	                                <div class="center gap fade-down section-heading">
-	                                    <h2 class="main-title">학원 후기</h2>
-	                                    <hr>
-	                                    <p>틀만 잡아 놨다네</p>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div><!--/.item-->
-	            </div><!--/.carousel-inner-->
-	        </div><!--/.carousel-->
-	    </section><!--/#main-slider-->
-	    
-	    
-	    
-	    
-	    
-	    
-	<!-- 본문 영역 -->
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">학원 후기</h2>
+                                    <hr>
+                                    <p>리뷰 리뷰 리뷰 리뷰 리뷰 리뷰 리뷰 리뷰</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
     <div id="content-wrapper">
         <section id="blog" class="white">
             <div class="container">
             <div class="gap"></div>
                 <div class="row">
-                
-                
                     <aside class="col-sm-4 col-sm-push-8">
                         <div class="widget search">
-                           
-                           <!-- 본문 상단 영역 -->
-                           
+                            <form role="frm" method="get" action="/Project_itmoa/user/reviewList.do">
+                                <div class="input-group">
+	                               	<div style="width: 100%">
+	                               		<select name="option_review">
+		                               		<option value="1">회원 ID</option>
+		                               		<option value="2">리뷰 제목</option>
+		                               		<option value="3">리뷰 내용</option>
+	                               		</select>	                                	
+	                               	</div>
+	                            </div>
+                                <div class="input-group">
+                                	<input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-outlined" type="submit" onclick="chkSubmit()"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
                         </div><!--/.search-->
+                     
+
                     </aside>
-                    
-                   
                     <div class="col-sm-8 col-sm-pull-4">
                         <div class="blog">
-                        	
-                        	<!-- 본문 메인 영역 -->
-                        	
-                        	
-	                    </div><!--/.blog-item-->
-	       
+                        	<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th width="5%">No</th>
+											<th width="20%">리뷰 번호</th>
+											<th width="15%">작성자 아이디</th>
+											<th width="15%">학원명</th>
+											<th width="25%">리뷰제목</th>
+											<th width="25%">리뷰작성일</th>
+										</tr>
+									</thead>
+		                        	<c:forEach var="dto" items="${reviewList }" varStatus="status">
+										<tbody>
+											<tr onclick="location.href='/Project_itmoa/user/reviewView.do?review_brd_uid=${dto.review_brd_uid }'">
+												<td>${status.index + 1 }</td>
+												<td>${dto.review_brd_uid }</td>
+												<td>${dto.mb_id }</td>
+												<td>${dto.ins_name }</td>
+												<td>${dto.review_brd_title }</td>
+												<td>${dto.review_brd_regdate }</td>
+											</tr>
+										</tbody>
+									</c:forEach>
+								</table>
+							</div>
+                        </div>
                     </div><!--/.col-md-8-->
                 </div><!--/.row-->
             </div>
         </section><!--/#blog-->
     </div>
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+
+ 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/init.js"></script>
+    
+    <script>
+		$(document).ready(function() {
+			$('tbody tr').hover(function() {
+				$(this).css({
+					"cursor": "pointer",
+					"background-color": "#F2F2F2"
+				})
+			}, function() {
+				$(this).css({
+					"cursor": "default",
+					"background-color": "#fff"
+				})
+			})
+		})
+		
+		function chkSubmit() {
+			var option_news_3 = $(":text[name='option_news_3']").val().length;
+			if(option_news_3 > 0) {
+				return true;
+			}
+			
+			alert("검색어를 입력하세요");
+			return false;
+		}
+	</script>
+	
 </body>
 </html>

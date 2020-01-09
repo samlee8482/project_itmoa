@@ -54,10 +54,8 @@ public class JoinOkCommand implements Command {
 				cnt = dao.join(mb_name, mb_id, mb_pwOk, mb_email, mb_zip, mb_add1, mb_add2);
 				if(cnt >= 0) {
 					request.setAttribute("joinOk", cnt);
-					System.out.println(cnt);
 				}
 			} else {
-				request.setAttribute("joinOk", cnt);
 				System.out.println("정규표현식 매치 안됨 " + idMatches + " : " + pwMatches + " : " + emailMatches);
 			}
 		} catch (SQLException e) {
