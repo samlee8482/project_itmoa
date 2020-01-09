@@ -12,7 +12,7 @@ public class MbDTO {
 	private int mb_zip;
 	private String mb_email;
 	private int mb_level;
-	private String regdate;
+	private String mb_regdate;
 	private String mb_img;
 	private int zzim_uid;
 	private String ins_name;
@@ -25,7 +25,7 @@ public class MbDTO {
 
 	// 매개변수 생성자
 	public MbDTO(int mb_uid, String mb_name, String mb_id, String mb_pw, String mb_add1, String mb_add2, int mb_zip,
-			String mb_email, int mb_level, String regdate, String mb_img, int zzim_uid, String ins_name,
+			String mb_email, int mb_level, String mb_regdate, String mb_img, int zzim_uid, String ins_name,
 			String cur_name) {
 		super();
 		this.mb_uid = mb_uid;
@@ -37,7 +37,7 @@ public class MbDTO {
 		this.mb_zip = mb_zip;
 		this.mb_email = mb_email;
 		this.mb_level = mb_level;
-		this.regdate = regdate;
+		this.mb_regdate = mb_regdate;
 		this.mb_img = mb_img;
 		this.zzim_uid = zzim_uid;
 		this.ins_name = ins_name;
@@ -71,7 +71,7 @@ public class MbDTO {
 	// AdminMbDAO
 	// 관리자페이지 회원정보검색
 	public MbDTO(int mb_uid, String mb_name, String mb_id, String mb_email, String mb_add1, String mb_add2,
-			String regdate) {
+			String mb_regdate) {
 		super();
 		this.mb_uid = mb_uid;
 		this.mb_name = mb_name;
@@ -79,7 +79,7 @@ public class MbDTO {
 		this.mb_email = mb_email;
 		this.mb_add1 = mb_add1;
 		this.mb_add2 = mb_add2;
-		this.regdate = regdate;
+		this.mb_regdate = mb_regdate;
 	}
 
 	// 관리자페이지 회원상세정보(회원번호 눌렀을 때)
@@ -187,12 +187,12 @@ public class MbDTO {
 		this.mb_level = mb_level;
 	}
 
-	public String getRegdate() {
-		return regdate;
+	public String getMb_regdate() {
+		return mb_regdate;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setRegdate(String mb_regdate) {
+		this.mb_regdate = mb_regdate;
 	}
 
 	public String getMb_img() {

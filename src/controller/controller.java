@@ -17,6 +17,7 @@ import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
 import command.AdminInsOkCommand;
 import command.AdminInsViewCommand;
+import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
 import command.AdminMemberOkCommand;
 import command.AdminMemberViewCommand;
@@ -241,7 +242,11 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminMemberOk.jsp";
 			break;
-		
+		case "/admin/adminMemberDeleteOk.do":
+			command = new AdminMemberDeleteOkCommand();
+			command.execute(request, response);
+			viewPage = "adminMemberDeleteOk.jsp";
+			break;
 //		- 학원관리
 		case "/admin/adminInsList.do":  // 관리자 학원 리스트 출력. 관리자페이지 초기화면
 			command = new AdminInsListCommand();

@@ -83,15 +83,15 @@ public interface D {
 	
 	// 회원 검색 조건) 회원ID
 	public static final String SQL_SELECT_USER_WHERE_ID =
-		" AND mb_id LIKE (%?%)";
+		" AND mb_id = ?";
 
 	// 회원 검색 조건) 회원이름
 	public static final String SQL_SELECT_USER_WHERE_NAME =
-		" AND mb_name LIKE (%?%)";
+		" AND mb_name LIKE ?";
 
 	// 회원 검색 조건) 회원이메일
 	public static final String SQL_SELECT_USER_WHERE_EMAIL =
-		" AND mb_email LIKE (%?%)";
+		" AND mb_email LIKE ?";
 
 	// 회원 검색 결과 정렬
 	public static final String SQL_USER_ORDER_BY =
