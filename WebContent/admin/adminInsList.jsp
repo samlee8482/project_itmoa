@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- JSTL core 라이브러리 포함 --%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -98,12 +102,12 @@
 								<form action="adminInsList.do" method="get">
 								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
 								<select id="option">
-										<!-- 값 입력 없으면 전체검색이쥬 -->
+										<option value="전체" selected>전체</option>
 										<option value="학원명">학원명</option>
 										<option value="학원코드">학원코드</option>
 								</select>
 								<input type="text" id="keyword" value="" ></input>
-								<a id="searchbtn" class="btn btn-info btn-icon-split" onclick="show()"><span class="icon text-white-100">검색</span></a>
+								<a class="btn btn-info btn-icon-split" onclick="show()"><span class="icon text-white-100">검색</span></a>
 								<a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
 								</form>
 									<div class="table-responsive">
@@ -121,31 +125,21 @@
 													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
 												</tr>
 											</thead>
+											<c:forEach var="dto" items="${adminInsList }" varStatus="status">
 											<tbody>
 												<tr>
-													<td>1</td>
-													<td>142</td>
-													<td>코리아IT아카데미 강남점</td>
-													<td>서울특별시 강남구 테헤란로 146</td>
-													<td>02-000-0000</td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-warning btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-chalkboard-teacher"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-info btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-info-circle"></i>
-														</span></td>
-													<td style="text-align: center;"><a href="#"
-														class="btn btn-danger btn-icon-split"> <span
-															class="icon text-white-50"> <i
-																class="fas fa-trash"></i>
-														</span>
+													<td>${status.index+1 }</td>
+													<td>${dto.ins_uid }</td>
+													<td>${dto.ins_name }</td>
+													<td>${dto.ins_add1 }</td>
+													<td>${dto.ins_tel }</td>
+													<td style="text-align: center;"><a href="#"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
+													<td style="text-align: center;"><a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
+													<td style="text-align: center;"><a href="#"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
 													</a></td>
 												</tr>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>
@@ -232,29 +226,21 @@
 	
 	 function show(){
 		
-		  $('#searchbtn').on('click', function(){
-
-			  
 			  var option = document.getElementById("option");
-			  option = option.options[option.selectedIndex].value;
-			
+			  option = option.options[option.selectedIndex].value;			
 			  
-			  var keyword = document.getElementById("keyword").value; 
+			  var keyword = document.getElementById("keyword").value; 		  
 			  
-			  
-			  if(keyword !== "" && keyword != null){
-				  alert(option + " " + keyword );
-			  }else{
+			  if(keyword == "" || keyword == null){
+		
+				  keyword = "없음";
 				  
 			  }
 			  
+			  alert(option + " " + keyword );
 			  
-			 // var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
-			  
-			  //window.location.href = url;
-
-			  
-		  });
+			  var url = 'adminInsList.do?option=' + encodeURI(option) + '&keyword=' + encodeURI(keyword);
+			  window.location.href = url;
 
 	  };
 	

@@ -15,7 +15,7 @@ public class AdminInsListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 
-		int option = Integer.parseInt(request.getParameter("option"));
+		String option = request.getParameter("option");
 		String keyword = request.getParameter("keyword");
 		
 		
@@ -23,15 +23,23 @@ public class AdminInsListCommand implements Command {
 		ClassDTO [] arr = null;
 		
 		
-		if(keyword.equals("") || keyword == null ) { option = 4; }  
-		
-		
 		try {
 			
-			arr = dao.selectInsList(option, keyword);
-			request.setAttribute("adminInsList", arr);
-			
-			
+			if(keyword == null || keyword.equals("") || keyword.equals("없음")){
+				
+				arr = dao.selectInsList();
+				request.setAttribute("adminInsList", arr);
+				
+			}else {
+				
+				arr = dao.selectInsListByOption(option, keyword);
+				request.setAttribute("adminInsList", arr);
+				
+			}
+
+				
+
+
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

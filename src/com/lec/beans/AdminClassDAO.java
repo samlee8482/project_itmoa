@@ -21,6 +21,14 @@ public class AdminClassDAO {
 	Statement stmt;
 	ResultSet rs;
 
+	
+	
+	
+	public AdminClassDAO() {
+		super();
+		System.out.println("AdminClassDAO 객체 생성");
+	}
+
 	public static Connection getConnection() throws NamingException, SQLException {
 		Context initContext = new InitialContext();
 		Context envContext = (Context)initContext.lookup("java:/comp/env");
@@ -114,46 +122,60 @@ public class AdminClassDAO {
 	
 	
 	
+	// 관리자페이지 학원검색 전체 
+	public ClassDTO[] selectInsList() throws SQLException, NamingException {
+		ClassDTO [] arr = null;
+		
+		try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_SELECT_INS);
+				rs = pstmt.executeQuery();
+				arr = createCurArray(rs);
+		
+		} finally {
+			close();
+		}		
+		
+		return arr;
+	}
+	
 	
 	// 관리자페이지 학원검색 전체 + 조건
 
-	public ClassDTO[] selectInsList(int option_ins, String keyword) throws SQLException, NamingException {
+	public ClassDTO[] selectInsListByOption(String option, String keyword) throws SQLException, NamingException {
 
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
-
-		// 학원 검색 조건 (1)학원UID  (2)학원명   (3)과정명
-
-		switch(option_ins) {
-		case 1: 
-			selectIns += D.SQL_INS_WHERE_UID;
-			break;
-		case 2:
-			selectIns += D.SQL_INS_WHERE_NAME;
-			break;
-		case 3:
-			selectIns += D.SQL_INS_WHERE_CUR_NAME;
-			break;
-		case 4:
-			selectIns = D.SQL_SELECT_INS;
-			break;
-		}
-
-
-		// 정렬
-		selectIns += D.SQL_SELECT_INS_ORDER_BY_UID;
-
+	
 		try {
-			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
-			if(keyword != null && !keyword.equals("")) {
+			
+			switch(option) {
+			case "전체" :
+					selectIns += D.SQL_INS_WHERE_UID_OR_CUR_NAME;
+					conn = getConnection();
+					pstmt = conn.prepareStatement(selectIns);
+					pstmt.setString(1, keyword);
+					pstmt.setString(2, keyword);
+				
+			case "학원명" :	
+				selectIns += D.SQL_INS_WHERE_NAME;
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
-			}else { 
+				
+			case "학원코드" :
+				selectIns += D.SQL_INS_WHERE_UID;
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
+				pstmt.setString(1, keyword);
+				
+			default :
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectIns);
+				break;
+			
 			}
-
+	
 			rs = pstmt.executeQuery();
 			
 			arr = createCurArray(rs);
