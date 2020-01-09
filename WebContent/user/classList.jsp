@@ -127,24 +127,24 @@
 				
 				
 				<ul class="portfolio-filter fade-down center">
-					<li><a id="curName" class="btn btn-outlined btn-primary active" href="#"
-						data-filter="*" onclick="show()">전체과정</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".bootstrap">웹앱</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".html">보안</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".wordpress">네트워크</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">AI</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">디자인</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">영상</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">빅데이터</a></li>
-					<li><a id="curName" class="btn btn-outlined btn-primary" href="#"
-						data-filter=".rami">게임</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary active" href="#"
+						onclick="show()">전체과정</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">웹앱</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">보안</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">네트워크</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">AI</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">디자인</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">영상</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">빅데이터</a></li>
+					<li><a class="curName" class="btn btn-outlined btn-primary" href="#"
+						onclick="show()">게임</a></li>
 
 				</ul>
 				<!--/#portfolio-filter-->
@@ -225,7 +225,7 @@
 	
 	 function show(){
 		
-		  $('#curName').on('click', function(){
+		  $('.curName').on('click', function(){
 			  
 			
 			  
