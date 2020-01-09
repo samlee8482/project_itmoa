@@ -232,6 +232,7 @@ public class controller extends HttpServlet {
 //		- 회원관리
 		case "/admin/adminMemberList.do":  // 관리자 회원 리스트 출력
 			command = new AdminMemberListCommand();
+			command.execute(request, response);
 			viewPage = "adminMemberList.jsp";
 			break;
 //		* 검색 조건 추가는 adminMemberList.do 뒤에 쿼리 추가해서 다시 request
@@ -316,6 +317,7 @@ public class controller extends HttpServlet {
 			viewPage = "adminNewsView.jsp";
 			break;
 		case "/admin/adminNewsWrite.do":  // 관리자 뉴스 상세 내용 수정 (체크)
+			command.execute(request, response);
 			viewPage = "adminNewsWrite.jsp";
 			break;
 		case "/admin/adminNewsUpdateView.do":  // 관리자 뉴스 상세 내용 수정 (체크)
