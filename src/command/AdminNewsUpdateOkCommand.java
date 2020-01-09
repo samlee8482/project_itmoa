@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +28,9 @@ public class AdminNewsUpdateOkCommand implements Command {
 				cnt = dao.updateNewsByUid(news_brd_uid, news_brd_title, news_brd_content, news_brd_img);
 				request.setAttribute("adminNewsUpdateOk", cnt);
 			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

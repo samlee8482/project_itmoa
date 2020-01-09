@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class AdminMbDAO {
@@ -16,18 +21,12 @@ public class AdminMbDAO {
 	Statement stmt;
 	ResultSet rs;
 	
-	// DAO 객체가 생성될때 Connection 도 생성된다!
-	public AdminMbDAO() {
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
 		
-		try {
-			Class.forName(D.DRIVER);
-			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-			System.out.println("DAO 객체 생성, 데이터베이스 연결");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		return ds.getConnection();
 	}
 	
 	// DB 자원 반납 메소드
@@ -65,7 +64,7 @@ public class AdminMbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] selectMb(int option_mb_1, int option_mb_2, String option_mb_3) throws SQLException {
+	public MbDTO[] selectMb(int option_mb_1, int option_mb_2, String option_mb_3) throws SQLException, NamingException {
 		// option_mb_1 은 회원구분
 		// option_mb_2 는 검색조건
 		// option_mb_3 은 검색키워드
@@ -90,6 +89,7 @@ public class AdminMbDAO {
 		SELECT_MB += D.SQL_USER_ORDER_BY;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(SELECT_MB);
 			
 			switch(option_mb_1) {
@@ -154,11 +154,12 @@ public class AdminMbDAO {
 	}
 	
 	// 2.
-	public MbDTO[] selectMbByUid(int mb_uid) throws SQLException {
+	public MbDTO[] selectMbByUid(int mb_uid) throws SQLException, NamingException {
 		MbDTO[] arr = null;
 		String SELECT_MB = D.SQL_SELECT_USER + D.SQL_SELECT_USER_WHERE_UID;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(SELECT_MB);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
@@ -174,10 +175,11 @@ public class AdminMbDAO {
 
 	// 관리자페이지 회원정보수정
 	public int updateMbByUid(String mb_pw, String mb_img, int mb_level, String mb_email, int mb_zip, String mb_add1, String mb_add2,
-		int mb_uid) throws SQLException{
+		int mb_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_USER);
 			pstmt.setString(1, mb_pw);
 			pstmt.setString(2, mb_img);
@@ -197,10 +199,11 @@ public class AdminMbDAO {
 	}
 
 	// 관리자페이지 회원정보삭제
-	public int deleteMbByUid(int mb_uid) throws SQLException{
+	public int deleteMbByUid(int mb_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_DELETE_USER_BY_UID);
 			pstmt.setInt(1, mb_uid);
 			cnt = pstmt.executeUpdate();

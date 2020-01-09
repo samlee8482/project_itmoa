@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import common.D;
 
 public class ReviewDAO {
@@ -17,17 +22,13 @@ public class ReviewDAO {
    Statement stmt;
    ResultSet rs;
    
-   public ReviewDAO() {
-      try {
-         Class.forName(D.DRIVER);
-         conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-         System.out.println("ReviewDAO() 객체 생성, 데이터베이스 연결");
-      } catch (ClassNotFoundException e) {
-         e.printStackTrace();
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }
-   }
+	public static Connection getConnection() throws NamingException, SQLException {
+		Context initContext = new InitialContext();
+		Context envContext = (Context)initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource)envContext.lookup("jdbc/testDB");
+		
+		return ds.getConnection();
+	}
    
    // DB 자원 반납 메소드
    public void close() throws SQLException {
@@ -65,7 +66,7 @@ public class ReviewDAO {
    }
    
    // 1-1. 학원후기 목록 or 검색
-   public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException {
+   public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException, NamingException {
       
       
       ReviewDTO [] arr = null;
@@ -94,9 +95,11 @@ public class ReviewDAO {
       try {
          // keyword가 있을 경우 쿼리문에 키워드 넘겨주기
          if(keyword != null && !keyword.equals("")) {
+        	 conn = getConnection();
             pstmt = conn.prepareStatement(selectReview);
             pstmt.setString(1, keyword);
          }else { 
+        	 conn = getConnection();
             pstmt = conn.prepareStatement(selectReview);
          }
 
@@ -137,11 +140,12 @@ public class ReviewDAO {
    }
    
    // 2-1. 특정 학원후기 불러오기 (조회수 증가o)review_uid로 review
-   public ReviewDTO[] selectReviewByUid(int review_brd_uid) throws SQLException{
+   public ReviewDTO[] selectReviewByUid(int review_brd_uid) throws SQLException, NamingException{
       ReviewDTO[] arr = null;
       
       
       try {
+    	 conn = getConnection();
          conn.setAutoCommit(false);
          
          pstmt = conn.prepareStatement(D.SQL_UPDATE_REVIEW_INC_VIEWCNT);
@@ -166,12 +170,13 @@ public class ReviewDAO {
    }
    
    // 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
-   public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException{
+   public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException, NamingException{
       
       ReviewDTO[] arr = null;
       
       
       try {
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_SELECT_REVIEW_CONTENT);
          pstmt.setInt(1, review_brd_uid);
          
@@ -186,10 +191,11 @@ public class ReviewDAO {
    }
    
    // 3. 학원후기 수정
-   public int updateReviewByUid(int review_brd_uid, String review_brd_title, String review_brd_content) throws SQLException{
+   public int updateReviewByUid(int review_brd_uid, String review_brd_title, String review_brd_content) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_UPDATE_REVIEW_BY_UID);
          pstmt.setString(1, review_brd_title);
          pstmt.setString(2, review_brd_content);
@@ -204,10 +210,11 @@ public class ReviewDAO {
    }
    
    // 4. 학원후기 삭제
-   public int deleteReviewByUid(int review_brd_uid) throws SQLException{
+   public int deleteReviewByUid(int review_brd_uid) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_DELETE_REVIEW_BY_UID);
          pstmt.setInt(1, review_brd_uid);
          cnt = pstmt.executeUpdate();
@@ -222,7 +229,7 @@ public class ReviewDAO {
 
    // 학원후기 삽입
    // 1.
-   public int insertReview(ReviewDTO dto) throws SQLException {
+   public int insertReview(ReviewDTO dto) throws SQLException, NamingException {
       int mb_uid = dto.getMb_uid();
       String mb_id = dto.getMb_id();
       String mb_img = dto.getMb_img();
@@ -235,11 +242,12 @@ public class ReviewDAO {
    
    
    // 1-1.
-   public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content) throws SQLException{
+   public int insertReview(int mb_uid, String mb_id, String mb_img, String review_brd_title, String review_brd_content) throws SQLException, NamingException{
 
       int cnt = 0;
       
       try {
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_INSERT_REVIEW);
          pstmt.setInt(1, mb_uid);
          pstmt.setString(2, mb_id);
@@ -257,7 +265,7 @@ public class ReviewDAO {
 
    // 댓글
    // 1. 댓글 삽입
-   public int insertRep(ReviewDTO dto) throws SQLException {
+   public int insertRep(ReviewDTO dto) throws SQLException, NamingException {
       int mb_uid = dto.getMb_uid();
       String rep_content = dto.getRep_content();
       
@@ -265,10 +273,11 @@ public class ReviewDAO {
    }
    
    // 1-1.
-   public int insertRep(int mb_uid, String rep_content) throws SQLException{
+   public int insertRep(int mb_uid, String rep_content) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
+    	 conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_INSERT_REP);
          pstmt.setInt(1, mb_uid);
          pstmt.setString(2, rep_content);
@@ -281,10 +290,11 @@ public class ReviewDAO {
    }
    
    // 2. 댓글 수정
-   public int updateRepByUid(int rep_uid, String rep_content) throws SQLException{
+   public int updateRepByUid(int rep_uid, String rep_content) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
+    	  conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_UPDATE_REP_BY_UID);
          pstmt.setString(1, rep_content);
          pstmt.setInt(2, rep_uid);
@@ -298,10 +308,11 @@ public class ReviewDAO {
    }
    
    // 3. 댓글 삭제
-   public int deleteRepByUid(int rep_uid) throws SQLException{
+   public int deleteRepByUid(int rep_uid) throws SQLException, NamingException{
       int cnt = 0;
       
       try {
+    	  conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_DELETE_REP_BY_UID);
          pstmt.setInt(1, rep_uid);
          cnt = pstmt.executeUpdate();
@@ -337,13 +348,13 @@ public class ReviewDAO {
    }
       
    // 4-1. review_uid로 댓글가져오기
-   public ReviewDTO[] selectRepByUid(int review_brd_uid) throws SQLException{
+   public ReviewDTO[] selectRepByUid(int review_brd_uid) throws SQLException, NamingException{
       
       ReviewDTO[] arr = null;
       
       
       try {
-         
+    	  conn = getConnection();
          pstmt = conn.prepareStatement(D.SQL_SELECT_REP_BY_UID);
          pstmt.setInt(1, review_brd_uid);
 

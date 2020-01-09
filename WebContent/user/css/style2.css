@@ -19,7 +19,9 @@ form{
 #login-info {
 	padding: 30px;
 	margin-top: 10px;
+	position: absolute;
 }
+
 
 #id-pw {
 	padding: 10px;
@@ -41,12 +43,27 @@ input.login-info {
 	background-color: #bbc4bc;
 }
 
+#login-btn {
+	margin-bottom: 3px;
+}
+
 #login-btn:hover {
 	background-color: rgb(163, 163, 194);
 }
 
 #other-op {
+	width: 100%;
+	height: 50px;
 	margin-top: 20px;
+	position: relative;
+}
+
+#other-op a {
+	display: inline-block;
+	}
+
+#join {
+	padding-right: 25%;
 }
 
 #join-content{
@@ -66,6 +83,7 @@ input.join-info {
 	text-align: center;
 	margin: 0 auto;
 }
+
 
 #info1, #info_addr{
 	text-align: left;

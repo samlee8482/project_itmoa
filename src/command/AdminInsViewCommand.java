@@ -2,6 +2,7 @@ package command;
 
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,9 +22,11 @@ public class AdminInsViewCommand implements Command {
 			if (insArr.length == 1) {
 				request.setAttribute("adminInsView", insArr);
 			}
+		} catch (NamingException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} 
 
 	}	
 
