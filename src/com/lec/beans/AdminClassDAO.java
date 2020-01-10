@@ -474,7 +474,7 @@ public class AdminClassDAO {
 			pstmt.setString(7, cur_month4);
 			pstmt.setString(8, cur_month5);
 			pstmt.setString(9, cur_month6);
-			pstmt.setInt(9, cur_uid);
+			pstmt.setInt(10, cur_uid);
 			
 			cnt = pstmt.executeUpdate();
 
