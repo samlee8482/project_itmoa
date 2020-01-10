@@ -33,24 +33,26 @@
 	function chkSubmit(){
 		frm = document.forms["frm"];
 		
-		var id = frm["id"].value.trim();
-		var pw = frm["pw"].value.trim();
+		var mb_id = frm["mb_id"].value.trim();
+		var mb_pw = frm["mb_pw"].value.trim();
+		var mb_name = frm["mb_name"].value.trim();
+		var mb_email = frm["mb_email"].value.trim();
 		
-		if(iw == ""){
+		if(mb_id == ""){
 			alert("아이디를 입력해주세요");
-			frm["id"].focus();
+			frm["mb_id"].focus();
 			return false;
 		}
-		if(pw == ""){
+		if(mb_pw == ""){
 			alert("비밀번호를 입력해주세요.");
-			frm["pw"].focus();
+			frm["mb_pw"].focus();
 			return false;
 		}
 		
 		return true;
 	}
 </script>
-<body>
+<body>   
 <div id="preloader"></div>
     <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
     <div id="search-wrapper">
@@ -59,7 +61,7 @@
         </div>
     </div>
     </div>
-        <div class="container">
+        <div class="container">   
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -104,7 +106,7 @@
     </div>
     
     <div class="a" id="div-find-pw">
-    <form name="frm" id="find-pw-content" method="get" action="findIdPw.do" onsubmit="return chkSubmit()" >
+    <form name="frm" id="find-pw-content" method="get" action="findPwOk.do" onsubmit="return chkSubmit()" >
         <div class="find_pw">
         	<h4>비밀번호 찾기</h4>
         </div>

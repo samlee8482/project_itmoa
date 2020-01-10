@@ -195,7 +195,7 @@ SELECT * FROM mb;
 SELECT * FROM class;
 SELECT * FROM cur;
 select * from ins;
-update mb set mb_img = 'C:\Users\wkrud\OneDrive\사진\Feedback\{BBEB8EFD-BC28-4759-88F0-86C50CB98D65}' where mb_uid = 6;
+
 
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user1', 'abc123', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');
@@ -250,34 +250,3 @@ insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
-
-
-insert into zzim(mb_uid, class_uid)
-values(1, 2);
-insert into zzim(mb_uid, class_uid)
-values(1, 3);
-insert into zzim(mb_uid, class_uid)
-values(2, 2);
-insert into zzim(mb_uid, class_uid)
-values(3, 1);
-insert into zzim(mb_uid, class_uid)
-values(4, 6);
-insert into zzim(mb_uid, class_uid)
-values(5, 3);
-
-select * from ZZIM;
-
-
-SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name
- FROM zzim z, cur c, class cl, ins i, mb m
- WHERE z.mb_uid = 1
- AND z.class_uid = cl.class_uid
- AND cl.cur_uid = c.cur_uid
- AND cl.ins_uid = i.ins_uid;
-
-
-
-SELECT z.*
- FROM zzim z
- WHERE z.mb_uid = 1
-

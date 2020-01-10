@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("회원가입 성공");
-			history.back();
+			location.href="login.do";
 		</script>
 	</c:otherwise>
 </c:choose>

@@ -36,9 +36,16 @@
 
 </head>
 <!--/head-->
+<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
 <body>
+<!-- 로그인 탑메뉴 -->
+<% if ( dto != null) {%>
+	<jsp:include page="loginTopMenu.jsp" />
+<% }%>
+<!-- 비회원 탑메뉴 -->
+<% if ( dto == null) {%>
 	<jsp:include page="topMenu.jsp" />
-	
+<% }%>
 	
 
 	<script>
@@ -74,22 +81,22 @@
 			%>
 			<p>
 				<label>NAME</label> <input class="info1" type="text" id="id"
-					name="name" readonly value="${myPage[0].mb_name }" >
+					name="mb_name" readonly value="${myPage[0].mb_name }" >
 			</p>
 
 			<br>
-			<form id="infoForm" action="/user/myPageUpdateOk.do" method="post">
+			<form id="infoForm" action="myPageUpdateOk.do" method="post">
 				<p>
 					<label>Email</label> <input class="info1" type="text" id="email"
-						name="email" readonly value="${myPage[0].mb_email }" >
+						name="mb_email" readonly value="${myPage[0].mb_email }" >
 				</p>
-				<input type="hidden" name="id" value="${myPage[0].mb_id }" >
+				<input type="hidden" name="mb_uid" value="1"/>
 				<p>
 					<label>Password</label> <input class="info1" id="old_pw"
-						name="old_pw" type="password" required>
+						name="mb_pw" type="password" required>
 				</p>
 				<p>
-					<label>New Password</label> <input class="info1" id="pw" name="pw"
+					<label>New Password</label> <input class="info1" id="pw" name="mb_pw"
 						type="password" required>
 				</p>
 				<p>
@@ -98,13 +105,13 @@
 				</p>
 				<p>
 					<label>ADDRESS</label> <input type="text" id="sample6_postcode"
-						name="mb_zip" value="${myPage.mb_zip }"
+						name="mb_zip" value="${myPage[0].mb_zip }"
 						style="width: 250px; height: 40px; border-radius: 7px; margin: 5px;">
 					<input class="addr-btn" type="button"
 						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input class="addr" type="text" id="sample6_address"
-						name="${myPage.mb_add1 }"><br> <input class="addr"
-						type="text" id="sample6_detailAddress" name="${myPage.mb_add2 }">
+						value="${myPage[0].mb_add1 }"><br> <input class="addr"
+						type="text" id="sample6_detailAddress" value="${myPage[0].mb_add2 }">
 					<input class="addr" type="text" id="sample6_extraAddress"
 						style="display: none;" placeholder="상세주소">
 				</p>
