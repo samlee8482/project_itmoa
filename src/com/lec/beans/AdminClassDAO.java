@@ -371,11 +371,12 @@ public class AdminClassDAO {
 
 			while (rs.next()) {
 				String ins_name = rs.getString("ins_name");
+				int ins_uid = rs.getInt("ins_uid");
 				String cur_name = rs.getString("cur_name");
 				int cur_hours = rs.getInt("cur_hours");
 
 				
-				ClassDTO dto = new ClassDTO(ins_name, cur_name, cur_hours);
+				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours);
 				list.add(dto);
 			}
 
