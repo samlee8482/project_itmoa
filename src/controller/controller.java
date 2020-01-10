@@ -276,6 +276,9 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminClassList.jsp";
 			break;
+		case "/admin/adminCurWrite.do":  // 관리자 Cur 작성
+			viewPage = "adminCurWrite.jsp";
+			break;
 		case "/admin/adminCurView.do":  // 관리자 Cur 출력. 과정 수정할 때
 			command = new AdminCurViewCommand();
 			command.execute(request, response);
