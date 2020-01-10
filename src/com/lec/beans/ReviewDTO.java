@@ -72,11 +72,12 @@ public class ReviewDTO {
 	
 	
 	// 매개변수 생성자(내용)
-	public ReviewDTO(int review_brd_uid, String mb_id, String ins_name, String review_brd_regdate, int review_brd_viewcnt, String review_brd_title, String review_brd_content) {
+	public ReviewDTO(int review_brd_uid, String mb_id, int mb_uid, String ins_name, String review_brd_regdate, int review_brd_viewcnt, String review_brd_title, String review_brd_content) {
 		super();
 		
 		this.review_brd_uid = review_brd_uid;
 		this.mb_id = mb_id;
+		this.mb_uid = mb_uid;
 		this.ins_name = ins_name;
 		this.review_brd_regdate = review_brd_regdate;
 		this.review_brd_title = review_brd_title;
@@ -87,12 +88,13 @@ public class ReviewDTO {
 	
 	
 	// 매개변수 생성자(댓글)
-	public ReviewDTO(int review_brd_uid, int rep_uid, String mb_id, String rep_content, String rep_regdate) {
+	public ReviewDTO(int review_brd_uid, int rep_uid, String mb_id, int mb_uid, String rep_content, String rep_regdate) {
 		super();
 		
 		this.review_brd_uid = review_brd_uid;
 		this.rep_uid = rep_uid;
 		this.mb_id = mb_id;
+		this.mb_uid = mb_uid;
 		this.rep_content = rep_content;
 		this.rep_regdate = rep_regdate;
 

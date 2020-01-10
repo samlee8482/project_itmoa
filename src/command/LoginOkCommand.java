@@ -20,7 +20,6 @@ public class LoginOkCommand implements Command {
 		String mb_id = request.getParameter("mb_id");
 		String mb_pw = request.getParameter("mb_pw");
 		String sessionName = "login";
-		String sessionValue = "" + Math.floor(Math.random() * 10);
 		HttpSession httpSession = request.getSession(true);
 		try {			
 			arr = dao.login(mb_id, mb_pw);
@@ -28,11 +27,11 @@ public class LoginOkCommand implements Command {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(arr.length > 0) {
-			 httpSession.setAttribute(sessionName, sessionValue);
+			System.out.println(arr[0].getMb_uid());
+			 httpSession.setAttribute(sessionName, arr[0].getMb_uid());
 			 System.out.println(httpSession.getAttribute(sessionName));
 		} else {
 			httpSession.removeAttribute(sessionName);

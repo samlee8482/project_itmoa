@@ -127,13 +127,14 @@ public class ReviewDAO {
 
          int review_brd_uid = rs.getInt("review_brd_uid");
          String mb_id = rs.getString("mb_id");
+         int mb_uid = rs.getInt("mb_uid");
          String ins_name = rs.getString("ins_name");
          String review_brd_regdate = rs.getString("review_brd_regdate");
          String review_brd_title = rs.getString("review_brd_title");
          String review_brd_content =  rs.getString("review_brd_content");
          int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
          
-         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_viewcnt, review_brd_title, review_brd_content);
+         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, mb_uid, ins_name, review_brd_regdate, review_brd_viewcnt, review_brd_title, review_brd_content);
          list.add(dto);
       }
       
@@ -320,12 +321,13 @@ public class ReviewDAO {
          int review_brd_uid = rs.getInt("review_brd_uid");
          int rep_uid = rs.getInt("rep_uid");
          String mb_id = rs.getString("mb_id");
+         int mb_uid = rs.getInt("mb_uid");
          String rep_content = rs.getString("rep_content");
 	     Date d = rs.getDate("rep_regdate");
 	     Time t = rs.getTime("rep_regdate");
 	     String rep_regdate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " | " + new SimpleDateFormat("hh:mm:ss").format(t);
          
-         ReviewDTO dto = new ReviewDTO(review_brd_uid, rep_uid, mb_id, rep_content, rep_regdate);
+         ReviewDTO dto = new ReviewDTO(review_brd_uid, rep_uid, mb_id, mb_uid, rep_content, rep_regdate);
          reviewList.add(dto);         
       }
       

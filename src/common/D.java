@@ -314,7 +314,7 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.* , m.mb_id"
+		"SELECT i.ins_name, r.* , m.mb_id, m.mb_uid"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
@@ -345,7 +345,7 @@ public interface D {
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID =  
-			"SELECT m.mb_id, re.*"
+			"SELECT m.mb_id, m.mb_uid, re.*"
 			+ " FROM review_brd r, mb m, rep re"
 			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
