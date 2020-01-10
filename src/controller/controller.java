@@ -89,6 +89,12 @@ public class controller extends HttpServlet {
 		case "/user/index.do":  // 메인페이지
 			viewPage = "index.jsp";
 			break;
+		case "/user/loginIndex.do":  // 메인페이지
+			viewPage = "index.jsp";
+			break;
+		case "/user/logoutIndex.do":  // 메인페이지
+			viewPage = "index.jsp";
+			break;
 
 //		- 로그인
 		case "/user/login.do":  // 로그인 페이지
@@ -98,6 +104,11 @@ public class controller extends HttpServlet {
 			command = new LoginOkCommand();
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
+			break;
+		case "/user/logoutOk.do":  // 로그아웃
+			command = new LoginOkCommand();
+			command.execute(request, response);
+			viewPage = "logoutOk.jsp";
 			break;
 
 //		- 회원가입
@@ -140,6 +151,11 @@ public class controller extends HttpServlet {
 			viewPage = "myPageUpdateOk.jsp";
 			break;
 			
+		case "/user/myPageAction.do":  // 마이페이지 출력
+			command = new MyPageCommand();
+			command.execute(request, response);
+			viewPage = "myPageAction.jsp";
+			break;
 //		- 학원
 		case "/user/classList.do":  // 학원 리스트 출력
 			command = new CurListCommand();
