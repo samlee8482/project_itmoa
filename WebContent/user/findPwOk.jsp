@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 ${findPwOk }
-<c:choose>
+<c:choose>  
 	<c:when test="${findPwOk == 0 }">
 		<script>
 			alert("비밀번호 찾기 실패");

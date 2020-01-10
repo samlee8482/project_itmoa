@@ -52,7 +52,7 @@
 		return true;
 	}
 </script>
-<body>
+<body>   
 <div id="preloader"></div>
     <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
     <div id="search-wrapper">
@@ -61,7 +61,7 @@
         </div>
     </div>
     </div>
-        <div class="container">
+        <div class="container">   
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>

@@ -41,7 +41,7 @@ public class FindPwOkCommand implements Command{
 		String HOST = "smtp.naver.com";
 		//int PORT = 587;
 
-		Properties props = new Properties();
+		Properties props = new Properties();   
 		props.put("mail.smtp.host", HOST); 
 		props.put("mail.smtp.auth", "true");
 		

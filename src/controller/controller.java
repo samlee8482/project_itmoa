@@ -129,7 +129,7 @@ public class controller extends HttpServlet {
 //			command.execute(request, response);
 //			viewPage = "findIdOk.jsp";
 //			break;
-		case "/user/findIdView.do":  // 아이디 찾기 결과창
+		case "/user/findIdView.do":  // 아이디 찾기 결과창   
 			command = new FindIdOkCommand();
 			command.execute(request, response);
 			viewPage = "findIdView.jsp";
