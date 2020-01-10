@@ -99,10 +99,9 @@ public class MbDTO {
 	}
 	
 	// 회원정보찾기 - ID 
-	public MbDTO(String mb_name, String mb_email) {
+	public MbDTO(String mb_id) {
 		super();
-		this.mb_name = mb_name;
-		this.mb_email = mb_email;
+		this.mb_id = mb_id;
 	}
 	
 	// 회원정보찾기 - PW

@@ -108,24 +108,20 @@ public class controller extends HttpServlet {
 			viewPage = "joinOk.jsp";
 			break;
 	
-//		- 아이디 찾기
-		case "/user/find.do":  // 아이디 찾기 페이지
-			viewPage = "find.jsp";
+//		- 아이디 비밀번호 찾기
+		case "/user/find_id_pw.do":  // 아이디 찾기 페이지
+			viewPage = "find_id_pw.jsp";
 			break;
 		case "/user/findIdView.do":  // 아이디 찾기 (체크) 및 아이디 출력
 			command = new FindIdViewCommand();
 			command.execute(request, response);
-			viewPage = "findIdOk.jsp";
+			viewPage = "findIdView.jsp";
 			break;
 		
-//		- 비밀번호 찾기
-		case "/user/findPw.do":  // 비밀번호 찾기 페이지
-			viewPage = "findPw.jsp";
-			break;
 		case "/user/findPwView.do":  // 비밀번호 찾기 (체크) 및 이메일로 발송
 			command = new FindPwViewCommand();
 			command.execute(request, response);
-			viewPage = "findPwOk.jsp";
+			viewPage = "findPwView.jsp";
 			break;
 
 //		- 마이페이지

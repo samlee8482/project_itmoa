@@ -27,11 +27,11 @@ public interface D {
 
 	// 아이디찾기
 	public static final String SQL_SELET_FIND_ACCOUNT_ID =
-			"SELECT mb_name, mb_email FROM mb WHERE mb_name = ? AND mb_email = ?";
+			"SELECT mb_id, mb_name, mb_email FROM mb WHERE mb_name = ? AND mb_email = ?";
 
 	// 비밀번호 찾기
 	public static final String SQL_SELECT_FIND_ACCOUNT_PWD =
-			"SELECT mb_id, mb_name, mb_email FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
+			"SELECT mb_pw FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
 
 	
 	
