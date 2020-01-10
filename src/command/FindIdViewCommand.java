@@ -15,13 +15,14 @@ public class FindIdViewCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		MbDTO[] arr = null;
 		MbDAO dao = new MbDAO();
-		
 		String mb_name = request.getParameter("mb_name");
 		String mb_email = request.getParameter("mb_email");
-
+		System.out.println(mb_name + " " + mb_email);
+		
 		try {
 			arr = dao.selectId(mb_name, mb_email);
-			if(arr.length == 1) {
+			System.out.println(arr.length);
+			if(arr.length == 1 && arr[0].getMb_name().trim().equals(mb_name.trim()) && arr[0].getMb_email().trim().equals(mb_email.trim())) {
 				request.setAttribute("findIdView", arr);
 			}
 		} catch (SQLException e) {

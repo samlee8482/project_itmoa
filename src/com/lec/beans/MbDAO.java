@@ -206,10 +206,11 @@ public class MbDAO {
 		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
 
 		while(rs.next()){
+			String mb_id = rs.getString("mb_id");
 			String mb_name = rs.getString("mb_name");
 			String mb_email = rs.getString("mb_email");
 			
-			MbDTO dto = new MbDTO(mb_name, mb_email);
+			MbDTO dto = new MbDTO(mb_id, mb_name, mb_email);
 			list.add(dto);
 		}
 		
@@ -221,36 +222,28 @@ public class MbDAO {
 	
 	// 1-1.
 	public MbDTO[] selectId(String mb_name, String mb_email) throws SQLException, NamingException {
+		
+		MbDTO[] arr = null;
 		String dbName = null;
 		String dbEmail = null;
 		
-		MbDTO[] arr = null;
-		
-		try {
+        try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELET_FIND_ACCOUNT_ID);
 			pstmt.setString(1, mb_name);
 			pstmt.setString(2, mb_email);
 			rs = pstmt.executeQuery();
-			if (rs.next()) // 입려된 아이디와 이메일에 해당하는 비번 있을경우
-            {
-				dbName = rs.getString("mb_name"); // 비번을 변수에 넣는다.
-                dbEmail = rs.getString("mb_email"); // 비번을 변수에 넣는다.
- 
-                if (dbName.equals(mb_name) && dbEmail.equals(mb_email)) 
-                	arr = createSelectIdArray(rs);
-                else                  
-                    return arr; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-                
-            } else {
-                return arr; // 해당 아이디가 없을 경우
-            }
- 
+			arr = createSelectIdArray(rs);
+			System.out.println(arr.length);
+	        
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
+        
+        
+		
 		return arr;
 	}
 	
