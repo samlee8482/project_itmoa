@@ -156,6 +156,116 @@ public class AdminMbDAO {
       return arr; 
    }
    
+// 페이징
+	
+	// 몇 번째 from 부터 몇 개 rows 를 SELECT
+	public MbDTO[] selectFromRow(int option_mb_1, int option_mb_2, String option_mb_3, int fromRow, int pageRows) throws SQLException, NamingException{
+		MbDTO[] arr = null;
+	      String SELECT_MB = D.SQL_SELECT_USER;
+	      SELECT_MB += D.SQL_SELECT_USER_WHERE_LEVEL;
+	      
+	      int chkUid = 0;
+	      // 검색조건 들어갈 switch문
+	      switch(option_mb_2) {
+	      case 1:
+	         SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
+	         break;
+	      case 2:
+	         SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
+	         option_mb_3 = "%" + option_mb_3 + "%";
+	         break;
+	      case 3:
+	         SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
+	         chkUid = 4;
+	         break;
+	      case 4:
+	         SELECT_MB += D.SQL_SELECT_USER_WHERE_EMAIL;
+	         break;
+	      case 5:
+	         break;
+	      }
+	      
+	      SELECT_MB += D.SQL_USER_ORDER_BY + D.SQL_SELECT_FROM_ROW_USER;
+	      
+	      try {
+	    	 conn = getConnection();
+	    	 pstmt = conn.prepareStatement(SELECT_MB);
+	    	 
+	         // ? 값들어갈 switch문
+	         switch(option_mb_1) {
+	         case 1:   // 전체회원
+	            pstmt.setInt(1, 1);
+	            System.out.println("o");
+	            pstmt.setInt(2, 2);               
+	            System.out.println("o");
+	            pstmt.setInt(3, 3);   
+	            System.out.println("o");
+	            break;
+	         case 2: // 일반회원일 때
+	            pstmt.setInt(1, 1);   // 쿼리문이 IN이기 때문에 포함만 되면 됨. 따라서 첫번째 값에 걍 레벨값 넣어줌       
+	            pstmt.setInt(2, 0);               
+	            pstmt.setInt(3, 0);      
+	            break;
+	         case 3: // 슈퍼회원일 때
+	            pstmt.setInt(1, 2);               
+	            pstmt.setInt(2, 0);               
+	            pstmt.setInt(3, 0);   
+	            break;
+	         case 4: // 관리자일 때
+	            pstmt.setInt(1, 3);               
+	            pstmt.setInt(2, 0);               
+	            pstmt.setInt(3, 0);      
+	            break;
+	         }
+	         
+	         if(chkUid == 4) {
+	            pstmt.setInt(chkUid, Integer.parseInt(option_mb_3));
+	            pstmt.setInt(5, fromRow);
+				pstmt.setInt(6, pageRows);
+	            rs = pstmt.executeQuery();
+	            arr = createMbArr(rs);
+	            System.out.println(arr.length);
+	         } else if(!option_mb_3.equals("a")) {
+	            pstmt.setString(4, option_mb_3);
+	            pstmt.setInt(5, fromRow);
+	            pstmt.setInt(6, pageRows);
+	            rs = pstmt.executeQuery();
+	            arr = createMbArr(rs);
+	            System.out.println(arr.length);
+	         } else {
+	        	pstmt.setInt(4, fromRow);
+	        	pstmt.setInt(5, pageRows);
+	        	rs = pstmt.executeQuery();
+	        	arr = createMbArr(rs);
+	        	System.out.println(arr.length);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      
+	      return arr; 
+	}
+	
+	// 총 몇 개의 글이 있는지 계산
+	public int countAll() throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_COUNT_ALL_USER);
+			rs = pstmt.executeQuery();
+			rs.next();
+			rs.getInt(1);	// 첫번째 행의 
+			cnt = rs.getInt(1);	// 첫번재 컬럼
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+   
    // 관리자페이지 회원상세정보(수정) 가져오기
    // 1.
    public MbDTO[] createMbByUidArr(ResultSet rs) throws SQLException {   // 데이터 우리가 쓸 수 있는 값으로 바꿔오기
@@ -245,6 +355,7 @@ public class AdminMbDAO {
 		
 		return cnt;
 	}
+	
 	
 	
 }

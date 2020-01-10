@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%--페이징 --%>
+<jsp:include page="adminMemberListPagination.jsp">
+	<jsp:param value="${writePages }" name="writePages"/>
+	<jsp:param value="${totalPage }" name="totalPage"/>
+	<jsp:param value="${page }" name="curPage"/>
+</jsp:include>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,12 +32,17 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+<!-- 페이징 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
 </head>
 
 <body id="page-top">
 
    <!-- Page Wrapper -->
-   <div id="wrapper">
+   <div id="wrapper" style="positon: static;">
    
       <!-- Side Menu -->
       <jsp:include page="sideMenu.jsp"/>
@@ -115,6 +128,7 @@
                                  width="100%" cellspacing="0">
                                  <thead>
                                     <tr>
+                                       <th width="5%" style="text-align: center;">Row</th>
                                        <th width="5%" style="text-align: center;">No</th>
                                        <th width="10%" style="text-align: center;">회원 번호</th width="5%">
                                        <th width="10%" style="text-align: center;">이름</th width="5%">
@@ -129,6 +143,7 @@
                                  
                                  <c:forEach var="dto" items="${adminMemberList }" varStatus="status">
                                     <tr>
+                                       <td>${(page - 1) * pageRows + status.index + 1}</td>
                                        <td>${status.index + 1}</td>
                                        <td style="text-align: center;"><a href="/Project_itmoa/admin/adminMemberUpdateView.do?mb_uid=${dto.mb_uid }">${dto.mb_uid }</a></td>
                                        <td style="text-align: center;">${dto.mb_name }</td>
