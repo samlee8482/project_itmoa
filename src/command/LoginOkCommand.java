@@ -35,7 +35,6 @@ public class LoginOkCommand implements Command {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			request.setAttribute("loginOk", arr);

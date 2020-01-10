@@ -84,7 +84,7 @@ public class AdminReviewDAO {
 	         String review_brd_content =  rs.getString("review_brd_content");
 	         int review_brd_viewcnt = rs.getInt("review_brd_viewcnt");
 	         
-	         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_viewcnt, review_brd_title, review_brd_content);
+	         ReviewDTO dto = new ReviewDTO(review_brd_uid, mb_id, ins_name, review_brd_regdate, review_brd_title, review_brd_viewcnt, review_brd_content);
 	         list.add(dto);
 	      }
 	      

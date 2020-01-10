@@ -13,11 +13,9 @@ public class CurViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-
 	
 		int class_uid = Integer.parseInt(request.getParameter("class_uid"));
-		
-		
+				
 		ClassDAO dao = new ClassDAO();
 		ClassDTO [] arr = null;
 		
@@ -25,13 +23,11 @@ public class CurViewCommand implements Command {
 		try {
 			
 			arr = dao.selectClassByUid(class_uid);
-			request.setAttribute("curView", arr);
-			
-			
+			request.setAttribute("classView", arr);
+						
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

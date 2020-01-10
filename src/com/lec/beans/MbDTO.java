@@ -55,7 +55,7 @@ public class MbDTO {
 	}
 	
 	// 마이페이지
-	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2, String mb_img, int zzim_uid, String ins_name, String cur_name) {
+	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2, String mb_img, int zzim_uid) {
 		this.mb_uid = mb_uid;
 		this.mb_id = mb_id;
 		this.mb_pw = mb_pw;
@@ -64,8 +64,6 @@ public class MbDTO {
 		this.mb_zip = mb_zip;
 		this.mb_img = mb_img;
 		this.zzim_uid = zzim_uid;
-		this.ins_name = ins_name;
-		this.cur_name = cur_name;
 	}
 
 	// AdminMbDAO
@@ -99,10 +97,9 @@ public class MbDTO {
 	}
 	
 	// 회원정보찾기 - ID 
-	public MbDTO(String mb_name, String mb_email) {
+	public MbDTO(String mb_id) {
 		super();
-		this.mb_name = mb_name;
-		this.mb_email = mb_email;
+		this.mb_id = mb_id;
 	}
 	
 	// 회원정보찾기 - PW

@@ -118,7 +118,7 @@
 													<th width="10%">학원 번호</th width="5%">
 													<th width="25%">학원명</th width="5%">
 													<th width="25%">주소</th width="5%">
-													<th width="17%">연락처</th width="5%">
+													<th width="17%">연락처</th width="5%">                                          <!-- **수정** -->
 													<th width="6%" style="text-align: center;">클래스관리</th width="5%">
 													<th width="6%" style="text-align: center;">학원수정</th width="5%">
 													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
@@ -132,9 +132,9 @@
 													<td>${dto.ins_name }</td>
 													<td>${dto.ins_add1 }</td>
 													<td>${dto.ins_tel }</td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
+													<td style="text-align: center;"><a href="adminClassList.do?ins_uid=${dto.ins_uid }"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
+													<td style="text-align: center;"><a href="adminInsUpdate.do?ins_uid=${dto.ins_uid }"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
+													<td style="text-align: center;"><a href="adminInsDeleteOk.do?ins_uid=${dto.ins_uid }"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
 													</a></td>
 												</tr>
 											</tbody>

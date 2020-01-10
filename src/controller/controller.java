@@ -111,24 +111,20 @@ public class controller extends HttpServlet {
 			viewPage = "joinOk.jsp";
 			break;
 	
-//		- 아이디 찾기
-		case "/user/find.do":  // 아이디 찾기 페이지
-			viewPage = "find.jsp";
+//		- 아이디 비밀번호 찾기
+		case "/user/find_id_pw.do":  // 아이디 찾기 페이지
+			viewPage = "find_id_pw.jsp";
 			break;
 		case "/user/findIdView.do":  // 아이디 찾기 (체크) 및 아이디 출력
 			command = new FindIdViewCommand();
 			command.execute(request, response);
-			viewPage = "findIdOk.jsp";
+			viewPage = "findIdView.jsp";
 			break;
 		
-//		- 비밀번호 찾기
-		case "/user/findPw.do":  // 비밀번호 찾기 페이지
-			viewPage = "findPw.jsp";
-			break;
 		case "/user/findPwView.do":  // 비밀번호 찾기 (체크) 및 이메일로 발송
 			command = new FindPwViewCommand();
 			command.execute(request, response);
-			viewPage = "findPwOk.jsp";
+			viewPage = "findPwView.jsp";
 			break;
 
 //		- 마이페이지
@@ -137,6 +133,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+			
 		case "/user/myPageUpdateOk.do":  // 마이페이지 수정 (체크)
 			command = new MyPageUpdateOkCommand();
 			command.execute(request, response);
@@ -151,10 +148,10 @@ public class controller extends HttpServlet {
 			break;
 		
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
-		case "/user/curView.do":  // 학원 상세페이지 출력
+		case "/user/classView.do":  // 학원 상세페이지 출력
 			command = new CurViewCommand();
 			command.execute(request, response);
-			viewPage = "curView.jsp";
+			viewPage = "classView.jsp";
 			break;
 //		* 찜 삭제는 커맨드에서 if문으로 거르기
 		case "/user/zzimOk.do":  // 찜 추가
