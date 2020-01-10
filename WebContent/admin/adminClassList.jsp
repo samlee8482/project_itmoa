@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- JSTL core 라이브러리 포함 --%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -14,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Member</title>
+<title>ITMOA ADMIN - Class</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -25,13 +27,14 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
-<script src="ckeditor/ckeditor.js"></script>
+
 </head>
 
 <body id="page-top">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
+
 	
 		<!-- Side Menu -->
 		<jsp:include page="sideMenu.jsp"/>
@@ -53,7 +56,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					<div class="h4 m-0 ml-2 font-weight-bold text-primary">뉴스 관리</div>
+					<div class="h4 m-0 ml-2 font-weight-bold text-primary">학원 관리</div>
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -93,26 +96,30 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">뉴스 수정</h6>
+									<h6 class="m-0 font-weight-bold text-primary">${adminCurList[0].ins_name }</h6>
 								</div>
 								<div class="card-body">
-									<form method="post" action="/Project_itmoa/admin/adminNewsUpdateOk.do" enctype=”multipart/form-data”>
-										<h6 class="m-0 font-weight-bold text-primary p-2">제목</h6>
-										<input type="text" name="news_brd_title" value="${adminNewsView[0].news_brd_title }" placeholder="제목을 입력하세요" class="p-2 mb-3 col-xl-12">
-										<textarea name="news_brd_content" id="editor1">${adminNewsView[0].news_brd_content }</textarea>
-										<script>
-											CKEDITOR.replace('editor1', {
-												allowedContent: true,
-												height: '700px',
-												filebrowserUploadUrl: '${pageContext.request.contextPath }/admin/adminNewsFileUplaod.do'
-											});
-										</script>
-										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="news_brd_img" />
-										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
-										<input type="hidden" name="ifNew" value="false" />
-										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
-									</form>
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th width="10%">No</th>
+													<th width="70%">과정</th width="5%">
+													<th width="20%">시수</th width="5%">
+												</tr>
+											</thead>
+											<c:forEach var="dto" items="${adminCurList }" varStatus="status">
+												<tbody>
+													<tr>
+														<td>${status.index+1 }</td>
+														<td>${dto.cur_name }</td>
+														<td>${dto.cur_hours }</td>
+													</tr>
+												</tbody>
+											</c:forEach>
+										</table>
+									</div>
 								</div>
 							</div>
 
@@ -187,6 +194,44 @@
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
 
+
+
+
+
+
+   <!-- 지역에 따른 지점 출력 함수 -->
+	<script>
+	
+	 function show(){
+		
+			  var option = document.getElementById("option");
+			  option = option.options[option.selectedIndex].value;			
+			  
+			  var keyword = document.getElementById("keyword").value; 		  
+			  
+			  
+			  if(option == "" || option == null){
+					
+				  option = 1;
+				  
+			  }
+			  
+			  
+			  if(keyword == "" || keyword == null){
+		
+				  keyword = "없음";
+				  
+			  }
+
+			  
+			  alert(option + " " + keyword );
+			  
+			  var url = 'adminInsList.do?option=' + encodeURI(option) + '&keyword=' + encodeURI(keyword);
+			  window.location.href = url;
+
+	  };
+	
+	</script>
 </body>
 
 </html>

@@ -318,7 +318,6 @@ public class controller extends HttpServlet {
 			viewPage = "adminNewsView.jsp";
 			break;
 		case "/admin/adminNewsWrite.do":  // 관리자 뉴스 상세 내용 수정 (체크)
-			command.execute(request, response);
 			viewPage = "adminNewsWrite.jsp";
 			break;
 		case "/admin/adminNewsUpdateView.do":  // 관리자 뉴스 상세 내용 수정 (체크)

@@ -172,6 +172,24 @@ public class AdminNewsDAO {
 		return cnt;
 	}
 	
+	public int updateNewsByUidWithoutImg(int news_brd_uid, String news_brd_title, String news_brd_content) throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_UPDATE_NEWS_BRD_BY_UID_WITHOUT_IMG);
+			pstmt.setString(1, news_brd_title);
+			pstmt.setString(2, news_brd_content);
+			pstmt.setInt(3, news_brd_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
 	// 관리자페이지 뉴스 삭제
 	public int deleteNewsByUid(int mb_uid) throws SQLException, NamingException{
 		int cnt = 0;
@@ -191,15 +209,6 @@ public class AdminNewsDAO {
 	
 	// 관리자페이지 뉴스 삽입
 	// 1.
-	public int insertNews(NewsDTO dto) throws SQLException, NamingException {
-		String news_brd_title = dto.getNews_brd_title();
-		String news_brd_img = dto.getNews_brd_img();
-		String news_brd_content = dto.getNews_brd_content();
-		
-		return this.insertNews(news_brd_title, news_brd_img, news_brd_content);
-	}
-	
-	// 2.
 	public int insertNews(String news_brd_title, String news_brd_img, String news_brd_content) throws SQLException, NamingException{
 		int cnt = 0;
 		
@@ -209,6 +218,22 @@ public class AdminNewsDAO {
 			pstmt.setString(1, news_brd_title);
 			pstmt.setString(2, news_brd_img);
 			pstmt.setString(3, news_brd_content);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
+	public int insertNewsWithoutMainImg(String news_brd_title, String news_brd_content) throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_INSERT_NEWS_BRD_WITHOUT_IMG);
+			pstmt.setString(1, news_brd_title);
+			pstmt.setString(2, news_brd_content);
 			cnt = pstmt.executeUpdate();
 		} finally {
 			close();
