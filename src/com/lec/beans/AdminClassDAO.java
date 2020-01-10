@@ -37,6 +37,7 @@ public class AdminClassDAO {
 		return ds.getConnection();
 	}
 
+	
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
 		if (rs != null)
@@ -99,6 +100,7 @@ public class AdminClassDAO {
 		return arr;
 	}
 	
+	
 	//관리자페이지 학원 수정할 경우 화면에 띄워주기
 	public ClassDTO[] insView() throws SQLException, NamingException {
 		
@@ -151,25 +153,20 @@ public class AdminClassDAO {
 		try {
 			
 			switch(option) {
-			case 1 :
-					selectIns += D.SQL_INS_WHERE_UID_OR_CUR_NAME;
-					conn = getConnection();
-					pstmt = conn.prepareStatement(selectIns);
-					pstmt.setString(1, keyword);
-					pstmt.setString(2, keyword);
-				
-			case 2 :	
+			case 1 :	
 				selectIns += D.SQL_INS_WHERE_NAME;
+				keyword = "%" + keyword + "%";
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
-				
-			case 3 :
+				break;
+			case 2 :
 				selectIns += D.SQL_INS_WHERE_UID;
+				int k1 = Integer.parseInt(keyword);
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
-				pstmt.setString(1, keyword);
-				
+				pstmt.setInt(1, k1);
+				break;
 			default :
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);

@@ -34,9 +34,9 @@ public class AdminInsListCommand implements Command {
 				
 			}else {
 				
-//				option 1: 전체
-//			      	   2: 학원명
-//			           3: 학원코드
+
+//			    option 1: 학원명
+//			           2: 학원코드
 						
 				arr = dao.selectInsListByOption(Integer.parseInt(option), keyword);
 				request.setAttribute("adminInsList", arr);

@@ -52,14 +52,9 @@ public interface D {
 	// 마이페이지에서 회원정보 수정
 	public static final String SQL_UPDATE_MYPAGE=
 		"UPDATE mb"
-		+ " SET mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_img, mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
 		
-	// 프로필 이미지 수정
-	public static final String SQL_UPDATE_MYPAGE_IMG =
-		"UPDATE mb"
-		+ " SET mb_img = ?"
-		+ " WHERE mb_uid = ?";
 	
 	// 프로필 이미지 삭제(기본 이미지로 변경)
 		public static final String SQL_DELETE_MYPAGE_IMG =
@@ -199,11 +194,11 @@ public interface D {
 	
 	// 학원 검색 조건) 학원명
 	public static final String SQL_INS_WHERE_NAME =
-		" WHERE ins_name LIKE %?%";
+		" WHERE ins_name LIKE ?";
 	
 	// 학원 검색 조건) 학원uid 또는 학원명
 	public static final String SQL_INS_WHERE_UID_OR_CUR_NAME =
-		"WHERE ins_uid = ? OR ins_name = %?%";
+		"WHERE ins_uid = ? OR ins_name LIKE ?";
 	
     // 정렬
 	public static final String SQL_SELECT_INS_ORDER_BY_UID =

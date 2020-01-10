@@ -96,51 +96,14 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">학원 목록</h6>
+									<h6 class="m-0 font-weight-bold text-primary">학원 등록</h6>
 								</div>
 								<div class="card-body">
-								<form action="adminInsList.do" method="get">
-								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-								<select name="option">
-										<option value="1" selected>학원명</option>
-										<option value="2">학원코드</option>
-								</select>
-								<input type="text" name="keyword" value="" ></input>
-								<input type="submit" value="검색" class="btn btn-info btn-icon-split" />
-								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
-								</form>
-									<div class="table-responsive">
-										<table class="table table-bordered" id="dataTable"
-											width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th width="5%">No</th>
-													<th width="10%">학원 번호</th width="5%">
-													<th width="25%">학원명</th width="5%">
-													<th width="25%">주소</th width="5%">
-													<th width="17%">연락처</th width="5%">
-													<th width="6%" style="text-align: center;">클래스관리</th width="5%">
-													<th width="6%" style="text-align: center;">학원수정</th width="5%">
-													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
-												</tr>
-											</thead>
-											<c:forEach var="dto" items="${adminInsList }" varStatus="status">
-											<tbody>
-												<tr>
-													<td>${status.index+1 }</td>
-													<td>${dto.ins_uid }</td>
-													<td>${dto.ins_name }</td>
-													<td>${dto.ins_add1 }</td>
-													<td>${dto.ins_tel }</td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
-													<td style="text-align: center;"><a href="#"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
-													</a></td>
-												</tr>
-											</tbody>
-											</c:forEach>
-										</table>
-									</div>
+								
+									
+									
+									
+									
 								</div>
 							</div>
 
