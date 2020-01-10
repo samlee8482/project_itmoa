@@ -145,9 +145,9 @@ public class MbDAO {
 			String mb_add1 = rs.getString("mb_add1");
 			String mb_add2 = rs.getString("mb_add2");
 			String mb_img = rs.getString("mb_img");
-			int zzim_uid = rs.getInt("zzim_uid");
-					
-			MbDTO dto = new MbDTO(mb_uid, mb_id, mb_pw, mb_zip, mb_add1, mb_add2, mb_img, zzim_uid);
+			
+			
+			MbDTO dto = new MbDTO(mb_uid, mb_id, mb_pw, mb_zip, mb_add1, mb_add2, mb_img);
 			list.add(dto);
 		}
 		

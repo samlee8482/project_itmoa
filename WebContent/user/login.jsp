@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.lec.beans.*" %>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/pe-icons.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/style2.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+<script src="js/jquery.js"></script>
+<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="images/ico/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="images/ico/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="images/ico/images/ico/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed"
+	href="images/ico/apple-touch-icon-57x57.png">
+
+
 <title>LOGIN</title>
 </head>
 <!--/head-->
@@ -32,10 +57,16 @@
 		return true;
 	}
 </script>
+<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
 <body>
-	<!-- TopMenu -->
+<!-- 로그인 탑메뉴 -->
+<% if ( dto != null) {%>
+	<jsp:include page="loginTopMenu.jsp" />
+<% }%>
+<!-- 비회원 탑메뉴 -->
+<% if ( dto == null) {%>
 	<jsp:include page="topMenu.jsp" />
-
+<% }%>
 	<form name="frm" id="login-content" method="post" action="loginOk.do"
 		onsubmit="return chkSubmit()">
 		<div class="login-logo">

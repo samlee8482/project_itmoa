@@ -89,6 +89,12 @@ public class controller extends HttpServlet {
 		case "/user/index.do":  // 메인페이지
 			viewPage = "index.jsp";
 			break;
+		case "/user/loginIndex.do":  // 메인페이지
+			viewPage = "index.jsp";
+			break;
+		case "/user/logoutIndex.do":  // 메인페이지
+			viewPage = "index.jsp";
+			break;
 
 //		- 로그인
 		case "/user/login.do":  // 로그인 페이지
@@ -98,6 +104,9 @@ public class controller extends HttpServlet {
 			command = new LoginOkCommand();
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
+			break;
+		case "/user/logoutOk.do":  // 로그아웃
+			viewPage = "logoutOk.jsp";
 			break;
 
 //		- 회원가입
@@ -148,6 +157,10 @@ public class controller extends HttpServlet {
 			viewPage = "myPageUpdateOk.jsp";
 			break;
 			
+		case "/user/myPageAction.do":  // 마이페이지 출력
+			viewPage = "myPageAction.jsp";
+			break;
+			
 //		- 학원
 		case "/user/classList.do":  // 학원 리스트 출력
 			command = new CurListCommand();
@@ -156,10 +169,10 @@ public class controller extends HttpServlet {
 			break;
 		
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
-		case "/user/curView.do":  // 학원 상세페이지 출력
+		case "/user/classView.do":  // 학원 상세페이지 출력
 			command = new CurViewCommand();
 			command.execute(request, response);
-			viewPage = "curView.jsp";
+			viewPage = "classView.jsp";
 			break;
 //		* 찜 삭제는 커맨드에서 if문으로 거르기
 		case "/user/zzimOk.do":  // 찜 추가

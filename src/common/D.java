@@ -124,7 +124,7 @@ public interface D {
 	
 	// 학원 검색 조건) 전체
 		public static final String SQL_SELECT_CLASS = 
-	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name, c.cur_name"
+	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name, c.cur_name, cl.class_uid"
 	+ " FROM class cl, cur c, ins i "
 	+ " WHERE cl.cur_uid = c.cur_uid "
 	+ " AND cl.ins_uid = i.ins_uid";
@@ -176,7 +176,7 @@ public interface D {
 	
 	// 학원 상세 페이지
 	public static final String SQL_SELECT_INS_BY_UID = 
-				"SELECT c.*,  i.ins_name, i.ins_img, i.ins_x, ins_y"
+				"SELECT c.*,  i.*"
 				+ " FROM class cl,  ins i, cur c"
 				+ " WHERE class_uid = ?"
 				+ " AND cl.cur_uid = c.cur_uid"
@@ -314,7 +314,7 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.* , m.mb_id"
+		"SELECT i.ins_name, r.* , m.mb_id, m.mb_uid"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
@@ -345,7 +345,7 @@ public interface D {
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID =  
-			"SELECT m.mb_id, re.*"
+			"SELECT m.mb_id, m.mb_uid, re.*"
 			+ " FROM review_brd r, mb m, rep re"
 			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
