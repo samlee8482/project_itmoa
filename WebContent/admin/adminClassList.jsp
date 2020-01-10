@@ -105,9 +105,10 @@
 											width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th width="10%">No</th>
+													<th width="4%">No</th>
 													<th width="70%">과정</th width="5%">
 													<th width="20%">시수</th width="5%">
+													<th width="6%">과정 삭제</th>
 												</tr>
 											</thead>
 											<c:forEach var="dto" items="${adminCurList }" varStatus="status">
@@ -116,6 +117,13 @@
 														<td>${status.index+1 }</td>
 														<td>${dto.cur_name }</td>
 														<td>${dto.cur_hours }</td>
+														<td style="text-align: center;">
+															<a href="/Project_itmoa/admin/adminClassDeleteOk.do?class_uid=${dto.class_uid }" class="btn btn-danger btn-icon-split"> 
+																<span class="icon text-white-50"> 
+																	<i class="fas fa-trash"></i>
+																</span>
+															</a>
+														</td>
 													</tr>
 												</tbody>
 											</c:forEach>
