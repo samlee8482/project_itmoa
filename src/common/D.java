@@ -199,11 +199,12 @@ public interface D {
 	
 	// 학원 검색 조건) 학원명
 	public static final String SQL_INS_WHERE_NAME =
-		" WHERE ins_name LIKE ('%?%')";
+		" WHERE ins_name LIKE %?%";
 	
-	// 학원 검색 조건) 과정명
-	public static final String SQL_INS_WHERE_CUR_NAME =
-		" WHERE ins_uid = ?";
+	// 학원 검색 조건) 학원uid 또는 학원명
+	public static final String SQL_INS_WHERE_UID_OR_CUR_NAME =
+		"WHERE ins_uid = ? OR ins_name = %?%";
+	
     // 정렬
 	public static final String SQL_SELECT_INS_ORDER_BY_UID =
 		" ORDER BY ins_uid";

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+tr, th, td {
+	margin: 100px;
+	border: 1px solid;
+}
+
 div.a {
 	display: inline-block;
 	float:left;
@@ -79,3 +84,10 @@ div.find-id-com, div.find-com-id{
 	border: 1px solid;
 	text-align: center;
 }
+
+div.w1, div.w2 {
+	text-align: center;
+	margin-top: 10%;
+}
+
+

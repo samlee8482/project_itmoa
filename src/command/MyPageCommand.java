@@ -17,7 +17,7 @@ public class MyPageCommand implements Command {
 		MbDAO dao = new MbDAO();
 		MbDTO [] arr = null;
 				
-		int uid = Integer.parseInt(request.getParameter("uid"));
+		int uid = Integer.parseInt(request.getParameter("mb_uid"));
 		
 		
 		if(uid > 0) {// 매개변수 유효성 검증
