@@ -67,7 +67,6 @@
         </div>
     </header><!--/header-->
     <div class="a" id="div-find-id">
-	 <form name="frm" id="find-id-content" method="get" onsubmit="return chkSubmit()">
         <div class="find-id">
         	<h4>아이디 찾기</h4>
         </div>
@@ -75,9 +74,8 @@
         	<div id="find-id-info" class="find-id">
         		<div name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required">아이디 : ${findIdView[0].mb_id }</div><br>
         	</div>
-        	<button id="find-id-btn" href="login.do">로그인</button>
+        	<button id="find-id-btn" onclick="location.href='login.do'">로그인</button>
         </div>
-    </form>
     </div>
     
 		
