@@ -34,7 +34,7 @@ public interface D {
 			"SELECT mb_id, mb_name, mb_email FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
 
 	
-	
+// *수정	
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
 		"SELECT m.*"
@@ -42,7 +42,7 @@ public interface D {
 		+ " WHERE m.mb_uid = ?";
 		
 	
-	
+	 
 	// 찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE_ZZIM =
 		"SELECT z.*"
