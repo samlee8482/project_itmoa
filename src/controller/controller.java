@@ -152,10 +152,9 @@ public class controller extends HttpServlet {
 			break;
 			
 		case "/user/myPageAction.do":  // 마이페이지 출력
-			command = new MyPageCommand();
-			command.execute(request, response);
 			viewPage = "myPageAction.jsp";
 			break;
+			
 //		- 학원
 		case "/user/classList.do":  // 학원 리스트 출력
 			command = new CurListCommand();
