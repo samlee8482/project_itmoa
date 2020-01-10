@@ -146,17 +146,15 @@ public class MbDAO {
 			String mb_add2 = rs.getString("mb_add2");
 			String mb_img = rs.getString("mb_img");
 			int zzim_uid = rs.getInt("zzim_uid");
-			String ins_name = rs.getString("ins_name");
-			String cur_name = rs.getString("cur_name");
-			
-			
-			MbDTO dto = new MbDTO(mb_uid, mb_id, mb_pw, mb_zip, mb_add1, mb_add2, mb_img, zzim_uid, ins_name, cur_name);
+					
+			MbDTO dto = new MbDTO(mb_uid, mb_id, mb_pw, mb_zip, mb_add1, mb_add2, mb_img, zzim_uid);
 			list.add(dto);
 		}
 		
 		int size = list.size();
 		MbDTO [] arr = new MbDTO[size];
 		list.toArray(arr);
+		
 		return arr;
 	}
 	
@@ -170,6 +168,7 @@ public class MbDAO {
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
 			arr = createMypageArr(rs);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -119,9 +119,9 @@
 													<th width="25%">학원명</th width="5%">
 													<th width="25%">주소</th width="5%">
 													<th width="17%">연락처</th width="5%">
-													<th width="6%" style="text-align: center;">클래스관리</th width="5%">
-													<th width="6%" style="text-align: center;">학원수정</th width="5%">
-													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
+													<th width="6%" style="text-align: center;"><a href="adminClassList.do?ins_uid=${dto.ins_uid }">클래스관리</a></th width="5%">
+													<th width="6%" style="text-align: center;"><a href="adminCurUpdate.do?ins_uid=${dto.ins_uid }">학원수정</a></th width="5%">
+													<th width="6%" style="text-align: center;"><a href="adminCurDeleteOk.do?ins_uid=${dto.ins_uid }">학원삭제</a></th width="5%">
 												</tr>
 											</thead>
 											<c:forEach var="dto" items="${adminInsList }" varStatus="status">

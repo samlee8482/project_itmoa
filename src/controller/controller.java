@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import command.AdminClassDeleteOkCommand;
 import command.AdminCurListCommand;
 import command.AdminCurOkCommand;
+import command.AdminCurUpdateCommand;
+import command.AdminCurUpdateOkCommand;
 import command.AdminCurViewCommand;
 import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
@@ -135,6 +137,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+			
 		case "/user/myPageUpdateOk.do":  // 마이페이지 수정 (체크)
 			command = new MyPageUpdateOkCommand();
 			command.execute(request, response);
