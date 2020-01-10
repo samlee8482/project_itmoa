@@ -9,23 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.beans.MbDAO;
 import com.lec.beans.MbDTO;
 
-public class FindPwViewCommand implements Command{
+public class FindIdOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		MbDTO[] arr = null;
 		MbDAO dao = new MbDAO();
 		
-		String mb_id = request.getParameter("mb_id");
 		String mb_name = request.getParameter("mb_name");
-		String mb_email = request.getParameter("mb_email");    
-
+		String mb_email = request.getParameter("mb_email");
+		System.out.println(mb_name + " " + mb_email);
 		
 		try {
-			arr = dao.selectPw(mb_id, mb_name, mb_email);
-			if(arr.length == 1) {
-				request.setAttribute("findPwView", arr);
+			arr = dao.selectId(mb_name, mb_email);
+			System.out.println(arr.length);
+			if(arr.length == 1 && arr[0].getMb_name().trim().equals(mb_name.trim()) && arr[0].getMb_email().trim().equals(mb_email.trim())) {
+				request.setAttribute("findIdOk", arr);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -35,5 +34,4 @@ public class FindPwViewCommand implements Command{
 			e.printStackTrace();
 		}
 	}
-
 }

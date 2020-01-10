@@ -34,8 +34,8 @@ import command.AdminReviewListCommand;
 import command.Command;
 import command.CurListCommand;
 import command.CurViewCommand;
-import command.FindIdViewCommand;
-import command.FindPwViewCommand;
+import command.FindIdOkCommand;
+import command.FindPwOkCommand;
 import command.JoinOkCommand;
 import command.LoginOkCommand;
 import command.MyPageCommand;
@@ -115,17 +115,25 @@ public class controller extends HttpServlet {
 		case "/user/find_id_pw.do":  // 아이디 찾기 페이지
 			viewPage = "find_id_pw.jsp";
 			break;
-		case "/user/findIdView.do":  // 아이디 찾기 (체크) 및 아이디 출력
-			command = new FindIdViewCommand();
+//		case "/user/findIdOk.do":  // 아이디 찾기 (체크) 및 아이디 출력. 혹시 몰라 남겨둠
+//			command = new FindIdOkCommand();
+//			command.execute(request, response);
+//			viewPage = "findIdOk.jsp";
+//			break;
+		case "/user/findIdView.do":  // 아이디 찾기 결과창
+			command = new FindIdOkCommand();
 			command.execute(request, response);
 			viewPage = "findIdView.jsp";
 			break;
-		
-		case "/user/findPwView.do":  // 비밀번호 찾기 (체크) 및 이메일로 발송
-			command = new FindPwViewCommand();
+		case "/user/findPwOk.do":  // 비밀번호 찾기 (체크) 및 이메일로 발송
+			command = new FindPwOkCommand();
 			command.execute(request, response);
+			viewPage = "findPwOk.jsp";
+			break;
+		case "/user/findPwView.do":  // 비밀번호 찾기 결과창
 			viewPage = "findPwView.jsp";
 			break;
+			
 
 //		- 마이페이지
 		case "/user/myPage.do":  // 마이페이지 출력

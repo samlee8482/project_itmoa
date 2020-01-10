@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+${findIdOk }
+<c:choose>
+	<c:when test="${fn:length(findIdOk) == 0 }">
+		<script>
+			alert("아이디 찾기 실패");
+			history.back();
+		</script>  
+	</c:when>
+	<c:when test="${fn:length(findIdOk) == 1 }">
+		<script>
+			alert("아이디 찾기 성공");
+			//location.href = "/Project_itmoa/user/findIdView.do";
+		</script>
+	</c:when>
+</c:choose>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +89,7 @@
         </div>
         <div id="find-id" class="find-id">
         	<div id="find-id-info" class="find-id">
-        		<div name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required">아이디 : ${findIdView[0].mb_id }</div><br>
+        		<div name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required">아이디 : ${findIdOk[0].mb_id }</div><br>
         	</div>
         	<button id="find-id-btn" onclick="location.href='login.do'">로그인</button>
         </div>
