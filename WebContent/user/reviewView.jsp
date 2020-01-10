@@ -93,12 +93,16 @@
                                 <div class="blog-content">
                                     <h3 class="main-title">
                                     	${reviewView[0].review_brd_title }
-                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-                                    		후기 수정
-                                    	</button>
-                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-                                    		후기 삭제
-                                    	</button>
+                                    	<c:choose>
+										    <c:when test="${not empty sessionScope.login && sessionScope.login == reviewView[0].mb_uid }">
+                                            	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+		                                    		후기 수정
+		                                    	</button>
+		                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+		                                    		후기 삭제
+		                                    	</button>
+										    </c:when>
+										</c:choose>
                                     </h3>
                                     <div class="entry-meta">
                                         <span><i class="fa fa-user"></i> <a href="#"> ${reviewView[0].review_brd_viewcnt }</a></span>
@@ -111,18 +115,22 @@
                                             <div class="pull-left">
                                                 <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt="">
                                             </div>
-                                            <div class="media-body">
-                                                <div class="media-heading">
-                                                    <strong>사용자 이름</strong>
-                                                </div>
-                                                <form method="get" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
-                                                	<input type="hidden" name="ifNew" value="true" />
-                                                	<input type="hidden" name="mb_uid" value="1" />
-                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
-	                                                <textarea style="width: 100%; resize: none;" name="rep_content"></textarea>
-	                                                <button type="submit" style="float: right">댓글 작성</button>
-                                                </form>
-                                            </div>
+                                            <c:choose>
+											    <c:when test="${not empty sessionScope.login }">
+				                    				<div class="media-body">
+		                                                <div class="media-heading">
+		                                                    <strong>사용자 이름</strong>
+		                                                </div>
+		                                                <form method="get" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
+		                                                	<input type="hidden" name="ifNew" value="true" />
+		                                                	<input type="hidden" name="mb_uid" value="${sessionScope.login }" />
+		                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
+			                                                <textarea style="width: 100%; resize: none;" name="rep_content"></textarea>
+			                                                <button type="submit" style="float: right">댓글 작성</button>
+		                                                </form>
+		                                            </div>
+											    </c:when>
+											</c:choose>
                                         </div>
                                     </div><!--/.author-->
 
@@ -140,26 +148,30 @@
 			                                                    <div class="well">
 			                                                    	<form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()" style="text-align: left">
 					                                                	<input type="hidden" name="ifNew" value="false" />
-					                                                	<input type="hidden" name="mb_uid" value="1" />
+					                                                	<input type="hidden" name="mb_uid" value="${sessionScope.login }" />
 					                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
 					                                                	<input type="hidden" name="rep_uid" value="${dto.rep_uid }" />
 				                                                    	<div class="media-heading">
 				                                                        	<span>
 				                                                        		<strong>${dto.mb_id }</strong>&nbsp; <small>${dto.rep_regdate }</small>
 				                                                        	</span>
-				                                                            <button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">
-				                                                            	댓글 수정
-				                                                            </button>
-				                                                            <button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${dto.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">
-				                                                        		댓글 삭제
-				                                                        	</button>
+				                                                        	<c:choose>
+																			    <c:when test="${not empty sessionScope.login && sessionScope.login == dto.mb_uid }">
+				                                                            		<button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">댓글 수정</button>
+				                                                            		<button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${dto.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">댓글 삭제</button>
+																			    </c:when>
+																			</c:choose>
 				                                                        </div>
 				                                                        <span class="rep_content">
 					                                                        <p>${dto.rep_content }</p>			                                                        
 				                                                        </span>
-				                                                        <span class="submit">
-				                                                        	<button type="submit" style="display: none;">수정 완료</button>
-				                                                        </span>
+			                                                        	<c:choose>
+																	    	<c:when test="${not empty sessionScope.login && sessionScope.login == dto.mb_uid }">
+						                                                        <span class="submit">
+						                                                        	<button type="submit" style="display: none;">수정 완료</button>
+						                                                        </span>
+						                                                	</c:when>
+				                                                		</c:choose>
 				                                                	</form>
 			                                                    </div>
 			                                                </div>

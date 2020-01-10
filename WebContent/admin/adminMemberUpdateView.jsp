@@ -2,6 +2,38 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.FileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="java.util.Enumeration" %>
+
+<%
+	//MultipartRequest 객체 생성 준비
+	String saveDirectory = "C:\\tomcat\\upload";   	// 파일 저장 경로
+	int maxPostSize = 5 * 1024 * 1024;  // POST 받기, 최대 5M byte
+	String encoding = "utf-8";  // response 인코딩
+	FileRenamePolicy policy = new DefaultFileRenamePolicy(); //업로딩 파일 이름 중복에 대한 정책
+	
+	MultipartRequest multi = null; // com.oreilly.servlet.MultipartRequest 임포트
+
+%>
+<%
+	try{ // 실제로 예외를 반드시 cath 할 필요는 없지만 처리
+		multi = new MultipartRequest(
+				request,
+				saveDirectory,
+				maxPostSize,
+				encoding,
+				policy
+				);
+	
+	} catch(Exception e){
+		e.printStackTrace();
+		out.println("파일 처리 예외 발생");	
+	}
+
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -146,7 +178,8 @@
 									<h6 class="m-0 font-weight-bold text-primary">회원 정보 수정</h6>
 								</div>
 								<div class="card-body">
-									<form method="post" action="/Project_itmoa/admin/adminMemberUpdateOk.do" enctpye="multipart/form-date">
+									<form method="post" action="/Project_itmoa/admin/adminMemberUpdateOk.do" enctpye="multipart/form-data">
+									
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">아이디</h6>
 										<input type="text" name="mb_id" placeholder="${adminMemberUpdateView[0].mb_id }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;" disabled>
@@ -179,7 +212,7 @@
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="mb_img" style="left: 200px" value="0" />
+										<input type="file" name="mb_img" value="${adminMemberUpdateView[0].mb_img }" />
 										<input type="hidden" name="mb_uid" value="${adminMemberUpdateView[0].mb_uid }" />
 										<input type="hidden" name="ifNew" value="true" style="left: 200px" />
 										</div>

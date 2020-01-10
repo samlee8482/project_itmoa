@@ -154,7 +154,7 @@
 					
 				    <c:forEach var="dto" items="${classList }">
 				    	<!-- portfolio-item  -->
-						<li class="portfolio-item apps isotope-item">
+						<li class="portfolio-item apps isotope-item" onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 							<div class="item-inner">
 								<img src="${dto.ins_img}" alt="">
 								<h5>${dto.ins_name }</h5>
@@ -186,6 +186,19 @@
     
     <!-- 지역에 따른 지점 출력 함수 -->
 	<script>
+
+	$(document).ready(function() {
+		$('.item-inner').hover(function() {
+			$(this).css({
+				"cursor": "pointer"
+			})
+		}, function() {
+			$(this).css({
+				"cursor": "default"
+			})
+		})
+	})
+	
 	function changeBranchSelect(){
 	   $('#option_location').on('change', function(){
 		

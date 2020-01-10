@@ -195,7 +195,7 @@ SELECT * FROM mb;
 SELECT * FROM class;
 SELECT * FROM cur;
 select * from ins;
-
+update mb set mb_img = 'C:\Users\wkrud\OneDrive\사진\Feedback\{BBEB8EFD-BC28-4759-88F0-86C50CB98D65}' where mb_uid = 6;
 
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user1', 'abc123', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');

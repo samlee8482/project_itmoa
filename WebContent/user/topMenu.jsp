@@ -55,7 +55,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html">메인</a></li>
-					<li><a href="/Project_itmoa/user/insList.do">학원 찾기</a></li>
+					<li><a href="/Project_itmoa/user/classList.do">학원 찾기</a></li>
 					<li><a href="/Project_itmoa/user/reviewList.do">학원 후기</a></li>
 					<li><a href="/Project_itmoa/user/newsList.do">IT News</a></li>
 					<li><span class="search-trigger"><i class="fa fa-search"></i></span></li>

@@ -114,7 +114,7 @@
 											});
 											</script>
 										</div>
-										<input type="hidden" name="mb_uid" value="1" />  <!-- mb_uid -->
+										<input type="hidden" name="mb_uid" value="${sessionScope.login }" />  <!-- mb_uid -->
 										<input type="hidden" name="class_uid" value="1" />  <!-- class_uid -->
 										<input type="hidden" name="ifNew" value="true" />
 										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
