@@ -37,6 +37,7 @@ public class AdminClassDAO {
 		return ds.getConnection();
 	}
 
+	
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
 		if (rs != null)
@@ -99,6 +100,7 @@ public class AdminClassDAO {
 		return arr;
 	}
 	
+	
 	//관리자페이지 학원 수정할 경우 화면에 띄워주기
 	public ClassDTO[] insView() throws SQLException, NamingException {
 		
@@ -147,29 +149,26 @@ public class AdminClassDAO {
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
 		
-
 		try {
 			
 			switch(option) {
-			case 1 :
-					selectIns += D.SQL_INS_WHERE_UID_OR_CUR_NAME;
-					conn = getConnection();
-					pstmt = conn.prepareStatement(selectIns);
-					pstmt.setString(1, keyword);
-					pstmt.setString(2, keyword);
-				
-			case 2 :	
+
+			case 1 :	
 				selectIns += D.SQL_INS_WHERE_NAME;
+				keyword = "%" + keyword + "%";
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
+				break;
 				
-			case 3 :
+			case 2 :
 				selectIns += D.SQL_INS_WHERE_UID;
+				int k1 = Integer.parseInt(keyword);
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
-				pstmt.setString(1, keyword);
-				
+				pstmt.setInt(1, k1);
+				break;
+
 			default :
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
@@ -366,47 +365,50 @@ public class AdminClassDAO {
 	
 
 	// 2. 과정 출력
-	public ClassDTO[] createClassArrayByUid(ResultSet rs) throws SQLException {
+		public ClassDTO[] createClassArrayByUid(ResultSet rs) throws SQLException {
 
-		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+			ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
 
-		while (rs.next()) {
-			String ins_name = rs.getString("ins_name");
-			String cur_name = rs.getString("cur_name");
-			int cur_hours = rs.getInt("cur_hours");
+			while (rs.next()) {
+				String ins_name = rs.getString("ins_name");
+				int ins_uid = rs.getInt("ins_uid");
+				String cur_name = rs.getString("cur_name");
+				int cur_hours = rs.getInt("cur_hours");
+				int class_uid = rs.getInt("class_uid");
+				int cur_uid = rs.getInt("cur_uid");
 
+				
+				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours, class_uid, cur_uid);
+				list.add(dto);
+			}
+
+			int size = list.size();
+			ClassDTO[] arr = new ClassDTO[size];
+			list.toArray(arr);
+			return arr;
+		}
+
+		
+		// 특정학원의 수정할 class정보 불러오기
+		public ClassDTO[] selectClassByUid(int ins_uid) throws SQLException, NamingException {
+			ClassDTO[] arr = null ;
 			
-			ClassDTO dto = new ClassDTO(ins_name, cur_name, cur_hours);
-			list.add(dto);
-		}
-
-		int size = list.size();
-		ClassDTO[] arr = new ClassDTO[size];
-		list.toArray(arr);
-		return arr;
-	}
-
-	
-	// 특정학원의 수정할 class정보 불러오기
-	public ClassDTO[] selectClassByUid(int ins_uid) throws SQLException, NamingException {
-		ClassDTO[] arr = null ;
-		
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
-			pstmt.setInt(1, ins_uid);
-			rs = pstmt.executeQuery();
-			arr = createClassArrayByUid(rs);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
+				pstmt.setInt(1, ins_uid);
+				rs = pstmt.executeQuery();
+				arr = createClassArrayByUid(rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			return arr;
 		}
 		
-		return arr;
-	}
-	
-	// 2. 과정 출력
+		// 2. 과정 출력
 		public ClassDTO[] createCurArrayByUid(ResultSet rs) throws SQLException {
 
 			ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
@@ -475,7 +477,7 @@ public class AdminClassDAO {
 			pstmt.setString(7, cur_month4);
 			pstmt.setString(8, cur_month5);
 			pstmt.setString(9, cur_month6);
-			pstmt.setInt(9, cur_uid);
+			pstmt.setInt(10, cur_uid);
 			
 			cnt = pstmt.executeUpdate();
 
@@ -512,6 +514,5 @@ public class AdminClassDAO {
 		return cnt; 
 		
 	}
-	
 	
 }

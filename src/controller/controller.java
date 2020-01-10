@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import command.AdminClassDeleteOkCommand;
 import command.AdminCurListCommand;
 import command.AdminCurOkCommand;
+import command.AdminCurUpdateCommand;
+import command.AdminCurUpdateOkCommand;
 import command.AdminCurViewCommand;
 import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
 import command.AdminInsOkCommand;
+import command.AdminInsRegistCommand;
 import command.AdminInsViewCommand;
 import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
@@ -130,6 +133,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+			
 		case "/user/myPageUpdateOk.do":  // 마이페이지 수정 (체크)
 			command = new MyPageUpdateOkCommand();
 			command.execute(request, response);
@@ -250,6 +254,16 @@ public class controller extends HttpServlet {
 			viewPage = "adminInsList.jsp";
 			break;
 			
+		case "/admin/adminInsRegist.do":  // 관리자 학원등록
+			viewPage = "adminInsRegist.jsp";
+			break;
+		
+		case "/admin/adminInsRegistOk.do":  
+			command = new AdminInsRegistCommand();
+			command.execute(request, response);
+			viewPage = "adminInsList.jsp";
+			break;
+			
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
 		case "/admin/adminInsView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
 			command = new AdminInsViewCommand();
@@ -272,6 +286,9 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminClassList.jsp";
 			break;
+		case "/admin/adminCurWrite.do":  // 관리자 Cur 작성
+			viewPage = "adminCurWrite.jsp";
+			break;
 		case "/admin/adminCurView.do":  // 관리자 Cur 출력. 과정 수정할 때
 			command = new AdminCurViewCommand();
 			command.execute(request, response);
@@ -281,6 +298,16 @@ public class controller extends HttpServlet {
 			command = new AdminCurOkCommand();
 			command.execute(request, response);
 			viewPage = "adminCurOk.jsp";
+			break;
+		case "/admin/adminCurUpdate.do":  // 관리자 Cur 추가
+			command = new AdminCurUpdateCommand();
+			command.execute(request, response);
+			viewPage = "adminUpdate.jsp";
+			break;
+		case "/admin/adminCurUpdateOk.do":  // 관리자 Cur 추가
+			command = new AdminCurUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "adminUpdateOk.jsp";
 			break;
 		case "/admin/adminClassDeleteOk.do":  // 관리자 Class 삭제
 			command = new AdminClassDeleteOkCommand();

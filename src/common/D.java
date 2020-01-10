@@ -34,15 +34,21 @@ public interface D {
 			"SELECT mb_pw FROM mb WHERE mb_id = ? AND mb_name = ? AND mb_email = ?";
 
 	
-	
+// *수정	
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
-		"SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name"
-		+ " FROM zzim z, cur c, class cl, ins i, mb m"
-		+ " WHERE z.mb_uid = ?"
-		+ " AND z.class_uid = cl.class_uid" 
-		+ " AND cl.cur_uid = c.cur_uid"
-		+ " AND cl.ins_uid = i.ins_uid";
+		"SELECT m.*"
+		+ " FROM  mb m"
+		+ " WHERE m.mb_uid = ?";
+		
+	
+	 
+	// 찜목록 불러오기 
+	public static final String SQL_SELECT_MYPAGE_ZZIM =
+		"SELECT z.*"
+		+ "FROM zzim z"
+		+ "WHERE z.mb_uid = ?";
+
 	
 
 	// 마이페이지에서 찜 삭제하기
@@ -52,14 +58,9 @@ public interface D {
 	// 마이페이지에서 회원정보 수정
 	public static final String SQL_UPDATE_MYPAGE=
 		"UPDATE mb"
-		+ " SET mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_img, mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
 		
-	// 프로필 이미지 수정
-	public static final String SQL_UPDATE_MYPAGE_IMG =
-		"UPDATE mb"
-		+ " SET mb_img = ?"
-		+ " WHERE mb_uid = ?";
 	
 	// 프로필 이미지 삭제(기본 이미지로 변경)
 		public static final String SQL_DELETE_MYPAGE_IMG =
@@ -199,11 +200,11 @@ public interface D {
 	
 	// 학원 검색 조건) 학원명
 	public static final String SQL_INS_WHERE_NAME =
-		" WHERE ins_name LIKE %?%";
+		" WHERE ins_name LIKE ?";
 	
 	// 학원 검색 조건) 학원uid 또는 학원명
 	public static final String SQL_INS_WHERE_UID_OR_CUR_NAME =
-		"WHERE ins_uid = ? OR ins_name = %?%";
+		"WHERE ins_uid = ? OR ins_name LIKE ?";
 	
     // 정렬
 	public static final String SQL_SELECT_INS_ORDER_BY_UID =
@@ -238,7 +239,7 @@ public interface D {
 
 	// 과정  목록
 	public static final String SQL_SELECT_CLASS_BY_INS_UID =
-		"SELECT i.ins_name, c.cur_name, c.cur_hours"
+		"SELECT i.ins_name, i.ins_uid, c.cur_name, c.cur_hours, cl.class_uid, c.cur_uid"
 		+ " FROM class cl, ins i, cur c"
 		+ " WHERE cl.ins_uid = ?"
 		+ " AND cl.cur_uid = c.cur_uid"
@@ -272,7 +273,7 @@ public interface D {
 	// 과정 내 수업 수정
 	public static final String SQL_UPDATE_CUR = 
 	"UPDATE cur"
-	+ " SET cur_hours = ?, cur_months = ?,  cur_month1 = ?, cur_month2 = ?, cur_month3 = ?, cur_month4 = ?, cur_month5 = ?, cur_month6 = ?"
+	+ " SET cur_name = ?, cur_hours = ?, cur_months = ?,  cur_month1 = ?, cur_month2 = ?, cur_month3 = ?, cur_month4 = ?, cur_month5 = ?, cur_month6 = ?"
 	+ " WHERE cur_uid = ?";
 		
 	

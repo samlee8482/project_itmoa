@@ -97,6 +97,7 @@
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary">${adminCurList[0].ins_name }</h6>
+									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminCurWrite.do?ins_uid=${adminCurList[0].ins_uid }'" style="float:right">과정 추가</button>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
@@ -104,17 +105,25 @@
 											width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th width="10%">No</th>
+													<th width="4%">No</th>
 													<th width="70%">과정</th width="5%">
 													<th width="20%">시수</th width="5%">
+													<th width="6%">과정 삭제</th>
 												</tr>
 											</thead>
 											<c:forEach var="dto" items="${adminCurList }" varStatus="status">
 												<tbody>
-													<tr>
+													<tr onclick="location.href='/Project_itmoa/admin/adminCurUpdate.do?cur_uid=${dto.cur_uid }'">
 														<td>${status.index+1 }</td>
 														<td>${dto.cur_name }</td>
 														<td>${dto.cur_hours }</td>
+														<td style="text-align: center;">
+															<a href="/Project_itmoa/admin/adminClassDeleteOk.do?class_uid=${dto.class_uid }" class="btn btn-danger btn-icon-split"> 
+																<span class="icon text-white-50"> 
+																	<i class="fas fa-trash"></i>
+																</span>
+															</a>
+														</td>
 													</tr>
 												</tbody>
 											</c:forEach>
@@ -201,36 +210,19 @@
 
    <!-- 지역에 따른 지점 출력 함수 -->
 	<script>
-	
-	 function show(){
-		
-			  var option = document.getElementById("option");
-			  option = option.options[option.selectedIndex].value;			
-			  
-			  var keyword = document.getElementById("keyword").value; 		  
-			  
-			  
-			  if(option == "" || option == null){
-					
-				  option = 1;
-				  
-			  }
-			  
-			  
-			  if(keyword == "" || keyword == null){
-		
-				  keyword = "없음";
-				  
-			  }
-
-			  
-			  alert(option + " " + keyword );
-			  
-			  var url = 'adminInsList.do?option=' + encodeURI(option) + '&keyword=' + encodeURI(keyword);
-			  window.location.href = url;
-
-	  };
-	
+	  $(document).ready(function() {
+			$('tbody tr').hover(function() {
+				$(this).css({
+					"cursor": "pointer",
+					"background-color": "#F2F2F2"
+				})
+			}, function() {
+				$(this).css({
+					"cursor": "default",
+					"background-color": "#fff"
+				})
+			})
+		})
 	</script>
 </body>
 

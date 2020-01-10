@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- JSTL core 라이브러리 포함 --%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -16,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Class</title>
+<title>ITMOA ADMIN - Member</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -27,14 +25,13 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="ckeditor/ckeditor.js"></script>
 </head>
 
 <body id="page-top">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
 	
 		<!-- Side Menu -->
 		<jsp:include page="sideMenu.jsp"/>
@@ -56,7 +53,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					<div class="h4 m-0 ml-2 font-weight-bold text-primary">학원 관리</div>
+					<div class="h4 m-0 ml-2 font-weight-bold text-primary">과정 관리</div>
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -96,51 +93,41 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">학원 목록</h6>
+									<h6 class="m-0 font-weight-bold text-primary">과정 추가</h6>
 								</div>
 								<div class="card-body">
-								<form action="adminInsList.do" method="get">
-								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-								<select name="option">
-										<option value="1" selected>학원명</option>
-										<option value="2">학원코드</option>
-								</select>
-								<input type="text" name="keyword" value="" ></input>
-								<input type="submit" value="검색" class="btn btn-info btn-icon-split" />
-								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
-								</form>
-									<div class="table-responsive">
-										<table class="table table-bordered" id="dataTable"
-											width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th width="5%">No</th>
-													<th width="10%">학원 번호</th width="5%">
-													<th width="25%">학원명</th width="5%">
-													<th width="25%">주소</th width="5%">
-													<th width="17%">연락처</th width="5%">                                          <!-- **수정** -->
-													<th width="6%" style="text-align: center;">클래스관리</th width="5%">
-													<th width="6%" style="text-align: center;">학원수정</th width="5%">
-													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
-												</tr>
-											</thead>
-											<c:forEach var="dto" items="${adminInsList }" varStatus="status">
-											<tbody>
-												<tr>
-													<td>${status.index+1 }</td>
-													<td>${dto.ins_uid }</td>
-													<td>${dto.ins_name }</td>
-													<td>${dto.ins_add1 }</td>
-													<td>${dto.ins_tel }</td>
-													<td style="text-align: center;"><a href="adminClassList.do?ins_uid=${dto.ins_uid }"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
-													<td style="text-align: center;"><a href="adminInsUpdate.do?ins_uid=${dto.ins_uid }"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
-													<td style="text-align: center;"><a href="adminInsDeleteOk.do?ins_uid=${dto.ins_uid }"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
-													</a></td>
-												</tr>
-											</tbody>
-											</c:forEach>
-										</table>
-									</div>
+									<form action="/Project_itmoa/admin/adminCurOk.do" method="post" enctype=”multipart/form-data”>
+										<h6 class="m-0 font-weight-bold text-primary p-2">과정명</h6>
+										<select name="cur_name" style="width: 100%" class="p-2">
+											<option value="웹/앱">웹/앱</option>
+											<option value="네트워크">네트워크</option>
+											<option value="보안">보안</option>
+											<option value="AI">AI</option>
+											<option value="디자인">디자인</option>
+											<option value="영상">영상</option>
+											<option value="빅데이터">빅데이터</option>
+											<option value="게임">게임</option>
+										</select>
+										<h6 class="m-0 font-weight-bold text-primary p-2">총 시간</h6>
+										<input type="text" name="cur_hours" placeholder="총 시간을 입력하세요" class="p-2 mb-3 col-xl-12">
+										<h6 class="m-0 font-weight-bold text-primary p-2">총 개월</h6>
+										<input type="text" name="cur_months" placeholder="총 개월을 입력하세요" class="p-2 mb-3 col-xl-12">
+										<h6 class="m-0 font-weight-bold text-primary p-2">month1</h6>
+										<textarea name="cur_month1"></textarea>
+										<h6 class="m-0 font-weight-bold text-primary p-2">month2</h6>
+										<textarea name="cur_month2"></textarea>
+										<h6 class="m-0 font-weight-bold text-primary p-2">month3</h6>
+										<textarea name="cur_month3"></textarea>
+										<h6 class="m-0 font-weight-bold text-primary p-2">month4</h6>
+										<textarea name="cur_month4"></textarea>
+										<h6 class="m-0 font-weight-bold text-primary p-2">month5</h6>
+										<textarea name="cur_month5"></textarea>
+										<h6 class="m-0 font-weight-bold text-primary p-2">month6</h6>
+										<textarea name="cur_month6"></textarea>
+										<input type="hidden" name="ifNew" value="true" />
+										<input type="hidden" name="ins_uid" value="${param.ins_uid }" />
+										<button type="submit" on class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">추가 완료</button>
+									</form>
 								</div>
 							</div>
 
@@ -215,11 +202,14 @@
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
 
-
-
-
-
-
+	<script>
+		$("textarea").css({
+			"width": "100%",
+			"height": "80px",
+			"resize": "none",
+			"padding": "5px"
+		});
+	</script>
 
 </body>
 
