@@ -54,8 +54,9 @@ public class ClassDAO {
 			int class_zzimcnt = rs.getInt("class_zzimcnt");
 			String ins_name = rs.getString("ins_name");
 			String cur_name = rs.getString("cur_name");
+			int class_uid = rs.getInt("class_uid");
 
-			ClassDTO dto = new ClassDTO(ins_name, cur_name, class_zzimcnt, ins_img);
+			ClassDTO dto = new ClassDTO(ins_name, cur_name, class_zzimcnt, ins_img, class_uid);
 			list.add(dto);
 		}
 

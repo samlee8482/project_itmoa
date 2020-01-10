@@ -148,10 +148,10 @@ public class controller extends HttpServlet {
 			break;
 		
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
-		case "/user/curView.do":  // 학원 상세페이지 출력
+		case "/user/classView.do":  // 학원 상세페이지 출력
 			command = new CurViewCommand();
 			command.execute(request, response);
-			viewPage = "curView.jsp";
+			viewPage = "classView.jsp";
 			break;
 //		* 찜 삭제는 커맨드에서 if문으로 거르기
 		case "/user/zzimOk.do":  // 찜 추가
