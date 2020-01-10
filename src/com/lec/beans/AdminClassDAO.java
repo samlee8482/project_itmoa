@@ -374,9 +374,11 @@ public class AdminClassDAO {
 				int ins_uid = rs.getInt("ins_uid");
 				String cur_name = rs.getString("cur_name");
 				int cur_hours = rs.getInt("cur_hours");
+				int class_uid = rs.getInt("class_uid");
+				int cur_uid = rs.getInt("cur_uid");
 
 				
-				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours);
+				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours, class_uid, cur_uid);
 				list.add(dto);
 			}
 
@@ -475,7 +477,7 @@ public class AdminClassDAO {
 			pstmt.setString(7, cur_month4);
 			pstmt.setString(8, cur_month5);
 			pstmt.setString(9, cur_month6);
-			pstmt.setInt(9, cur_uid);
+			pstmt.setInt(10, cur_uid);
 			
 			cnt = pstmt.executeUpdate();
 

@@ -92,12 +92,14 @@ public class ClassDTO {
 	}
 	
 	//사용자:  학원검색에서 전체 출력 생성자
-	public ClassDTO(String ins_name, int ins_uid, String cur_name, int cur_hours) {
+	public ClassDTO(String ins_name, int ins_uid, String cur_name, int cur_hours, int class_uid, int cur_uid) {
 		super();
 		this.ins_name = ins_name;
 		this.ins_uid = ins_uid;
 		this.cur_name = cur_name;
 		this.cur_hours = cur_hours;
+		this.class_uid = class_uid;
+		this.cur_uid = cur_uid;
 	}
 	
 	
