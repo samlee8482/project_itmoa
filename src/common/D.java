@@ -37,12 +37,18 @@ public interface D {
 	
 	// 마이페이지에 회원정보+찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE =
-		"SELECT m.*, z.zzim_uid, i.ins_name,  c.cur_name"
-		+ " FROM zzim z, cur c, class cl, ins i, mb m"
-		+ " WHERE z.mb_uid = ?"
-		+ " AND z.class_uid = cl.class_uid" 
-		+ " AND cl.cur_uid = c.cur_uid"
-		+ " AND cl.ins_uid = i.ins_uid";
+		"SELECT m.*"
+		+ " FROM  mb m"
+		+ " WHERE m.mb_uid = ?";
+		
+	
+	
+	// 찜목록 불러오기 
+	public static final String SQL_SELECT_MYPAGE_ZZIM =
+		"SELECT z.*"
+		+ "FROM zzim z"
+		+ "WHERE z.mb_uid = ?";
+
 	
 
 	// 마이페이지에서 찜 삭제하기

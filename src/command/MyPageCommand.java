@@ -14,6 +14,7 @@ public class MyPageCommand implements Command {
 	   @Override
 	   public void execute(HttpServletRequest request, HttpServletResponse response) {
 
+
 	      MbDAO dao = new MbDAO();
 	      MbDTO [] arr = null;
 	            
@@ -24,8 +25,12 @@ public class MyPageCommand implements Command {
 	         try {
 	            
 	            arr = dao.myPage(1);  // 회원정보 가져오기
+	           
 	            request.setAttribute("myPage", arr);
+	            
 	            System.out.println(arr.length);
+	            System.out.println(arr[0].getMb_id());
+	      
 	         } catch (SQLException e) {  
 	            e.printStackTrace();
 	         } catch (NamingException e) {
@@ -38,4 +43,5 @@ public class MyPageCommand implements Command {
 	      }
 	   
 	   }
+
 }

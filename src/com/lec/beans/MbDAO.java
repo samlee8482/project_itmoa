@@ -169,7 +169,7 @@ public class MbDAO {
 			pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE);
 			pstmt.setInt(1, mb_uid);
 			rs = pstmt.executeQuery();
-			arr = createLoginArr(rs);
+			arr = createMypageArr(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
