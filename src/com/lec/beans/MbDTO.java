@@ -113,6 +113,15 @@ public class MbDTO {
 		this.mb_email = mb_email;
 	}
 	
+	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2,
+			String mb_img) {
+		this.mb_id = mb_id;
+		this.mb_pw = mb_pw;
+		this.mb_zip = mb_zip;
+		this.mb_add1 = mb_add1;
+		this.mb_add2 = mb_add2;
+	}
+
 	// 게터세터
 	public int getMb_uid() {
 		return mb_uid;
