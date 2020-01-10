@@ -15,23 +15,34 @@ public class AdminInsListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 
-		int option = Integer.parseInt(request.getParameter("option"));
+		String option = request.getParameter("option");
 		String keyword = request.getParameter("keyword");
 		
+		System.out.println(option + " " + keyword );
 		
 		AdminClassDAO dao = new AdminClassDAO();
 		ClassDTO [] arr = null;
 		
 		
-		if(keyword.equals("") || keyword == null ) { option = 4; }  
-		
 		
 		try {
 			
-			arr = dao.selectInsList(option, keyword);
-			request.setAttribute("adminInsList", arr);
-			
-			
+			if(option == null || option.equals("") || keyword == null || keyword.equals("")){
+				
+				arr = dao.selectInsList();
+				request.setAttribute("adminInsList", arr);
+				
+			}else {
+				
+//				option 1: 전체
+//			      	   2: 학원명
+//			           3: 학원코드
+						
+				arr = dao.selectInsListByOption(Integer.parseInt(option), keyword);
+				request.setAttribute("adminInsList", arr);
+				
+			}
+
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

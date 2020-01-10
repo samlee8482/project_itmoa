@@ -107,10 +107,11 @@
 										<div style="padding: 30px 10px">
 											<textarea name="review_brd_content" id="editor1"></textarea>
 											<script>
-												CKEDITOR.replace('editor1', {
-													allowedContent: true,
-													height: '700px',
-												});
+											CKEDITOR.replace('editor1', {
+												allowedContent: true,
+												height: '700px',
+												filebrowserUploadUrl: '${pageContext.request.contextPath }/user/reviewFileUpload.do'
+											});
 											</script>
 										</div>
 										<input type="hidden" name="mb_uid" value="1" />  <!-- mb_uid -->

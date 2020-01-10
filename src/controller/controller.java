@@ -19,7 +19,7 @@ import command.AdminInsOkCommand;
 import command.AdminInsViewCommand;
 import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
-import command.AdminMemberOkCommand;
+import command.AdminMemberUpdateOkCommand;
 import command.AdminMemberViewCommand;
 import command.AdminNewsDeleteOkCommand;
 import command.AdminNewsFileUploadCommand;
@@ -43,6 +43,7 @@ import command.RepDeleteOkCommand;
 import command.RepUpdateOkCommand;
 import command.ReserveOkCommand;
 import command.ReviewDeleteOkCommand;
+import command.ReviewFileUploadCommand;
 import command.ReviewListCommand;
 import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
@@ -55,7 +56,7 @@ public class controller extends HttpServlet {
        
     public controller() {
         super();
-    }
+    }  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -188,6 +189,10 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "reviewUpdateOk.jsp";
 			break;
+		case "/user/reviewFileUplaod.do":
+			command = new ReviewFileUploadCommand();
+			command.execute(request, response);
+			break;
 		case "/user/reviewDeleteOk.do":  // 리뷰 삭제 (체크)
 			command = new ReviewDeleteOkCommand();
 			command.execute(request, response);
@@ -232,10 +237,10 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminMemberUpdateView.jsp";
 			break;
-		case "/admin/adminMemberOk.do":  // 관리자 회원 상세 정보 수정 (체크)
-			command = new AdminMemberOkCommand();
+		case "/admin/adminMemberUpdateOk.do":  // 관리자 회원 상세 정보 수정 (체크)
+			command = new AdminMemberUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "adminMemberOk.jsp";
+			viewPage = "adminMemberUpdateOk.jsp";
 			break;
 		case "/admin/adminMemberDeleteOk.do":
 			command = new AdminMemberDeleteOkCommand();
@@ -248,6 +253,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminInsList.jsp";
 			break;
+			
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
 		case "/admin/adminInsView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
 			command = new AdminInsViewCommand();
