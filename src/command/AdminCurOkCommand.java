@@ -27,12 +27,13 @@ public class AdminCurOkCommand implements Command {
 		int cnt = 0;
 		AdminClassDAO dao = new AdminClassDAO();
 		
-		if (ins_uid > 0
+		if (ins_uid >= 0
 		&& cur_name != null && cur_name.length() > 0 && !cur_name.trim().equals("")
 		&& cur_hours > 0
 		&& cur_months > 0) {
 			try {
-				dao.insertCur(ins_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
+				cnt = dao.insertCur(ins_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
+				System.out.println(cnt);
 				request.setAttribute("adminCurOk", cnt);
 			}  catch (NamingException e) {
 				e.printStackTrace();

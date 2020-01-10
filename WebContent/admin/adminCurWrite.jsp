@@ -125,7 +125,7 @@
 										<h6 class="m-0 font-weight-bold text-primary p-2">month6</h6>
 										<textarea name="cur_month6"></textarea>
 										<input type="hidden" name="ifNew" value="true" />
-										<input type="hidden" name="ins_uid" value="${dto[0].ins_uid }" />
+										<input type="hidden" name="ins_uid" value="${param.ins_uid }" />
 										<button type="submit" on class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">추가 완료</button>
 									</form>
 								</div>

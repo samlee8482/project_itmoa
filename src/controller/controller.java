@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import command.AdminClassDeleteOkCommand;
 import command.AdminCurListCommand;
 import command.AdminCurOkCommand;
+import command.AdminCurUpdateCommand;
+import command.AdminCurUpdateOkCommand;
 import command.AdminCurViewCommand;
 import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;

@@ -16,16 +16,4 @@
 			location.href = "/Project_itmoa/admin/adminInsList.do";
 		</script>
 	</c:when>
-	<c:when test="${adminCurOk == 2 }">
-		<script>
-			alert("수정 실패");
-			history.back();
-		</script>
-	</c:when>
-	<c:when test="${adminCurOk == 3 }">
-		<script>
-			alert("수정 성공");
-			location.href = "/Project_itmoa/admin/adminInsList.do";
-		</script>
-	</c:when>
 </c:choose>
