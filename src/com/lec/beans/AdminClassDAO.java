@@ -192,6 +192,24 @@ public class AdminClassDAO {
 	
 	
 	// 관리자페이지 학원등록
+	public int insertIns(ClassDTO dto) throws SQLException, NamingException{
+		
+		String ins_name = dto.getIns_name();
+		String ins_tel =dto.getIns_tel();
+		int ins_zip = dto.getIns_zip();
+		String ins_add1 = dto.getIns_add1();
+		String ins_add2 = dto.getIns_add2();
+		String ins_location = dto.getIns_location();
+		String ins_branch = dto.getIns_branch();
+		Double ins_x = dto.getIns_x();
+		Double ins_y = dto.getIns_y();
+		String ins_img = dto.getIns_img();
+    
+		return this.insertIns(ins_name, ins_zip, ins_add1, ins_add2, ins_tel, ins_img, ins_branch, ins_location, ins_x, ins_y);
+	}
+	
+	
+	
 	public int insertIns(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
 			String ins_branch, String ins_location, double ins_x, double ins_y) throws SQLException, NamingException{
 
@@ -201,13 +219,13 @@ public class AdminClassDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_INSERT_INS);
 			pstmt.setString(1, ins_name);
-			pstmt.setInt(2, ins_zip);
-			pstmt.setString(3, ins_add1);
-			pstmt.setString(4, ins_add2);
-			pstmt.setString(5, ins_tel);
-			pstmt.setString(6, ins_img);
+			pstmt.setString(2, ins_tel);
+			pstmt.setInt(3, ins_zip);
+			pstmt.setString(4, ins_add1);
+			pstmt.setString(5, ins_add2);
+			pstmt.setString(6, ins_location);
 			pstmt.setString(7, ins_branch);
-			pstmt.setString(8, ins_location);
+			pstmt.setString(8, ins_img);	
 			pstmt.setDouble(9, ins_x);
 			pstmt.setDouble(10, ins_y);
 			

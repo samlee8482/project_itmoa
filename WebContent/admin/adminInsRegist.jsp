@@ -168,7 +168,7 @@
 								</div>
 								
 								<div class="card-body">
-									<form name="frm" action="adminInsRegistOk.do" method="post" enctype=”multipart/form-data” onsubmit="return chkSubmit()">
+									<form name="frm" action="adminInsRegistOk.do" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원명</h6>
 									<input name="ins_name" type="text"></input>
 									<h6 class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
@@ -217,13 +217,8 @@
 									<h6 class="m-0 font-weight-bold text-primary p-2">위치</h6>
 									X <input type="text" name="ins_x" placeholder="좌표값1"></input><br>
 									Y <input type="text" name="ins_y" placeholder="좌표값2"></input>
-									
-									
-									
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<div id="ins_img">
-									<input type="file" name="file" />
-									</div>	
+									<input type="file" name="file" />							
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">등록</button>	
 									
 									</form>

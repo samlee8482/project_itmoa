@@ -282,7 +282,7 @@ public class controller extends HttpServlet {
 		case "/admin/adminInsRegistOk.do":  
 			command = new AdminInsRegistCommand();
 			command.execute(request, response);
-			viewPage = "adminInsList.jsp";
+			viewPage = "adminInsRegistOk.jsp";
 			break;
 			
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
