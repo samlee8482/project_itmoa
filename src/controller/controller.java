@@ -106,8 +106,6 @@ public class controller extends HttpServlet {
 			viewPage = "loginOk.jsp";
 			break;
 		case "/user/logoutOk.do":  // 로그아웃
-			command = new LoginOkCommand();
-			command.execute(request, response);
 			viewPage = "logoutOk.jsp";
 			break;
 
