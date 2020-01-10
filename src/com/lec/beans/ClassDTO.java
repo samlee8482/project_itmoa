@@ -4,6 +4,7 @@ public class ClassDTO {
 	
 	//매개변수
 	private int class_uid;
+	private int cur_uid;
 	private String cur_name;
 	private int cur_hours;
 	private int cur_months;
@@ -90,11 +91,20 @@ public class ClassDTO {
 		this.ins_location = ins_location;
 	}
 	
+	//사용자:  학원검색에서 전체 출력 생성자
+	public ClassDTO(String ins_name, String cur_name, int cur_hours) {
+		super();
+		this.ins_name = ins_name;
+		this.cur_name = cur_name;
+		this.cur_hours = cur_hours;
+	}
+	
 	
 	//관리자 학원과정 수정
-	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
+	public ClassDTO(int cur_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
 			String cur_month3, String cur_month4, String cur_month5, String cur_month6) {
 		super();
+		this.cur_uid = cur_uid;
 		this.cur_name = cur_name;
 		this.cur_hours = cur_hours;
 		this.cur_months = cur_months;
@@ -105,8 +115,6 @@ public class ClassDTO {
 		this.cur_month5 = cur_month5;
 		this.cur_month6 = cur_month6;
 	}
-	
-	
 	
 
 
@@ -308,6 +316,14 @@ public class ClassDTO {
 	
 	public void setIns_y(double ins_y) {
 		this.ins_y = ins_y;
+	}
+
+	public int getCur_uid() {
+		return cur_uid;
+	}
+
+	public void setCur_uid(int cur_uid) {
+		this.cur_uid = cur_uid;
 	}
 	
 }

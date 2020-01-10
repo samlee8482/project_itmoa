@@ -100,7 +100,7 @@
 						<div class="blog">
 							<div class="blog-item">
 								<div class="blog-content">
-									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do">
+									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” >
 										<h3 class="main-title">
 											<input name="review_brd_title" placeholder="제목을 입력하세요" style="width: 100%; padding: 10px;" />
 										</h3>

@@ -149,10 +149,10 @@ public class AdminClassDAO {
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
 		
-
 		try {
 			
 			switch(option) {
+
 			case 1 :	
 				selectIns += D.SQL_INS_WHERE_NAME;
 				keyword = "%" + keyword + "%";
@@ -160,6 +160,7 @@ public class AdminClassDAO {
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setString(1, keyword);
 				break;
+				
 			case 2 :
 				selectIns += D.SQL_INS_WHERE_UID;
 				int k1 = Integer.parseInt(keyword);
@@ -167,6 +168,7 @@ public class AdminClassDAO {
 				pstmt = conn.prepareStatement(selectIns);
 				pstmt.setInt(1, k1);
 				break;
+
 			default :
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
@@ -397,7 +399,7 @@ public class AdminClassDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID);
 			pstmt.setInt(1, ins_uid);
 			rs = pstmt.executeQuery();
 			arr = createClassArrayByUid(rs);

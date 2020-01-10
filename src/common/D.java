@@ -239,7 +239,16 @@ public interface D {
 
 	// 과정  목록
 	public static final String SQL_SELECT_CLASS_BY_INS_UID =
-		"SELECT c.cur_name, c.cur_hours"
+		"SELECT i.ins_name, c.cur_name, c.cur_hours"
+		+ " FROM class cl, ins i, cur c"
+		+ " WHERE cl.ins_uid = ?"
+		+ " AND cl.cur_uid = c.cur_uid"
+		+ " AND cl.ins_uid = i.ins_uid";
+	
+
+	// 과정  상세
+	public static final String SQL_SELECT_CUR_BY_INS_UID =
+		"SELECT c.*"
 		+ " FROM class cl, ins i, cur c"
 		+ " WHERE cl.ins_uid = ?"
 		+ " AND cl.cur_uid = c.cur_uid"
@@ -381,29 +390,29 @@ public interface D {
 		+ " WHERE news_brd_uid = ?"; 
 	
 	// 뉴스 검색 조건) 뉴스UID
-		public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
-			" WHERE news_brd_uid = ?";
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_UID = 
+		" WHERE news_brd_uid = ?";
 
-		// 뉴스 검색 조건) 뉴스 제목
-		public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
-			" WHERE news_brd_title LIKE ?";
+	// 뉴스 검색 조건) 뉴스 제목
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_TITLE = 
+		" WHERE news_brd_title LIKE ?";
 
-		// 뉴스 검색 조건) 뉴스 내용
-		public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
-			" WHERE news_brd_content LIKE ?";
-		
-		// 뉴스 검색 결과 정렬
-		public static final String SQL_ORDER_BY_NEWS_BRD_UID_DESC = 
-				" ORDER BY news_brd_uid DESC";
-		
-		public static final String SQL_ORDER_BY_NEWS_BRD_UID_ASC = 
-				" ORDER BY news_brd_uid ASC";
-		
-		public static final String SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC = 
-				" ORDER BY news_brd_viewcnt ASC";
-		
-		public static final String SQL_COUNT_NEWS_BRD =
-				"SELECT COUNT(*) FROM news_brd";
+	// 뉴스 검색 조건) 뉴스 내용
+	public static final String SQL_SELECT_NEWS_BRD_WHERE_CONTENT = 
+		" WHERE news_brd_content LIKE ?";
+	
+	// 뉴스 검색 결과 정렬
+	public static final String SQL_ORDER_BY_NEWS_BRD_UID_DESC = 
+		" ORDER BY news_brd_uid DESC";
+	
+	public static final String SQL_ORDER_BY_NEWS_BRD_UID_ASC = 
+		" ORDER BY news_brd_uid ASC";
+	
+	public static final String SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC = 
+		" ORDER BY news_brd_viewcnt ASC";
+	
+	public static final String SQL_COUNT_NEWS_BRD =
+		"SELECT COUNT(*) FROM news_brd";
 		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 
@@ -419,10 +428,20 @@ public interface D {
 		+ " (news_brd_title, news_brd_img, news_brd_content)"
 		+ " VALUES(?,?,?)";
 	
+	public static final String SQL_INSERT_NEWS_BRD_WITHOUT_IMG = 
+		"INSERT INTO news_brd "
+		+ " (news_brd_title, news_brd_content)"
+		+ " VALUES(?, ?)";
+
 	public static final String SQL_UPDATE_NEWS_BRD_BY_UID = 
 		"UPDATE news_brd"
 		+ " SET news_brd_title = ?, news_brd_content = ?, news_brd_img = ?"
 		+ " WHERE news_brd_uid = ?";
+	
+	public static final String SQL_UPDATE_NEWS_BRD_BY_UID_WITHOUT_IMG = 
+			"UPDATE news_brd"
+			+ " SET news_brd_title = ?, news_brd_content = ?"
+			+ " WHERE news_brd_uid = ?";
 		
 	public static final String SQL_DELETE_NEWS_BRD_BY_UID = 
 		"DELETE "

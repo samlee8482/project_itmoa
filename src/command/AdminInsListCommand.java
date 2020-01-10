@@ -14,34 +14,32 @@ public class AdminInsListCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-
 		String option = request.getParameter("option");
 		String keyword = request.getParameter("keyword");
-		
+
 		System.out.println(option + " " + keyword );
-		
+
 		AdminClassDAO dao = new AdminClassDAO();
 		ClassDTO [] arr = null;
-		
-		
-		
+
+
 		try {
-			
+
 			if(option == null || option.equals("") || keyword == null || keyword.equals("")){
-				
+
 				arr = dao.selectInsList();
-				request.setAttribute("adminInsList", arr);
-				
+
 			}else {
-				
+
 
 //			    option 1: 학원명
 //			           2: 학원코드
 						
 				arr = dao.selectInsListByOption(Integer.parseInt(option), keyword);
-				request.setAttribute("adminInsList", arr);
-				
+				System.out.println(arr[0].getIns_uid());
 			}
+
+			request.setAttribute("adminInsList", arr);
 
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -49,7 +47,6 @@ public class AdminInsListCommand implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
 
 	}
 

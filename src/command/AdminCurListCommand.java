@@ -15,13 +15,12 @@ public class AdminCurListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		AdminClassDAO dao = new AdminClassDAO();
-		int option_ins = Integer.parseInt(request.getParameter("option_ins"));
-		String keyword = request.getParameter("keyword");
+		int ins_uid = Integer.parseInt(request.getParameter("ins_uid"));
 		ClassDTO[] curArr = null;
 		
-		if(option_ins > 0 ) {
+		if(ins_uid > 0) {
 			try {
-				curArr = dao.selectInsList(option_ins, keyword);
+				curArr = dao.selectClassByUid(ins_uid);
 				request.setAttribute("adminCurList",curArr);
 			} catch (NamingException e) {
 				e.printStackTrace();

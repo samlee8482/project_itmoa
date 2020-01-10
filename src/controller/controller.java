@@ -297,6 +297,16 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminCurOk.jsp";
 			break;
+		case "/admin/adminCurUpdate.do":  // 관리자 Cur 추가
+			command = new AdminCurUpdateCommand();
+			command.execute(request, response);
+			viewPage = "adminUpdate.jsp";
+			break;
+		case "/admin/adminCurUpdateOk.do":  // 관리자 Cur 추가
+			command = new AdminCurUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "adminUpdateOk.jsp";
+			break;
 		case "/admin/adminClassDeleteOk.do":  // 관리자 Class 삭제
 			command = new AdminClassDeleteOkCommand();
 			command.execute(request, response);
@@ -329,7 +339,6 @@ public class controller extends HttpServlet {
 			viewPage = "adminNewsView.jsp";
 			break;
 		case "/admin/adminNewsWrite.do":  // 관리자 뉴스 상세 내용 수정 (체크)
-			command.execute(request, response);
 			viewPage = "adminNewsWrite.jsp";
 			break;
 		case "/admin/adminNewsUpdateView.do":  // 관리자 뉴스 상세 내용 수정 (체크)
