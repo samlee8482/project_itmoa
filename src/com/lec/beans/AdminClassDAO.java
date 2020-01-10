@@ -156,8 +156,6 @@ public class AdminClassDAO {
 					conn = getConnection();
 					pstmt = conn.prepareStatement(selectIns);
 					pstmt.setString(1, keyword);
-					pstmt.setString(2, keyword);
-				
 			case 2 :	
 				selectIns += D.SQL_INS_WHERE_NAME;
 				conn = getConnection();
@@ -168,7 +166,8 @@ public class AdminClassDAO {
 				selectIns += D.SQL_INS_WHERE_UID;
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectIns);
-				pstmt.setString(1, keyword);
+				pstmt.setInt(1, Integer.parseInt(keyword));
+				System.out.println(selectIns);
 				
 			default :
 				conn = getConnection();
@@ -365,18 +364,25 @@ public class AdminClassDAO {
 	
 	
 
-	// 2. 과정 출력
+	// 2. 과정 수정
 	public ClassDTO[] createClassArrayByUid(ResultSet rs) throws SQLException {
 
 		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
 
 		while (rs.next()) {
-			String ins_name = rs.getString("ins_name");
 			String cur_name = rs.getString("cur_name");
 			int cur_hours = rs.getInt("cur_hours");
+			int cur_months = rs.getInt("cur_months");
+			String cur_month1 = rs.getString("cur_month1");
+			String cur_month2 = rs.getString("cur_month2");
+			String cur_month3 = rs.getString("cur_month3");
+			String cur_month4 = rs.getString("cur_month4");
+			String cur_month5 = rs.getString("cur_month5");
+			String cur_month6 = rs.getString("cur_month6");
 
 			
-			ClassDTO dto = new ClassDTO(ins_name, cur_name, cur_hours);
+			ClassDTO dto = new ClassDTO(cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
+					 cur_month3,  cur_month4,  cur_month5,  cur_month6);
 			list.add(dto);
 		}
 
@@ -393,7 +399,7 @@ public class AdminClassDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(D.SQL_SELECT_CLASS_BY_INS_UID);
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_BY_UID);
 			pstmt.setInt(1, ins_uid);
 			rs = pstmt.executeQuery();
 			arr = createClassArrayByUid(rs);
@@ -405,54 +411,6 @@ public class AdminClassDAO {
 		
 		return arr;
 	}
-	
-	// 2. 과정 출력
-		public ClassDTO[] createCurArrayByUid(ResultSet rs) throws SQLException {
-
-			ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
-
-			while (rs.next()) {
-				int cur_uid = rs.getInt("cur_uid");
-				String cur_name = rs.getString("cur_name");
-				int cur_hours = rs.getInt("cur_hours");
-				int cur_months = rs.getInt("cur_months");
-				String cur_month1 = rs.getString("cur_month1");
-				String cur_month2 = rs.getString("cur_month2");
-				String cur_month3 = rs.getString("cur_month3");
-				String cur_month4 = rs.getString("cur_month4");
-				String cur_month5 = rs.getString("cur_month5");
-				String cur_month6 = rs.getString("cur_month6");
-
-				
-				ClassDTO dto = new ClassDTO(cur_uid, cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6);
-				list.add(dto);
-			}
-
-			int size = list.size();
-			ClassDTO[] arr = new ClassDTO[size];
-			list.toArray(arr);
-			return arr;
-		}
-
-		
-		// 특정학원의 수정할 class정보 불러오기
-		public ClassDTO[] selectCurByUid(int ins_uid) throws SQLException, NamingException {
-			ClassDTO[] arr = null ;
-			
-			try {
-				conn = getConnection();
-				pstmt = conn.prepareStatement(D.SQL_SELECT_CUR_BY_INS_UID);
-				pstmt.setInt(1, ins_uid);
-				rs = pstmt.executeQuery();
-				arr = createCurArrayByUid(rs);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close();
-			}
-			
-			return arr;
-		}
 
 	
 
