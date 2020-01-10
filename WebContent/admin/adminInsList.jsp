@@ -118,7 +118,7 @@
 													<th width="10%">학원 번호</th width="5%">
 													<th width="25%">학원명</th width="5%">
 													<th width="25%">주소</th width="5%">
-													<th width="17%">연락처</th width="5%">                                          <!-- **수정** -->
+													<th width="17%">연락처</th width="5%">                                  
 													<th width="6%" style="text-align: center;">클래스관리</th width="5%">
 													<th width="6%" style="text-align: center;">학원수정</th width="5%">
 													<th width="6%" style="text-align: center;">학원삭제</th width="5%">
