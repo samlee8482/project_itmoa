@@ -273,7 +273,7 @@ public interface D {
 	// 과정 내 수업 수정
 	public static final String SQL_UPDATE_CUR = 
 	"UPDATE cur"
-	+ " SET cur_hours = ?, cur_months = ?,  cur_month1 = ?, cur_month2 = ?, cur_month3 = ?, cur_month4 = ?, cur_month5 = ?, cur_month6 = ?"
+	+ " SET cur_name = ?, cur_hours = ?, cur_months = ?,  cur_month1 = ?, cur_month2 = ?, cur_month3 = ?, cur_month4 = ?, cur_month5 = ?, cur_month6 = ?"
 	+ " WHERE cur_uid = ?";
 		
 	
