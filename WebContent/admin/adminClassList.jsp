@@ -113,7 +113,7 @@
 											</thead>
 											<c:forEach var="dto" items="${adminCurList }" varStatus="status">
 												<tbody>
-													<tr onclick="location.href='/Project_itmoa/admin/adminCurView.do?cur_uid=${dto.cur_uid }'">
+													<tr onclick="location.href='/Project_itmoa/admin/adminCurUpdate.do?cur_uid=${dto.cur_uid }'">
 														<td>${status.index+1 }</td>
 														<td>${dto.cur_name }</td>
 														<td>${dto.cur_hours }</td>

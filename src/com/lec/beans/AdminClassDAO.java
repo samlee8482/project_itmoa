@@ -375,9 +375,10 @@ public class AdminClassDAO {
 				String cur_name = rs.getString("cur_name");
 				int cur_hours = rs.getInt("cur_hours");
 				int class_uid = rs.getInt("class_uid");
+				int cur_uid = rs.getInt("cur_uid");
 
 				
-				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours, class_uid);
+				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours, class_uid, cur_uid);
 				list.add(dto);
 			}
 
