@@ -16,29 +16,35 @@ public class LoginOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		MbDAO dao = new MbDAO();
 		MbDTO[] arr = null;
-		MbDTO[] mbArr = null;
 		//입력한 값을 받아오기
 		String mb_id = request.getParameter("mb_id");
 		String mb_pw = request.getParameter("mb_pw");
-		String sessionName = "login";
+		String sessionUid = "loginUid";
+		String sessionId = "loginId";
+		String sessionImg = "loginImg";
+		
 		HttpSession httpSession = request.getSession(true);
 		try {			
 			arr = dao.login(mb_id, mb_pw);
 			// arr 이 loginOk 페이지로 넘어감 -> arr.length > 0 성공 -> 성공했을시 메인페이지로 화면전환되고 arr에 있는 이미지를 가져오기 
-			if(arr.length > 0) {
-				mbArr = dao.myPage(arr[0].getMb_uid());
-				httpSession.setAttribute(sessionName, mbArr);
-				System.out.println(httpSession.getAttribute(sessionName));
-			} else {
-				httpSession.removeAttribute(sessionName);
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-			request.setAttribute("loginOk", arr);
-			
+		if(arr.length > 0) {
+			System.out.println(arr[0].getMb_uid());
+			 httpSession.setAttribute(sessionUid, arr[0].getMb_uid());
+			 System.out.println(httpSession.getAttribute(sessionUid));
+			 httpSession.setAttribute(sessionId, arr[0].getMb_id());
+			 System.out.println(httpSession.getAttribute(sessionId));
+			 httpSession.setAttribute(sessionImg, arr[0].getMb_img());
+			 System.out.println(httpSession.getAttribute(sessionImg));
+		} else {
+			httpSession.removeAttribute(sessionUid);
+			httpSession.removeAttribute(sessionId);
+			httpSession.removeAttribute(sessionImg);
+		}
+		request.setAttribute("loginOk", arr);
 	}
 }
-

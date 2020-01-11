@@ -119,7 +119,7 @@
                         <div class="blog">
                             <div class="blog-item">
                                 <div class="blog-content">
-                                	<div class="col-sm-5"><img src="${classView[0].ins_img }" /></div>
+                                	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 300px"/></div>
 									<div class="col-sm-7">
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<thead>

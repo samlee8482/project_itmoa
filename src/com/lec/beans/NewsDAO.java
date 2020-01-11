@@ -63,7 +63,7 @@ public class NewsDAO {
 	}
 	
 	// 1-2.
-	public NewsDTO[] selectNewsList(String option_news, String keyword) throws SQLException, NamingException {
+	public NewsDTO[] selectNewsList(String option_news, String keyword, int fromRow, int pageRows) throws SQLException, NamingException {
 		
 		NewsDTO [] arr = null;
 		String selectNews = D.SQL_SELECT_NEWS_BRD;
@@ -74,22 +74,31 @@ public class NewsDAO {
 				switch(option_news) {
 					case "1": 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
+			            pstmt.setInt(2, fromRow);
+						pstmt.setInt(3, pageRows);
 						break;
 						
 					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
 						pstmt.setString(1, keyword);
+			            pstmt.setInt(2, fromRow);
+						pstmt.setInt(3, pageRows);
 						break;
 					case "3":
+						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);
+			            pstmt.setInt(1, fromRow);
+						pstmt.setInt(2, pageRows);
 						break;
 				}
 				rs = pstmt.executeQuery();
@@ -102,21 +111,23 @@ public class NewsDAO {
 		return arr;
 	}
 	
-	public int countNews() throws SQLException, NamingException {
-		int cnt = 0;
-		
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(D.SQL_COUNT_NEWS_BRD);
-			rs = pstmt.executeQuery();
-			rs.next();
-			cnt = rs.getInt(1);
-		} finally {
-			close();
+	// 총 몇 개의 글이 있는지 계산
+		public int countAll() throws SQLException, NamingException{
+			int cnt = 0;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_COUNT_ALL_NEWS_BRD);
+				rs = pstmt.executeQuery();
+				rs.next();
+				rs.getInt(1);	// 첫번째 행의 
+				cnt = rs.getInt(1);	// 첫번재 컬럼
+			} finally {
+				close();
+			}
+			
+			return cnt;
 		}
-		
-		return cnt;
-	}
 	
 	// 2. 특정 뉴스 불러오기 NewsDTO ->  Array로 변경 
 	public NewsDTO [] createNewsContentArray(ResultSet rs) throws SQLException {

@@ -55,12 +55,18 @@
         
     });
 </script>
-</head><!--/head-->
+<!--/head-->
 <body>
-
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
- 
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
 	<!-- Header Section -->
     <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">
@@ -132,6 +138,14 @@
 	                                </div>
 	                            </div><!--/.blog-item-->
 	                    	</c:forEach>
+                        </div>
+                        <div class="col-sm-8 col-sm-pull-1">
+							<%--페이징 --%>
+	                        <jsp:include page="newsListPagination.jsp">
+								<jsp:param value="${writePages }" name="writePages"/>
+								<jsp:param value="${totalPage }" name="totalPage"/>
+								<jsp:param value="${page }" name="curPage"/>
+							</jsp:include>
                         </div>
                     </div><!--/.col-md-8-->
                 </div><!--/.row-->

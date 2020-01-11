@@ -5,8 +5,11 @@
 	// 총 페이지수 --> totalPage
 	// 현재 페이지 --> curPage
 	int writePages = Integer.parseInt(request.getParameter("writePages"));
+	System.out.println(writePages);
 	int totalPage = Integer.parseInt(request.getParameter("totalPage"));
+	System.out.println(totalPage);
 	int curPage = Integer.parseInt(request.getParameter("curPage"));
+	System.out.println(curPage);
 	// ※ 사실 위 단계에서도 파라미터 검증 필요하다
 	
 	// 위 url에 추가로 붙어야 할 것들.  (옵션)
@@ -14,7 +17,7 @@
 	if(add == null){ add = ""; }
 	
 	// 페이징 버튼 링크 url 주소에 넣을 문자열 준비
-	String url = "list.do?page=";
+	String url = "newsList.do?page=";
 	
 	String str = "";   // 최종적으로 페이징에 나타날 HTML 문자열 <li> 태그로 구성
 

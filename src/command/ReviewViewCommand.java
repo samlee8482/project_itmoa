@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.lec.beans.MbDTO;
 import com.lec.beans.ReviewDAO;
 import com.lec.beans.ReviewDTO;
 
@@ -19,6 +21,11 @@ public class ReviewViewCommand implements Command {
 		
 		int review_brd_uid = Integer.parseInt(request.getParameter("review_brd_uid"));
 		int rep = 0;
+		
+
+		HttpSession httpSession = request.getSession(true);
+		
+		MbDTO [] loginInfo = (MbDTO [])httpSession.getAttribute("login");
 		
 		if (review_brd_uid > 0) {
 			try {

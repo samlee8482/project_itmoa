@@ -3,11 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.lec.beans.*" %>
-<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
 
 	<c:choose>
-		<c:when test="${not empty sessionScope.login}">
+		<c:when test="${not empty sessionScope.loginUid}">
 		<c:choose>
 			<c:when test="${fn:length(loginOk) == 1 && loginOk[0].mb_level <= 2}">	
 				<script>

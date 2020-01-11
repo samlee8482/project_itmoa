@@ -302,6 +302,14 @@ public interface D {
 		+ " AND cl.class_uid = r.class_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 	
+	// 페이징용 쿼리 준비
+	// 쿼리: 글 목록 전체 개수 가져오기
+	public static final String SQL_COUNT_ALL_REVIEW_BRD = 
+		"SELECT COUNT(*) FROM review_brd";
+	
+	// 쿼리: from 부터 row 만큼 SELECT : LIMIT 은 0 부터 시작 주의!
+	public static final  String SQL_SELECT_FROM_ROW_REVIEW_BRD = 
+		" LIMIT ?, ?";
 	
 	// 리뷰 검색 조건) 회원ID
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_USER_ID =  
@@ -392,6 +400,15 @@ public interface D {
 	public static final String SQL_SELECT_NEWS_BRD = 
 		"SELECT * FROM news_brd";
 	
+	// 페이징용 쿼리 준비
+	// 쿼리: 글 목록 전체 개수 가져오기
+	public static final String SQL_COUNT_ALL_NEWS_BRD = 
+		"SELECT COUNT(*) FROM news_brd";
+	
+	// 쿼리: from 부터 row 만큼 SELECT : LIMIT 은 0 부터 시작 주의!
+	public static final  String SQL_SELECT_FROM_ROW_NEWS_BRD = 
+		" LIMIT ?, ?";
+	
 	// 뉴스 조회
 	public static final String SQL_SELECT_NEWS_BRD_CONTENT =
 		"SELECT * FROM news_brd"
@@ -418,9 +435,6 @@ public interface D {
 	
 	public static final String SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC = 
 		" ORDER BY news_brd_viewcnt ASC";
-	
-	public static final String SQL_COUNT_NEWS_BRD =
-		"SELECT COUNT(*) FROM news_brd";
 		
 	// 조회수 처리는?
 	public static final String SQL_UPDATE_NEWS_BRD_INC_VIEWCNT = 

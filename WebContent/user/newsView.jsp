@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,12 +54,18 @@
             zoom: 14 });
     });
     </script>
-</head><!--/head-->
+</head>
 <body>
-
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
-
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
 
     <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">

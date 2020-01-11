@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="com.lec.beans.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -57,10 +58,16 @@
     </script>
 </head><!--/head-->
 <body>
-
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
-
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
 
     <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">
@@ -94,7 +101,7 @@
                                     <h3 class="main-title">
                                     	${reviewView[0].review_brd_title }
                                     	<c:choose>
-										    <c:when test="${not empty sessionScope.login && sessionScope.login == reviewView[0].mb_uid }">
+										    <c:when test="${not empty sessionScope.loginUid && sessionScope.loginUid == reviewView[0].mb_uid }">
                                             	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
 		                                    		후기 수정
 		                                    	</button>
@@ -113,17 +120,17 @@
                                     <div class="author well">
                                         <div class="media">
                                             <div class="pull-left">
-                                                <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt="">
+                                                <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt=""> <!-- ${sessionScope.loginImg } -->
                                             </div>
                                             <c:choose>
-											    <c:when test="${not empty sessionScope.login }">
+											    <c:when test="${not empty sessionScope.loginUid }">
 				                    				<div class="media-body">
 		                                                <div class="media-heading">
-		                                                    <strong>사용자 이름</strong>
+		                                                    <strong>${sessionScope.loginId }</strong>
 		                                                </div>
-		                                                <form method="get" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
+		                                                <form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
 		                                                	<input type="hidden" name="ifNew" value="true" />
-		                                                	<input type="hidden" name="mb_uid" value="${sessionScope.login }" />
+		                                                	<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />
 		                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
 			                                                <textarea style="width: 100%; resize: none;" name="rep_content"></textarea>
 			                                                <button type="submit" style="float: right">댓글 작성</button>
@@ -139,7 +146,7 @@
                                             <c:choose>
 	                                           	<c:when test="${rep == 1 }">
                                      				<h3>${fn:length(repView) } Comments</h3>
-				                        			<c:forEach var="dto" items="${repView }" varStatus="status">
+				                        			<c:forEach var="repList" items="${repView }" varStatus="status">
 			                                            <div class="media">
 			                                                <div class="pull-left">
 			                                                    <img class="avatar img-thumbnail comment-avatar" src="http://placehold.it/400x400" alt="">
@@ -148,26 +155,26 @@
 			                                                    <div class="well">
 			                                                    	<form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()" style="text-align: left">
 					                                                	<input type="hidden" name="ifNew" value="false" />
-					                                                	<input type="hidden" name="mb_uid" value="${sessionScope.login }" />
+					                                                	<input type="hidden" name="mb_uid" value="${sessionScope.loginId }" />
 					                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
-					                                                	<input type="hidden" name="rep_uid" value="${dto.rep_uid }" />
+					                                                	<input type="hidden" name="rep_uid" value="${repList.rep_uid }" />
 				                                                    	<div class="media-heading">
 				                                                        	<span>
-				                                                        		<strong>${dto.mb_id }</strong>&nbsp; <small>${dto.rep_regdate }</small>
+				                                                        		<strong>${repList.mb_id }</strong>&nbsp; <small>${repList.rep_regdate }</small>
 				                                                        	</span>
 				                                                        	<c:choose>
-																			    <c:when test="${not empty sessionScope.login && sessionScope.login == dto.mb_uid }">
+																			    <c:when test="${not empty sessionScope.loginUid && sessionScope.loginUid == repList.mb_uid }">
 				                                                            		<button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">댓글 수정</button>
-				                                                            		<button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${dto.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">댓글 삭제</button>
+				                                                            		<button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${repList.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">댓글 삭제</button>
 																			    </c:when>
 																			</c:choose>
 				                                                        </div>
 				                                                        <span class="rep_content">
-					                                                        <p>${dto.rep_content }</p>			                                                        
+					                                                        <p>${repList.rep_content }</p>			                                                        
 				                                                        </span>
 			                                                        	<c:choose>
-																	    	<c:when test="${not empty sessionScope.login && sessionScope.login == dto.mb_uid }">
-						                                                        <span class="submit">
+																	    	<c:when test="${not empty sessionScope.loginUid }">
+						                                                        <span class="repUpdate">
 						                                                        	<button type="submit" style="display: none;">수정 완료</button>
 						                                                        </span>
 						                                                	</c:when>
@@ -274,11 +281,11 @@
     <script src="js/init.js"></script>
     
     <script>
-    	function repUpdate(rep_uid) {
-    		var rep_content = $(".well > form > span > p").eq(rep_uid).text();
+    	function repUpdate(i) {
+    		var rep_content = $(".well > form > span > p").eq(i).text();
     		$(".repUpdateButton").css("display", "none");
-    		$(".well > form > span[class='rep_content']").eq(rep_uid).html("<textarea name='rep_content' style='resize: none;'>" + rep_content + "</textarea>");
-    		$(".well > form > span[class='submit'] > button").eq(rep_uid).css("display", "block");
+    		$(".well > form > span[class='rep_content']").eq(i).html("<textarea name='rep_content' style='resize: none;'>" + rep_content + "</textarea>");
+    		$(".well > form > .repUpdate > button").eq(i).css("display", "block");
     	}
     	
     	function chkSubmit() {

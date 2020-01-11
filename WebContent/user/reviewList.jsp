@@ -57,9 +57,16 @@
 </script>
 </head><!--/head-->
 <body>
-
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose> 
  
 	<!-- Header Section -->
     <section id="single-page-slider" class="no-margin">
@@ -113,11 +120,11 @@
                     <div class="col-sm-8 col-sm-pull-4">
                         <div class="blog">
                         	<div class="table-responsive">
-	                        	<c:choose>
-								    <c:when test="${not empty sessionScope.login }">
-	                    				<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
-								    </c:when>
-								</c:choose>
+                        		<c:choose>
+									<c:when test="${not empty sessionScope.loginUid }">
+                    				<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
+                    				</c:when>
+                    			</c:choose>
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
 										<tr>
