@@ -72,16 +72,16 @@
 		<div class="login-logo">
 			<img id="logo" src="images/fake-logo.PNG">
 		</div>
-		<div id="login-info" class="login-info">
+		<div id="login-info" class="login-info" >
 			<div id="id-pw">
 				<input name="mb_id" class="login-info" type="text" placeholder="아이디"
 					required="required"><br> <input name="mb_pw"
-					class="login-info" type="text" placeholder="비밀번호"
+					class="login-info" type="password" placeholder="비밀번호"
 					required="required">
 			</div>
 			<button type="submit" id="login-btn">로그인</button>
 			<div id="other-op">
-				<a href="join.html" id="join">회원가입</a> <a href="findID_PW.html">
+				<a href="join.html" id="join">회원가입</a> | <a href="findID_PW.html" style="padding-left: 10%;">
 					아이디 찾기 </a>/ <a href="findID_PW.html#div-find-pw">비밀번호 찾기</a>
 			</div>
 		</div>

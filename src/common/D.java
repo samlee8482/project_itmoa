@@ -45,9 +45,10 @@ public interface D {
 	 
 	// 찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE_ZZIM =
-		"SELECT z.*"
-		+ " FROM zzim z"
+		"SELECT z.*, ins_name, cur_name"
+		+ " FROM zzim z, ins i, cur c"
 		+ " WHERE z.mb_uid = ?";
+
 
 	
 
