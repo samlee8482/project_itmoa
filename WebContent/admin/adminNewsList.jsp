@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -143,8 +144,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<nav
-					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
 					<!-- Sidebar Toggle (Topbar) -->
 					<button id="sidebarToggleTop"
@@ -209,7 +209,7 @@
 									</form>
 								</div>
 								<div class="card-body">
-									<h6 class="font-weight-bold text-primary">총 x건의 데이터가 조회되었습니다.</h6>
+									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminNewsList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6>
 									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'">뉴스 작성</button>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
@@ -222,10 +222,10 @@
 													<th width="10%">조회수</th width="5%">
 													<th width="6%" style="text-align: center;">뉴스삭제</th width="5%">
 												</tr>
-											</thead>									
+											</thead>										
 				                        	<c:forEach var="dto" items="${adminNewsList }" varStatus="status">
 												<tbody>
-													<tr onclick="location.href='/Project_itmoa/admin/adminNewsUpdateView.do?news_brd_uid=${dto.news_brd_uid }'">
+													<tr style="background-color: #FFF" onclick="location.href='/Project_itmoa/admin/adminNewsUpdateView.do?news_brd_uid=${dto.news_brd_uid }'">
 														<td>${(page - 1) * pageRows + status.index + 1}</td>
 														<td>${dto.news_brd_uid }</td>
 														<td>${dto.news_brd_title }</td>
@@ -335,7 +335,7 @@
 					"cursor": "default",
 					"background-color": "#fff"
 				})
-			})
+			});
 		})
 		
 		function chkSubmit() {

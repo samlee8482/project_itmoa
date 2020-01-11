@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -204,6 +205,7 @@
 									</form>
 								</div>
 								<div class="card-body">
+									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminReviewList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">

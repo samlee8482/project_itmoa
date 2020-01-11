@@ -100,7 +100,7 @@
 									<h6 class="m-0 font-weight-bold text-primary">뉴스 작성</h6>
 								</div>
 								<div class="card-body">
-									<form action="/Project_itmoa/admin/adminNewsUpdateOk.do" method="post" enctype=”multipart/form-data”>
+									<form action="/Project_itmoa/admin/adminNewsUpdateOk.do" method="post" enctype="multipart/form-data">
 										<h6 class="m-0 font-weight-bold text-primary p-2">제목</h6>
 										<input type="text" name="news_brd_title" placeholder="제목을 입력하세요" class="p-2 mb-3 col-xl-12">
 										<textarea name="news_brd_content" id="editor1"></textarea>

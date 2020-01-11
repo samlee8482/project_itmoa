@@ -100,7 +100,7 @@
 									<h6 class="m-0 font-weight-bold text-primary">뉴스 수정</h6>
 								</div>
 								<div class="card-body">
-									<form method="post" action="/Project_itmoa/admin/adminNewsUpdateOk.do" enctype=”multipart/form-data”>
+									<form method="post" action="/Project_itmoa/admin/adminNewsUpdateOk.do" enctype="multipart/form-data">
 										<h4 class="m-0 font-weight-bold text-dark p-2">${adminNewsView[0].news_brd_title }</h4>
 										<input type="hidden" name="news_brd_title" value="${adminNewsView[0].news_brd_title }" />
 										<textarea name="news_brd_content" id="editor1">${adminNewsView[0].news_brd_content }</textarea>

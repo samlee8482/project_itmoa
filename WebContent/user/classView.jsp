@@ -110,32 +110,36 @@
                                  		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
 	                                    <button type="submit" style="color: black">상담 예약</button>
                                     </form>
-                                    <form method="post" action="/Project_itmoa/user/zzimOk.do">
-                             			<input type="hidden" name="goBack" value="${classView[0].class_uid }">
-                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
-	                                    <c:choose>
-	                                    	<c:when test="${zzimView[0].mb_uid == sessionScope.loginUid }">
-                                 				<input type="hidden" name="ifZZim" value="true">
-                                    			<input type="hidden" name="zzim_uid" value="${zzimView[0].zzim_uid }">
-			                                    <button type="submit" class="btn btn-danger btn-icon-split"> 
-													<span class="icon text-white-50"> 
-														<i class="fas fa-heart"></i>
-													</span>
-													<span class="text">찜 취소</span>
-												</button>
-	                                    	</c:when>
-	                                    	<c:otherwise>
-                                 				<input type="hidden" name="ifZZim" value="false">
-                                    			<input type="hidden" name="class_uid" value="${classView[0].class_uid }">
-			                                    <button type="submit" class="btn btn-success btn-icon-split"> 
-													<span class="icon text-white-50"> 
-														<i class="fas fa-heart"></i>
-													</span>
-													<span class="text">찜 하기</span>
-												</button>
-	                                    	</c:otherwise>
-	                                    </c:choose>
-                                    </form>
+                                    <c:choose>
+										<c:when test="${sessionScope.loginUid != null }">                                    
+		                                    <form method="post" action="/Project_itmoa/user/zzimOk.do">
+		                             			<input type="hidden" name="goBack" value="${classView[0].class_uid }">
+		                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
+			                                    <c:choose>
+			                                    	<c:when test="${zzimView[0].mb_uid == sessionScope.loginUid }">
+		                                 				<input type="hidden" name="ifZZim" value="true">
+		                                    			<input type="hidden" name="zzim_uid" value="${zzimView[0].zzim_uid }">
+					                                    <button type="submit" class="btn btn-danger btn-icon-split"> 
+															<span class="icon text-white-50"> 
+																<i class="fas fa-heart"></i>
+															</span>
+															<span class="text">찜 취소</span>
+														</button>
+			                                    	</c:when>
+			                                    	<c:otherwise>
+		                                 				<input type="hidden" name="ifZZim" value="false">
+		                                    			<input type="hidden" name="class_uid" value="${classView[0].class_uid }">
+					                                    <button type="submit" class="btn btn-success btn-icon-split"> 
+															<span class="icon text-white-50"> 
+																<i class="fas fa-heart"></i>
+															</span>
+															<span class="text">찜 하기</span>
+														</button>
+			                                    	</c:otherwise>
+			                                    </c:choose>
+		                                    </form>
+	                                    </c:when>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>

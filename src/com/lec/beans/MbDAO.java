@@ -122,6 +122,7 @@ public class MbDAO {
 			pstmt.setInt(5, mb_zip);
 			pstmt.setString(6, mb_add1);
 			pstmt.setString(7, mb_add2);
+			System.out.println(pstmt);
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

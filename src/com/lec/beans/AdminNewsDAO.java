@@ -87,10 +87,10 @@ public class AdminNewsDAO {
 			option_news_3 = "%" + option_news_3 + "%";
 			switch(option_news_1) {
 			case 1: // 최근순
-				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_ASC;
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 				break;
 			case 2: // 오래된 순
-				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_ASC;
 				break;
 			case 3: // 조회수 순
 				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC;

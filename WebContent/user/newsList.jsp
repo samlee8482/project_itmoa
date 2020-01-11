@@ -121,7 +121,7 @@
                         	<c:forEach var="dto" items="${newsList }">
 	                            <div class="blog-item">
 	                                <div class="blog-featured-image">
-	                                    <img class="img-responsive img-blog" src="http://www.itworld.co.kr/${dto.news_brd_img }" alt="" />
+	                                    <img class="img-responsive img-blog" src="${dto.news_brd_img }" alt="" />
 	                                    <div class="overlay">
 	                                        <a class="preview btn btn-outlined btn-primary" href="/Project_itmoa/user/newsView.do?news_brd_uid=${dto.news_brd_uid }" rel="prettyPhoto"><i class="fa fa-link"></i></a>
 	                                    </div>
