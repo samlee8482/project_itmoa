@@ -156,9 +156,10 @@ public class ClassDAO {
 			String ins_img = rs.getString("ins_img");
 			double ins_x = rs.getDouble("ins_x");
 			double ins_y = rs.getDouble("ins_y");
+			int class_uid = rs.getInt("class_uid");
 			
 			ClassDTO dto = new ClassDTO( cur_name,  cur_hours,  cur_months,  cur_month1,  cur_month2,
-					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img, ins_x, ins_y);
+					 cur_month3,  cur_month4,  cur_month5,  cur_month6,  ins_name,  ins_tel,  ins_img, ins_x, ins_y, class_uid);
 			list.add(dto);
 		}
 
@@ -188,6 +189,41 @@ public class ClassDAO {
 		return arr;
 	}
 	
+	public ClassDTO[] createZZimArrayByUid(ResultSet rs) throws SQLException {
+
+		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+
+		while (rs.next()) {
+			int mb_uid = rs.getInt("mb_uid");
+			int zzim_uid = rs.getInt("zzim_uid");
+			
+			ClassDTO dto = new ClassDTO(mb_uid, zzim_uid);
+			list.add(dto);
+		}
+
+		int size = list.size();
+		ClassDTO[] arr = new ClassDTO[size];
+		list.toArray(arr);
+		return arr;
+	}
+	
+	public ClassDTO[] selectZZimByUid(int class_uid) throws SQLException, NamingException {
+		ClassDTO[] arr = null ;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_SELECT_ZZIM_BY_UID);
+			pstmt.setInt(1, class_uid);
+			rs = pstmt.executeQuery();
+			arr = createZZimArrayByUid(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
 	
 	
 	public int updateMemberByUid(int mb_uid) throws SQLException, NamingException {

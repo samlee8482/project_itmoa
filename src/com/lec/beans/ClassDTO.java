@@ -27,6 +27,7 @@ public class ClassDTO {
 	private String ins_location;
 	private double ins_x;
 	private double ins_y;
+	private int mb_uid;
 	// 생성자
 	public ClassDTO() {
 		super();
@@ -37,7 +38,7 @@ public class ClassDTO {
 	//전체 매개변수 생성자
 	public ClassDTO(String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
 			String cur_month3, String cur_month4, String cur_month5, String cur_month6, String ins_name, String ins_tel, String ins_img
-			, double ins_x, double ins_y) {
+			, double ins_x, double ins_y, int class_uid) {
 		super();
 		this.cur_name = cur_name;
 		this.cur_hours = cur_hours;
@@ -53,6 +54,7 @@ public class ClassDTO {
 		this.ins_img = ins_img;
 		this.ins_x = ins_x;
 		this.ins_y = ins_y;
+		this.class_uid = class_uid;
 	}
 
 
@@ -128,7 +130,13 @@ public class ClassDTO {
 		this.ins_branch = ins_branch;
 	}
 	
-
+	//찜 생성자
+	public ClassDTO(int mb_uid, int zzim_uid) {
+		super();
+		this.mb_uid = mb_uid;
+		this.zzim_uid = zzim_uid;
+	}
+	
 
 
 
@@ -328,6 +336,14 @@ public class ClassDTO {
 
 	public void setCur_uid(int cur_uid) {
 		this.cur_uid = cur_uid;
+	}
+
+	public int getMb_uid() {
+		return mb_uid;
+	}
+
+	public void setMb_uid(int mb_uid) {
+		this.mb_uid = mb_uid;
 	}
 	
 }

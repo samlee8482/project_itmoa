@@ -184,14 +184,22 @@ public interface D {
 	
 	// 학원 상세 페이지
 	public static final String SQL_SELECT_INS_BY_UID = 
-				"SELECT c.*,  i.*"
-				+ " FROM class cl,  ins i, cur c"
-				+ " WHERE class_uid = ?"
-				+ " AND cl.cur_uid = c.cur_uid"
-				+ " AND cl.ins_uid = i.ins_uid";
+			"SELECT c.*,  i.*, cl.class_uid"
+			+ " FROM class cl,  ins i, cur c"
+			+ " WHERE class_uid = ?"
+			+ " AND cl.cur_uid = c.cur_uid"
+			+ " AND cl.ins_uid = i.ins_uid";
+
+	public static final String SQL_SELECT_ZZIM_BY_UID = 
+			"SELECT z.mb_uid, z.zzim_uid"
+			+ " FROM class c,  zzim z"
+			+ " WHERE c.class_uid = ?"
+			+ " AND c.class_uid = z.class_uid";
 
 	// 찜 추가
-	public static final String SQL_INSERT_ZZIM = "INSERT INTO zzim (mb_uid, class_uid) VALUES (?, ?)";
+	public static final String SQL_INSERT_ZZIM =
+			"INSERT INTO zzim (mb_uid, class_uid)"
+			+ " VALUES (?, ?)";
 
 		
 	
