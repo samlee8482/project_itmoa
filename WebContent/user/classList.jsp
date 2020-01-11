@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- JSTL core 라이브러리 포함 --%>   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.lec.beans.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +51,16 @@
 <!--/head-->
 <body>
 
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
+<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
+<body>
+<!-- 로그인 탑메뉴 -->
+<% if ( dto != null) {%>
+	<jsp:include page="loginTopMenu.jsp" />
+<% }%>
+<!-- 비회원 탑메뉴 -->
+<% if ( dto == null) {%>
+	<jsp:include page="topMenu.jsp" />
+<% }%>
 
 	<section id="single-page-slider" class="no-margin">
 		<div class="carousel slide" data-ride="carousel">
@@ -103,14 +112,6 @@
 				</select>
 				
 				
-	<!-- 		<select name="option_branch" id= "ins_branch" size="1">
-					<c:forEach var="branch" items="${branchList }">
-						<option value = "">${branch}</option>
-					</c:forEach>
-				</select>
-	 -->		
-				
-				
 
 				</form>
 				
@@ -159,6 +160,7 @@
 								<img src="${dto.ins_img}" alt="">
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
+								<h5>${dto.ins_location }</h5>
 								<h5>${dto.class_zzimcnt }</h5>
 								<!-- <h5>${dto.class_zzimcnt }</h5> -->
 								<div class="overlay">

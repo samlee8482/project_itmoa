@@ -24,6 +24,8 @@ public class CurViewCommand implements Command {
 			
 			arr = dao.selectClassByUid(class_uid);
 			request.setAttribute("classView", arr);
+			arr = dao.selectZZimByUid(class_uid);
+			request.setAttribute("zzimView", arr);
 						
 		} catch (SQLException e) {
 			e.printStackTrace();

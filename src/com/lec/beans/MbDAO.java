@@ -133,7 +133,7 @@ public class MbDAO {
 	}
 	
 	// 마이페이지
-	// 1.
+	// 1. 회원정보 가져오기
 	public MbDTO[] createMypageArr(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
 		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
 
@@ -158,7 +158,7 @@ public class MbDAO {
 		return arr;
 	}
 	
-	// 2.
+	// 1-1
 	public MbDTO[] myPage(int mb_uid) throws SQLException, NamingException {
 		MbDTO[] arr = null;
 		
@@ -177,6 +177,55 @@ public class MbDAO {
 		
 		return arr; 
 	}
+	
+	
+	// 2-1 찜정보 가져오기
+		public MbDTO[] createMypageZzimArr(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
+			ArrayList<MbDTO> list = new ArrayList<MbDTO>();
+
+			while(rs.next()){
+				
+				int zzim_uid = rs.getInt("zzim_uid");
+				String ins_name = rs.getString("ins_name");
+				String cur_name = rs.getString("cur_name");
+				
+				
+				MbDTO dto = new MbDTO(zzim_uid,ins_name, cur_name);
+				list.add(dto);
+			}
+			
+			int size = list.size();
+			MbDTO [] arr = new MbDTO[size];
+			list.toArray(arr);
+			
+			return arr;
+		}
+	
+	
+	
+	// 2-2
+		public MbDTO[] myPageZzim(int zzim_uid) throws SQLException, NamingException {
+			MbDTO[] arr = null;
+			
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE_ZZIM);
+				pstmt.setInt(1, zzim_uid);
+				rs = pstmt.executeQuery();
+				arr = createMypageZzimArr(rs);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			return arr; 
+		}
+		
+		
+		
+		
 	
 	// 회원정보 수정
 	public int update(String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, int mb_uid) throws SQLException, NamingException{
@@ -199,6 +248,14 @@ public class MbDAO {
 		
 		return cnt;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 회원정보 찾기 - ID
 	// 1.

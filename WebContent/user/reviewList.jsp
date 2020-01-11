@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <title>About Us | Impact By Distinctive Themes</title>
@@ -121,7 +122,7 @@
                         <div class="blog">
                         	<div class="table-responsive">
                         		<c:choose>
-									<c:when test="${not empty sessionScope.loginUid }">
+									<c:when test="${sessionScope.loginUid >= 2 }">
                     				<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
                     				</c:when>
                     			</c:choose>
@@ -129,9 +130,9 @@
 									<thead>
 										<tr>
 											<th width="5%">No</th>
-											<th width="20%">리뷰 번호</th>
-											<th width="15%">작성자 아이디</th>
-											<th width="15%">학원명</th>
+											<th width="12%">리뷰 번호</th>
+											<th width="18%">작성자 아이디</th>
+											<th width="20%">학원명</th>
 											<th width="25%">리뷰제목</th>
 											<th width="25%">리뷰작성일</th>
 										</tr>
@@ -149,6 +150,14 @@
 										</tbody>
 									</c:forEach>
 								</table>
+							</div>
+							<%--페이징 --%>
+							<div class="col-sm-12 col-sm-pull-1">							
+								<jsp:include page="reviewListPagination.jsp">
+									<jsp:param value="${writePages }" name="writePages"/>
+									<jsp:param value="${totalPage }" name="totalPage"/>
+									<jsp:param value="${page }" name="curPage"/>
+								</jsp:include>
 							</div>
                         </div>
                     </div><!--/.col-md-8-->
