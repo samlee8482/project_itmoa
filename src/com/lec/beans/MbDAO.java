@@ -209,13 +209,13 @@ public class MbDAO {
 	
 	
 	// 2-2
-		public MbDTO[] myPageZzim(int zzim_uid) throws SQLException, NamingException {
+		public MbDTO[] myPageZzim(int mb_uid) throws SQLException, NamingException {
 			MbDTO[] arr = null;
 			
 			try {
 				conn = getConnection();
 				pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE_ZZIM);
-				pstmt.setInt(1, zzim_uid);
+				pstmt.setInt(1, mb_uid);
 				rs = pstmt.executeQuery();
 				arr = createMypageZzimArr(rs);
 				
