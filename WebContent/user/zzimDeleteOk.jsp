@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:choose>
-	<c:when test="${deleteZZim == 0}">
+	<c:when test="${zzimOk == 0}">
 		<script>
 			alert("이미 삭제 되었거나 존재하지 않는 목록입니다.");
 			history.back();

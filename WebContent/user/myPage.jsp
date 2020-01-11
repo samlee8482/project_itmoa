@@ -115,7 +115,7 @@
 				</p>
 			</form>
 			
-			<div class="zzim-list" id="zzim-list" style="margin-left: 40%; text-align: center;">
+			<div class="zzim-list" id="zzim-list" style="margin-left: 37%; text-align: center;">
 				<table>
 					<tr>
 						<th>NO</th>
@@ -123,12 +123,21 @@
 						<th>과정명</th>
 					</tr>
 				<c:forEach var="dto" items="${myPageZzim }">
+				
 					<tr>
+					
 						<td>${dto.zzim_uid }</td>
 						<td>${dto.ins_name }</td>
 						<td>${dto.cur_name }
-						<input type="button" value="삭제" onclick="location.href='zzimDeleteOk.do'" style="float:right;"></td>
+						<form action="zzimDeleteOk.do">
+						<input type="submit" value="삭제" style="float:right;">
+						<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }">
+						<input type="hidden" name="ifZZim" value="true" />
+						<input type="hidden" name="mb_uid" value="${myPage[0].mb_uid }">
+						<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
+						</form></td>
 					</tr>
+				
 				</c:forEach>
 				
 						<!--  <a href='view.do?uid=" + arr[i].getMb_uid() + "'>"-->
