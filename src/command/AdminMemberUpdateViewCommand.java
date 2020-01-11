@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.beans.AdminMbDAO;
 import com.lec.beans.MbDTO;
 
-public class AdminMemberViewCommand implements Command {
+public class AdminMemberUpdateViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

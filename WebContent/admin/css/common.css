@@ -3,11 +3,17 @@
     text-align: center;
 }
 
+#pageContainer{
+	position: relative;
+}
+
+#pageBtn{
+	position: absolute;
+	left:50%;
+}
+
 ul.pagination{
 	list-style-type:none;
-	position: absolute;
-	left: 300px;
-	top: 600px;
 }
 
 ul.pagination li{

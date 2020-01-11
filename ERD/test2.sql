@@ -55,7 +55,7 @@ CREATE TABLE ins
 	ins_img text default 0,
 	ins_x double DEFAULT 37.5582373,
 	ins_y double DEFAULT 126.8164805,
-	PRIMARY KEY (ins_uid)
+	PRIMARY KEY (ins_uid)    
 );
 
 
@@ -208,8 +208,7 @@ values ('user4', 'retw_12', '박우람', 'abced@hanmail.net', 01035, '경기도'
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user5', '12_dsf', '김민하', 'ddsf133@hanmail.net', 91105, '부천시', '원미구');
 
-
-
+update ins set ins_zip = 11111 where ins_name = '비트캠프';
 insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 
 values ('코리아IT', '02-991-2321', '서울시 관악구', '행복동', '서울', '관악');
 insert into ins (ins_name, ins_tel, ins_add1, ins_add2, ins_location, ins_branch) 

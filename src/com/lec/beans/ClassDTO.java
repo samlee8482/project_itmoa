@@ -83,7 +83,7 @@ public class ClassDTO {
 	
 	//관리자 페이지 생성자2
 	public ClassDTO(String ins_name, int ins_zip, String ins_add1, String ins_add2, String ins_tel, String ins_img,
-			String ins_branch, String ins_location) {
+			String ins_branch, String ins_location, double ins_x, double ins_y) {
 		super();
 		this.ins_name = ins_name;
 		this.ins_zip = ins_zip;
@@ -93,6 +93,8 @@ public class ClassDTO {
 		this.ins_img = ins_img;
 		this.ins_branch = ins_branch;
 		this.ins_location = ins_location;
+		this.ins_x = ins_x;
+		this.ins_y = ins_y;
 	}
 	
 	//사용자:  학원검색에서 전체 출력 생성자

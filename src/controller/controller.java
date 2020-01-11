@@ -17,13 +17,13 @@ import command.AdminCurUpdateOkCommand;
 import command.AdminCurViewCommand;
 import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
-import command.AdminInsOkCommand;
+import command.AdminInsUpdateOkCommand;
 import command.AdminInsRegistCommand;
-import command.AdminInsViewCommand;
+import command.AdminInsUpdateViewCommand;
 import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
 import command.AdminMemberUpdateOkCommand;
-import command.AdminMemberViewCommand;
+import command.AdminMemberUpdateViewCommand;
 import command.AdminNewsDeleteOkCommand;
 import command.AdminNewsFileUploadCommand;
 import command.AdminNewsListCommand;
@@ -254,7 +254,7 @@ public class controller extends HttpServlet {
 			break;
 //		* 검색 조건 추가는 adminMemberList.do 뒤에 쿼리 추가해서 다시 request
 		case "/admin/adminMemberUpdateView.do":  // 관리자 회원 상세 정보 출력
-			command = new AdminMemberViewCommand();
+			command = new AdminMemberUpdateViewCommand();
 			command.execute(request, response);
 			viewPage = "adminMemberUpdateView.jsp";
 			break;
@@ -284,22 +284,22 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminInsRegistOk.jsp";
 			break;
-			
+			    
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
-		case "/admin/adminInsView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
-			command = new AdminInsViewCommand();
+		case "/admin/adminInsUpdateView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
+			command = new AdminInsUpdateViewCommand();
 			command.execute(request, response);
-			viewPage = "adminInsView.jsp";
-			break;
+			viewPage = "adminInsUpdateView.jsp";
+			break;  
 		case "/admin/adminInsDeleteOk.do":  // 관리자 학원 삭제
 			command = new AdminInsDeleteOkCommand();
 			command.execute(request, response);
 			viewPage = "adminInsDeleteOk.jsp";
 			break;
-		case "/admin/adminInsOk.do":  // 관리자 학원 상세 정보 수정 (체크)
-			command = new AdminInsOkCommand();
+		case "/admin/adminInsUpdateOk.do":  // 관리자 학원 상세 정보 수정 (체크)
+			command = new AdminInsUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "adminInsOk.jsp";
+			viewPage = "adminInsUpdateOk.jsp";
 			break;
 //		* insert 같이 사용
 		case "/admin/adminClassList.do":  // 관리자 Class 출력. 과정 관리 화면
