@@ -290,7 +290,7 @@ public class controller extends HttpServlet {
 			command = new AdminInsUpdateViewCommand();
 			command.execute(request, response);
 			viewPage = "adminInsUpdateView.jsp";
-			break;
+			break;  
 		case "/admin/adminInsDeleteOk.do":  // 관리자 학원 삭제
 			command = new AdminInsDeleteOkCommand();
 			command.execute(request, response);

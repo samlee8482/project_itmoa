@@ -156,7 +156,7 @@
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary">학원 수정</h6>
 								</div>
-								
+								  
 								<div class="card-body">
 									<form name="frm" action="adminInsUpdateOk.do" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원명</h6>

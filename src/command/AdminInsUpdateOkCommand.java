@@ -15,7 +15,7 @@ public class AdminInsUpdateOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		AdminClassDAO dao = new AdminClassDAO();
-		
+		  
 		int cnt = 0;
 		String ins_name = request.getParameter("ins_name");
 		System.out.println(ins_name);
