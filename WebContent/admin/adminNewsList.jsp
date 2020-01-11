@@ -26,6 +26,12 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
+<c:choose>
+<c:when test="${sessionScope.loginLevel != 3 }">
+	<jsp:include page="ifNotAdmin.jsp" />
+</c:when>
+<c:otherwise>
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -61,7 +67,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">관리자1</span>
+								class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.loginId }</span>
 								<img class="img-profile rounded-circle"
 								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ1TLNa9cA0CONWCEvzv4l5vSHyLy4GadK0gKlS_PINAzaQjUT&s">
 						</a> <!-- Dropdown - User Information -->
@@ -190,7 +196,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="/Project_itmoa/user/logoutOk.do">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -242,4 +248,6 @@
 	
 </body>
 
+</c:otherwise>
+</c:choose>
 </html>
