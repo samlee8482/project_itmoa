@@ -17,9 +17,8 @@ form{
 }
 
 #login-info {
-	padding: 30px;
+	padding: 40px;
 	margin-top: 10px;
-	position: absolute;
 }
 
 
@@ -63,7 +62,7 @@ input.login-info {
 	}
 
 #join {
-	padding-right: 25%;
+	padding-right: 10%;
 }
 
 #join-content{

@@ -55,15 +55,15 @@ public class MbDTO {
 	}
 	
 	// 마이페이지 - 1.회원정보
-	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2, String mb_img, int zzim_uid) {
+	public MbDTO(String mb_name, int mb_uid, String mb_id, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, String mb_img) {
+		this.mb_name = mb_name;
 		this.mb_uid = mb_uid;
-		this.mb_id = mb_id;
 		this.mb_pw = mb_pw;
+		this.mb_email = mb_email;
+		this.mb_zip = mb_zip;
 		this.mb_add1 = mb_add1;
 		this.mb_add2 = mb_add2;
-		this.mb_zip = mb_zip;
 		this.mb_img = mb_img;
-		this.zzim_uid = zzim_uid;
 	}
 	
 	
