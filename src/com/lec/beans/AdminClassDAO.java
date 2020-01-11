@@ -268,7 +268,7 @@ public class AdminClassDAO {
 	// 관리자페이지 학원 수정
 	public int updateInsByUid(String ins_name, String ins_tel, int ins_zip, String ins_add1, String ins_add2,
 			String ins_location, String ins_branch, String ins_img, double ins_x, double ins_y, int ins_uid) throws SQLException, NamingException{
-		  
+		    
 		int cnt = 0;
 		
 		try {

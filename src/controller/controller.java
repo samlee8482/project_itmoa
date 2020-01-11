@@ -284,7 +284,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "adminInsRegistOk.jsp";
 			break;
-			
+			    
 //		* 검색 조건 추가는 adminInsList.do 뒤에 쿼리 추가해서 다시 request
 		case "/admin/adminInsUpdateView.do":  // 관리자 학원 상세 정보 출력. 학원 수정할 때
 			command = new AdminInsUpdateViewCommand();

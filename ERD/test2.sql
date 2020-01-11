@@ -55,7 +55,7 @@ CREATE TABLE ins
 	ins_img text default 0,
 	ins_x double DEFAULT 37.5582373,
 	ins_y double DEFAULT 126.8164805,
-	PRIMARY KEY (ins_uid)  
+	PRIMARY KEY (ins_uid)    
 );
 
 

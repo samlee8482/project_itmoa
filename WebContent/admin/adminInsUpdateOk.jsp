@@ -6,7 +6,7 @@ ${adminInsUpdateOk }
 	<c:when test="${adminInsUpdateOk == 0 }">
 		<script>
 			alert("수정 실패");
-			history.back();  
+			history.back();    
 		</script>  
 	</c:when>
 	<c:when test="${adminInsUpdateOk == 1 }">
