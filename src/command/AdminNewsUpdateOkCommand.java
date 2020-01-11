@@ -14,9 +14,9 @@ public class AdminNewsUpdateOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		boolean ifNew = Boolean.parseBoolean(request.getParameter("ifNew"));
 		String news_brd_title = request.getParameter("news_brd_title");
+		System.out.println(news_brd_title);
 		String news_brd_content = request.getParameter("news_brd_content");
 		String news_brd_img = request.getParameter("news_brd_img");
-		
 		AdminNewsDAO dao = new AdminNewsDAO();
 		int cnt = 0;
 		
