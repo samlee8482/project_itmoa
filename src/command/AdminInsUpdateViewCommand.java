@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.beans.AdminClassDAO;
 import com.lec.beans.ClassDTO;
 
-public class AdminInsViewCommand implements Command {
+public class AdminInsUpdateViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -17,10 +17,12 @@ public class AdminInsViewCommand implements Command {
 		ClassDTO [] insArr = null; 
 		AdminClassDAO dao = new AdminClassDAO();
 
+		int ins_uid = Integer.parseInt(request.getParameter("ins_uid"));
+		
 		try {
-			insArr = dao.insView();
+			insArr = dao.selectInsByUid(ins_uid);
 			if (insArr.length == 1) {
-				request.setAttribute("adminInsView", insArr);
+				request.setAttribute("adminInsUpdateView", insArr);
 			}
 		} catch (NamingException e) {
 			e.printStackTrace();

@@ -74,7 +74,7 @@ public class AdminClassDAO {
 	}
 
 	
-	//관리자  AdminInsView 배열 생성
+	//관리자  AdminInsUpdateView 배열 생성
 	public ClassDTO[] createInsArray(ResultSet rs) throws SQLException {
 
 		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
@@ -89,7 +89,9 @@ public class AdminClassDAO {
 			String ins_location = rs.getString("ins_location");
 			String ins_branch = rs.getString("ins_branch");
 			String ins_img = rs.getString("ins_img");
-			ClassDTO dto = new ClassDTO( ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch,  ins_location);
+			double ins_x = rs.getDouble("ins_x");
+			double ins_y = rs.getDouble("ins_y");
+			ClassDTO dto = new ClassDTO(ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch, ins_location, ins_x, ins_y);
 			list.add(dto);
 		}
 
@@ -101,26 +103,26 @@ public class AdminClassDAO {
 	}
 	
 	
-	//관리자페이지 학원 수정할 경우 화면에 띄워주기
-	public ClassDTO[] insView() throws SQLException, NamingException {
-		
-		ClassDTO [] insArr = null ;
-		
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(D.SQL_SELECT_INS);
-			rs = pstmt.executeQuery();
-			insArr = createInsArray(rs);
-			
-		} finally {
-			close();
-		}
-		
-		
-		return insArr;
-		
-		
-	}
+//	//관리자페이지 학원 수정할 경우 화면에 띄워주기 -> 사용안해서 주석처리
+//	public ClassDTO[] insView() throws SQLException, NamingException {
+//		
+//		ClassDTO [] insArr = null ;
+//		
+//		try {
+//			conn = getConnection();
+//			pstmt = conn.prepareStatement(D.SQL_SELECT_INS);
+//			rs = pstmt.executeQuery();
+//			insArr = createInsArray(rs);
+//			
+//		} finally {
+//			close();
+//		}
+//		
+//		
+//		return insArr;
+//		
+//		
+//	}
 	
 	
 	
@@ -253,7 +255,7 @@ public class AdminClassDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			arr = createCurArray(rs);
+			arr = createInsArray(rs);
 			
 		} finally {
 			close();

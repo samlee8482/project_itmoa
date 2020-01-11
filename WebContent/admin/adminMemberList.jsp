@@ -3,13 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%--페이징 --%>
-<jsp:include page="adminMemberListPagination.jsp">
-	<jsp:param value="${writePages }" name="writePages"/>
-	<jsp:param value="${totalPage }" name="totalPage"/>
-	<jsp:param value="${page }" name="curPage"/>
-</jsp:include>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -42,7 +35,7 @@
 <body id="page-top">
 
    <!-- Page Wrapper -->
-   <div id="wrapper" style="positon: static;">
+   <div id="wrapper">
    
       <!-- Side Menu -->
       <jsp:include page="sideMenu.jsp"/>
@@ -177,7 +170,17 @@
          <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                <div class="copyright text-center my-auto">
+	         		<%--페이징 --%>
+	         		<div id="pageContainer">
+		         		<div id="pageBtn">
+							<jsp:include page="adminMemberListPagination.jsp">
+								<jsp:param value="${writePages }" name="writePages"/>
+								<jsp:param value="${totalPage }" name="totalPage"/>
+								<jsp:param value="${page }" name="curPage"/>
+							</jsp:include>
+						</div><br><br><br>
                   <span>Copyright &copy; Your Website 2019</span>
+					</div>
                </div>
             </div>
          </footer>
@@ -233,6 +236,7 @@
    <script src="js/demo/chart-area-demo.js"></script>
    <script src="js/demo/chart-pie-demo.js"></script>
    <script src="js/demo/chart-bar-demo.js"></script>
+
 
 </body>
 
