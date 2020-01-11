@@ -16,6 +16,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -82,9 +83,16 @@
 	</script>
 </head><!--/head-->
 <body>
-
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose> 
 
 
     <section id="single-page-slider" class="no-margin">
@@ -98,9 +106,36 @@
                                     <h2 class="main-title">${classView[0].cur_name }</h2>
                                     <hr>
                                     <p>${classView[0].ins_name }</p>
-                                    
-                                    <button style="color: black" onclick="location.href='/Project_itmoa/user/reserveOk.do?cur_uid=${classView[0].cur_uid }'">상담 예약</button>
-                                    <button style="color: black" onclick="location.href='/Project_itmoa/user/zzimOk.do?cur_uid=${classView[0].cur_uid }'">찜 하기</button>
+                                    <form method="post" action="/Project_itmoa/user/reserveOk.do">
+                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
+	                                    <button type="submit" style="color: black">상담 예약</button>
+                                    </form>
+                                    <form method="post" action="/Project_itmoa/user/zzimOk.do">
+                             			<input type="hidden" name="goBack" value="${classView[0].class_uid }">
+                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
+	                                    <c:choose>
+	                                    	<c:when test="${zzimView[0].mb_uid == sessionScope.loginUid }">
+                                 				<input type="hidden" name="ifZZim" value="true">
+                                    			<input type="hidden" name="zzim_uid" value="${zzimView[0].zzim_uid }">
+			                                    <button type="submit" class="btn btn-danger btn-icon-split"> 
+													<span class="icon text-white-50"> 
+														<i class="fas fa-heart"></i>
+													</span>
+													<span class="text">찜 취소</span>
+												</button>
+	                                    	</c:when>
+	                                    	<c:otherwise>
+                                 				<input type="hidden" name="ifZZim" value="false">
+                                    			<input type="hidden" name="class_uid" value="${classView[0].class_uid }">
+			                                    <button type="submit" class="btn btn-success btn-icon-split"> 
+													<span class="icon text-white-50"> 
+														<i class="fas fa-heart"></i>
+													</span>
+													<span class="text">찜 하기</span>
+												</button>
+	                                    	</c:otherwise>
+	                                    </c:choose>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -250,6 +285,9 @@
 					                    </div>
                                     </div>
                                     <div id="map" style="margin-top: 100px"></div>
+                                    <button type="button" onclick="location.href='/Project_itmoa/user/classList.do'">
+										목록으로
+                                    </button>
                                 </div>
                             </div>
                         </div>
