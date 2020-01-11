@@ -33,7 +33,7 @@
 	href="images/ico/images/ico/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57x57.png">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
     jQuery(document).ready(function($){
     'use strict';
@@ -155,17 +155,27 @@
 					
 				    <c:forEach var="dto" items="${classList }">
 				    	<!-- portfolio-item  -->
-						<li class="portfolio-item apps isotope-item" onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
+							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 								<img src="${dto.ins_img}" alt="">
-								<h5>${dto.ins_name }</h5>
+							</div>
+							<div>
+								<span style="background-color:red;"> 
+									<i id="heart_empty" class="fa fa-heart fa-1x"></i>
+									<i id="heart" class="far fa-heart" style="display:none"></i>
+								</span>
+								<span> 
+									찜하기
+								</span>		
+							</div>	
+							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+							<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
-								<h5>${dto.ins_location }</h5>
-								<h5>${dto.class_zzimcnt }</h5>
-								<!-- <h5>${dto.class_zzimcnt }</h5> -->
-								<div class="overlay">
-									<a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i	class="fa fa-eye"></i></a>
-								</div>
+								<h5>${dto.ins_branch}</h5>
+								<h5>${dto.class_zzimcnt }</h5>	
+							</div>
+					
 							</div>
 						</li>
 						<!--/.portfolio-item-->

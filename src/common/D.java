@@ -46,8 +46,8 @@ public interface D {
 	// 찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE_ZZIM =
 		"SELECT z.*"
-		+ "FROM zzim z"
-		+ "WHERE z.mb_uid = ?";
+		+ " FROM zzim z"
+		+ " WHERE z.mb_uid = ?";
 
 	
 
@@ -132,7 +132,7 @@ public interface D {
 	
 	// 학원 검색 조건) 전체
 		public static final String SQL_SELECT_CLASS = 
-	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name, c.cur_name, cl.class_uid"
+	"SELECT i.ins_img, cl.class_zzimcnt, i.ins_name, i.ins_branch, c.cur_name, cl.class_uid"
 	+ " FROM class cl, cur c, ins i "
 	+ " WHERE cl.cur_uid = c.cur_uid "
 	+ " AND cl.ins_uid = i.ins_uid";
