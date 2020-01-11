@@ -161,13 +161,11 @@
 								<img src="${dto.ins_img}" alt="">
 							</div>
 							<div>
-								<span style="background-color:red;"> 
+								<span style="color:red;"> 
 									<i id="heart_empty" class="fa fa-heart fa-1x"></i>
 									<i id="heart" class="far fa-heart" style="display:none"></i>
 								</span>
-								<span> 
-									찜하기
-								</span>		
+								<span> 찜하기	</span>		
 							</div>	
 							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 							<h5>${dto.ins_name }</h5>
