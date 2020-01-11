@@ -160,6 +160,10 @@ public class controller extends HttpServlet {
 		case "/user/myPageAction.do":  // 마이페이지 출력
 			viewPage = "myPageAction.jsp";
 			break;
+		
+		case "/user/zzimDeleteOk.do":
+			viewPage = "zzimDeleteOk.jsp";
+			break;
 			
 //		- 학원
 		case "/user/classList.do":  // 학원 리스트 출력

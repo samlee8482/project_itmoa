@@ -127,7 +127,7 @@
 						<td>${dto.zzim_uid }</td>
 						<td>${dto.ins_name }</td>
 						<td>${dto.cur_name }
-						<input type="button" value="삭제"  style="float:right;"></td>
+						<input type="button" value="삭제" onclick="location.href='zzimDeleteOk.do'" style="float:right;"></td>
 					</tr>
 				</c:forEach>
 				

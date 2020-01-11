@@ -56,6 +56,7 @@ public interface D {
 	public static final String SQL_DELETE_ZZIM = 
 		"DELETE FROM zzim where zzim_uid = ?";
 	
+	
 	// 마이페이지에서 회원정보 수정
 	public static final String SQL_UPDATE_MYPAGE=
 		"UPDATE mb"
