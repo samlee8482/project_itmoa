@@ -54,9 +54,10 @@ public class ClassDAO {
 			int class_zzimcnt = rs.getInt("class_zzimcnt");
 			String ins_name = rs.getString("ins_name");
 			String cur_name = rs.getString("cur_name");
+			String ins_branch = rs.getString("ins_branch");
 			int class_uid = rs.getInt("class_uid");
 
-			ClassDTO dto = new ClassDTO(ins_name, cur_name, class_zzimcnt, ins_img, class_uid);
+			ClassDTO dto = new ClassDTO(ins_name, ins_branch,cur_name, class_zzimcnt, ins_img, class_uid);
 			list.add(dto);
 		}
 
@@ -415,7 +416,6 @@ public class ClassDAO {
 				selectClass += D.SQL_ORDER_CLASS_UID; //정렬
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectClass);
-					
 				rs = pstmt.executeQuery();
 				arr = createClassArray(rs);
 
