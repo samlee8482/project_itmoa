@@ -18,18 +18,18 @@ public class MyPageCommand implements Command {
 	      MbDAO dao = new MbDAO();
 	      MbDTO [] arr = null;
 	            
-	      int uid = 1;
+	      int uid = Integer.parseInt(request.getParameter("mb_uid"));
 //	      System.out.println(uid);
 	      
 	      if(uid > 0) {// 매개변수 유효성 검증
 	         try {
 	            
-	            arr = dao.myPage(1);  // 회원정보 가져오기
+	            arr = dao.myPage(uid);  // 회원정보 가져오기
 	           
 	            request.setAttribute("myPage", arr);
 	            
 	            System.out.println(arr.length);
-	            System.out.println(arr[0].getMb_id());
+	            System.out.println(arr[0].getMb_uid());
 	      
 	         } catch (SQLException e) {  
 	            e.printStackTrace();

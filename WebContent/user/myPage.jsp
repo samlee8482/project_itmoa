@@ -36,7 +36,7 @@
 
 </head>
 <!--/head-->
-<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
+<% String dto = (String)session.getAttribute("loginId"); %>
 <body>
 <!-- 로그인 탑메뉴 -->
 <% if ( dto != null) {%>

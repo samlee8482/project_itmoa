@@ -47,6 +47,7 @@ public class LoginOkCommand implements Command {
 			httpSession.removeAttribute(sessionUid);
 			httpSession.removeAttribute(sessionId);
 			httpSession.removeAttribute(sessionImg);
+			httpSession.removeAttribute(sessionLevel);
 		}
 		request.setAttribute("loginOk", arr);
 	}
