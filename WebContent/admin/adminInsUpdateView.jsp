@@ -158,7 +158,7 @@
 								</div>
 								    
 								<div class="card-body">
-									<form name="frm" action="adminInsUpdateOk.do" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
+									<form name="frm" action="adminInsUpdateOk.do?ins_uid=${adminInsUpdateView[0].ins_uid }" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원명</h6>
 									<input name="ins_name" type="text" value="${adminInsUpdateView[0].ins_name }"></input>
 									<h6 class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
@@ -189,7 +189,7 @@
 									X <input type="text" name="ins_x" placeholder="좌표값1" value="${adminInsUpdateView[0].ins_x }"></input><br>
 									Y <input type="text" name="ins_y" placeholder="좌표값2" value="${adminInsUpdateView[0].ins_y }"></input>
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<input type="file" name="file" value="${adminInsUpdateView[0].ins_img }" />							
+									<input type="file" name="ins_img" value="${adminInsUpdateView[0].ins_img }" />							
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정</button>	
 									
 									</form>

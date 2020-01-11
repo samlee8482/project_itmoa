@@ -91,7 +91,8 @@ public class AdminClassDAO {
 			String ins_img = rs.getString("ins_img");
 			double ins_x = rs.getDouble("ins_x");
 			double ins_y = rs.getDouble("ins_y");
-			ClassDTO dto = new ClassDTO(ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch, ins_location, ins_x, ins_y);
+			int ins_uid = rs.getInt("ins_uid");
+			ClassDTO dto = new ClassDTO(ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch, ins_location, ins_x, ins_y, ins_uid);
 			list.add(dto);
 		}
 
