@@ -101,10 +101,12 @@
                                     <h3 class="main-title">
                                     	${reviewView[0].review_brd_title }
                                     	<c:choose>
-										    <c:when test="${not empty sessionScope.loginUid && sessionScope.loginUid == reviewView[0].mb_uid }">
+		                                    <c:when test="${not empty sesionScope.loginUid && sessionScope.loginUid == reviewView[0].mb_uid }">
                                             	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
 		                                    		후기 수정
 		                                    	</button>
+		                                    </c:when>
+										    <c:when test="${sessionScope.loginLevel == 3 || sessionScope.loginUid == reviewView[0].mb_uid }">
 		                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
 		                                    		후기 삭제
 		                                    	</button>
@@ -117,13 +119,14 @@
                                     <div style="padding: 30px 5px">
                                     	${reviewView[0].review_brd_content }
                                     </div>
-                                    <div class="author well">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt=""> <!-- ${sessionScope.loginImg } -->
-                                            </div>
-                                            <c:choose>
-											    <c:when test="${not empty sessionScope.loginUid }">
+									<hr/>
+                                    <c:choose>
+			    						<c:when test="${not empty sessionScope.loginUid }">
+	                                    <div class="author well">
+	                                        <div class="media">
+	                                            <div class="pull-left">
+	                                                <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt=""> <!-- ${sessionScope.loginImg } -->
+	                                            </div>
 				                    				<div class="media-body">
 		                                                <div class="media-heading">
 		                                                    <strong>${sessionScope.loginId }</strong>
@@ -136,11 +139,10 @@
 			                                                <button type="submit" style="float: right">댓글 작성</button>
 		                                                </form>
 		                                            </div>
-											    </c:when>
-											</c:choose>
-                                        </div>
-                                    </div><!--/.author-->
-
+		                                        </div>
+		                                    </div><!--/.author-->
+									    </c:when>
+									</c:choose>
                                     <div id="comments">
                                         <div id="comments-list">
                                             <c:choose>
@@ -163,7 +165,7 @@
 				                                                        		<strong>${repList.mb_id }</strong>&nbsp; <small>${repList.rep_regdate }</small>
 				                                                        	</span>
 				                                                        	<c:choose>
-																			    <c:when test="${not empty sessionScope.loginUid && sessionScope.loginUid == repList.mb_uid }">
+																			    <c:when test="${sessionScope.loginUid == repList.mb_uid || sessionScope.loginLevel == 3 }">
 				                                                            		<button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">댓글 수정</button>
 				                                                            		<button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${repList.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">댓글 삭제</button>
 																			    </c:when>

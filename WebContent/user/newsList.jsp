@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <title>About Us | Impact By Distinctive Themes</title>

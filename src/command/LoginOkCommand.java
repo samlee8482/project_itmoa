@@ -21,6 +21,7 @@ public class LoginOkCommand implements Command {
 		String mb_pw = request.getParameter("mb_pw");
 		String sessionUid = "loginUid";
 		String sessionId = "loginId";
+		String sessionLevel = "loginLevel";
 		String sessionImg = "loginImg";
 		
 		HttpSession httpSession = request.getSession(true);
@@ -38,6 +39,8 @@ public class LoginOkCommand implements Command {
 			 System.out.println(httpSession.getAttribute(sessionUid));
 			 httpSession.setAttribute(sessionId, arr[0].getMb_id());
 			 System.out.println(httpSession.getAttribute(sessionId));
+			 httpSession.setAttribute(sessionLevel, arr[0].getMb_level());
+			 System.out.println(httpSession.getAttribute(sessionLevel));
 			 httpSession.setAttribute(sessionImg, arr[0].getMb_img());
 			 System.out.println(httpSession.getAttribute(sessionImg));
 		} else {
