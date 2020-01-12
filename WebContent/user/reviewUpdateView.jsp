@@ -62,9 +62,16 @@
 </head>
 <!--/head-->
 <body>
-
-	<!-- TopMenu -->
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
 	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
 
 
 	<section id="single-page-slider" class="no-margin">

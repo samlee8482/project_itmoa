@@ -6,6 +6,7 @@
 	<c:when test="${joinOk == 0}">
 		<script>
 			alert("회원가입 실패");
+			history.back();
 		</script>
 	</c:when>
 	
