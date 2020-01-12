@@ -163,6 +163,14 @@ public class controller extends HttpServlet {
 			viewPage = "myPageAction.jsp";
 			break;
 			
+		case "/user/zzimDeleteOk.do":
+			command = new ZZimOkCommand();
+			command.execute(request, response);
+			viewPage = "zzimDeleteOk.jsp";
+			break;
+		
+	
+			
 //		- 학원
 		case "/user/classList.do":  // 학원 리스트 출력
 			command = new CurListCommand();

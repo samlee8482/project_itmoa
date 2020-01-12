@@ -24,8 +24,8 @@ public class NewsListCommand implements Command {
 		
 		// 페이징 관련 세팅 값들
 		int page = 1;  // 현재 페이지 (디폴트는 1 page)
-		int writePages = 10;    // 한 [페이징] 에 몇개의 '페이지'를 표현할 것인가?
-		int pageRows = 8;   // 한 '페이지'에 몇개의 글을 리스트 할것인가? 
+		int writePages = 9;    // 한 [페이징] 에 몇개의 '페이지'를 표현할 것인가?
+		int pageRows = 10;   // 한 '페이지'에 몇개의 글을 리스트 할것인가? 
 		int totalPage = 0; // 총 몇 '페이지' 분량인가? 
 		int cnt = 0;  // 글은 총 몇개인가?
 

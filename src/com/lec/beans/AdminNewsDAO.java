@@ -59,7 +59,7 @@ public class AdminNewsDAO {
 	}
 	
 	// 2.
-	public NewsDTO[] selectNews(int option_news_1, int option_news_2, String option_news_3) throws SQLException, NamingException {
+	public NewsDTO[] selectNews(int option_news_1, int option_news_2, String option_news_3, int fromRow, int pageRows) throws SQLException, NamingException {
 		// option_news_1 은 검색조건
 		// option_news_2 는 검색키워드
 		NewsDTO[] arr = null;
@@ -87,17 +87,21 @@ public class AdminNewsDAO {
 			option_news_3 = "%" + option_news_3 + "%";
 			switch(option_news_1) {
 			case 1: // 최근순
-				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_ASC;
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 				break;
 			case 2: // 오래된 순
-				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
+				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_UID_ASC;
 				break;
 			case 3: // 조회수 순
 				SELECT_NEWS_BRD += D.SQL_ORDER_BY_NEWS_BRD_VIEWCNT_DESC;
 				break;
 			}
+			
+			SELECT_NEWS_BRD += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 			pstmt = conn.prepareStatement(SELECT_NEWS_BRD);
 			if (setStr1 == 1) pstmt.setString(setStr1, option_news_3);
+			pstmt.setInt(setStr1 + 1, fromRow); 
+			pstmt.setInt(setStr1 + 2, pageRows);
 			rs = pstmt.executeQuery();
 			arr = createNewsArr(rs);
 		} catch (SQLException e) {
@@ -109,7 +113,23 @@ public class AdminNewsDAO {
 		return arr; 
 	}
 	
-	
+	// 총 몇 개의 글이 있는지 계산
+	public int countAll() throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_COUNT_ALL_NEWS_BRD);
+			rs = pstmt.executeQuery();
+			rs.next();
+			rs.getInt(1);	// 첫번째 행의 
+			cnt = rs.getInt(1);	// 첫번재 컬럼
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}	
 	
 	public NewsDTO[] createNewsArrByUid(ResultSet rs) throws SQLException {	// 데이터 우리가 쓸 수 있는 값으로 바꿔오기
 		ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
