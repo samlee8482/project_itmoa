@@ -14,9 +14,6 @@
 		<script>
 			alert("예약이 완료 되었습니다.");
 			history.back();
-			//레벨이 올라가야하는데....
-			//어떻게 해야하지...
-		
 		</script>
 
 	</c:otherwise>

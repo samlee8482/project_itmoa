@@ -156,7 +156,7 @@ public class AdminMbDAO {
       return arr; 
    }
    
-// 페이징
+   // 페이징
 	
 	// 몇 번째 from 부터 몇 개 rows 를 SELECT
 	public MbDTO[] selectFromRow(int option_mb_1, int option_mb_2, String option_mb_3, int fromRow, int pageRows) throws SQLException, NamingException{

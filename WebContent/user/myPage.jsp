@@ -47,7 +47,7 @@
 		<div class="w2">
 		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post">
 			<div class="w3">
-				<img name="older_mb_img" src="/images/basic_profil.jpg" 
+				<img name="older_mb_img" src="${sessionScope.loginImg}" 
 					style="width: 200px; height: 200px;"> 
 					<input type="hidden" name="mb_img" value="${sessionScope.loginImg}" >
 					<input type="file" name="profile" style="margin-left: 45%;"><br>
