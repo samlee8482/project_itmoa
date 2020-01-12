@@ -52,7 +52,6 @@ import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
 import command.ReviewViewCommand;
 import command.ZZimOkCommand;
-import command.ZzimCheckCommand;
 
 
 @WebServlet("*.do")
