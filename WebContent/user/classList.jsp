@@ -38,9 +38,10 @@
 </head>
 <!--/head-->
 <body>
+<c:set var="mb_uid" value="${sessionScope.loginUid }"/>
 
 <c:choose>
-	<c:when test="${not empty sessionScope.loginUid }">
+	<c:when test="${not empty mb_uid }">
 	<!-- 로그인 탑메뉴 -->
 	<jsp:include page="loginTopMenu.jsp" />
 		<script>
@@ -237,18 +238,15 @@
 		  option_branch = option_branch.options[option_branch.selectedIndex].value;
 		  
 		  var option_curName = $(this).text(); 
-		  
-		  var mb_uid = ${sessionScope.loginUid}
+		  		
  		 
 			<c:choose>	
 			<c:when test="${not empty mb_uid}">  				
-				
 				var url = 'classList.do?mb_uid='+mb_uid+'&option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
 				window.location.href = url;
 				
 				<c:forEach var="dto2" items="${zzimList}" varStatus="status"> 
-						<c:set var="cl_uid" value="${dto.class_uid}" />
-					    <c:if test="${dto.class_uid eq cl_uid}">
+					    <c:if test="${dto.class_uid eq dto.class_uid}">
 					   		 $("#heart").html('<i id="heart" class="far fa-heart"></i>');
 					    </c:if>
 		

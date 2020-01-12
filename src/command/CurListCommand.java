@@ -45,7 +45,6 @@ public class CurListCommand implements Command {
 				}		
 				
 			}
-					
 
 			
 			// 검색조건 있을 때
@@ -65,8 +64,6 @@ public class CurListCommand implements Command {
 			
 			}
 
-			
-		
 		}else { //로그인 사용자가 아닐떄..?
 			
 			// 검색조건 없을 때
@@ -82,9 +79,7 @@ public class CurListCommand implements Command {
 				}		
 				
 			}
-					
-
-			
+							
 			// 검색조건 있을 때
 			else if(!option_location.equals("") && !option_branch.equals("") && !option_curName.equals("") 
 					&& option_location != null  && option_branch != null && option_curName != null ) {
