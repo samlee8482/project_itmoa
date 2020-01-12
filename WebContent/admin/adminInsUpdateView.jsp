@@ -3,7 +3,7 @@
 <%-- JSTL core 라이브러리 포함 --%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+<%@ page import="java.io.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -27,6 +27,27 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+<style>
+.btn-file {
+	padding: 0px 10px;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    top: 0;
+    right: 0;
+    max-width: 70px;
+    max-height: 0px;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+</style>
 
 </head>
 
@@ -189,9 +210,41 @@
 									X <input type="text" name="ins_x" placeholder="좌표값1" value="${adminInsUpdateView[0].ins_x }"></input><br>
 									Y <input type="text" name="ins_y" placeholder="좌표값2" value="${adminInsUpdateView[0].ins_y }"></input>
 									<h6 class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<input type="file" name="ins_img" value="${adminInsUpdateView[0].ins_img }" />							
+									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
+											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
+									</label>
+									<p>${adminInsUpdateView[0].ins_img }</p>
+									<img src="${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>
+									<%--
+										String ins_img = "${adminInsUpdateView[0].ins_img }";
+										String dirPath = application.getRealPath(ins_img);
+										File dir = new File(dirPath);
+										String filenames[] = dir.list();
+										BufferedReader reader = null;
+										try{
+											String filePath = application.getRealPath(ins_img);
+											reader = new BufferedReader(new FileReader(filePath));
+											
+											while(true){
+												String str = reader.readLine();	// 줄 단위로 데이터 읽기
+												if(str == null){
+													break;
+												}
+												out.println(str + "<br>");	// 읽은 데이터를 웹 브라우저로 전송
+											}
+										} catch(FileNotFoundException f){
+											out.println("파일이 존재하지 않습니다.");
+										} catch(IOException i){
+											out.println("파일을 읽을 수 없습니다.");
+										} finally{
+											try{
+												reader.close();	// 파일 닫기
+											} catch(Exception e){
+												
+											}
+										}
+									--%>
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정</button>	
-									
 									</form>
 								</div>
 							</div>
@@ -317,12 +370,13 @@
             }
         }).open();
     }
- 
+ 	
+    function changeImg() {
+		var changeP = $("input[name='ins_img']").val().substring(12);
+		$("form > p").html(changeP);
+	}
  
 </script>
-
-
-
 
 
 </body>
