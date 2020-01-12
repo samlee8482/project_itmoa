@@ -41,34 +41,15 @@
 
 <body>
 
-
-
-	<script>
-		$(function() {
-			if ($("#pwForm").submit(function() {
-				if ($("#pw").val() !== $("#pw2").val()) {
-					alert("비밀번호가 다릅니다.");
-					$("#pw").val("").focus();
-					$("#pw2").val("");
-					return false;
-				} else if ($("#pw").val().length < 8) {
-					alert("비밀번호는 8자 이상으로 설정해야 합니다.");
-					$("#pw").val("").focus();
-					return false;
-				} else if ($.trim($("#pw").val()) !== $("#pw").val()) {
-					alert("공백은 입력이 불가능합니다.");
-					return false;
-				}
-			}))
-				;
-		})
-	</script>
+	
 
 	<div class="w1">
 		<div class="w2">
+		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post">
 			<div class="w3">
-				<img src="images/basic_profil.jpg"
+				<img name="older_mb_img" src="/images/basic_profil.jpg" 
 					style="width: 200px; height: 200px;"> 
+					<input type="hidden" name="mb_img" value="${sessionScope.loginImg}" >
 					<input type="file" name="profile" style="margin-left: 45%;"><br>
 			</div>
 	
@@ -78,23 +59,26 @@
 			</p>
 
 			<br>
-			<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post">
+			
 			
 				<p>
 					<label>Email</label> <input class="info1" type="text" id="email"
-						name="mb_email" readonly value="${myPage[0].mb_email }" >
+						name="mb_email" value="${myPage[0].mb_email }" >
 				</p>
-				<input type="hidden" name="mb_id" value="${myPage[0].mb_id }" >
+				<input type="hidden" name="mb_id" value="${sessionScope.loginId }" >
+				<input type="hidden" name="origin_pw" id="origin_pw" value="${myPage[0].mb_pw}" >
+				<input type="hidden" name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }" >
+				
 				<p>
 					<label>Password</label> <input class="info1" id="old_pw"
 						name="old_pw" type="password" required>
 				</p>
 				<p>
-					<label>New Password</label> <input class="info1" id="pw" name="pw"
+					<label>New Password</label> <input class="info1" id="pw" name="mb_pw"
 						type="password" required>
 				</p>
 				<p>
-					<label>Confirm</label> <input class="info1" type="password"
+					<label>Confirm</label> <input class="info1" type="password" name="mb_pw"
 						id="pw2" type="password" required>
 				</p>
 				<p>
@@ -105,7 +89,7 @@
 						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input class="addr" type="text" id="sample6_address" name="mb_add1"
 						value="${myPage[0].mb_add1 }"><br> 
-					<input class="addr" name="mb_addr2"
+					<input class="addr" name="mb_add2"
 						type="text" id="sample6_detailAddress"value="${myPage[0].mb_add2 }">
 					<input class="addr" type="text" id="sample6_extraAddress"
 						style="display: none;" placeholder="상세주소">
@@ -205,6 +189,39 @@
 					}).open();
 		}
 	</script>
+	<script>
+		$(function info_submit() {
+			if ($("#infoForm").submit(function() {
+				if ($("#pw").val() !== $("#pw2").val()) {
+					alert("비밀번호가 다릅니다.");
+					$("#pw").val("").focus();
+					$("#pw2").val("");
+					return false;
+				}else if ($("#pw").val().length < 8) {
+					alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+					$("#pw").val("").focus();
+					return false;
+				} else if ($.trim($("#pw").val()) !== $("#pw").val()) {
+					alert("공백은 입력이 불가능합니다.");
+					return false;
+				}
+				
+				if ($("#origin_pw").val() !== $("#old_pw").val()) {
+					alert("기존 비밀번호가 다릅니다.");
+					$("#old_pw").val("").focus();
+					$("#pw").val("");
+					$("#pw2").val("");
+					return false;
+				}else{
+					location.href="myPageUpdateOk.do";
+				}
+			 
+			
+			}))
+				;
+		})
+	</script>
+	
 
 
 	<script src="js/bootstrap.min.js"></script>
