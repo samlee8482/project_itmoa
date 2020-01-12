@@ -55,6 +55,7 @@ import command.ZZimOkCommand;
 import command.ZzimCheckCommand;
 
 
+
 @WebServlet("*.do")
 public class controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -178,7 +179,14 @@ public class controller extends HttpServlet {
 			viewPage = "classList.jsp";
 			break;
 			
-		
+			
+//		case "/user/zzimCheck.do":  // 찜체크
+//			command = new ZzimCheckCommand();
+//			command.execute(request, response);
+//			break;
+//			
+
+				
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
 		case "/user/classView.do":  // 학원 상세페이지 출력
 			command = new CurViewCommand();
