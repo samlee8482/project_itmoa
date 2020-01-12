@@ -233,18 +233,19 @@ public class MbDAO {
 		
 	
 	// 회원정보 수정
-	public int update(String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, int mb_uid) throws SQLException, NamingException{
+	public int update(String mb_img, String mb_pw, String mb_email, int mb_zip, String mb_add1, String mb_add2, int mb_uid) throws SQLException, NamingException{
 		int cnt = 0;
 		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_UPDATE_MYPAGE);
-			pstmt.setString(1, mb_pw);
-			pstmt.setString(2, mb_email);
-			pstmt.setInt(3, mb_zip);
-			pstmt.setString(4, mb_add1);
-			pstmt.setString(5, mb_add2);
-			pstmt.setInt(6, mb_uid);
+			pstmt.setString(1, mb_img);
+			pstmt.setString(2, mb_pw);
+			pstmt.setString(3, mb_email);
+			pstmt.setInt(4, mb_zip);
+			pstmt.setString(5, mb_add1);
+			pstmt.setString(6, mb_add2);
+			pstmt.setInt(7, mb_uid);
 			cnt = pstmt.executeUpdate();
 			
 		} finally {
