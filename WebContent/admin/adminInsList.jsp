@@ -28,6 +28,11 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+<!-- 페이징 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -158,6 +163,15 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
+						<%--페이징 --%>
+		         		<div id="pageContainer">
+			         		<div id="pageBtn">
+							<jsp:include page="adminInsListPagination.jsp">
+								<jsp:param value="${writePages }" name="writePages"/>
+								<jsp:param value="${totalPage }" name="totalPage"/>
+								<jsp:param value="${page }" name="curPage"/>
+							</jsp:include>
+						</div><br><br><br>
 						<span>Copyright &copy; Your Website 2019</span>
 					</div>
 				</div>
@@ -214,7 +228,6 @@
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
-
 
 
 

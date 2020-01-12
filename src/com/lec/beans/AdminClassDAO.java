@@ -91,7 +91,8 @@ public class AdminClassDAO {
 			String ins_img = rs.getString("ins_img");
 			double ins_x = rs.getDouble("ins_x");
 			double ins_y = rs.getDouble("ins_y");
-			ClassDTO dto = new ClassDTO(ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch, ins_location, ins_x, ins_y);
+			int ins_uid = rs.getInt("ins_uid");
+			ClassDTO dto = new ClassDTO(ins_name,  ins_zip,  ins_add1,  ins_add2,  ins_tel,  ins_img, ins_branch, ins_location, ins_x, ins_y, ins_uid);
 			list.add(dto);
 		}
 
@@ -177,7 +178,7 @@ public class AdminClassDAO {
 				break;
 			
 			}
-	
+			
 			rs = pstmt.executeQuery();
 			
 			arr = createCurArray(rs);
@@ -190,8 +191,96 @@ public class AdminClassDAO {
 	}
 	
 	
+	// 페이징
+	// 몇 번째 from 부터 몇 개 rows 를 SELECT
+	public ClassDTO[] selectInsFromRow(int from, int rows) throws SQLException, NamingException {
+		ClassDTO [] arr = null;
+		
+		try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_SELECT_INS + D.SQL_SELECT_FROM_ROW_INS);
+				pstmt.setInt(1, from);
+				pstmt.setInt(2, rows);
+				rs = pstmt.executeQuery();
+				arr = createCurArray(rs);
+		
+		} finally {
+			close();
+		}		
+		
+		return arr;
+	}
 	
+	public ClassDTO[] selectInsFromRow2(int option, String keyword, int from, int rows) throws SQLException, NamingException {
+
+		ClassDTO [] arr = null;
+		String selectIns = D.SQL_SELECT_INS;
+		
+		try {
+			int cnt = 0;
+			switch(option) {
+
+			case 1 :	
+				selectIns += D.SQL_INS_WHERE_NAME;
+				keyword = "%" + keyword + "%";
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectIns);
+				pstmt.setString(1, keyword);
+				cnt++;
+				break;
+				
+			case 2 :
+				selectIns += D.SQL_INS_WHERE_UID;
+				int k1 = Integer.parseInt(keyword);
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectIns);
+				pstmt.setInt(1, k1);
+				cnt++;
+				break;
+
+			default :
+				conn = getConnection();
+				pstmt = conn.prepareStatement(selectIns);
+				break;
+			
+			}
+			
+			selectIns += D.SQL_SELECT_FROM_ROW_INS;
+			if(cnt == 1) {
+				pstmt.setInt(2, from);
+				pstmt.setInt(3, rows);
+			} else {
+				pstmt.setInt(1, from);
+				pstmt.setInt(2, rows);
+			}
+			
+			rs = pstmt.executeQuery();
+			arr = createCurArray(rs);
+		
+		} finally {
+			close();
+		}		
+
+		return arr;
+	}
 	
+	// 총 몇 개의 글이 있는지 계산
+	public int countAll() throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_COUNT_ALL_INS);
+			rs = pstmt.executeQuery();
+			rs.next();
+			rs.getInt(1);	// 첫번째 행의 
+			cnt = rs.getInt(1);	// 첫번재 컬럼
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 	// 관리자페이지 학원등록
 	public int insertIns(ClassDTO dto) throws SQLException, NamingException{
