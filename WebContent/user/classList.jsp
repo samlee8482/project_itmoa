@@ -128,7 +128,7 @@
 							<div class="item-inner">
 							
 							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
-								<img src="${dto.ins_img}" alt="">
+								<img src="upload/${dto.ins_img}" alt="">
 							</div>
 							<div id="like_pane" style="display:none">
 								<span style="color:red;" onclick="return like()">

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +15,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.lec.beans.AdminClassDAO;
-import com.lec.beans.ClassDTO;
 
 public class AdminInsRegistCommand implements Command {
 
@@ -63,8 +63,8 @@ public class AdminInsRegistCommand implements Command {
 		
 
 		try {	
-			
-			String contextRootPath = request.getServletContext().getRealPath("upload"); 
+			ServletContext context = request.getServletContext();
+			String contextRootPath = context.getRealPath("user/upload"); 
 			System.out.println(contextRootPath);
 			 //1. 메모리나 파일로 업로드 파일 보관하는 FileItem의 Factory 설정
             DiskFileItemFactory diskFactory = new DiskFileItemFactory(); //디스크 파일 아이템 공장
@@ -121,15 +121,14 @@ public class AdminInsRegistCommand implements Command {
         String fileExt = fileName.substring(fileName.lastIndexOf("."));
         String uploadedFileName = System.currentTimeMillis() + fileExt; 
         System.out.println(fileExt);
-        System.out.println(uploadedFileName);
         
         //저장할 절대 경로로 파일 객체 생성
         File uploadedFile = new File(contextRootPath+"/"+uploadedFileName);
         item.write(uploadedFile); //파일 저장
         
         System.out.println("실제저장경로 : "+uploadedFile.getPath());
-        
-        return uploadedFile.getPath();
+        System.out.println("파일명 :" + uploadedFileName);
+        return uploadedFileName;
         
     }
     
