@@ -128,7 +128,7 @@
 				<textarea><jsp:include page="text1.html"></jsp:include></textarea><br>
 			</div>
 			<div class="chkbox">
-				<input type="checkbox" required="required">아이티모아 이용약관 동의(필수)
+				<input type="checkbox" required="required">아이티모아 이용약관 동의 (필수)
 			</div>
 			<div class="text_1">
 				<textarea rows="" cols=""><jsp:include page="text2.html"></jsp:include></textarea><br>
