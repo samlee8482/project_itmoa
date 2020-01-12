@@ -50,5 +50,6 @@ public class LoginOkCommand implements Command {
 			httpSession.removeAttribute(sessionLevel);
 		}
 		request.setAttribute("loginOk", arr);
+		
 	}
 }

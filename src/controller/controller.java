@@ -91,10 +91,10 @@ public class controller extends HttpServlet {
 			viewPage = "index.jsp";
 			break;
 		case "/user/loginIndex.do":  // 메인페이지
-			viewPage = "index.jsp";
+			viewPage = "loginIndex.jsp";
 			break;
 		case "/user/logoutIndex.do":  // 메인페이지
-			viewPage = "index.jsp";
+			viewPage = "logoutIndex.jsp";
 			break;
 
 //		- 로그인

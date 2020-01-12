@@ -26,9 +26,18 @@
 </head><!--/head-->
 <body>
 
-	<!-- TopMenu -->
-	<jsp:include page="topMenu.jsp"/>
-        
+<% String dto = (String)session.getAttribute("loginId"); %>
+<% if (dto != null ) { %>
+<script>
+	alert("로그인 상태입니다");
+	location.href="loginIndex.do";
+</script>
+<% } %>
+
+<% if (dto == null ) { %>
+<jsp:include page="topMenu.jsp" />
+<% } %>
+
         <script>
         // form 검증
     	function chkSubmit(){
@@ -94,7 +103,18 @@
         </script>
         
     </header><!--/header-->
+    
     <form id="join-content" action="joinOk.do" name="frm" method="post" onsubmit="return chkSubmit()">
+    
+    <div id="text_area">
+    	<div class="text_1">
+			<jsp:include page="text1.html"></jsp:include>
+    	</div>
+    	<div class="text_1">
+			<jsp:include page="text2.html"></jsp:include>
+    	</div>
+    </div>
+    
     <div id="join-info">
     	<div id="info1">
     		이름 <br><input class="info1" name="mb_name" type="text" placeholder="이름을 입력해주세요."><br>
