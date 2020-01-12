@@ -112,7 +112,7 @@
 											});
 										</script>
 										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="news_brd_img" />
+										<input type="file" name="news_brd_img" accept="image/jpeg, image/png" />
 										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
 										<input type="hidden" name="ifNew" value="false" />
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
