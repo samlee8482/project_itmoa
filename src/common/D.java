@@ -206,6 +206,11 @@ public interface D {
 			"INSERT INTO zzim (mb_uid, class_uid)"
 			+ " VALUES (?, ?)";
 
+	// 찜 조회
+	public static final String SQL_SELECT_ZZIM_BY_MB_UID = 
+			"SELECT z.mb_uid, z.class_uid"
+			+ " FROM zzim z"
+			+ " WHERE z.mb_uid = ?";
 		
 	
 

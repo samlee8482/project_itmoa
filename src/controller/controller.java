@@ -17,8 +17,8 @@ import command.AdminCurUpdateOkCommand;
 import command.AdminCurViewCommand;
 import command.AdminInsDeleteOkCommand;
 import command.AdminInsListCommand;
-import command.AdminInsUpdateOkCommand;
 import command.AdminInsRegistCommand;
+import command.AdminInsUpdateOkCommand;
 import command.AdminInsUpdateViewCommand;
 import command.AdminMemberDeleteOkCommand;
 import command.AdminMemberListCommand;
@@ -52,6 +52,7 @@ import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
 import command.ReviewViewCommand;
 import command.ZZimOkCommand;
+
 
 @WebServlet("*.do")
 public class controller extends HttpServlet {
@@ -175,6 +176,7 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "classList.jsp";
 			break;
+			
 		
 //		검색 조건 추가는 curList.do 뒤에 쿼리 추가해서 다시 request
 		case "/user/classView.do":  // 학원 상세페이지 출력
