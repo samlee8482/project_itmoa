@@ -122,6 +122,7 @@ public class MbDAO {
 			pstmt.setInt(5, mb_zip);
 			pstmt.setString(6, mb_add1);
 			pstmt.setString(7, mb_add2);
+			System.out.println(pstmt);
 			cnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -138,16 +139,20 @@ public class MbDAO {
 		ArrayList<MbDTO> list = new ArrayList<MbDTO>();
 
 		while(rs.next()){
+			String mb_name = rs.getString("mb_name");
 			int mb_uid = rs.getInt("mb_uid");
 			String mb_id = rs.getString("mb_id");
 			String mb_pw = rs.getString("mb_pw");
+			String mb_email = rs.getString("mb_email");
 			int mb_zip = rs.getInt("mb_zip");
 			String mb_add1 = rs.getString("mb_add1");
 			String mb_add2 = rs.getString("mb_add2");
 			String mb_img = rs.getString("mb_img");
 			
 			
-			MbDTO dto = new MbDTO(mb_uid, mb_id, mb_pw, mb_zip, mb_add1, mb_add2, mb_img);
+			
+			
+			MbDTO dto = new MbDTO(mb_name, mb_uid, mb_id, mb_pw, mb_email, mb_zip, mb_add1, mb_add2, mb_img);
 			list.add(dto);
 		}
 		
@@ -204,13 +209,13 @@ public class MbDAO {
 	
 	
 	// 2-2
-		public MbDTO[] myPageZzim(int zzim_uid) throws SQLException, NamingException {
+		public MbDTO[] myPageZzim(int mb_uid) throws SQLException, NamingException {
 			MbDTO[] arr = null;
 			
 			try {
 				conn = getConnection();
 				pstmt = conn.prepareStatement(D.SQL_SELECT_MYPAGE_ZZIM);
-				pstmt.setInt(1, zzim_uid);
+				pstmt.setInt(1, mb_uid);
 				rs = pstmt.executeQuery();
 				arr = createMypageZzimArr(rs);
 				

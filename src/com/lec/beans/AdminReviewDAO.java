@@ -118,7 +118,7 @@ public class AdminReviewDAO {
 	
 	
 	// 리뷰 목록 
-	public ReviewDTO[] selectReviewList(int option_review, String keyword) throws SQLException, NamingException {
+	public ReviewDTO[] selectReviewList(int option_review, String keyword, int fromRow, int pageRows) throws SQLException, NamingException {
 		
 		ReviewDTO [] arr = null;
 		String selectReview = D.SQL_SELECT_REVIEW;
@@ -129,26 +129,24 @@ public class AdminReviewDAO {
 		
 		switch(option_review) {
 			case 1: 
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
+				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 2:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
+				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 3:
-				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
+				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 4:
+				selectReview += D.SQL_SELECT_FROM_ROW_REVIEW_BRD;
 				break;
 		}
-		
-		// 정렬
-		selectReview += D.SQL_ORDER_REVIEW;
 		
 		try {
 			// keyword가 있을 경우 쿼리문에 키워드 넘겨주기
@@ -156,6 +154,8 @@ public class AdminReviewDAO {
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectReview);
 				if (setStr1 == 1) pstmt.setString(setStr1, keyword); 
+				pstmt.setInt(setStr1 + 1, fromRow); 
+				pstmt.setInt(setStr1 + 2, pageRows);
 			} else { 
 				conn = getConnection();
 				pstmt = conn.prepareStatement(selectReview);
@@ -171,9 +171,23 @@ public class AdminReviewDAO {
 		return arr;
 	}
 	
-	
-	
-	
+	// 총 몇 개의 글이 있는지 계산
+	public int countAll() throws SQLException, NamingException{
+		int cnt = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_COUNT_ALL_REVIEW_BRD);
+			rs = pstmt.executeQuery();
+			rs.next();
+			rs.getInt(1);	// 첫번째 행의 
+			cnt = rs.getInt(1);	// 첫번재 컬럼
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}	
 	
 	// 리뷰 삭제
 	public int deleteReview(int review_uid) throws SQLException, NamingException {

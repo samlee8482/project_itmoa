@@ -45,15 +45,20 @@ public interface D {
 	 
 	// 찜목록 불러오기 
 	public static final String SQL_SELECT_MYPAGE_ZZIM =
-		"SELECT z.*"
-		+ " FROM zzim z"
-		+ " WHERE z.mb_uid = ?";
+		"SELECT z.zzim_uid, ins_name, cur_name"
+		+ " FROM zzim z, class cl, ins i, cur c"
+		+ " WHERE z.mb_uid = ?"
+		+ " AND z.class_uid = cl.class_uid"
+		+ " AND cl.ins_uid = i.ins_uid"
+		+ " AND cl.cur_uid = c.cur_uid";
+
 
 	
 
 	// 마이페이지에서 찜 삭제하기
 	public static final String SQL_DELETE_ZZIM = 
 		"DELETE FROM zzim where zzim_uid = ?";
+	
 	
 	// 마이페이지에서 회원정보 수정
 	public static final String SQL_UPDATE_MYPAGE=

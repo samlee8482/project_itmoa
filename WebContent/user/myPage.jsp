@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="com.lec.beans.*" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,17 +37,11 @@
 
 </head>
 <!--/head-->
-<% String dto = (String)session.getAttribute("loginId"); %>
+
+
 <body>
-<!-- 로그인 탑메뉴 -->
-<% if ( dto != null) {%>
-	<jsp:include page="loginTopMenu.jsp" />
-<% }%>
-<!-- 비회원 탑메뉴 -->
-<% if ( dto == null) {%>
-	<jsp:include page="topMenu.jsp" />
-<% }%>
-	
+
+
 
 	<script>
 		$(function() {
@@ -76,27 +71,26 @@
 					style="width: 200px; height: 200px;"> 
 					<input type="file" name="profile" style="margin-left: 45%;"><br>
 			</div>
-			<%
-				//if
-			%>
+	
 			<p>
 				<label>NAME</label> <input class="info1" type="text" id="id"
 					name="mb_name" readonly value="${myPage[0].mb_name }" >
 			</p>
 
 			<br>
-			<form id="infoForm" action="myPageUpdateOk.do" method="post">
+			<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post">
+			
 				<p>
 					<label>Email</label> <input class="info1" type="text" id="email"
 						name="mb_email" readonly value="${myPage[0].mb_email }" >
 				</p>
-				<input type="hidden" name="mb_uid" value="1"/>
+				<input type="hidden" name="mb_id" value="${myPage[0].mb_id }" >
 				<p>
 					<label>Password</label> <input class="info1" id="old_pw"
-						name="mb_pw" type="password" required>
+						name="old_pw" type="password" required>
 				</p>
 				<p>
-					<label>New Password</label> <input class="info1" id="pw" name="mb_pw"
+					<label>New Password</label> <input class="info1" id="pw" name="pw"
 						type="password" required>
 				</p>
 				<p>
@@ -104,14 +98,15 @@
 						id="pw2" type="password" required>
 				</p>
 				<p>
-					<label>ADDRESS</label> <input type="text" id="sample6_postcode"
-						name="mb_zip" value="${myPage[0].mb_zip }"
+					<label>ADDRESS</label> 
+					<input type="text" id="sample6_postcode" name="mb_zip" value="${myPage[0].mb_zip }"
 						style="width: 250px; height: 40px; border-radius: 7px; margin: 5px;">
 					<input class="addr-btn" type="button"
 						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input class="addr" type="text" id="sample6_address"
-						value="${myPage[0].mb_add1 }"><br> <input class="addr"
-						type="text" id="sample6_detailAddress" value="${myPage[0].mb_add2 }">
+					<input class="addr" type="text" id="sample6_address" name="mb_add1"
+						value="${myPage[0].mb_add1 }"><br> 
+					<input class="addr" name="mb_addr2"
+						type="text" id="sample6_detailAddress"value="${myPage[0].mb_add2 }">
 					<input class="addr" type="text" id="sample6_extraAddress"
 						style="display: none;" placeholder="상세주소">
 				</p>
@@ -119,24 +114,39 @@
 					<button type="submit" id="join-btn">정보 수정</button>
 				</p>
 			</form>
-			<div class="zzim-list" id="zzim-list" style="margin: 5% 40%;">
+			
+			<div class="zzim-list" id="zzim-list" style="margin-left: 37%; text-align: center;">
 				<table>
 					<tr>
 						<th>NO</th>
 						<th>학원명</th>
 						<th>과정명</th>
 					</tr>
-				<c:forEach var="dto" items="${myPage }">
+				<c:forEach var="dto" items="${myPageZzim }">
+				
 					<tr>
+					
 						<td>${dto.zzim_uid }</td>
 						<td>${dto.ins_name }</td>
-						<td>${dto.cur_name }</td>
+						<td>${dto.cur_name }
+						<form action="zzimDeleteOk.do">
+						<input type="submit" value="삭제" style="float:right;">
+						<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }">
+						<input type="hidden" name="ifZZim" value="true" />
+						<input type="hidden" name="mb_uid" value="${myPage[0].mb_uid }">
+						<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
+						</form></td>
 					</tr>
+				
 				</c:forEach>
+				
+						<!--  <a href='view.do?uid=" + arr[i].getMb_uid() + "'>"-->
+				
 				</table>
 			</div>
 		</div>
 	</div>
+
 
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

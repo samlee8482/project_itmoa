@@ -74,6 +74,7 @@ public class NewsDAO {
 				switch(option_news) {
 					case "1": 
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_TITLE;
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						conn = getConnection();
@@ -85,6 +86,7 @@ public class NewsDAO {
 						
 					case "2":
 						selectNews += D.SQL_SELECT_NEWS_BRD_WHERE_CONTENT;
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						keyword = "%" + keyword + "%";
 						conn = getConnection();
@@ -94,6 +96,7 @@ public class NewsDAO {
 						pstmt.setInt(3, pageRows);
 						break;
 					case "3":
+						selectNews += D.SQL_ORDER_BY_NEWS_BRD_UID_DESC;
 						selectNews += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 						conn = getConnection();
 						pstmt = conn.prepareStatement(selectNews);

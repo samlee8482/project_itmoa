@@ -34,8 +34,7 @@
         <div class="container-fluid">
 
           <!-- 404 Error Text -->
-          <div class="text-center">
-            <div class="error mx-auto" data-text="404">404</div>
+          <div class="text-center" style="margin-top: 40%">
             <p class="lead text-gray-800 mb-5">Your Not Admin</p>
             <a href="/Project_itmoa/user/index.do">&larr; Back to Main</a>
           </div>
