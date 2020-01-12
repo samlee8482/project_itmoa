@@ -255,11 +255,17 @@ public interface D {
 
 	// 과정  목록
 	public static final String SQL_SELECT_CLASS_BY_INS_UID =
-		"SELECT i.ins_name, i.ins_uid, c.cur_name, c.cur_hours, cl.class_uid, c.cur_uid"
+		"SELECT cl.class_uid, c.cur_name, c.cur_hours, c.cur_uid"
 		+ " FROM class cl, ins i, cur c"
 		+ " WHERE cl.ins_uid = ?"
 		+ " AND cl.cur_uid = c.cur_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
+	
+	// 과정 목록에 들어가는 학원정보
+	public static final String SQL_SELECT_INS_FOR_CLASS =
+			"SELECT ins_uid, ins_name"
+			+ " FROM ins"
+			+ " WHERE ins_uid = ?";
 	
 
 	// 과정  상세

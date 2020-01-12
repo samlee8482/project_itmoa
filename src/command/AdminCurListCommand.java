@@ -16,12 +16,19 @@ public class AdminCurListCommand implements Command {
 
 		AdminClassDAO dao = new AdminClassDAO();
 		int ins_uid = Integer.parseInt(request.getParameter("ins_uid"));
-		ClassDTO[] curArr = null;
+		ClassDTO[] curArr1 = null;
+		ClassDTO[] curArr2 = null;
 		
 		if(ins_uid > 0) {
 			try {
-				curArr = dao.selectClassByUid(ins_uid);
-				request.setAttribute("adminCurList",curArr);
+			
+				curArr1 = dao.selectClassByUid(ins_uid);
+				curArr2 = dao.selectInsByUidForClassList(ins_uid);
+				
+				request.setAttribute("adminCurList", curArr1);
+				request.setAttribute("adminCurListInsInfo", curArr2);
+
+
 			} catch (NamingException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {

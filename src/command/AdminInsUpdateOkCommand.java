@@ -119,6 +119,7 @@ public class AdminInsUpdateOkCommand implements Command {
 			cnt = dao.updateInsByUid(ins_name, ins_tel, ins_zip, ins_add1, ins_add2,
 					 ins_location, ins_branch, ins_img, ins_x, ins_y, ins_uid);
 			if(cnt > 0) request.setAttribute("adminInsUpdateOk", cnt);
+			
 		} catch(NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

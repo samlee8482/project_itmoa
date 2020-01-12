@@ -391,15 +391,12 @@ public class AdminClassDAO {
 			ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
 
 			while (rs.next()) {
-				String ins_name = rs.getString("ins_name");
-				int ins_uid = rs.getInt("ins_uid");
 				String cur_name = rs.getString("cur_name");
 				int cur_hours = rs.getInt("cur_hours");
-				int class_uid = rs.getInt("class_uid");
 				int cur_uid = rs.getInt("cur_uid");
+				int class_uid = rs.getInt("class_uid");
 
-				
-				ClassDTO dto = new ClassDTO(ins_name, ins_uid, cur_name, cur_hours, class_uid, cur_uid);
+				ClassDTO dto = new ClassDTO(cur_name, cur_hours, class_uid, cur_uid);
 				list.add(dto);
 			}
 
@@ -429,6 +426,8 @@ public class AdminClassDAO {
 			return arr;
 		}
 		
+		
+		
 		// 2. 과정 출력
 		public ClassDTO[] createCurArrayByUid(ResultSet rs) throws SQLException {
 
@@ -457,6 +456,7 @@ public class AdminClassDAO {
 			return arr;
 		}
 
+		
 		
 		// 특정학원의 수정할 class정보 불러오기
 		public ClassDTO[] selectCurByUid(int ins_uid) throws SQLException, NamingException {
@@ -535,5 +535,55 @@ public class AdminClassDAO {
 		return cnt; 
 		
 	}
+	
+	
+	// 과정목록에서 쓰는 학원정보 출력용
+	
+	public ClassDTO[] createInsArrayForClassList(ResultSet rs) throws SQLException {
+
+		ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+
+		while (rs.next()) {
+
+			int ins_uid = rs.getInt("ins_uid");
+			String ins_name = rs.getString("ins_name");
+			
+			ClassDTO dto = new ClassDTO(ins_uid, ins_name);
+			list.add(dto);
+		}
+
+		int size = list.size();
+		ClassDTO[] arr = new ClassDTO[size];
+		list.toArray(arr);
+		
+		return arr;
+	}
+	
+	
+	
+	
+	public ClassDTO[] selectInsByUidForClassList(int ins_uid) throws NamingException, SQLException {
+		
+		ClassDTO[] arr = null ;
+
+		try {
+			
+			conn = getConnection();
+			pstmt = conn.prepareStatement(D.SQL_SELECT_INS_FOR_CLASS);
+			pstmt.setInt(1, ins_uid);
+			rs = pstmt.executeQuery();
+			arr = createInsArrayForClassList(rs);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		
+		return arr;
+	}
+	
+	
 	
 }

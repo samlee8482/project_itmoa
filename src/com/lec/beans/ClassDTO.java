@@ -110,6 +110,17 @@ public class ClassDTO {
 	}
 	
 	
+	//관리자자:  과정출력
+		public ClassDTO(String cur_name, int cur_hours, int class_uid, int cur_uid) {
+			super();
+			this.cur_uid = cur_uid;
+			this.cur_name = cur_name;
+			this.cur_hours = cur_hours;
+			this.class_uid = class_uid;
+		}
+		
+	
+	
 	//관리자 학원과정 수정
 	public ClassDTO(int cur_uid, String cur_name, int cur_hours, int cur_months, String cur_month1, String cur_month2,
 			String cur_month3, String cur_month4, String cur_month5, String cur_month6) {
@@ -139,14 +150,16 @@ public class ClassDTO {
 		super();
 		this.mb_uid = mb_uid;
 		this.zzim_uid = zzim_uid;
+
 	}
-	
 
+	//과정목록에 학원정보용
+	public ClassDTO(int ins_uid, String ins_name) {
+		super();
+		this.ins_uid = ins_uid;
+		this.ins_name = ins_name;
 
-
-
-
-
+	}
 
 
 	//getter/setter

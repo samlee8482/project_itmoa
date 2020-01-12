@@ -96,8 +96,8 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">${adminCurList[0].ins_name }</h6>
-									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminCurWrite.do?ins_uid=${adminCurList[0].ins_uid }'" style="float:right">과정 추가</button>
+									<h6 class="m-0 font-weight-bold text-primary">${adminCurListInsInfo[0].ins_name }</h6>
+									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminCurWrite.do?ins_uid=${adminCurListInsInfo[0].ins_uid }'" style="float:right">과정 추가</button>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
