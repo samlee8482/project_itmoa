@@ -26,6 +26,27 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <script src="ckeditor/ckeditor.js"></script>
+<style>
+.btn-file {
+	padding: 0px 10px;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+</style>
 </head>
 <c:choose>
 <c:when test="${sessionScope.loginLevel != 3 }">
@@ -112,7 +133,10 @@
 											});
 										</script>
 										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="news_brd_img" />
+										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
+											사진 선택<input type="file" name="news_brd_img" accept="image/jpeg, image/png" onchange="changeImg()" />
+										</label>
+										<p>${adminNewsView[0].news_brd_img }</p>
 										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
 										<input type="hidden" name="ifNew" value="false" />
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
@@ -190,6 +214,13 @@
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 	<script src="js/demo/chart-bar-demo.js"></script>
+
+	<script>
+		function changeImg() {
+			var changeP = $("input[name='news_brd_img']").val().substring(12);
+			$("form > p").html(changeP);
+		}
+	</script>
 
 </body>
 </c:otherwise>

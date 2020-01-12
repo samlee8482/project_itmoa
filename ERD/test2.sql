@@ -199,6 +199,7 @@ select * from zzim;
 
 SELECT z.*, ins_name, cur_name FROM zzim z, ins i, cur WHERE z.mb_uid = 2;
 
+update mb set mb_level = 3 where mb_id = 'user1';
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user1', 'abc123', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 

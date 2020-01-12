@@ -63,7 +63,7 @@ public interface D {
 	// 마이페이지에서 회원정보 수정
 	public static final String SQL_UPDATE_MYPAGE=
 		"UPDATE mb"
-		+ " SET mb_img, mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
+		+ " SET mb_img = ?, mb_pw = ?, mb_email = ?,  mb_zip = ? , mb_add1 = ?, mb_add2 = ?"
 		+ " WHERE mb_uid = ?";
 		
 	
@@ -309,7 +309,15 @@ public interface D {
 	+ " WHERE cur_uid = ?";
 		
 	
+	// 페이징용 쿼리 준비
+	// 쿼리: 글 목록 전체 개수 가져오기
+	public static final String SQL_COUNT_ALL_INS = 
+			"SELECT COUNT(*) FROM ins";
 	
+	// 쿼리: from 부터 row 만큼 SELECT : LIMIT 은 0 부터 시작 주의!
+	public static final  String SQL_SELECT_FROM_ROW_INS = 
+			" LIMIT ?, ?";
+
 	
 	
 	
