@@ -51,17 +51,19 @@
 <!--/head-->
 <body>
 
-<%  MbDTO [] dto = (MbDTO[])session.getAttribute("login"); %>
-
-<!-- 로그인 탑메뉴 -->
-<% if ( dto != null) {%>
-	<jsp:include page="loginTopMenu.jsp" />
-<% }%>
-<!-- 비회원 탑메뉴 -->
-<% if ( dto == null) {%>
-	<jsp:include page="topMenu.jsp" />
-<% }%>
-
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid}">
+			<script>
+				
+				document.getElementById('#like_pane').style.display="block";
+			</script>
+	</c:when>
+	<c:otherwise>
+			<script>
+				//일단 놔둬보자
+			</script>
+	</c:otherwise>			
+</c:choose>
 
 
 
@@ -164,17 +166,18 @@
 								<img src="${dto.ins_img}" alt="">
 							</div>
 							<div id="like_pane" style="display:none">
-								<span style="color:red;" onclick="return like()"> 
-									<i id="heart_empty" class="fa fa-heart fa-1x"></i>
+								<span style="color:red;" onclick="return like()">
+									<i id="heart"></i> 
+									<i id="heart_empty" class="fa fa-heart fa-1x" style="display:none"></i>
 									<i id="heart" class="far fa-heart" style="display:none"></i>
 								</span>
-								<span> 찜하기	</span>		
+								<span> 찜하기 	</span>
+								<span id="like_result">${dto.class_zzimcnt } </span>
 							</div>	
 							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 							<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.ins_branch }</h5>
-								<h5>${dto.class_zzimcnt }</h5>	
 							</div>
 					
 							</div>
@@ -212,6 +215,8 @@
 		})
 	})
 	
+
+
 	function changeBranchSelect(){
 	   $('#option_location').on('change', function(){
 		
@@ -268,34 +273,30 @@
 			  
 			  var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
 			  
-			  window.location.href = url;
-
+			 
+	 
+		
+		//		  $.ajax({
+		//			  url: "classList.do",
+		//			  type: "GET",
+		//			  cache: false,
+		//			  data: "option_location=option_location&option_branch=option_branch&option_curName=option_curName",
+		//			  success:
+		//			  function(data){ 
+					    // 통신 성공하면 넘어오는 데이터
+					    
+		//			  },
+		//			  error:
+		//			  function (request, status, error){
+		//			 	 alert("ajax실패")
+		//			  }
+		//		  });
 			  
-		  });
+
 
 	  };
 	
-	  
-	  
-	  function like(){
-		  $.ajax({
-		  url: "BoardServlet",
-		  type: "POST",
-		  cache: false,
-		  dataType: "json",
-		  data: $('#like_form').serialize(), //아이디가 like_form인 곳의 모든 정보를 가져와 파라미터 전송 형태(표준 쿼리형태)로 만들어줌
-		  success:
-		  function(data){ //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
-		  alert("'좋아요'가 반영되었습니다!") ; // data중 put한 것의 이름 like
-		  $("#like_result").html(data.like); //id값이 like_result인 html을 찾아서 data.like값으로 바꿔준다.
-		  },
-		  error:
-		  function (request, status, error){
-		  alert("ajax실패")
-		  }
-		  });
-		  }
-
+	 
 
 		  
 		  

@@ -149,6 +149,7 @@ public class ClassDTO {
 		super();
 		this.mb_uid = mb_uid;
 		this.zzim_uid = zzim_uid;
+		this.class_uid = zzim_uid;
 
 	}
 

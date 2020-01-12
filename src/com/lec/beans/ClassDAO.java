@@ -208,6 +208,8 @@ public class ClassDAO {
 		return arr;
 	}
 	
+	
+	
 	public ClassDTO[] selectZZimByUid(int class_uid) throws SQLException, NamingException {
 		ClassDTO[] arr = null ;
 		
@@ -428,5 +430,58 @@ public class ClassDAO {
 			
 			return arr;
 		}
+		
+		
+		
+		
+		
+		public ClassDTO[] createZZimArrayByMbUid(ResultSet rs) throws SQLException {
+
+			ArrayList<ClassDTO> list = new ArrayList<ClassDTO>();
+
+			while (rs.next()) {
+				int mb_uid = rs.getInt("mb_uid");
+				int class_uid = rs.getInt("class_uid");
+				
+				ClassDTO dto = new ClassDTO(mb_uid, class_uid);
+				list.add(dto);
+			}
+
+			int size = list.size();
+			ClassDTO[] arr = new ClassDTO[size];
+			list.toArray(arr);
+			
+			return arr;
+		}
+	
+		
+		public ClassDTO[] selectZzimByMbUid(int mb_uid) throws SQLException{
+
+			ClassDTO [] arr = null;
+			
+			try {
+	
+				conn = getConnection();
+				pstmt = conn.prepareStatement(D.SQL_SELECT_ZZIM_BY_MB_UID);
+				pstmt.setInt(1, mb_uid);
+				rs = pstmt.executeQuery();
+				arr = createZZimArrayByMbUid(rs);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			
+			
+			return arr;
+		}
+		
+		
+		
+		
+		
+		
+		
 	
 }
