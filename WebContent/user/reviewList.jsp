@@ -122,8 +122,8 @@
                         <div class="blog">
                         	<div class="table-responsive">
                         		<c:choose>
-									<c:when test="${sessionScope.loginUid >= 2 }">
-                    				<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
+									<c:when test="${sessionScope.loginLevel >= 2 }">
+                    					<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
                     				</c:when>
                     			</c:choose>
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

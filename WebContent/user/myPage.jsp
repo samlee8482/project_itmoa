@@ -50,7 +50,7 @@
 				<img name="older_mb_img" src="${sessionScope.loginImg}" 
 					style="width: 200px; height: 200px;"> 
 					<input type="hidden" name="mb_img" value="${sessionScope.loginImg}" >
-					<input type="file" name="profile" style="margin-left: 45%;"><br>
+					<input type="file" name="profile" style="margin-left: 45%;" accept="image/jpeg, image/png"><br>
 			</div>
 	
 			<p>
