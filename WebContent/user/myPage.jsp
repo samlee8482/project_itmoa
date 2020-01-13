@@ -40,17 +40,25 @@
 
 
 <body>
-
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
 	
 
 	<div class="w1">
 		<div class="w2">
-		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post">
+		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post" enctype="multipart/form-data">
 			<div class="w3">
-				<img name="older_mb_img" src="${sessionScope.loginImg}" 
+				<img src="upload/${myPage[0].mb_img}"
 					style="width: 200px; height: 200px;"> 
-					<input type="hidden" name="mb_img" value="${sessionScope.loginImg}" >
-					<input type="file" name="profile" style="margin-left: 45%;" accept="image/jpeg, image/png"><br>
+					<input type="file" name="mb_img" style="margin-left: 45%;" accept="image/jpeg, image/png"><br>
 			</div>
 	
 			<p>
