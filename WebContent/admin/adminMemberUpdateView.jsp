@@ -7,33 +7,6 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="java.util.Enumeration" %>
 
-<%
-	//MultipartRequest 객체 생성 준비
-	String saveDirectory = "C:\\tomcat\\upload";   	// 파일 저장 경로
-	int maxPostSize = 5 * 1024 * 1024;  // POST 받기, 최대 5M byte
-	String encoding = "utf-8";  // response 인코딩
-	FileRenamePolicy policy = new DefaultFileRenamePolicy(); //업로딩 파일 이름 중복에 대한 정책
-	
-	MultipartRequest multi = null; // com.oreilly.servlet.MultipartRequest 임포트
-
-%>
-<%
-	try{ // 실제로 예외를 반드시 cath 할 필요는 없지만 처리
-		multi = new MultipartRequest(
-				request,
-				saveDirectory,
-				maxPostSize,
-				encoding,
-				policy
-				);
-	
-	} catch(Exception e){
-		e.printStackTrace();
-		out.println("파일 처리 예외 발생");	
-	}
-
-%>
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -58,6 +31,28 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <script src="ckeditor/ckeditor.js"></script>
+
+<style>
+.btn-file {
+	padding: 0px 10px;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    top: 0;
+    right: 0;
+    max-width: 70px;
+    max-height: 0px;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+</style>
+
 
 <script>
        // form 검증
@@ -178,7 +173,7 @@
 									<h6 class="m-0 font-weight-bold text-primary">회원 정보 수정</h6>
 								</div>
 								<div class="card-body">
-									<form method="post" action="/Project_itmoa/admin/adminMemberUpdateOk.do" enctpye="multipart/form-data">
+									<form method="post" action="/Project_itmoa/admin/adminMemberUpdateOk.do" enctype="multipart/form-data" onsubmit="return chkSubmit()">
 									
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">아이디</h6>
@@ -211,8 +206,12 @@
 										<!--<input style="left: 200px" class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">-->
 										</div>
 										<div class="ooo">
-										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="mb_img" value="${adminMemberUpdateView[0].mb_img }" />
+										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">프로필 이미지</h6>
+										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
+												사진 선택<input type="file" name="mb_img" accept="image/jpeg, image/png" onchange="changeImg()" />
+										</label>     
+										<p>${adminMemberUpdateView[0].mb_img }</p>
+										<img src="${adminMemberUpdateView[0].mb_img }" style="width: 150px; height: 150px;"/>
 										<input type="hidden" name="mb_uid" value="${adminMemberUpdateView[0].mb_uid }" />
 										<input type="hidden" name="ifNew" value="true" style="left: 200px" />
 										</div>
@@ -341,7 +340,11 @@
             }
         }).open();
     }
- 
+ 	
+    function changeImg() {
+		var changeP = $("input[name='mb_img']").val().substring(12);
+		$("form > p").html(changeP);
+	}
  
 </script>
 	

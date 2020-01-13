@@ -97,7 +97,7 @@
                      <!-- Area Chart -->
                      <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                        <form action="adminMemberList.do" method="post">
+                        <form action="adminMemberList.do" method="post" enctype="multipart">
                            <h6 class="m-0 font-weight-bold text-primary">회원구분</h6>
                            <input type="radio" name="option_mb_1" value="1" checked="checked" />전체
                            <input type="radio" name="option_mb_1" value="2" />일반회원
@@ -162,7 +162,7 @@
                </div>
             </div>
             <!-- /.container-fluid -->
-
+    
          </div>
          <!-- End of Main Content -->
 
