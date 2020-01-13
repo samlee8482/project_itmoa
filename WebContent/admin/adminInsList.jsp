@@ -124,7 +124,7 @@
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
 											<thead>
-												<tr>
+												<tr style="white-space: nowrap;">
 													<th width="5%">No</th>
 													<th width="10%">학원 번호</th width="5%">
 													<th width="25%">학원명</th width="5%">
@@ -146,7 +146,7 @@
 				
 													<td style="text-align: center;"><a href="adminClassList.do?ins_uid=${dto.ins_uid }&ins_name=${dto.ins_name }"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
 													<td style="text-align: center;"><a href="adminInsUpdateView.do?ins_uid=${dto.ins_uid }"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
-													<td style="text-align: center;"><a href="adminInsDeleteOk.do?ins_uid=${dto.ins_uid }"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
+													<td style="text-align: center;"><a href="adminInsDeleteOk.do?ins_uid=${dto.ins_uid }"	class="btn btn-danger btn-icon-split" onclick="chk()"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
 													</a></td>
 												</tr>
 											</tbody>
@@ -242,6 +242,17 @@
 
 
 </body>
+<script>
+function chk(){
+	var delConfirm = confirm('정말로 삭제하시겠습니까?');
+	   if (delConfirm) {
+	      alert('삭제되었습니다.');
+	   }
+	   else {
+	      alert('삭제가 취소되었습니다.');
+	   }
+}
+</script>
 <script>
 $(".nav-link").eq(3).children().css("color", "white");
 </script>

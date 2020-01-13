@@ -144,7 +144,7 @@
                                        <td style="text-align: center;">${dto.mb_add2 }</td>
                                        <td style="text-align: center;">${dto.mb_regdate }</td>
                                        <td style="text-align: center;">
-	                                       <a href="/Project_itmoa/admin/adminMemberDeleteOk.do?mb_uid=${dto.mb_uid }" class="btn btn-danger btn-icon-split"> 
+	                                       <a href="/Project_itmoa/admin/adminMemberDeleteOk.do?mb_uid=${dto.mb_uid }" class="btn btn-danger btn-icon-split" onclick="chk()"> 
 												<span class="icon text-white-50"> 
 													<i class="fas fa-trash"></i>
 												</span>
@@ -237,7 +237,17 @@
 
 
 </body>
-
+<script>
+function chk(){
+	var delConfirm = confirm('정말로 삭제하시겠습니까?');
+	   if (delConfirm) {
+	      alert('삭제되었습니다.');
+	   }
+	   else {
+	      alert('삭제가 취소되었습니다.');
+	   }
+}
+</script>
 <script>
 $(".nav-link").eq(0).children().css("color", "white");
 </script>

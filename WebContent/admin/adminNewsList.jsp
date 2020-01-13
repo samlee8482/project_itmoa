@@ -215,7 +215,7 @@
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
 											<thead>
-												<tr>
+												<tr style="white-space: nowrap;">
 													<th width="5%">No</th>
 													<th width="10%">뉴스 번호</th width="5%">
 													<th width="69%">뉴스 제목</th width="5%">
@@ -231,7 +231,7 @@
 														<td>${dto.news_brd_title }</td>
 														<td>${dto.news_brd_viewcnt }</td>
 														<td style="text-align: center;">
-															<a href="/Project_itmoa/admin/adminNewsDeleteOk.do?news_brd_uid=${dto.news_brd_uid }" class="btn btn-danger btn-icon-split"> 
+															<a href="/Project_itmoa/admin/adminNewsDeleteOk.do?news_brd_uid=${dto.news_brd_uid }" class="btn btn-danger btn-icon-split" onclick="chk()"> 
 																<span class="icon text-white-50"> 
 																	<i class="fas fa-trash"></i>
 																</span>
@@ -352,6 +352,17 @@
 
 </c:otherwise>
 </c:choose>
+<script>
+function chk(){
+	var delConfirm = confirm('정말로 삭제하시겠습니까?');
+	   if (delConfirm) {
+	      alert('삭제되었습니다.');
+	   }
+	   else {
+	      alert('삭제가 취소되었습니다.');
+	   }
+}
+</script>
 <script>
 $(".nav-link").eq(2).children().css("color", "white");
 </script>
