@@ -34,25 +34,33 @@
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57x57.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600"
+        ], {duration: 5000, fade: 500});
 
+        $("#mapwrapper").gMap({ controls: false,  scrollwheel: false, markers: [{ latitude:40.7566, longitude: -73.9863, icon: { image: "images/marker.png", iconsize: [44,44], iconanchor: [12,46], infowindowanchor: [12, 0] } }], icon: {image: "images/marker.png",iconsize: [26, 46], iconanchor: [12, 46],  infowindowanchor: [12, 0] }, latitude:40.7566, longitude: -73.9863, zoom: 14 });
+    });
+    
+    </script>
 </head>
 <!--/head-->
 <body>
-<c:set var="mb_uid" value="${sessionScope.loginUid }"/>
 
-<c:choose>
-	<c:when test="${not empty mb_uid }">
-	<!-- 로그인 탑메뉴 -->
-	<jsp:include page="loginTopMenu.jsp" />
-		<script>
-			document.getElementById("#like_pane").style.display = "block";
-		</script>
-	</c:when>
-	<c:otherwise>
-	<!-- 비회원 탑메뉴 -->
-	<jsp:include page="topMenu.jsp" />
-	</c:otherwise>
-</c:choose>
+	<c:choose>
+		<c:when test="${not empty sessionScope.loginUid }">
+			<!-- 로그인 탑메뉴 -->
+			<jsp:include page="loginTopMenu.jsp" />
+		</c:when>
+		<c:otherwise>
+			<!-- 비회원 탑메뉴 -->
+			<jsp:include page="topMenu.jsp" />
+		</c:otherwise>
+	</c:choose>
 
 
 	<section id="single-page-slider" class="no-margin">
@@ -103,39 +111,47 @@
 				<select name="option_branch" id= "option_branch" size="1">
 					<option value ="전체" id="test" selected>전체</option>
 				</select>
-			</form>
+				</form>
 				
-				
+			
 				<ul class="portfolio-filter fade-down center">
-					<li><a class="curName btn btn-outlined btn-primary active" onclick="show()">전체과정</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">웹앱</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">보안</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">네트워크</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">AI</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">디자인</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">영상</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">빅데이터</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" onclick="show()">게임</a></li>
+					<li><a class="curName btn btn-outlined btn-primary active" href="#"
+						onclick="show()">전체과정</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">웹앱</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">보안</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">네트워크</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">AI</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">디자인</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">영상</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">빅데이터</a></li>
+					<li><a class="curName btn btn-outlined btn-primary" href="#"
+						onclick="show()">게임</a></li>
 
 				</ul>
 				<!--/#portfolio-filter-->
 
+
 				<ul class="portfolio-items col-3 isotope fade-up">
 					
-				    <c:forEach var="dto" items="${classList }" varStatus="status">
+				    <c:forEach var="dto" items="${classList }">
 				    	<!-- portfolio-item  -->
-						<li id="item" class="portfolio-item apps isotope-item">
+						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-							
-							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 								<img src="../admin/ins/img/${dto.ins_img}" alt="">
 							</div>
-							<div id="like_pane" style="display:none">
-								<span style="color:red;" onclick="return like()">
-									<i id="heart"></i> 
+							<div id="like_pane">
+								<span style="color:red;">
+									<i id="heart" class="fa fa-heart" style="color:red"></i>
 								</span>
-								<span> 찜하기 	</span>
-								<span id="like_result">${dto.class_zzimcnt } </span>
+								<span> 찜 ${dto.class_zzimcnt } </span>
 							</div>	
 							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 							<h5>${dto.ins_name }</h5>
@@ -165,6 +181,20 @@
     
     <!-- 지역에 따른 지점 출력 함수 -->
 	<script>
+
+	$(document).ready(function() {
+		$('.item-inner').hover(function() {
+			$(this).css({
+				"cursor": "pointer"
+			})
+		}, function() {
+			$(this).css({
+				"cursor": "default"
+			})
+		})
+	})
+	
+
 
 	function changeBranchSelect(){
 	   $('#option_location').on('change', function(){
@@ -200,74 +230,30 @@
 	   });
 	  
 	};
-	
-	
-	$(document).ready(function() {
-		$('.item-inner').hover(function() {
-			$(this).css({
-				"cursor": "pointer"
-			})
-		}, function() {
-			$(this).css({
-				"cursor": "default"
-			})
-		})
-	})
-		
-    
-	jQuery(document).ready(function($){
-    'use strict';
-        jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
-        ], {duration: 5000, fade: 500});
 
-        $("#mapwrapper").gMap({ controls: false,  scrollwheel: false, markers: [{ latitude:40.7566, longitude: -73.9863, icon: { image: "images/marker.png", iconsize: [44,44], iconanchor: [12,46], infowindowanchor: [12, 0] } }], icon: {image: "images/marker.png",iconsize: [26, 46], iconanchor: [12, 46],  infowindowanchor: [12, 0] }, latitude:40.7566, longitude: -73.9863, zoom: 14 });
-    });
 	
-	
-	$(document).ready(function (){
-		  
+	 function show(){
+		
 		  $('.curName').on('click', function(){
 			  
-		  var option_location = document.getElementById("option_location");
-		  option_location = option_location.options[option_location.selectedIndex].value;
-		  
-		  var option_branch = document.getElementById('option_branch');
-		  option_branch = option_branch.options[option_branch.selectedIndex].value;
-		  
-		  var option_curName = $(this).text(); 
-		  		
- 		 
-			<c:choose>	
-			<c:when test="${not empty mb_uid}">  				
-				var url = 'classList.do?mb_uid='+mb_uid+'&option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
-				window.location.href = url;
-				
-				<c:forEach var="dto2" items="${zzimList}" varStatus="status"> 
-					    <c:if test="${dto.class_uid eq dto.class_uid}">
-					   		 $("#heart").html('<i id="heart" class="far fa-heart"></i>');
-					    </c:if>
-		
-					    <c:if test="${dto.class_uid ne dto2.class_uid}">
-					    	$("#heart").html('<i id="heart_empty" class="fa fa-heart fa-1x"></i>');
-					    </c:if>
-				</c:forEach>
-				</c:when>		
-			
-			<c:otherwise>  
-				alert(option_location+ " " + option_branch + " " +option_curName);	
-				url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);	
-				window.location.href = url;
-			</c:otherwise>			
-			</c:choose>
-		 
-		  });
-	});
+			  var option_location = document.getElementById("option_location");
+			  option_location = option_location.options[option_location.selectedIndex].value;
+			  
+			  var option_branch = document.getElementById('option_branch');
+			  option_branch = option_branch.options[option_branch.selectedIndex].value;
+			  
+			  var option_curName = $(this).text(); 
+			  
+			  alert(option_location+ " " + option_branch + " " +option_curName);
+			  
+			  var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
+			  
+			  window.location.href = url;
 
-		  
-		  
+		  });
+
+	  };
+  
 	</script>
 </body>
 </html>

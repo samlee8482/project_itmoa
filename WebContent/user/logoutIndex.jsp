@@ -29,9 +29,9 @@
     jQuery(document).ready(function($){
 	'use strict';
       	jQuery('body').backstretch([
-	        "images/bg/bg1.jpg",
-	        "images/bg/bg2.jpg",
-	        "images/bg/bg3.jpg"
+	        "images/bg/bg0.jpg",
+	        "images/bg/bg1.png",
+	        "images/bg/bg2.png"
 	    ], {duration: 5000, fade: 500, centeredY: true });
 
 		$("#mapwrapper").gMap({ controls: false,
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content center centered">
-                                	<span class="home-icon pe-7s-gleam bounce-in"></span>
+                                	<span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
                                     <h2 class="boxed animation animated-item-1 fade-down">원하는 IT 학원</h2><br>
                                     <h3 class="boxed animation animated-item-2 fade-up">다 모아놨다.</h3><br>
                                     <a class="btn btn-md animation bounce-in" href="join.do">회원가입</a>

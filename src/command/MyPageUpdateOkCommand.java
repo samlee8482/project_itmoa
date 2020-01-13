@@ -25,7 +25,7 @@ public class MyPageUpdateOkCommand implements Command {
 		System.out.println(contextRootPath);
 		try {
 			
-			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\user\\upload\\", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());			
+			MultipartRequest multi = new MultipartRequest(request, contextRootPath, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());			
 			String mb_img = multi.getFilesystemName("mb_img");
 			System.out.println(multi.getParameter("mb_img"));
 			String mb_pw = multi.getParameter("mb_pw");

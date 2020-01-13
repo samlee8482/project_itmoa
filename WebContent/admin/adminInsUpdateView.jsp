@@ -213,7 +213,6 @@
 									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
 											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 									</label>
-									<p>${adminInsUpdateView[0].ins_img }</p>
 									<img src="ins/img/${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>
 									<%--
 										String ins_img = "${adminInsUpdateView[0].ins_img }";

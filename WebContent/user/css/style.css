@@ -96,6 +96,8 @@ body>section {
 	/* IE6 workaround*/
 	height: 0;
 	overflow: hidden;
+	
+	
 }
 
 .embed-container iframe, .embed-container object, .embed-container embed
@@ -145,7 +147,7 @@ blockquote {
 	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
 	text-transform: uppercase;
 	letter-spacing: -1px;
-	margin-top: 30px;
+	margin-top: -150px;
 }
 
 #main-slider .carousel .btn {
@@ -167,10 +169,19 @@ blockquote {
 }
 
 #main-slider .carousel .boxed {
+	
 	padding: 10px 15px;
 	background-color: rgba(0, 0, 0, 0.2);
 	display: inline-block;
 	text-transform: uppercase;
+	
+	font-size: 60px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	line-height: 1;
+
+	margin-left: -500px;
+	
 }
 
 #main-slider .carousel .item {
@@ -206,7 +217,7 @@ blockquote {
 
 .home-icon {
 	padding: 10px 15px;
-	background-color: rgba(0, 0, 0, 0.2);
+	
 	clear: both;
 	display: block;
 	font-size: 78px;
@@ -2168,3 +2179,21 @@ img.author-box-image {
 		position: relative !important;
 	}
 }
+
+
+.hero-rocket {
+	bottom: 8px;
+	right: -198px;
+	width: 200px;
+	height: 350px;
+}
+
+.hero-rocket img {
+	position: relative;
+	-webkit-animation: rocket 2s linear infinite;
+	animation: rocket 2s linear infinite;
+}
+
+
+
+

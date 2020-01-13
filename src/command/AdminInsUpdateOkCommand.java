@@ -46,7 +46,6 @@ public class AdminInsUpdateOkCommand implements Command {
 		
 		
 		// 최대 5M byte
-		String saveDirectory = contextRootPath;
 		int maxPostSize = 5 * 1024 * 1024;	// 최대 5M byte POST 받기
 		String encoding = "utf-8";	// 인코딩
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();	// 업로딩 파일 이름 중복 정책
@@ -57,7 +56,7 @@ public class AdminInsUpdateOkCommand implements Command {
 		try{
 			multi = new MultipartRequest(
 					request,
-					saveDirectory,
+					contextRootPath,
 					maxPostSize,
 					encoding,
 					policy
@@ -67,22 +66,7 @@ public class AdminInsUpdateOkCommand implements Command {
 			System.out.println("파일 예외 처리 발생");
 		}
 		
-		
-//		String ins_name = request.getParameter("ins_name");
-//		System.out.println(ins_name);
-//		String ins_tel = request.getParameter("ins_tel");
-//		System.out.println(ins_tel);
-//		int ins_zip = Integer.parseInt(request.getParameter("ins_zip"));
-//		String ins_add1 = request.getParameter("ins_add1");
-//		String ins_add2 = request.getParameter("ins_add2");
-//		String ins_location = request.getParameter("ins_location");
-//		String ins_branch = request.getParameter("ins_branch");
-//		String ins_img = request.getParameter("ins_img");
-//		int ins_uid = Integer.parseInt(request.getParameter("ins_uid"));
-//		double ins_x = Double.parseDouble(request.getParameter("ins_x"));
-//		double ins_y = Double.parseDouble(request.getParameter("ins_y"));
-		
-			
+
 		try {
 			Enumeration names = null;
 			names = multi.getParameterNames();	// form 의 name 들 추출

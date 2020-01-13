@@ -133,7 +133,7 @@
 										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
 											사진 선택<input type="file" name="news_brd_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 										</label>
-										<p>${adminNewsView[0].news_brd_img }</p>
+										<p><img src="news/img/${adminNewsView[0].news_brd_img }"></p>
 										<input type="hidden" name="news_brd_uid" value="${adminNewsView[0].news_brd_uid }" />
 										<input type="hidden" name="ifNew" value="false" />
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정 완료</button>
