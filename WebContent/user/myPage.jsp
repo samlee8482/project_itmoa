@@ -40,7 +40,6 @@
 
 
 <body>
-<<<<<<< HEAD
 <c:choose>
 	<c:when test="${not empty sessionScope.loginUid }">
 	<!-- 로그인 탑메뉴 -->
@@ -52,17 +51,6 @@
 	</c:otherwise>
 </c:choose>
 	
-	<c:choose>
-		<c:when test="${not empty sessionScope.loginUid }">
-			<!-- 로그인 탑메뉴 -->
-			<jsp:include page="loginTopMenu.jsp" />
-		</c:when>
-		<c:otherwise>
-			<!-- 비회원 탑메뉴 -->
-			<jsp:include page="topMenu.jsp" />
-		</c:otherwise>
-	</c:choose>
-
 
 	<div class="w1">
 		<div class="w2">
@@ -137,7 +125,6 @@
 					<c:forEach var="dto" items="${myPageZzim }">
 
 						<tr>
-
 							<td>${dto.zzim_uid }</td>
 							<td>${dto.ins_name }</td>
 							<td>${dto.cur_name }
