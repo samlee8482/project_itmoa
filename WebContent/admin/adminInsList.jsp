@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"%>
 <%-- JSTL core 라이브러리 포함 --%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+
+<% response.setContentType("text/html"); %>
+    
     
 <!DOCTYPE html>
 <html lang="ko">
@@ -138,6 +143,7 @@
 													<td>${dto.ins_name }</td>
 													<td>${dto.ins_add1 }</td>
 													<td>${dto.ins_tel }</td>
+				
 													<td style="text-align: center;"><a href="adminClassList.do?ins_uid=${dto.ins_uid }&ins_name=${dto.ins_name }"	class="btn btn-warning btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-chalkboard-teacher"></i></span></td>
 													<td style="text-align: center;"><a href="adminInsUpdateView.do?ins_uid=${dto.ins_uid }"	class="btn btn-info btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-info-circle"></i></span></td>
 													<td style="text-align: center;"><a href="adminInsDeleteOk.do?ins_uid=${dto.ins_uid }"	class="btn btn-danger btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
