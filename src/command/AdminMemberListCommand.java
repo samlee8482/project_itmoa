@@ -13,17 +13,19 @@ public class AdminMemberListCommand implements Command {
 	
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) {
-	  	
+	  
+	   	System.out.println(request.getParameter("option_mb_1"));
+		System.out.println(request.getParameter("option_mb_2"));
+		System.out.println(request.getParameter("option_mb_3"));
 		String str_option_mb_1 = request.getParameter("option_mb_1");
 		String str_option_mb_2 = request.getParameter("option_mb_2");
 		String option_mb_3 = request.getParameter("option_mb_3");
 		int option_mb_1 = 0;
 		int option_mb_2 = 0;
-		
-		if (str_option_mb_1 == null || str_option_mb_2 == null) {
+		if (str_option_mb_1 == null || str_option_mb_2 == null || option_mb_3 == null) {
 			option_mb_1 = 1;
 			option_mb_2 = 5;
-			option_mb_3 = "a";
+			option_mb_3 = "all";   
 		} else {
 			option_mb_1 = Integer.parseInt(request.getParameter("option_mb_1"));
 			option_mb_2 = Integer.parseInt(request.getParameter("option_mb_2"));
@@ -63,11 +65,10 @@ public class AdminMemberListCommand implements Command {
 		AdminMbDAO dao = new AdminMbDAO();
 		MbDTO [] arr = null;
 		
-		if (option_mb_1 > 0 
-				&& option_mb_2 > 0 && option_mb_3.length() > 0
-				&& !option_mb_3.trim().equals("") && option_mb_3 != null) {
+		
 			try {
 				// 글 전체 개수 구하기
+				
 				cnt = dao.countAll();
 				
 				// 총 몇페이지 분량인가?
@@ -78,6 +79,9 @@ public class AdminMemberListCommand implements Command {
 				
 				arr = dao.selectFromRow(option_mb_1, option_mb_2, option_mb_3, fromRow, pageRows);
 				
+				
+				request.setAttribute("adminMemberAllCnt", cnt);
+				request.setAttribute("adminMemberCnt", arr.length);
 				request.setAttribute("adminMemberList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);
@@ -89,10 +93,43 @@ public class AdminMemberListCommand implements Command {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+	}
 	  
 		
-
-   }
+//      System.out.println(request.getParameter("option_mb_1"));
+//      System.out.println(request.getParameter("option_mb_2"));
+//      System.out.println(request.getParameter("option_mb_3"));
+//      String str_option_mb_1 = request.getParameter("option_mb_1");
+//      String str_option_mb_2 = request.getParameter("option_mb_2");
+//      String option_mb_3 = request.getParameter("option_mb_3");
+//      int option_mb_1 = 0;
+//      int option_mb_2 = 0;
+//      if (str_option_mb_1 == null || str_option_mb_2 == null) {
+//         option_mb_1 = 1;
+//         option_mb_2 = 5;
+//         option_mb_3 = "a";
+//      } else {
+//         option_mb_1 = Integer.parseInt(request.getParameter("option_mb_1"));
+//         option_mb_2 = Integer.parseInt(request.getParameter("option_mb_2"));
+//      }
+//      AdminMbDAO dao = new AdminMbDAO();
+//      MbDTO [] arr = null;
+//      
+//      System.out.println(option_mb_1 + "," + option_mb_2 + "," + option_mb_3);
+//      
+//      if (option_mb_1 > 0 
+//      && option_mb_2 > 0 
+//      && option_mb_3.length() > 0 && !option_mb_3.trim().equals("") && option_mb_3 != null) {
+//         try {
+//            arr = dao.selectMb(option_mb_1, option_mb_2, option_mb_3);
+//            request.setAttribute("adminMemberList", arr);
+//         } catch (SQLException e) {
+//            e.printStackTrace();
+//         } catch (NamingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//      }
+   
 
 }

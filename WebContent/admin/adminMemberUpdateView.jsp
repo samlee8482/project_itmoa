@@ -205,7 +205,7 @@
 										<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" value="${adminMemberUpdateView[0].mb_add2 }">
 										<!--<input style="left: 200px" class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">-->
 										</div>
-										<div class="ooo">
+										<div class="ooo">   
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">프로필 이미지</h6>
 										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
 												사진 선택<input type="file" name="mb_img" accept="image/jpeg, image/png" onchange="changeImg()" />
@@ -267,7 +267,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="../user/logoutOk.do">Logout</a>
 				</div>
 			</div>
 		</div>

@@ -341,12 +341,12 @@ public class controller extends HttpServlet {
 		case "/admin/adminCurUpdate.do":  // 관리자 Cur 추가
 			command = new AdminCurUpdateCommand();
 			command.execute(request, response);
-			viewPage = "adminUpdate.jsp";
+			viewPage = "adminCurUpdate.jsp";
 			break;
 		case "/admin/adminCurUpdateOk.do":  // 관리자 Cur 추가
 			command = new AdminCurUpdateOkCommand();
 			command.execute(request, response);
-			viewPage = "adminUpdateOk.jsp";
+			viewPage = "adminCurUpdateOk.jsp";
 			break;
 		case "/admin/adminClassDeleteOk.do":  // 관리자 Class 삭제
 			command = new AdminClassDeleteOkCommand();

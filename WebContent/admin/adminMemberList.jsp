@@ -113,31 +113,29 @@
                            <input type="text" name="option_mb_3" />
                            <input type="submit" value="검색"/>
                            </form>
-                           <h6 class="m-0 font-weight-bold text-primary">총 x건의 데이터가 조회되었습니다.</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">총 ${adminMemberAllCnt }건 중 ${adminMemberCnt }건의 데이터가 조회되었습니다.</h6>
                         </div>
                         <div class="card-body">
                            <div class="table-responsive">
                               <table class="table table-bordered" id="dataTable"
                                  width="100%" cellspacing="0">
                                  <thead>
-                                    <tr>
-                                       <th width="5%" style="text-align: center;">Row</th>
-                                       <th width="5%" style="text-align: center;">No</th>
-                                       <th width="10%" style="text-align: center;">회원 번호</th width="5%">
-                                       <th width="10%" style="text-align: center;">이름</th width="5%">
-                                       <th width="10%" style="text-align: center;">아이디</th width="5%">
-                                       <th width="15%" style="text-align: center;">이메일</th width="5%">
-                                       <th width="24%" style="text-align: center;">주소</th width="5%">
-                                       <th width="24%" style="text-align: center;">상세주소</th width="5%">
-                                       <th width="20%" style="text-align: center;">최초생성일</th width="5%">
-                                       <th width="6%" style="text-align: center;">회원삭제</th width="5%">
+                                    <tr style="white-space: nowrap;">
+                                       <th style="text-align: center;">No</th>
+                                       <th style="text-align: center;">회원 번호</th width="5%">
+                                       <th style="text-align: center;">이름</th width="5%">
+                                       <th style="text-align: center;">아이디</th width="5%">
+                                       <th style="text-align: center;">이메일</th width="5%">
+                                       <th style="text-align: center;">주소</th width="5%">
+                                       <th style="text-align: center;">상세주소</th width="5%">
+                                       <th style="text-align: center;">최초생성일</th width="5%">
+                                       <th style="text-align: center;">회원삭제</th width="5%">
                                     </tr>
                                  </thead>
                                  
                                  <c:forEach var="dto" items="${adminMemberList }" varStatus="status">
-                                    <tr>
+                                    <tr style="font-size: 12px;">
                                        <td>${(page - 1) * pageRows + status.index + 1}</td>
-                                       <td>${status.index + 1}</td>
                                        <td style="text-align: center;"><a href="/Project_itmoa/admin/adminMemberUpdateView.do?mb_uid=${dto.mb_uid }">${dto.mb_uid }</a></td>
                                        <td style="text-align: center;">${dto.mb_name }</td>
                                        <td style="text-align: center;">${dto.mb_id }</td>
@@ -165,7 +163,7 @@
     
          </div>
          <!-- End of Main Content -->
-
+      
          <!-- Footer -->
          <footer class="sticky-footer bg-white">
             <div class="container my-auto">
@@ -178,7 +176,7 @@
 								<jsp:param value="${totalPage }" name="totalPage"/>
 								<jsp:param value="${page }" name="curPage"/>
 							</jsp:include>
-						</div><br><br><br>
+						</div>
                   <span>Copyright &copy; Your Website 2019</span>
 					</div>
                </div>
@@ -213,7 +211,7 @@
             <div class="modal-footer">
                <button class="btn btn-secondary" type="button"
                   data-dismiss="modal">Cancel</button>
-               <a class="btn btn-primary" href="login.html">Logout</a>
+               <a class="btn btn-primary" href="../user/logoutOk.do">Logout</a>
             </div>
          </div>
       </div>
@@ -240,4 +238,7 @@
 
 </body>
 
+<script>
+$(".nav-link").eq(0).children().css("color", "white");
+</script>
 </html>

@@ -144,9 +144,9 @@
 				<input class="info1" name="mb_name" type="text"
 					placeholder="이름을 입력해주세요."><br> 아이디<br> <input
 					class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."><br>
-				비밀번호<br> <input class="info1" name="mb_pw" type="text"
+				비밀번호<br> <input class="info1" name="mb_pw" type="password"
 					placeholder="비밀번호 를 입력해주세요."><br> 비밀번호 확인<br> <input
-					class="info1" name="mb_pwOk" type="text"
+					class="info1" name="mb_pwOk" type="password"
 					placeholder="비밀번호를 입력해주세요."><br> e-mail<br> <input
 					class="info1" name="mb_email" type="text"
 					placeholder="이메일을 입력해주세요."><br>

@@ -338,7 +338,7 @@
 		})
 		
 		function chkSubmit() {
-			var option_news_3 = $(":text[name='keyword']").val().length;
+			var option_news_3 = $(":text[name='keyword']").val().length;   
 			if(option_news_3 > 0) {
 				return true;
 			}
@@ -352,5 +352,7 @@
 
 </c:otherwise>
 </c:choose>
-
+<script>
+$(".nav-link").eq(1).children().css("color", "white");
+</script>
 </html>

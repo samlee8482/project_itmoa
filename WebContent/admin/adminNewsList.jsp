@@ -8,7 +8,7 @@
 <head>
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">   
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -353,4 +353,7 @@
 
 </c:otherwise>
 </c:choose>
+<script>
+$(".nav-link").eq(2).children().css("color", "white");
+</script>
 </html>

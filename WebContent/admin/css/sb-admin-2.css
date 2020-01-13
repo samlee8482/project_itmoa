@@ -3876,8 +3876,9 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover, .nav-link:active {
   text-decoration: none;
+  color:#fffff;
 }
 
 .nav-link.disabled {
@@ -3902,6 +3903,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #eaecf4 #eaecf4 #dddfeb;
+  coloer:#ffffff;
 }
 
 .nav-tabs .nav-link.disabled {
