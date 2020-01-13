@@ -138,7 +138,7 @@
 											<c:forEach var="dto" items="${adminInsList }" varStatus="status">
 											<tbody>
 												<tr>
-													<td>${status.index+1 }</td>
+													<td>${status.index+1 }</td>   
 													<td>${dto.ins_uid }</td>
 													<td>${dto.ins_name }</td>
 													<td>${dto.ins_add1 }</td>

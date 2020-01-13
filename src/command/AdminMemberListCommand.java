@@ -25,7 +25,7 @@ public class AdminMemberListCommand implements Command {
 		if (str_option_mb_1 == null || str_option_mb_2 == null || option_mb_3 == null) {
 			option_mb_1 = 1;
 			option_mb_2 = 5;
-			option_mb_3 = "all";
+			option_mb_3 = "all";   
 		} else {
 			option_mb_1 = Integer.parseInt(request.getParameter("option_mb_1"));
 			option_mb_2 = Integer.parseInt(request.getParameter("option_mb_2"));

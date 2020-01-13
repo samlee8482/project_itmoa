@@ -338,7 +338,7 @@
 		})
 		
 		function chkSubmit() {
-			var option_news_3 = $(":text[name='keyword']").val().length;
+			var option_news_3 = $(":text[name='keyword']").val().length;   
 			if(option_news_3 > 0) {
 				return true;
 			}
