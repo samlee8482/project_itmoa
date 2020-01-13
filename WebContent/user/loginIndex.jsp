@@ -29,8 +29,9 @@
     jQuery(document).ready(function($){
 	'use strict';
       	jQuery('body').backstretch([
+	        "images/bg/bg0.jpg",
 	        "images/bg/bg1.jpg",
-	        "images/bg/bg2.jpg",
+	        "images/bg/bg2.jpg"
 	        "images/bg/bg3.jpg"
 	    ], {duration: 5000, fade: 500, centeredY: true });
 
