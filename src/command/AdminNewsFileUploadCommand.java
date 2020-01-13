@@ -18,8 +18,9 @@ public class AdminNewsFileUploadCommand implements Command {
 		final String SAVE_URL = "newsImg";
 		
 		// 실제 저장되는 물리적인 경로 확인하기
-		ServletContext context = request.getServletContext();
-		String saveDirectory = context.getRealPath(SAVE_URL);
+		//ServletContext context = request.getServletContext();
+		//String saveDirectory = context.getRealPath(SAVE_URL);
+		String saveDirectory = "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminNewsImgUpload";;
 		System.out.println("업로드 경로: " + saveDirectory);
 			
 		Enumeration names = null;   
