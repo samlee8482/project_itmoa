@@ -193,7 +193,7 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<form method="get" action="/Project_itmoa/admin/adminNewsList.do">
+									<form method="get" action="/Project_itmoa/admin/adminNewsList.do" onsubmit="return chkSubmit()" >
 										<h6 class="m-0 font-weight-bold text-primary">정렬기준</h6>
 										<label class="p-2"><input type="radio" name="option_news_1" value="1" checked="checked" /> 최근 순</label>
 										<label class="p-2"><input type="radio" name="option_news_1" value="2" /> 오래된 순</label>
@@ -205,7 +205,7 @@
 											<option value="3">뉴스 내용</option>
 										</select>
 										<input type="text" name="option_news_3" />
-										<button type="submit" onclick="chkSubmit()">검색</button>
+										<button type="submit">검색</button>
 									</form>
 								</div>
 								<div class="card-body">
@@ -340,12 +340,11 @@
 		
 		function chkSubmit() {
 			var option_news_3 = $(":text[name='option_news_3']").val().length;
-			if(option_news_3 > 0) {
-				return true;
-			} else {
-				alert("검색어를 입력하세요");
+			if(option_news_3 == 0) {
+				alert('검색어를 입력하세요');
 				return false;	
 			}
+			return true;
 		}
 	</script>
 	

@@ -193,7 +193,7 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<form method="get" action="/Project_itmoa/admin/adminReviewList.do">
+									<form method="get" action="/Project_itmoa/admin/adminReviewList.do" onsubmit="return chkSubmit()">
 										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
 										<select name="option_review">
 											<option value="1">작성자 아이디</option>
@@ -201,7 +201,7 @@
 											<option value="3">리뷰 내용</option>
 										</select>
 										<input type="text" name="keyword" />
-										<button type="submit" onclick="chkSubmit()">검색</button>
+										<button type="submit">검색</button>
 									</form>
 								</div>
 								<div class="card-body">
@@ -345,6 +345,15 @@
 			
 			alert("검색어를 입력하세요");
 			return false;
+		}
+		
+		function chkSubmit() {
+			var option_news_3 = $(":text[name='option_news_3']").val().length;
+			if(option_news_3 == 0) {
+				alert('검색어를 입력하세요');
+				return false;	
+			}
+			return true;
 		}
 	</script>
 
