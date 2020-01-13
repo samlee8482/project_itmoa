@@ -8,6 +8,7 @@ import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,9 +40,13 @@ public class AdminInsUpdateOkCommand implements Command {
 		int cnt = 0;
 		
 		//ServletContext context = this.getServletContext();	// 서블릿 객체에서 ServletContext 객체 불러옴
+		ServletContext context = request.getServletContext();
+		String contextRootPath = context.getRealPath("admin/ins/img"); 
+		
+		
 		
 		// 최대 5M byte
-		String saveDirectory = "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminInsImgUpload";
+		String saveDirectory = contextRootPath;
 		int maxPostSize = 5 * 1024 * 1024;	// 최대 5M byte POST 받기
 		String encoding = "utf-8";	// 인코딩
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();	// 업로딩 파일 이름 중복 정책
@@ -170,7 +175,7 @@ public class AdminInsUpdateOkCommand implements Command {
 				cnt = 3;
 				request.setAttribute("adminInsUpdateOk", cnt);
 			} else if(fileType.contains("image")) {
-				ins_img = saveDirectory + "\\" + ins_img;
+				//ins_img = saveDirectory + "\\" + ins_img;
 				cnt = dao.updateInsByUid(ins_name, ins_tel, ins_zip, ins_add1, ins_add2,
 						 ins_location, ins_branch, ins_img, ins_x, ins_y, ins_uid);
 				if(cnt > 0) request.setAttribute("adminInsUpdateOk", cnt);

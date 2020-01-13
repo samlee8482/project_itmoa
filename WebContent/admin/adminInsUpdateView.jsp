@@ -214,7 +214,7 @@
 											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 									</label>
 									<p>${adminInsUpdateView[0].ins_img }</p>
-									<img src="${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>
+									<img src="ins/img/${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>
 									<%--
 										String ins_img = "${adminInsUpdateView[0].ins_img }";
 										String dirPath = application.getRealPath(ins_img);

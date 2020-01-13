@@ -96,7 +96,7 @@
                         <div class="blog">
                             <div class="blog-item">
                                 <div class="blog-featured-image">
-                                    <img class="img-responsive img-blog" src="http://www.itworld.co.kr/${newsView[0].news_brd_img }" alt="" />
+                                    <img class="img-responsive img-blog" src="${newsView[0].news_brd_img }" alt="" />
                                 </div>
                                 <div class="blog-content">
                                     <h3 class="main-title">${newsView[0].news_brd_title }</h3>

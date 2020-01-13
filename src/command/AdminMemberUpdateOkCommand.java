@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,7 +39,8 @@ public class AdminMemberUpdateOkCommand implements Command {
 		int cnt = 0;
 		
 		// 최대 5M byte
-		String saveDirectory = "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminMemberImgUpload";
+		ServletContext context = request.getServletContext();
+		String contextRootPath = context.getRealPath("user/mypage/img");
 		int maxPostSize = 5 * 1024 * 1024;	// 최대 5M byte POST 받기
 		String encoding = "utf-8";	// 인코딩
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();	// 업로딩 파일 이름 중복 정책
@@ -49,7 +51,7 @@ public class AdminMemberUpdateOkCommand implements Command {
 		try{
 			multi = new MultipartRequest(
 					request,
-					saveDirectory,
+					contextRootPath,
 					maxPostSize,
 					encoding,
 					policy
@@ -121,7 +123,6 @@ public class AdminMemberUpdateOkCommand implements Command {
 				cnt = 3;
 				request.setAttribute("adminMemberUpdateOk", cnt);
 			} else if(fileType.contains("image")) {
-				mb_img = saveDirectory + "\\" + mb_img;
 				cnt = dao.updateMbByUid(mb_level, mb_email, mb_zip, mb_add1, mb_add2, mb_img, mb_uid);
 				if(cnt > 0) request.setAttribute("adminInsUpdateOk", cnt);
 			} else if(!fileType.contains("image")) {

@@ -64,7 +64,7 @@ public class AdminInsRegistCommand implements Command {
 
 		try {	
 			ServletContext context = request.getServletContext();
-			String contextRootPath = context.getRealPath("user/upload"); 
+			String contextRootPath = context.getRealPath("admin/ins/img"); 
 			System.out.println(contextRootPath);
 			 //1. 메모리나 파일로 업로드 파일 보관하는 FileItem의 Factory 설정
             DiskFileItemFactory diskFactory = new DiskFileItemFactory(); //디스크 파일 아이템 공장
