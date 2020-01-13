@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page import="com.lec.beans.*" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="com.lec.beans.*"%>
 
 
 <!DOCTYPE html>
@@ -40,6 +40,7 @@
 
 
 <body>
+<<<<<<< HEAD
 <c:choose>
 	<c:when test="${not empty sessionScope.loginUid }">
 	<!-- 로그인 탑메뉴 -->
@@ -51,6 +52,17 @@
 	</c:otherwise>
 </c:choose>
 	
+	<c:choose>
+		<c:when test="${not empty sessionScope.loginUid }">
+			<!-- 로그인 탑메뉴 -->
+			<jsp:include page="loginTopMenu.jsp" />
+		</c:when>
+		<c:otherwise>
+			<!-- 비회원 탑메뉴 -->
+			<jsp:include page="topMenu.jsp" />
+		</c:otherwise>
+	</c:choose>
+
 
 	<div class="w1">
 		<div class="w2">
@@ -66,74 +78,83 @@
 					name="mb_name" readonly value="${myPage[0].mb_name }" >
 			</p>
 
-			<br>
-			
-			
+
+				<p>
+					<label>NAME</label> <input class="info1" type="text" id="id"
+						name="mb_name" readonly value="${myPage[0].mb_name }">
+				</p>
+
+				<br>
+
+
 				<p>
 					<label>Email</label> <input class="info1" type="text" id="email"
-						name="mb_email" value="${myPage[0].mb_email }" >
+						name="mb_email" value="${myPage[0].mb_email }">
 				</p>
-				<input type="hidden" name="mb_id" value="${sessionScope.loginId }" >
-				<input type="hidden" name="origin_pw" id="origin_pw" value="${myPage[0].mb_pw}" >
-				<input type="hidden" name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }" >
-				
+				<input type="hidden" name="mb_id" value="${sessionScope.loginId }">
+				<input type="hidden" name="origin_pw" id="origin_pw"
+					value="${myPage[0].mb_pw}"> <input type="hidden"
+					name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }">
+
 				<p>
 					<label>Password</label> <input class="info1" id="old_pw"
 						name="old_pw" type="password" required>
 				</p>
 				<p>
-					<label>New Password</label> <input class="info1" id="pw" name="mb_pw"
-						type="password" required>
+					<label>New Password</label> <input class="info1" id="pw"
+						name="mb_pw" type="password" required>
 				</p>
 				<p>
-					<label>Confirm</label> <input class="info1" type="password" name="mb_pw"
-						id="pw2" type="password" required>
+					<label>Confirm</label> <input class="info1" type="password"
+						name="mb_pw" id="pw2" type="password" required>
 				</p>
 				<p>
-					<label>ADDRESS</label> 
-					<input type="text" id="sample6_postcode" name="mb_zip" value="${myPage[0].mb_zip }"
+					<label>ADDRESS</label> <input type="text" id="sample6_postcode"
+						name="mb_zip" value="${myPage[0].mb_zip }"
 						style="width: 250px; height: 40px; border-radius: 7px; margin: 5px;">
 					<input class="addr-btn" type="button"
 						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input class="addr" type="text" id="sample6_address" name="mb_add1"
-						value="${myPage[0].mb_add1 }"><br> 
-					<input class="addr" name="mb_add2"
-						type="text" id="sample6_detailAddress"value="${myPage[0].mb_add2 }">
-					<input class="addr" type="text" id="sample6_extraAddress"
-						style="display: none;" placeholder="상세주소">
+						value="${myPage[0].mb_add1 }"><br> <input
+						class="addr" name="mb_add2" type="text" id="sample6_detailAddress"
+						value="${myPage[0].mb_add2 }"> <input class="addr"
+						type="text" id="sample6_extraAddress" style="display: none;"
+						placeholder="상세주소">
 				</p>
 				<p class="w3-center">
 					<button type="submit" id="join-btn">정보 수정</button>
 				</p>
 			</form>
-			
-			<div class="zzim-list" id="zzim-list" style="margin-left: 37%; text-align: center;">
+
+			<div class="zzim-list" id="zzim-list"
+				style="margin-left: 37%; text-align: center;">
 				<table>
 					<tr>
 						<th>NO</th>
 						<th>학원명</th>
 						<th>과정명</th>
 					</tr>
-				<c:forEach var="dto" items="${myPageZzim }">
-				
-					<tr>
-					
-						<td>${dto.zzim_uid }</td>
-						<td>${dto.ins_name }</td>
-						<td>${dto.cur_name }
-						<form action="zzimDeleteOk.do">
-						<input type="submit" value="삭제" style="float:right;">
-						<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }">
-						<input type="hidden" name="ifZZim" value="true" />
-						<input type="hidden" name="mb_uid" value="${myPage[0].mb_uid }">
-						<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
-						</form></td>
-					</tr>
-				
-				</c:forEach>
-				
-						<!--  <a href='view.do?uid=" + arr[i].getMb_uid() + "'>"-->
-				
+					<c:forEach var="dto" items="${myPageZzim }">
+
+						<tr>
+
+							<td>${dto.zzim_uid }</td>
+							<td>${dto.ins_name }</td>
+							<td>${dto.cur_name }
+								<form action="zzimDeleteOk.do">
+									<input type="submit" value="삭제" style="float: right;">
+									<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }">
+									<input type="hidden" name="ifZZim" value="true" /> <input
+										type="hidden" name="mb_uid" value="${myPage[0].mb_uid }">
+									<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
+								</form>
+							</td>
+						</tr>
+
+					</c:forEach>
+
+					<!--  <a href='view.do?uid=" + arr[i].getMb_uid() + "'>"-->
+
 				</table>
 			</div>
 		</div>
@@ -205,7 +226,7 @@
 					$("#pw").val("").focus();
 					$("#pw2").val("");
 					return false;
-				}else if ($("#pw").val().length < 8) {
+				} else if ($("#pw").val().length < 8) {
 					alert("비밀번호는 8자 이상으로 설정해야 합니다.");
 					$("#pw").val("").focus();
 					return false;
@@ -213,23 +234,22 @@
 					alert("공백은 입력이 불가능합니다.");
 					return false;
 				}
-				
+
 				if ($("#origin_pw").val() !== $("#old_pw").val()) {
 					alert("기존 비밀번호가 다릅니다.");
 					$("#old_pw").val("").focus();
 					$("#pw").val("");
 					$("#pw2").val("");
 					return false;
-				}else{
-					location.href="myPageUpdateOk.do";
+				} else {
+					location.href = "myPageUpdateOk.do";
 				}
-			 
-			
+
 			}))
 				;
 		})
 	</script>
-	
+
 
 
 	<script src="js/bootstrap.min.js"></script>

@@ -16,8 +16,8 @@
 					<span class="sr-only">Toggle navigation</span> <i
 						class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand" href="index.html"><h1>
-						<span class="pe-7s-gleam bounce-in"></span> IMPACT
+				<a class="navbar-brand" href="index.do"><h1>
+						<span class="pe-7s-gleam bounce-in"></span> ITMOA
 					</h1></a>
 			</div>
 			<div class="collapse navbar-collapse">
@@ -28,7 +28,6 @@
 					<li><a href="/Project_itmoa/user/newsList.do">IT News</a></li>
 					<li><a href="/Project_itmoa/user/myPageAction.do">마이페이지</a></li>
 					<li><a href="/Project_itmoa/user/logoutOk.do">로그아웃</a></li>
-					<li><span class="search-trigger"><i class="fa fa-search"></i></span></li>
 				</ul>
 			</div>
 		</div>

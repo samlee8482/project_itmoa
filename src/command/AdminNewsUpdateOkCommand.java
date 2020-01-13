@@ -17,7 +17,7 @@ public class AdminNewsUpdateOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\newsMainImg\\", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminNewsMainImgUpload", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
 			boolean ifNew = Boolean.parseBoolean(multi.getParameter("ifNew"));
 			String news_brd_title = multi.getParameter("news_brd_title");
 			String news_brd_content = multi.getParameter("news_brd_content");

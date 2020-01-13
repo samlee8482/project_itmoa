@@ -55,6 +55,7 @@ public class AdminInsListCommand implements Command {
 		try {
 
 			if(option == null || option.equals("") || keyword == null || keyword.equals("")){
+				
 				// 글 전체 개수 구하기
 				cnt = dao.countAll();
 				
@@ -63,9 +64,10 @@ public class AdminInsListCommand implements Command {
 				
 				// 몇번째 row 부터?
 				int fromRow = (page - 1) * pageRows;  // MySQL 은 0부터, ORACLE 은 1부터 시작	
-				
 				arr = dao.selectInsFromRow(fromRow, pageRows);
-				
+
+				request.setAttribute("adminInsAllCnt", cnt);
+				request.setAttribute("adminInsCnt", arr.length);
 				request.setAttribute("adminInsList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);
@@ -86,12 +88,14 @@ public class AdminInsListCommand implements Command {
 				// 몇번째 row 부터?
 				int fromRow = (page - 1) * pageRows;  // MySQL 은 0부터, ORACLE 은 1부터 시작	
 				
+				arr = dao.selectInsFromRow2(Integer.parseInt(option), keyword, fromRow, pageRows);
+				
+				request.setAttribute("adminInsCnt", cnt);
 				request.setAttribute("adminInsList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);
 				request.setAttribute("writePages", writePages);
 				request.setAttribute("pageRows", pageRows);
-				arr = dao.selectInsFromRow2(Integer.parseInt(option), keyword, fromRow, pageRows);
 				System.out.println(arr[0].getIns_uid());
 			}
 
