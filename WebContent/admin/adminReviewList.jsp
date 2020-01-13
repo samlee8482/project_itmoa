@@ -222,7 +222,7 @@
 											</thead>
 				                        	<c:forEach var="dto" items="${adminReviewList }" varStatus="status">											
 												<tbody>
-													<tr onclick="location.href='/Project_itmoa/user/reviewView.do?review_brd_uid=${dto.review_brd_uid }'">
+													<tr onclick="location.href='/Project_itmoa/user/reviewView.do?review_brd_uid=${dto.review_brd_uid }'" style="font-size: 12px;">
 														<td>${(page - 1) * pageRows + status.index + 1}</td>
 														<td>${dto.review_brd_uid }</td>
 														<td>${dto.mb_id }</td>

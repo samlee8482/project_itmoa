@@ -225,7 +225,7 @@
 											</thead>										
 				                        	<c:forEach var="dto" items="${adminNewsList }" varStatus="status">
 												<tbody>
-													<tr style="background-color: #FFF" onclick="location.href='/Project_itmoa/admin/adminNewsUpdateView.do?news_brd_uid=${dto.news_brd_uid }'">
+													<tr style="background-color: #FFF; font-size: 12px;" onclick="location.href='/Project_itmoa/admin/adminNewsUpdateView.do?news_brd_uid=${dto.news_brd_uid }'">
 														<td>${(page - 1) * pageRows + status.index + 1}</td>
 														<td>${dto.news_brd_uid }</td>
 														<td>${dto.news_brd_title }</td>

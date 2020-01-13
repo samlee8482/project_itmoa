@@ -180,19 +180,25 @@
 								    
 								<div class="card-body">
 									<form name="frm" action="adminInsUpdateOk.do?ins_uid=${adminInsUpdateView[0].ins_uid }" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
-									<h6 class="m-0 font-weight-bold text-primary p-2">학원명</h6>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원명</h6>
 									<input name="ins_name" type="text" value="${adminInsUpdateView[0].ins_name }"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
 									<input name="ins_tel" type="text" value="${adminInsUpdateView[0].ins_tel }"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">주소</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
 									<div id="info_addr">
 			    						<input type="text" id="sample6_postcode" name="ins_zip" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;" value="${adminInsUpdateView[0].ins_zip }">
 										<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" value="${adminInsUpdateView[0].ins_add1 }"><br>
-										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" value="${adminInsUpdateView[0].ins_add2 }">
+										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" value="${adminInsUpdateView[0].ins_add1 }" style="margin-left: 100px"><br>
+										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" value="${adminInsUpdateView[0].ins_add2 }" style="margin-left: 100px">
 										<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">
-	    							</div> 							
-									<h6 class="m-0 font-weight-bold text-primary p-2">지역</h6>
+	    							</div> 			
+	    							<div class="ooo">				
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">지역</h6>
 									<select name="ins_location">
 										<option>서울</option>
 										<option>경기</option>
@@ -204,12 +210,18 @@
 										<option>울산</option>
 										<option>기타</option>
 									</select>
-									<h6 class="m-0 font-weight-bold text-primary p-2">지점</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">지점</h6>
 									<input type="text" name="ins_branch" value="${adminInsUpdateView[0].ins_branch }"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">위치</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">위치</h6>
 									X <input type="text" name="ins_x" placeholder="좌표값1" value="${adminInsUpdateView[0].ins_x }"></input><br>
 									Y <input type="text" name="ins_y" placeholder="좌표값2" value="${adminInsUpdateView[0].ins_y }"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
 									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
 											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 									</label>
@@ -243,6 +255,7 @@
 											}
 										}
 									--%>
+									</div>
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정</button>	
 									</form>
 								</div>
@@ -371,7 +384,7 @@
     }
  	
     function changeImg() {
-		var changeP = $("input[name='ins_img']").val().substring(12);
+		var changeP = $("input[name='ins_img']").val().substring(1);
 		$("form > p").html(changeP);
 	}
  
