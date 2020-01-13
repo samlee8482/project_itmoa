@@ -30,9 +30,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <script src="https://kit.fontawesome.com/bb29575d31.js"></script>
-<style>
-.fa-wrench {}
-</style>
 </head>
 
 <body id="page-top">
@@ -179,7 +176,7 @@
 								<jsp:param value="${totalPage }" name="totalPage"/>
 								<jsp:param value="${page }" name="curPage"/>
 							</jsp:include>
-						</div><br><br><br>
+						</div>
                   <span>Copyright &copy; Your Website 2019</span>
 					</div>
                </div>
