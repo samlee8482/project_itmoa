@@ -35,11 +35,8 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-	
 		<!-- Side Menu -->
 		<jsp:include page="sideMenu.jsp"/>
-		
-		
 		
 		  <script>
         // form 검증

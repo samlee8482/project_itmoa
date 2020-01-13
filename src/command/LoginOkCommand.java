@@ -25,6 +25,8 @@ public class LoginOkCommand implements Command {
 		String sessionImg = "loginImg";
 		
 		HttpSession httpSession = request.getSession(true);
+		httpSession.removeAttribute(sessionLevel);
+		
 		try {			
 			arr = dao.login(mb_id, mb_pw);
 			// arr 이 loginOk 페이지로 넘어감 -> arr.length > 0 성공 -> 성공했을시 메인페이지로 화면전환되고 arr에 있는 이미지를 가져오기 

@@ -105,11 +105,13 @@
                                 <div class="center gap fade-down section-heading">
                                     <h2 class="main-title">${classView[0].cur_name }</h2>
                                     <hr>
-                                    <p>${classView[0].ins_name }</p>
-                                    <form method="post" action="/Project_itmoa/user/reserveOk.do">
-                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
-	                                    <button type="submit" style="color: black">상담 예약</button>
-                                    </form>
+                                    <c:if test="${not empty sessionScope.LoginUid }">
+                                    	<p>${classView[0].ins_name }</p>
+	                                    <form method="post" action="/Project_itmoa/user/reserveOk.do">
+	                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
+		                                    <button type="submit" style="color: black">상담 예약</button>
+	                                    </form>
+                                    </c:if>
                                     <c:choose>
 										<c:when test="${sessionScope.loginUid != null }">                                    
 		                                    <form method="post" action="/Project_itmoa/user/zzimOk.do">
@@ -158,7 +160,7 @@
                         <div class="blog">
                             <div class="blog-item">
                                 <div class="blog-content">
-                                	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 300px"/></div>
+                                	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 100%"/></div>
 									<div class="col-sm-7">
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<thead>

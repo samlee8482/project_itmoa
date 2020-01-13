@@ -88,10 +88,9 @@
                             <div class="col-sm-12">
                                 <div class="carousel-content center centered">
                                 	<span class="home-icon pe-7s-gleam bounce-in"></span>
-                                    <h2 class="boxed animation animated-item-1 fade-down">WE GONNA HELP YOU MAKE AN IMPACT</h2>
-                                    <p class="boxed animation animated-item-2 fade-up">Our expertise will guide you to success. Without Fail.</p>
-                                    <br>
-                                    <a class="btn btn-md animation bounce-in" href="#services">Learn More</a>
+                                    <h2 class="boxed animation animated-item-1 fade-down">원하는 IT 학원</h2><br>
+                                    <h3 class="boxed animation animated-item-2 fade-up">다 모아놨다.</h3><br>
+                                    <a class="btn btn-md animation bounce-in" href="classList.do">학원찾기</a>
                                 </div>
                             </div>
                         </div>
