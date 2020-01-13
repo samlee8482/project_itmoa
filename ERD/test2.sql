@@ -297,5 +297,3 @@ insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
-
-update mb set mb_level=3 where mb_uid=1;

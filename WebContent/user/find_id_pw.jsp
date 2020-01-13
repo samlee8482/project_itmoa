@@ -93,7 +93,7 @@
     <div class="a" id="div-find-id">
 	 <form name="frm" id="find-id-content" method="get" action="findIdView.do" onsubmit="return chkSubmit()">
         <div class="find-id">
-        	<h2>아이디 찾기</h2>
+        	<h4>아이디 찾기</h4>
         </div>
         <div id="find-id" class="find-id">
         	<div id="find-id-info" class="find-id">
@@ -108,7 +108,7 @@
     <div class="a" id="div-find-pw">
     <form name="frm" id="find-pw-content" method="get" action="findPwOk.do" onsubmit="return chkSubmit()" >
         <div class="find_pw">
-        	<h2>비밀번호 찾기</h2>
+        	<h4>비밀번호 찾기</h4>
         </div>
         <div id="find-pw" class="find-pw">
         	<div id="find-pw-info" class="find-pw">
