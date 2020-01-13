@@ -239,7 +239,7 @@ public class AdminMbDAO {
 				pstmt.setInt(6, pageRows);
 				System.out.println(pstmt);
 	            rs = pstmt.executeQuery();
-	            arr = createMbArr(rs);
+	            arr = createMbArr(rs);   
 	            System.out.println(arr.length);
 	         } else if(!option_mb_3.equals("all") && option_mb_3.equals("") && option_mb_3 == null) {
 	            pstmt.setInt(4, fromRow);
