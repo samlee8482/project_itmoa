@@ -3,7 +3,8 @@
 <%-- JSTL core 라이브러리 포함 --%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+<%@taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -101,8 +102,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-bordered" id="dataTable"
-											width="100%" cellspacing="0">
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
 													<th width="4%">No</th>
