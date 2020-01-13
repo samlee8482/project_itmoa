@@ -114,6 +114,7 @@
 								<input type="submit" value="검색" class="btn btn-info btn-icon-split" />
 								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
 								</form>
+								<h6 class="m-0 font-weight-bold text-primary">총 ${adminInsAllCnt }건 중 ${adminInsCnt }건의 데이터가 조회되었습니다.</h6>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
@@ -205,7 +206,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="../user/logoutOk.do">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -235,5 +236,7 @@
 
 
 </body>
-
+<script>
+$(".nav-link").eq(3).children().css("color", "white");
+</script>
 </html>

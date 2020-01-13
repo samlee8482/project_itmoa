@@ -352,5 +352,7 @@
 
 </c:otherwise>
 </c:choose>
-
+<script>
+$(".nav-link").eq(1).children().css("color", "white");
+</script>
 </html>

@@ -168,25 +168,40 @@ public class AdminMbDAO {
 	      // 검색조건 들어갈 switch문
 	      switch(option_mb_2) {
 	      case 1:
-	         SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
-	         break;
+	    	 if(option_mb_3.equals("") || option_mb_3 == null) {
+	    		 break;
+	    	 } else {
+	    		 SELECT_MB += D.SQL_SELECT_USER_WHERE_ID;
+	    		 break;
+	    	 }
 	      case 2:
-	         SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
-	         option_mb_3 = "%" + option_mb_3 + "%";
-	         break;
+	         if(option_mb_3.equals("") || option_mb_3 == null) {
+	    		 break;
+	    	 } else {
+	    		 SELECT_MB += D.SQL_SELECT_USER_WHERE_NAME;
+	    		 option_mb_3 = "%" + option_mb_3 + "%";
+	    		 break;
+	    	 }
 	      case 3:
-	         SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
-	         chkUid = 4;
-	         break;
+	    	  if(option_mb_3.equals("") || option_mb_3 == null) {
+	    		  break;
+	    	  } else {
+	    		  chkUid = 4;
+	    		  SELECT_MB += D.SQL_SELECT_USER_WHERE_UID;
+	    		  break;
+	    	  }
 	      case 4:
-	         SELECT_MB += D.SQL_SELECT_USER_WHERE_EMAIL;
-	         break;
+	    	  if(option_mb_3.equals("") || option_mb_3 == null) {
+	    		  break;
+	    	  } else {
+	    		  SELECT_MB += D.SQL_SELECT_USER_WHERE_EMAIL;
+	    		  break;
+	    	  }
 	      case 5:
 	         break;
 	      }
 	      
 	      SELECT_MB += D.SQL_USER_ORDER_BY + D.SQL_SELECT_FROM_ROW_USER;
-	      
 	      try {
 	    	 conn = getConnection();
 	    	 pstmt = conn.prepareStatement(SELECT_MB);
@@ -222,19 +237,29 @@ public class AdminMbDAO {
 	            pstmt.setInt(chkUid, Integer.parseInt(option_mb_3));
 	            pstmt.setInt(5, fromRow);
 				pstmt.setInt(6, pageRows);
+				System.out.println(pstmt);
 	            rs = pstmt.executeQuery();
 	            arr = createMbArr(rs);
 	            System.out.println(arr.length);
-	         } else if(!option_mb_3.equals("a")) {
-	            pstmt.setString(4, option_mb_3);
-	            pstmt.setInt(5, fromRow);
-	            pstmt.setInt(6, pageRows);
+	         } else if(!option_mb_3.equals("all") && option_mb_3.equals("") && option_mb_3 == null) {
+	            pstmt.setInt(4, fromRow);
+	            pstmt.setInt(5, pageRows);
+	            System.out.println(pstmt);
 	            rs = pstmt.executeQuery();
 	            arr = createMbArr(rs);
 	            System.out.println(arr.length);
+	         } else if(!option_mb_3.equals("all") && !option_mb_3.equals("") && option_mb_3 != null) {
+	        	 pstmt.setString(4, option_mb_3);
+	        	 pstmt.setInt(5, fromRow);
+	        	 pstmt.setInt(6, pageRows);
+	        	 System.out.println(pstmt);
+	        	 rs = pstmt.executeQuery();
+	        	 arr = createMbArr(rs);
+	        	 System.out.println(arr.length);
 	         } else {
 	        	pstmt.setInt(4, fromRow);
 	        	pstmt.setInt(5, pageRows);
+	        	System.out.println(pstmt);
 	        	rs = pstmt.executeQuery();
 	        	arr = createMbArr(rs);
 	        	System.out.println(arr.length);

@@ -16,6 +16,7 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<script src="vendor/jquery/jquery.min.js"></script>
 
 
 
@@ -44,8 +45,7 @@
 
          <!-- Nav Item - Dashboard -->
          <li class="nav-item"><a class="nav-link" href="adminMemberList.do">
-               <i class="fas fa-fw fa-wrench" style="color: white"></i> <span
-               style="color: white;">Member</span>
+               <i class="fas fa-fw fa-wrench"></i> <span>Member</span>
          </a> <a class="nav-link" href="adminReviewList.do"> <i
                class="fas fa-fw fa-table"></i> <span>Review</span>
          </a> <a class="nav-link" href="adminNewsList.do"> <i
