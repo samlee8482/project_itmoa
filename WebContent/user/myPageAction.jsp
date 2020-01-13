@@ -5,7 +5,7 @@
 <c:choose>
 	<c:when test="${not empty sessionScope.loginUid}">
 			<script>
-					location.href = "myPage.do?mb_uid=${sessionScope.loginUid}&mb_img=${sessionScope.loginImg}";
+					location.href = "myPage.do?mb_uid=${sessionScope.loginUid}";
 			</script>
 	</c:when>
 	<c:otherwise>

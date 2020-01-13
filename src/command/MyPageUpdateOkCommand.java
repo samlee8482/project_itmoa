@@ -18,11 +18,14 @@ public class MyPageUpdateOkCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
+		MbDAO dao = new MbDAO();
 		int cnt = 0;
 		ServletContext context = request.getServletContext();
+		String contextRootPath = context.getRealPath("user/upload"); 
+		System.out.println(contextRootPath);
 		try {
-			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\apache-tomcat-8.5.49-it\\wtpwebapps\\Project_itmoa\\myPageImg\\",5 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
-			MbDAO dao = new MbDAO();
+			
+			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\user\\upload\\", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());			
 			String mb_img = multi.getFilesystemName("mb_img");
 			System.out.println(multi.getParameter("mb_img"));
 			String mb_pw = multi.getParameter("mb_pw");
@@ -39,12 +42,12 @@ public class MyPageUpdateOkCommand implements Command {
 			boolean emailMatches = Pattern.matches(regex_email, mb_email);
 			boolean pwMatches = Pattern.matches(regex_pw, mb_pw);
 
-			System.out.printf(mb_img, mb_pw, mb_email, mb_zip, mb_add1, mb_add2, mb_uid);
+			System.out.printf(mb_img + mb_pw +  mb_email +  mb_zip +  mb_add1 +  mb_add2 +  mb_uid);
 
 			if (mb_img == null)
 				mb_img = older_mb_img;
 
-			if (mb_img != null && mb_img.length() > 0 && !mb_img.trim().equals("") && mb_pw != null && mb_pw.length() > 0
+			if ( mb_pw != null && mb_pw.length() > 0
 					&& !mb_pw.trim().equals("") && mb_email != null && mb_email.length() > 0 && !mb_email.trim().equals("")
 					&& mb_zip > 0 && mb_add1 != null && mb_add1.length() > 0 && !mb_add1.trim().equals("")
 					&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.trim().equals("") && mb_uid > 0) {

@@ -40,6 +40,18 @@
 
 
 <body>
+<<<<<<< HEAD
+<c:choose>
+	<c:when test="${not empty sessionScope.loginUid }">
+	<!-- 로그인 탑메뉴 -->
+	<jsp:include page="loginTopMenu.jsp" />
+	</c:when>
+	<c:otherwise>
+	<!-- 비회원 탑메뉴 -->
+	<jsp:include page="topMenu.jsp" />
+	</c:otherwise>
+</c:choose>
+	
 	<c:choose>
 		<c:when test="${not empty sessionScope.loginUid }">
 			<!-- 로그인 탑메뉴 -->
@@ -54,15 +66,18 @@
 
 	<div class="w1">
 		<div class="w2">
-			<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do"
-				method="post">
-				<div class="w3">
-					<img name="older_mb_img" src="${sessionScope.loginImg}"
-						style="width: 200px; height: 200px;"> <input type="hidden"
-						name="mb_img" value="${sessionScope.loginImg}"> <input
-						type="file" name="profile" style="margin-left: 45%;"
-						accept="image/jpeg, image/png"><br>
-				</div>
+		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post" enctype="multipart/form-data">
+			<div class="w3">
+				<img src="upload/${myPage[0].mb_img}"
+					style="width: 200px; height: 200px;"> 
+					<input type="file" name="mb_img" style="margin-left: 45%;" accept="image/jpeg, image/png"><br>
+			</div>
+	
+			<p>
+				<label>NAME</label> <input class="info1" type="text" id="id"
+					name="mb_name" readonly value="${myPage[0].mb_name }" >
+			</p>
+
 
 				<p>
 					<label>NAME</label> <input class="info1" type="text" id="id"
