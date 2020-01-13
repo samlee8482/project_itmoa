@@ -100,18 +100,16 @@
                                 <div class="blog-content">
                                     <h3 class="main-title">
                                     	${reviewView[0].review_brd_title }
-                                    	<c:choose>
-		                                    <c:when test="${not empty sesionScope.loginUid && sessionScope.loginUid == reviewView[0].mb_uid }">
-                                            	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-		                                    		후기 수정
-		                                    	</button>
-		                                    </c:when>
-										    <c:when test="${sessionScope.loginLevel == 3 || sessionScope.loginUid == reviewView[0].mb_uid }">
-		                                    	<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-		                                    		후기 삭제
-		                                    	</button>
-										    </c:when>
-										</c:choose>
+	                                    <c:if test="${sessionScope.loginUid == reviewView[0].mb_uid }">
+                                           	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+	                                    		후기 수정
+	                                    	</button>
+	                                    </c:if>
+										<c:if test="${sessionScope.loginLevel == 3 || sessionScope.loginUid == reviewView[0].mb_uid }">
+											<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+	                                    		후기 삭제
+	                                    	</button>
+										</c:if>
                                     </h3>
                                     <div class="entry-meta">
                                         <span><i class="fa fa-user"></i> <a href="#"> ${reviewView[0].review_brd_viewcnt }</a></span>

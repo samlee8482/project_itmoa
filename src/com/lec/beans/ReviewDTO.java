@@ -15,6 +15,8 @@ public class ReviewDTO {
 	private int rep_uid;
 	private String rep_content;
 	private String rep_regdate;
+	private int class_uid;
+	private String cur_name;
 
 	// 생성자
 	public ReviewDTO() {
@@ -108,6 +110,14 @@ public class ReviewDTO {
 		this.rep_content = rep_content;
 		this.rep_regdate = rep_regdate;
 
+	}
+	
+	// 학원 목록 생성자(학원 선택)
+	public ReviewDTO(int class_uid, String ins_name, String cur_name) {
+		super();
+		this.class_uid = class_uid;
+		this.ins_name = ins_name;
+		this.cur_name = cur_name;
 	}
 		
 
@@ -213,6 +223,22 @@ public class ReviewDTO {
 
 	public void setRep_regdate(String rep_regdate) {
 		this.rep_regdate = rep_regdate;
+	}
+
+	public int getClass_uid() {
+		return class_uid;
+	}
+
+	public void setClass_uid(int class_uid) {
+		this.class_uid = class_uid;
+	}
+
+	public String getCur_name() {
+		return cur_name;
+	}
+
+	public void setCur_name(String cur_name) {
+		this.cur_name = cur_name;
 	}
 	
 	

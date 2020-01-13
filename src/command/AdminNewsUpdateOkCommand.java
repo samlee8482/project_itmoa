@@ -17,7 +17,7 @@ public class AdminNewsUpdateOkCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminNewsMainImgUpload", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\adminNewsMainImgUpload", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
 			boolean ifNew = Boolean.parseBoolean(multi.getParameter("ifNew"));
 			String news_brd_title = multi.getParameter("news_brd_title");
 			String news_brd_content = multi.getParameter("news_brd_content");
@@ -50,7 +50,7 @@ public class AdminNewsUpdateOkCommand implements Command {
 					if (news_brd_title != null && !news_brd_title.trim().equals("")
 						&& news_brd_content != null && !news_brd_content.trim().equals("")) {
 						try {
-							news_brd_img = "/Project_itmoa/newsMainImg/" + news_brd_img;
+							news_brd_img = "/Project_itmoa/adminNewsMainImgUpload/" + news_brd_img;
 							cnt = dao.insertNews(news_brd_title, news_brd_img, news_brd_content);
 							if (cnt == 1) cnt = 1;
 							if (cnt == 0) cnt = 0;

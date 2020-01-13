@@ -195,7 +195,6 @@ public class ReviewDAO {
       return arr;
    }
    
-   // 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
    public ReviewDTO[] readReviewByUid(int review_brd_uid) throws SQLException, NamingException{
       
       ReviewDTO[] arr = null;
@@ -208,6 +207,44 @@ public class ReviewDAO {
          
          rs = pstmt.executeQuery();
          arr = createReviewContentArray(rs);
+   
+      } finally {
+         close();
+      }      
+      
+      return arr;
+   }
+   // 2-2. 특정 학원후기 불러오기 (조회수 증가x) review_uid로 review
+   public ReviewDTO [] createInsNameArray(ResultSet rs) throws SQLException {
+      
+      ArrayList<ReviewDTO> list = new ArrayList<ReviewDTO>();
+      while(rs.next()){
+
+         int class_uid = rs.getInt("class_uid");
+         String ins_name = rs.getString("ins_name");
+         String cur_name = rs.getString("cur_name");
+         
+         ReviewDTO dto = new ReviewDTO(class_uid, ins_name, cur_name);
+         list.add(dto);
+      }
+      
+      int size = list.size();
+      ReviewDTO [] arr = new ReviewDTO[size];
+      list.toArray(arr);
+      
+      return arr;
+   }
+   // 학원 목록 불러오기   
+   public ReviewDTO[] selectInsByName(String ins_name) throws SQLException, NamingException{    
+      ReviewDTO[] arr = null;
+      
+      try {
+    	 conn = getConnection();
+         pstmt = conn.prepareStatement(D.SQL_SELECT_CUR_NAME);
+         pstmt.setString(1, ins_name);
+         System.out.println(pstmt);
+         rs = pstmt.executeQuery();
+         arr = createInsNameArray(rs);
    
       } finally {
          close();

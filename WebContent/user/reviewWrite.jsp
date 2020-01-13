@@ -101,12 +101,39 @@
 		<section id="blog" class="white">
 			<div class="container">
 				<div class="gap"></div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="blog">
-							<div class="blog-item">
-								<div class="blog-content">
-									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” >
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="blog">
+								<div class="blog-item">
+									<div class="blog-content">
+										<div class="widget search">
+				                        	<form method="get" action="/Project_itmoa/user/reviewWrite.do" onSubmit="return chkSubmit()">
+												<h3>학원 검색</h3>
+				                            	<div class="input-group">
+					                                <input type="text" name="ins_name" placeholder="학원명을 입력하세요" style="width: 100%; padding: 10px;" />
+					                                <span class="input-group-btn">
+				                                    	<button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search"></i></button>
+					                                </span>
+				                            	</div>
+				                        	</form>
+			                    		</div><!--/.search-->
+				                    	<table class="table">
+					                    	<thead>
+					                    		<tr>
+													<th>학원 선택</th>
+												</tr>
+											</thead>
+					                    	<c:forEach var="dto" items="${reviewWrite }" varStatus="status">
+												<tbody>
+													<tr class="${dto.class_uid }">
+														<td>${dto.ins_name } - ${dto.cur_name }</td>
+													</tr>
+												</tbody>
+					                    	</c:forEach>
+				                    	</table>
+			                    		<h4></h4>
+										<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit2()">
+										<h3 class="ins"></h3>
 										<h3 class="main-title">
 											<input name="review_brd_title" placeholder="제목을 입력하세요" style="width: 100%; padding: 10px;" />
 										</h3>
@@ -121,20 +148,17 @@
 											</script>
 										</div>
 										<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />  <!-- mb_uid -->
-										<input type="hidden" name="class_uid" value="1" />  <!-- class_uid -->
+										<input type="hidden" name="class_uid" value="0" />  <!-- class_uid -->
 										<input type="hidden" name="ifNew" value="true" />
 										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
 									</form>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!--/.col-md-8-->
-				</div>
-				<!--/.row-->
+					</div><!--/.col-md-8-->
+				</div><!--/.row-->
 			</div>
-		</section>
-		<!--/#blog-->
+		</section><!--/#blog-->
 	</div>
 
 	<div id="footer-wrapper">
@@ -163,5 +187,45 @@
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/init.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('tbody tr').hover(function() {
+				$(this).css({
+					"cursor": "pointer",
+					"background-color": "#F2F2F2"
+				})
+			}, function() {
+				$(this).css({
+					"cursor": "default",
+					"background-color": "#fff"
+				})
+			})
+			$('tbody tr').click(function() {
+				$(":hidden[name='class_uid']").val($(this).attr('class'));
+				$('h4').html($(this).children());
+			})
+		})
+		
+		function chkSubmit() {
+			var chk = confirm("작성한 글이 초기화 됩니다");
+			if (chk == false) { return false; }
+		}
+		
+		function chkSubmit2() {
+			if ($(":hidden[name='class_uid']").val() == 0) {
+				alert("과정을 선택해주세요");
+				return false;
+			}
+			if ($(":text[name='review_brd_title']").val() == null) {
+				alert("제목을 입력하세요");
+				return false;
+			}
+			if ($("textarea[name='review_brd_content']").val() == null) {
+				alert("내용을 입력하세요");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

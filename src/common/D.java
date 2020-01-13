@@ -334,6 +334,14 @@ public interface D {
 		+ " AND cl.class_uid = r.class_uid"
 		+ " AND cl.ins_uid = i.ins_uid";
 	
+	// 학원 선택 목록
+	public static final String SQL_SELECT_CUR_NAME =  
+		"SELECT cl.class_uid, i.ins_name, c.cur_name"
+		+ " FROM ins i, class cl, cur c"
+		+ " WHERE ins_name LIKE ?"
+		+ " AND cl.ins_uid = i.ins_uid"
+		+ " AND cl.cur_uid = c.cur_uid";
+
 	// 페이징용 쿼리 준비
 	// 쿼리: 글 목록 전체 개수 가져오기
 	public static final String SQL_COUNT_ALL_REVIEW_BRD = 
@@ -362,7 +370,7 @@ public interface D {
 
 	// 리뷰 내용
 	public static final String SQL_SELECT_REVIEW_CONTENT =  
-		"SELECT i.ins_name, r.* , m.mb_id, m.mb_uid"
+		"SELECT i.ins_name, r.* , m.mb_id, m.mb_uid, cl.class_uid"
 		+ " FROM review_brd r, mb m, class cl, ins i"
 		+ " WHERE r.review_brd_uid = ?"
 		+ " AND m.mb_uid = r.mb_uid"
@@ -377,7 +385,7 @@ public interface D {
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
 		"UPDATE review_brd"
-		+ " SET review_brd_title = ?, review_brd_content = ? "
+		+ " SET class uid = ?, review_brd_title = ?, review_brd_content = ? "
 		+ " WHERE review_brd_uid = ?";
 		
 	// 조회수 처리는?

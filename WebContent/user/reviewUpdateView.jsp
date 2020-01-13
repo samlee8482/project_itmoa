@@ -107,7 +107,7 @@
 						<div class="blog">
 							<div class="blog-item">
 								<div class="blog-content">
-									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” >
+									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit()">
 										<h3 class="main-title">
 											<input name="review_brd_title" value="${reviewUpdateView[0].review_brd_title }" style="width: 100%; padding: 10px;" />
 										</h3>
@@ -122,7 +122,6 @@
 											</script>
 										</div>
 										<input type="hidden" name="mb_uid" value="1" />  <!-- mb_uid -->
-										<input type="hidden" name="class_uid" value="1" />  <!-- class_uid -->
 										<input type="hidden" name="review_brd_uid" value="${reviewUpdateView[0].review_brd_uid }" />
 										<input type="hidden" name="ifNew" value="false" />
 										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
@@ -165,5 +164,18 @@
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/init.js"></script>
+	
+	<script>
+		function chkSubmit() {
+			if ($(":text[name='review_brd_title']").val() == null) {
+				alert("제목을 입력하세요");
+				return false;
+			}
+			if ($("textarea[name='review_brd_content']").val() == null) {
+				alert("내용을 입력하세요");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

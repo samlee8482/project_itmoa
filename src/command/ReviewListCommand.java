@@ -28,6 +28,7 @@ public class ReviewListCommand implements Command {
 		
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO [] arr = null;
+		ReviewDTO [] insNameArr = null;
 		
 		// 페이징 관련 세팅 값들
 		int page = 1;  // 현재 페이지 (디폴트는 1 page)
@@ -71,6 +72,7 @@ public class ReviewListCommand implements Command {
 				int fromRow = (page - 1) * pageRows;  // MySQL 은 0 부터 시작 !
 				
 				arr = dao.selectReviewList(option_review, keyword, fromRow, pageRows);
+				request.setAttribute("reviewSelectIns", insNameArr);
 				request.setAttribute("reviewList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);

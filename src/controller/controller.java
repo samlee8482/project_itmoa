@@ -51,6 +51,7 @@ import command.ReviewListCommand;
 import command.ReviewUpdateOkCommand;
 import command.ReviewUpdateViewCommand;
 import command.ReviewViewCommand;
+import command.ReviewWriteCommand;
 import command.ZZimOkCommand;
 
 
@@ -216,6 +217,8 @@ public class controller extends HttpServlet {
 			viewPage = "reviewView.jsp";
 			break;
 		case "/user/reviewWrite.do":  // 리뷰 작성 페이지 이동
+			command = new ReviewWriteCommand();
+			command.execute(request, response);
 			viewPage = "reviewWrite.jsp";
 			break;
 		case "/user/reviewUpdateView.do":  // 리뷰 수정 페이지 이동
