@@ -116,7 +116,7 @@ public class AdminMemberUpdateOkCommand implements Command {
 				System.out.println("파일타입 : " + fileType + "<br>");
 				
 			}
-			
+			    
 			if(fileType == null) {
 				cnt = 3;
 				request.setAttribute("adminMemberUpdateOk", cnt);
