@@ -6,6 +6,7 @@ form{
 	width: 100%;
 	height: auto;
 	float: left;
+	margin-top: 10%;
 }
 
 #login-content{
@@ -61,8 +62,6 @@ input.login-info {
 	display: inline-block;
 	}
 
-
-
 #info1, #info_addr{
 	text-align: center;
 }
@@ -80,7 +79,6 @@ div.a {
 	width: 50%;
 	height: 100%;
 	font-size: 14px;
-	margin-top: 100px;
 	text-align: center;
 }
 
@@ -95,7 +93,6 @@ div.a {
 #join-info {
 	display:inline-block;
 	text-align: center;
-	margin: 10% auto;
 }
 
 #agreement{
