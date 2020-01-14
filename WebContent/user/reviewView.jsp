@@ -27,6 +27,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
+	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
 
     <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -100,14 +101,14 @@
                                 <div class="blog-content">
                                     <h3 class="main-title">
                                     	${reviewView[0].review_brd_title }
-	                                    <c:if test="${sessionScope.loginUid == reviewView[0].mb_uid }">
-                                           	<button type="button" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-	                                    		후기 수정
+                           	            <c:if test="${sessionScope.loginUid == reviewView[0].mb_uid }">
+	                                       	<button type="button" class="btn btn-warning" style="padding: 5px;" onclick="location.href='/Project_itmoa/user/reviewUpdateView.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+	                                    		<i class="far fa-edit" style="color: white; font-size: 15px;"></i>
 	                                    	</button>
 	                                    </c:if>
 										<c:if test="${sessionScope.loginLevel == 3 || sessionScope.loginUid == reviewView[0].mb_uid }">
-											<button type="button" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
-	                                    		후기 삭제
+											<button type="button" class="btn btn-danger" style="padding: 5px;" onclick="location.href='/Project_itmoa/user/reviewDeleteOk.do?review_brd_uid=${reviewView[0].review_brd_uid }'">
+	                                    		<i class="fas fa-trash" style="color: white; font-size: 15px;"></i>
 	                                    	</button>
 										</c:if>
                                     </h3>
@@ -134,7 +135,10 @@
 		                                                	<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />
 		                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
 			                                                <textarea style="width: 100%; resize: none;" name="rep_content"></textarea>
-			                                                <button type="submit" style="float: right">댓글 작성</button>
+			                                                <button type="submit" class="btn btn-success" style="padding: 5px; float: right">
+				            	                        		<i class="far fa-edit" style="color: white; font-size: 15px;"></i>
+				            	                        		<span>댓글 작성</span>
+	        				                            	</button>
 		                                                </form>
 		                                            </div>
 		                                        </div>
@@ -149,7 +153,7 @@
 				                        			<c:forEach var="repList" items="${repView }" varStatus="status">
 			                                            <div class="media">
 			                                                <div class="pull-left">
-			                                                    <img class="avatar img-thumbnail comment-avatar" src="${repList.mb_img }" style="min-width: 88px; min-height: 88px;" alt="">
+			                                                    <img class="avatar img-thumbnail comment-avatar" src="/Project_itmoa/user/upload/${repList.mb_img }" style="min-width: 88px; min-height: 88px;" alt="">
 			                                                </div>
 			                                                <div class="media-body">
 			                                                    <div class="well">
@@ -164,8 +168,8 @@
 				                                                        	</span>
 				                                                        	<c:choose>
 																			    <c:when test="${sessionScope.loginUid == repList.mb_uid || sessionScope.loginLevel == 3 }">
-				                                                            		<button type="button" class="repUpdateButton" onclick="repUpdate(${status.index } )">댓글 수정</button>
-				                                                            		<button type="button" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${repList.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'">댓글 삭제</button>
+				                                                            		<button type="button" class="repUpdateButton btn btn-warning" style="padding: 5px;" onclick="repUpdate(${status.index } )"><i class="far fa-edit"></i></button>
+				                                                            		<button type="button" class="btn btn-danger" style="padding: 5px;" onclick="location.href='/Project_itmoa/user/repDeleteOk.do?rep_uid=${repList.rep_uid }&review_brd_uid=${reviewView[0].review_brd_uid }'"><i class="fas fa-trash"></i></button>
 																			    </c:when>
 																			</c:choose>
 				                                                        </div>
@@ -175,7 +179,10 @@
 			                                                        	<c:choose>
 																	    	<c:when test="${not empty sessionScope.loginUid }">
 						                                                        <span class="repUpdate">
-						                                                        	<button type="submit" style="display: none;">수정 완료</button>
+						                                                        	<button type="submit" class="btn btn-warning" style="padding: 5px; display: none;">
+																						<i class="far fa-edit"></i>
+																						<span>수정 완료</span>
+																					</button>
 						                                                        </span>
 						                                                	</c:when>
 				                                                		</c:choose>

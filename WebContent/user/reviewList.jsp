@@ -132,7 +132,7 @@
                      
 
                     </aside>
-                    <div class="col-sm-8 col-sm-pull-4">
+                    <div class="col-sm-10 col-sm-push-1">
                         <div class="blog">
                         	<div class="table-responsive">
                         		<c:choose>
@@ -140,15 +140,15 @@
                     					<button type="button" class="site-btn" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
                     				</c:when>
                     			</c:choose>
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table" width="100%" cellspacing="0">
 									<thead>
-										<tr>
-											<th width="5%">No</th>
-											<th width="12%">리뷰 번호</th>
-											<th width="18%">작성자 아이디</th>
-											<th width="20%">학원명</th>
-											<th width="25%">리뷰제목</th>
-											<th width="25%">리뷰작성일</th>
+										<tr style="background-color: #eb2b70; color: white; font-weight: bold;">
+											<th width="5%" style="padding: 14px 20px;">No</th>
+											<th width="12%" style="padding: 14px 20px;">리뷰 번호</th>
+											<th width="18%" style="padding: 14px 20px;">작성자 아이디</th>
+											<th width="25%" style="padding: 14px 20px;">학원명</th>
+											<th width="20%" style="padding: 14px 20px;">리뷰제목</th>
+											<th width="25%" style="padding: 14px 20px;">리뷰작성일</th>
 										</tr>
 									</thead>
 		                        	<c:forEach var="dto" items="${reviewList }" varStatus="status">

@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lec.beans.MbDAO;
 import com.oreilly.servlet.MultipartRequest;
@@ -23,6 +24,7 @@ public class MyPageUpdateOkCommand implements Command {
 		ServletContext context = request.getServletContext();
 		String contextRootPath = context.getRealPath("user/upload"); 
 		System.out.println(contextRootPath);
+		HttpSession httpSession = request.getSession();
 		
 		try {
 			
@@ -48,7 +50,7 @@ public class MyPageUpdateOkCommand implements Command {
 			if (mb_img == null)
 				mb_img = older_mb_img;
 
-			if ( mb_pw != null && mb_pw.length() > 0
+			if (mb_pw != null && mb_pw.length() > 0
 					&& !mb_pw.trim().equals("") && mb_email != null && mb_email.length() > 0 && !mb_email.trim().equals("")
 					&& mb_zip > 0 && mb_add1 != null && mb_add1.length() > 0 && !mb_add1.trim().equals("")
 					&& mb_add2 != null && mb_add2.length() > 0 && !mb_add2.trim().equals("") && mb_uid > 0) {
@@ -71,6 +73,10 @@ public class MyPageUpdateOkCommand implements Command {
 		}
 		request.setAttribute("myPageUpdateOk", cnt);
 
+		if (cnt == 1) {
+			httpSession.removeAttribute("loginImg");
+			httpSession.setAttribute("loginImg", contextRootPath);;
+		}
 	}
 
 }
