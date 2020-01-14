@@ -31,6 +31,7 @@ ${findIdOk }
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
     <link href="css/style3.css" rel="stylesheet">
     
     <!--[if lt IE 9]>
@@ -57,15 +58,18 @@ ${findIdOk }
 	</c:otherwise>
 </c:choose> 
          
-    <div class="a" id="div-find-id">
+    <div id="div_find-id">
         <div class="find-id">
-        	<h4>아이디 찾기</h4>
+        	<h3>아이디 찾기</h3>
         </div>
         <div id="find-id" class="find-id">
-        	<div id="find-id-info" class="find-id">
-        		<div name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required">아이디 : ${findIdOk[0].mb_id }</div><br>
+        	<div id="find_id-info" class="find-id">
+        		찾으시는 회원님의 아이디는 <br>
+        		<div name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required">아이디 : ${findIdOk[0].mb_id }</div>
+        		입니다.<br>
+        		다시 로그인 해주시기 바랍니다.<br>
         	</div>
-        	<button id="find-id-btn" onclick="location.href='login.do'">로그인</button>
+        	<button id="login-btn" onclick="location.href='login.do'">로그인</button>
         </div>
     </div>
     

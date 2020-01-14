@@ -15,6 +15,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
     <link href="css/style3.css" rel="stylesheet">
     
     <!--[if lt IE 9]>
@@ -40,15 +41,15 @@
 	<jsp:include page="topMenu.jsp" />
 	</c:otherwise>
 </c:choose> 
-    <div class="a" id="div-find-id">
+    <div class="a" id="div_find-id">
         <div class="find-id">
-        	<h4>비밀번호 찾기</h4>
+        	<h3>비밀번호 찾기</h3>
         </div>
         <div id="find-id" class="find-id">
-        	<div id="find-id-info" class="find-id">
+        	<div id="find_id-info" class="find-id">
         		<div name="mb_name" class="find-id-info" type="text" required="required">고객님의 이메일로<br>비밀번호가 발송되었습니다.</div><br>
         	</div>
-        	<button id="find-id-btn" onclick="location.href='login.do'">로그인</button>
+        	<button id="login-btn" onclick="location.href='login.do'">로그인</button>
         </div>
     </div>
     
