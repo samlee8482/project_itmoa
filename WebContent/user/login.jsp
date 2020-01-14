@@ -70,7 +70,7 @@
 	<form name="frm" id="login-content" method="post" action="loginOk.do"
 		onsubmit="return chkSubmit()">
 		<div class="login-logo">
-			<img id="logo" src="images/fake-logo.PNG">
+			<img id="logo" src="images/ITMOA.png" onclick="location.href='index.do'">
 		</div>
 		<div id="login-info" class="login-info" >
 			<div id="id-pw">

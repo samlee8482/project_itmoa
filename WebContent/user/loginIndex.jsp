@@ -91,7 +91,7 @@
                                     <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">우리가 원하는 IT학원</h2><br><br>
                                     <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">모두 다! 모아</h2><br>
                                     <h1 class="boxed animation animated-item-2 fade-up" id="main_title">I T M O A</h1><br>
-                                    <a class="btn btn-md animation bounce-in" id="main_btn" href="join.do">회원가입</a>
+                                    <a class="btn btn-md animation bounce-in" id="main_btn" href="classList.do">학원찾기</a>
                                 </div>
                             </div>
                         </div>
