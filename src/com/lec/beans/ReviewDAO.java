@@ -377,12 +377,13 @@ public class ReviewDAO {
          int rep_uid = rs.getInt("rep_uid");
          String mb_id = rs.getString("mb_id");
          int mb_uid = rs.getInt("mb_uid");
+         String mb_img = rs.getString("mb_img");
          String rep_content = rs.getString("rep_content");
 	     Date d = rs.getDate("rep_regdate");
 	     Time t = rs.getTime("rep_regdate");
 	     String rep_regdate = new SimpleDateFormat("yyyy-MM-dd").format(d) + " | " + new SimpleDateFormat("hh:mm:ss").format(t);
          
-         ReviewDTO dto = new ReviewDTO(review_brd_uid, rep_uid, mb_id, mb_uid, rep_content, rep_regdate);
+         ReviewDTO dto = new ReviewDTO(review_brd_uid, rep_uid, mb_id, mb_uid, mb_img, rep_content, rep_regdate);
          reviewList.add(dto);         
       }
       
