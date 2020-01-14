@@ -107,7 +107,7 @@
 								<div class="blog-item">
 									<div class="blog-content">
 										<div class="widget search">
-				                        	<form method="get" action="/Project_itmoa/user/reviewWrite.do" onSubmit="return chkSubmit()">
+				                        	<form method="post" action="/Project_itmoa/user/reviewWrite.do">
 												<h3>학원 검색</h3>
 				                            	<div class="input-group">
 					                                <input type="text" name="ins_name" placeholder="학원명을 입력하세요" style="width: 100%; padding: 10px;" />
@@ -115,7 +115,6 @@
 				                                    	<button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search"></i></button>
 					                                </span>
 				                            	</div>
-				                        	</form>
 			                    		</div><!--/.search-->
 				                    	<table class="table">
 					                    	<thead>
@@ -132,13 +131,13 @@
 					                    	</c:forEach>
 				                    	</table>
 			                    		<h4></h4>
-										<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit2()">
+										<form method="post" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit2()">
 										<h3 class="ins"></h3>
 										<h3 class="main-title">
-											<input name="review_brd_title" placeholder="제목을 입력하세요" style="width: 100%; padding: 10px;" />
+											<input name="review_brd_title" placeholder="제목을 입력하세요" value="${reviewBrdTitle }" style="width: 100%; padding: 10px;" />
 										</h3>
 										<div style="padding: 30px 10px">
-											<textarea name="review_brd_content" id="editor1"></textarea>
+											<textarea name="review_brd_content" id="editor1">${reviewBrdContent }</textarea>
 											<script>
 											CKEDITOR.replace('editor1', {
 												allowedContent: true,
@@ -152,6 +151,8 @@
 										<input type="hidden" name="ifNew" value="true" />
 										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
 									</form>
+									
+		                        	</form>
 								</div>
 							</div>
 						</div>
@@ -206,11 +207,6 @@
 				$('h4').html($(this).children());
 			})
 		})
-		
-		function chkSubmit() {
-			var chk = confirm("작성한 글이 초기화 됩니다");
-			if (chk == false) { return false; }
-		}
 		
 		function chkSubmit2() {
 			if ($(":hidden[name='class_uid']").val() == 0) {

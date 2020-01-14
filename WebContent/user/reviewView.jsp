@@ -123,7 +123,7 @@
 	                                    <div class="author well">
 	                                        <div class="media">
 	                                            <div class="pull-left">
-	                                                <img class="avatar img-thumbnail author-box-image" src="http://placehold.it/400x400" alt=""> <!-- ${sessionScope.loginImg } -->
+	                                                <img class="avatar img-thumbnail author-box-image" src="${sessionScope.loginImg }" alt="" style="min-width: 88px; min-height: 88px;"> <!-- ${sessionScope.loginImg } -->
 	                                            </div>
 				                    				<div class="media-body">
 		                                                <div class="media-heading">
@@ -149,7 +149,7 @@
 				                        			<c:forEach var="repList" items="${repView }" varStatus="status">
 			                                            <div class="media">
 			                                                <div class="pull-left">
-			                                                    <img class="avatar img-thumbnail comment-avatar" src="http://placehold.it/400x400" alt="">
+			                                                    <img class="avatar img-thumbnail comment-avatar" src="${repList.mb_img }" style="min-width: 88px; min-height: 88px;" alt="">
 			                                                </div>
 			                                                <div class="media-body">
 			                                                    <div class="well">

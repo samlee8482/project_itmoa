@@ -401,7 +401,7 @@ public interface D {
 	
 	// 리뷰uid에 해당하는 댓글 리스트 불러오기
 	public static final String SQL_SELECT_REP_BY_UID =  
-			"SELECT m.mb_id, m.mb_uid, re.*"
+			"SELECT m.mb_id, m.mb_uid, m.mb_img, re.*"
 			+ " FROM review_brd r, mb m, rep re"
 			+ " WHERE r.review_brd_uid = ?"
 			+ " AND re.review_brd_uid = r.review_brd_uid"
