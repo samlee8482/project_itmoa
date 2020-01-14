@@ -195,13 +195,13 @@
 								<div class="card-header py-3">
 									<form method="get" action="/Project_itmoa/admin/adminReviewList.do" onsubmit="return chkSubmit()">
 										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
-										<select name="option_review">
+										<label class="p-2"><select name="option_review" style="height:29.5px;">
 											<option value="1">작성자 아이디</option>
 											<option value="2">리뷰 제목</option>
 											<option value="3">리뷰 내용</option>
 										</select>
-										<input type="text" name="keyword" />
-										<button type="submit">검색</button>
+										<input type="text" name="keyword" style="height:29.5px; margin-top:-5px; margin-left: -5px" />
+										<button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
 									</form>
 								</div>
 								<div class="card-body">

@@ -150,19 +150,6 @@ blockquote {
 	margin-top: -150px;
 }
 
-#main-slider .carousel .btn {
-	border: 5px solid rgba(255, 255, 255, 0.9);
-	color: #fff;
-	border-radius: 0;
-	margin-top: 35px;
-	font-size: 26px;
-	font-weight: 700;
-	text-transform: uppercase;
-	padding: 10px 15px;
-	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
-	z-index: 10px;
-}
-
 #main-slider .carousel .btn:hover {
 	background-color: rgba(255, 255, 255, 0.9);
 	color: #202020;
@@ -221,7 +208,7 @@ blockquote {
 	clear: both;
 	display: block;
 	font-size: 78px;
-	margin: 100px auto 0;
+	margin: inherit;
 	position: relative;
 	width: 80px;
 	-webkit-transform: rotate(15deg);
@@ -2102,8 +2089,7 @@ img.author-box-image {
 	border: 3px solid rgba(255, 255, 255, 0.9);
 	color: #fff;
 	border-radius: 0;
-	margin-top: 35px;
-	font-size: 19px;
+	font-size: 30px;
 	font-weight: 400;
 	text-transform: uppercase;
 	padding: 10px 15px;
@@ -2185,7 +2171,8 @@ img.author-box-image {
 	bottom: 8px;
 	right: -198px;
 	width: 200px;
-	height: 350px;
+	height: 300px;
+	margin: auto;
 }
 
 .hero-rocket img {

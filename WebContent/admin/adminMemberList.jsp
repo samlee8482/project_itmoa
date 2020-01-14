@@ -99,23 +99,23 @@
                         <div class="card-header py-3">
                         <form action="adminMemberList.do" method="post" enctype="multipart">
                            <h6 class="m-0 font-weight-bold text-primary">회원구분</h6>
-                           <input type="radio" name="option_mb_1" value="1" checked="checked" />전체
-                           <input type="radio" name="option_mb_1" value="2" />일반회원
-                           <input type="radio" name="option_mb_1" value="3" />슈퍼회원
-                           <input type="radio" name="option_mb_1" value="4" />관리자
+                           <label class="p-2"><input type="radio" name="option_mb_1" value="1" checked="checked" />전체</label>
+                           <label class="p-2"><input type="radio" name="option_mb_1" value="2" />일반회원</label>
+                           <label class="p-2"><input type="radio" name="option_mb_1" value="3" />슈퍼회원</label>
+                           <label class="p-2"><input type="radio" name="option_mb_1" value="4" />관리자</label>
                            <h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-                           <select name="option_mb_2">
+                           <label class="p-2"><select name="option_mb_2" style="height:29.5px;">
                               <option value="1">회원ID</option>
                               <option value="2">회원명</option>
                               <option value="3">회원번호</option>
                               <option value="4">이메일</option>
                            </select>
-                           <input type="text" name="option_mb_3" />
-                           <input type="submit" value="검색"/>
+                           <input type="text" name="option_mb_3" style="height:29.5px; margin-top:-5px; margin-left: -5px"/>
+                           <button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
                            </form>
-                           <h6 class="m-0 font-weight-bold text-primary">총 ${adminMemberAllCnt }건 중 ${adminMemberCnt }건의 데이터가 조회되었습니다.</h6>
                         </div>
                         <div class="card-body">
+                           <h6 class="m-0 font-weight-bold text-primary">총 ${adminMemberAllCnt }건 중 ${adminMemberCnt }건의 데이터가 조회되었습니다.</h6><br>
                            <div class="table-responsive">
                               <table class="table table-bordered" id="dataTable"
                                  width="100%" cellspacing="0">
@@ -153,6 +153,16 @@
                                     </tr>
                                  </c:forEach>
                               </table>
+                              	<%--페이징 --%>
+					         		<div id="pageContainer">
+						         		<div id="pageBtn">
+											<jsp:include page="adminMemberListPagination.jsp">
+												<jsp:param value="${writePages }" name="writePages"/>
+												<jsp:param value="${totalPage }" name="totalPage"/>
+												<jsp:param value="${page }" name="curPage"/>
+											</jsp:include>
+										</div>
+									</div>
                            </div>
                         </div>
                      </div>
@@ -168,17 +178,7 @@
          <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                <div class="copyright text-center my-auto">
-	         		<%--페이징 --%>
-	         		<div id="pageContainer">
-		         		<div id="pageBtn">
-							<jsp:include page="adminMemberListPagination.jsp">
-								<jsp:param value="${writePages }" name="writePages"/>
-								<jsp:param value="${totalPage }" name="totalPage"/>
-								<jsp:param value="${page }" name="curPage"/>
-							</jsp:include>
-						</div>
                   <span>Copyright &copy; Your Website 2019</span>
-					</div>
                </div>
             </div>
          </footer>

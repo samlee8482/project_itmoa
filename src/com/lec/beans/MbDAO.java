@@ -317,8 +317,9 @@ public class MbDAO {
 			String mb_id = rs.getString("mb_id");
 			String mb_name = rs.getString("mb_name");
 			String mb_email = rs.getString("mb_email");
+			String mb_pw = rs.getString("mb_pw");
 			
-			MbDTO dto = new MbDTO(mb_id, mb_name, mb_email);
+			MbDTO dto = new MbDTO(mb_id, mb_name, mb_email, mb_pw);
 			list.add(dto);
 		}
 		

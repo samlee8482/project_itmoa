@@ -32,10 +32,6 @@ public class FindPwOkCommand implements Command{
 		String mb_name = request.getParameter("mb_name");
 		String mb_email = request.getParameter("mb_email");    
 
-		// 메일 보내기
-		String TO = "wkrud94@hanmail.net";
-		String FROM = "wkrud94@naver.com";
-
 		String SMTP_USERNAME = "wkrud94@naver.com";
 		String SMTP_PASSWORD = "lds794613!";
 		String HOST = "smtp.naver.com";
@@ -55,16 +51,20 @@ public class FindPwOkCommand implements Command{
 			arr = dao.selectPw(mb_id, mb_name, mb_email);
 			if(arr.length == 1 && arr[0].getMb_id().trim().equals(mb_id.trim()) && arr[0].getMb_name().trim().equals(mb_name.trim()) && arr[0].getMb_email().trim().equals(mb_email.trim())) {
 				cnt++;
+				// 메일 보내기
+				String TO = arr[0].getMb_email();
+				String FROM = "itmoa@itmoa.com";
 				
-				MimeMessage message = new MimeMessage(session);
+			   MimeMessage message = new MimeMessage(session);
 			   message.setFrom(new InternetAddress(SMTP_USERNAME));
 			   message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
 
+			   
 			   // 메일 제목
-			   message.setSubject("[Subject] Java Mail Test");
+			   message.setSubject("[아이티모아] 비밀번호 안내입니다.");
 			   
 			   // 메일 내용
-			   message.setText("Simple mail test..");
+			   message.setText("고객님의 비밀번호는 " + arr[0].getMb_pw() + "입니다.");
 
 			   System.out.println("Sending...");
 			   
@@ -75,6 +75,8 @@ public class FindPwOkCommand implements Command{
 	           System.out.println("Email sent!");
 		       
 	           request.setAttribute("findPwOk", cnt);
+			} else {
+				request.setAttribute("findPwOk", cnt);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

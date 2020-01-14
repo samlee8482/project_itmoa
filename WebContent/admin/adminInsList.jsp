@@ -106,20 +106,20 @@
 							<!-- Area Chart -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">학원 목록</h6>
-								</div>
-								<div class="card-body">
-								<form action="adminInsList.do" method="get">
+									<!-- <h6 class="m-0 font-weight-bold text-primary">학원 목록</h6> 없어도 되는 부분인것같음--> 
+									<form action="adminInsList.do" method="get">
 								<h6 class="m-0 font-weight-bold text-primary">검색조건</h6>
-								<select name="option">
+								<label class="p-2"><select name="option" style="height:29.5px;">
 										<option value="1" selected>학원명</option>
 										<option value="2">학원코드</option>
 								</select>
-								<input type="text" name="keyword" value="" ></input>
-								<input type="submit" value="검색" class="btn btn-info btn-icon-split" />
-								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span class="icon text-white-100">학원등록</span></a>
+								<input type="text" name="keyword" style="height:29.5px; margin-top:-5px; margin-left: -5px" ></input>
+								<button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
 								</form>
+								</div>
+								<div class="card-body">
 								<h6 class="m-0 font-weight-bold text-primary">총 ${adminInsAllCnt }건 중 ${adminInsCnt }건의 데이터가 조회되었습니다.</h6>
+								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span>학원등록</span></a> <!-- class="icon text-white-100" 뺐음 -->
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
@@ -152,6 +152,15 @@
 											</tbody>
 											</c:forEach>
 										</table>
+											<%--페이징 --%>
+								         		<div id="pageContainer">
+									         		<div id="pageBtn">
+													<jsp:include page="adminInsListPagination.jsp">
+														<jsp:param value="${writePages }" name="writePages"/>
+														<jsp:param value="${totalPage }" name="totalPage"/>
+														<jsp:param value="${page }" name="curPage"/>
+													</jsp:include>
+												</div>
 									</div>
 								</div>
 							</div>
@@ -170,15 +179,6 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<%--페이징 --%>
-		         		<div id="pageContainer">
-			         		<div id="pageBtn">
-							<jsp:include page="adminInsListPagination.jsp">
-								<jsp:param value="${writePages }" name="writePages"/>
-								<jsp:param value="${totalPage }" name="totalPage"/>
-								<jsp:param value="${page }" name="curPage"/>
-							</jsp:include>
-						</div><br><br><br>
 						<span>Copyright &copy; Your Website 2019</span>
 					</div>
 				</div>

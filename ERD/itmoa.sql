@@ -18,10 +18,10 @@ DROP TABLE IF EXISTS news_brd;
 
 CREATE TABLE class
 (
-	class_uid int NOT NULL AUTO_INCREMENT,
 	cur_uid int NOT NULL,
 	ins_uid int NOT NULL,
-	class_zzimcnt int default 0,
+	class_uid int NOT NULL AUTO_INCREMENT,
+	class_zzimcnt int DEFAULT 0,
 	PRIMARY KEY (class_uid)
 );
 
@@ -47,15 +47,15 @@ CREATE TABLE ins
 	ins_uid int NOT NULL AUTO_INCREMENT,
 	ins_name varchar(50) NOT NULL,
 	ins_tel varchar(20) NOT NULL,
-	ins_zip int,
+	ins_zip int NOT NULL,
 	ins_add1 text NOT NULL,
 	ins_add2 text NOT NULL,
 	ins_location varchar(20) NOT NULL,
 	ins_branch varchar(20) NOT NULL,
-	ins_img text default 0,
-	ins_x double DEFAULT 37.5582373,
-	ins_y double DEFAULT 126.8164805,
-	PRIMARY KEY (ins_uid)    
+	ins_img text,
+	ins_x double,
+	ins_y double,
+	PRIMARY KEY (ins_uid)
 );
 
 
@@ -69,9 +69,9 @@ CREATE TABLE mb
 	mb_zip int NOT NULL,
 	mb_add1 text NOT NULL,
 	mb_add2 text NOT NULL,
-	mb_level int default 1,
-	mb_regdate datetime default now(),
-	mb_img text default 0,
+	mb_level int DEFAULT 1,
+	mb_regdate datetime DEFAULT now(),
+	mb_img text,
 	PRIMARY KEY (mb_uid),
 	UNIQUE (mb_id),
 	UNIQUE (mb_email)
@@ -81,21 +81,22 @@ CREATE TABLE mb
 CREATE TABLE news_brd
 (
 	news_brd_uid int NOT NULL AUTO_INCREMENT,
-	news_brd_title varchar(100) NOT null unique,
-	news_brd_img text,
+	news_brd_title varchar(100) NOT NULL,
+	news_brd_img varchar(150),
 	news_brd_content text,
 	news_brd_viewcnt int DEFAULT 0,
-	PRIMARY KEY (news_brd_uid)
+	PRIMARY KEY (news_brd_uid),
+	UNIQUE (news_brd_title)
 );
 
 
 CREATE TABLE rep
 (
+	mb_uid int NOT NULL DEFAULT 0,
+	review_brd_uid int NOT NULL,
 	rep_uid int NOT NULL AUTO_INCREMENT,
 	rep_content text NOT NULL,
-	rep_regdate datetime default now(),
-	mb_uid int NOT NULL,
-	review_brd_uid int NOT NULL,
+	rep_regdate datetime DEFAULT now(),
 	PRIMARY KEY (rep_uid)
 );
 
@@ -105,19 +106,19 @@ CREATE TABLE review_brd
 	review_brd_uid int NOT NULL AUTO_INCREMENT,
 	review_brd_title varchar(50) NOT NULL,
 	review_brd_content text NOT NULL,
-	review_brd_regdate datetime default now(),
-	review_brd_viewcnt int default 0,
-	mb_uid int NOT NULL,
+	review_brd_regdate datetime DEFAULT now(),
+	review_brd_viewcnt int DEFAULT 0,
 	class_uid int NOT NULL,
+	mb_uid int NOT NULL DEFAULT 0,
 	PRIMARY KEY (review_brd_uid)
 );
 
 
 CREATE TABLE zzim
 (
-	mb_uid int NOT NULL,
-	zzim_uid int NOT NULL AUTO_INCREMENT,
+	mb_uid int NOT NULL DEFAULT 0,
 	class_uid int NOT NULL,
+	zzim_uid int NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (zzim_uid)
 );
 
@@ -128,65 +129,66 @@ CREATE TABLE zzim
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (cur_uid)
 	REFERENCES cur (cur_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (ins_uid)
 	REFERENCES ins (ins_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE rep
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
- 
- 
+
+
 ALTER TABLE rep
 	ADD FOREIGN KEY (review_brd_uid)
 	REFERENCES review_brd (review_brd_uid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
+
 
 
 SELECT * FROM mb;
@@ -197,9 +199,7 @@ select * from zzim;
 
 SELECT z.*, ins_name, cur_name FROM zzim z, ins i, cur WHERE z.mb_uid = 2;
 
-update mb set mb_level = 3 where mb_id = 'admin';
-insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
-values ('admin', 'Aabcd123!', '관리자', 'samlee8482@gmail.com', 07030, '서울시 관악구 신림동 1534-9', '더파크 502호');
+update mb set mb_level = 3 where mb_id = 'user1';
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user1', 'Aabcd123!', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
@@ -209,7 +209,7 @@ values ('user3', 'Ddsrrws1@', '박지민', 'emmail@gmail.com', 14410, '인천광
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user4', 'Rretw_12#', '박우람', 'abced@hanmail.net', 01035, '경기도', '평택');
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
-values ('user5', 'A12_dsf$', '김민하', 'ddsf133@hanmail.net', 91105, '부천시', '원미구');
+values ('user5', 'A12_adsf$', '김민하', 'ddsf133@hanmail.net', 91105, '부천시', '원미구');
 
 
 insert into ins (ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img, ins_x, ins_y)
@@ -281,3 +281,4 @@ insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
+

@@ -91,4 +91,19 @@ div.w1 {
 	height: auto;
 }
 
+#div_find-id{
+	margin-top: 20%;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+#find_id-info{
+	white-space: nowrap;
+	border: 0.5px solid;
+	margin: 0 20%;
+	padding: 10px;
+	font-size: 15px;	
+}
+
 
