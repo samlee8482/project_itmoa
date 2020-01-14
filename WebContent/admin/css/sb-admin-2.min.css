@@ -10140,11 +10140,11 @@ opacity
 }
 
 .btn-icon-split {
-	padding: 0;
+	padding: 3px;
 	overflow: hidden;
 	display: inline-flex;
 	align-items: stretch;
-	justify-content: center
+	justify-content: center;
 }
 
 .btn-icon-split .icon {

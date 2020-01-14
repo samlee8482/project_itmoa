@@ -199,18 +199,18 @@
 										<label class="p-2"><input type="radio" name="option_news_1" value="2" /> 오래된 순</label>
 										<label class="p-2"><input type="radio" name="option_news_1" value="3" /> 조회수 순</label>
 										<h6 class="mb-2 font-weight-bold text-primary">검색조건</h6>
-										<select name="option_news_2">
+										<label class="p-2"><select name="option_news_2" style="height:29.5px;">
 											<option value="1">뉴스 번호</option>
 											<option value="2">뉴스 제목</option>
 											<option value="3">뉴스 내용</option>
 										</select>
-										<input type="text" name="option_news_3" />
-										<button type="submit">검색</button>
+										<input type="text" name="option_news_3" style="height:29.5px; margin-top:-5px; margin-left: -5px" />
+										<button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
 									</form>
 								</div>
 								<div class="card-body">
 									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminNewsList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6>
-									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'">뉴스 작성</button>
+									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'" class="btn btn-info btn-icon-split">뉴스 작성</button>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
