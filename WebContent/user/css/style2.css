@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-form{
+form {
 	text-align: center;
 	position: relative;
 	width: 100%;
 	height: auto;
 	float: left;
-	margin-top: 10%; 
-	
+	margin-top: 10%;
 }
 
+<<<<<<< HEAD
 #main_btn {
 	float: left;
 	margin-left: 20%;
@@ -20,6 +20,9 @@ form{
 }
 
 #login-content{
+=======
+#login-content {
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 	text-align: center;
 }
 
@@ -31,7 +34,6 @@ form{
 #login-info {
 	margin-top: 10px;
 }
-
 
 #id-pw {
 	padding: 10px;
@@ -46,12 +48,28 @@ input.login-info {
 }
 
 #login-btn, #join-btn, #find-id-btn, #find-pw-btn {
+<<<<<<< HEAD
 	margin: 10px;
 	width: 350px;
 	height: 50px;
 	border-radius: 7px;
 	background-color: #eb2b63;
 	
+=======
+	display: inline-block;
+	border: none;
+	font-size: 15px;
+	font-weight: 400;
+	min-width: 186px;
+	padding: 17px 40px;
+	border-radius: 10px;
+	background: #eb2b63;
+	color: #fff;
+	line-height: 1;
+	cursor: pointer;
+	text-align: center;
+	letter-spacing: 2px;
+>>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 }
 
 #login-btn {
@@ -71,11 +89,9 @@ input.login-info {
 
 #other-op a {
 	display: inline-block;
-	}
+}
 
-
-
-#info1, #info_addr{
+#info1, #info_addr {
 	text-align: center;
 }
 
@@ -88,14 +104,14 @@ input.info1, input.addr {
 
 div.a {
 	display: inline-block;
-	float:left;
+	float: left;
 	width: 50%;
 	height: 100%;
 	font-size: 14px;
 	text-align: center;
 }
 
-#join-btn{
+#join-btn {
 	margin-top: 40px;
 }
 
@@ -104,47 +120,129 @@ div.a {
 }
 
 #join-info {
-	display:inline-block;
+	display: inline-block;
 	text-align: center;
 }
 
-#agreement{
+#agreement {
 	text-align: center;
 }
 
-
-textarea{
+textarea {
 	width: 400px;
 	height: 300px;
 	margin: 10px;
 }
 
-@media screen and (max-width: 1400px){
-	div.a {
+.w3 {
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	float: left;
+	clear: both;
+	left: 15%;
+}
+
+.w3 img {
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	border:none;
+	margin-bottom: 30px;
+}
+
+.box-file-input label {
 	display: inline-block;
-	text-align: center;
-	width: 45%;
-	height: 100%;
+	background: #eb2b63;;
+	color: #fff;
+	padding: 0px 15px;
+	line-height: 35px;
+	cursor: pointer;
 	font-size: 14px;
-	margin-top: 100px;
-	border: none;
-	}
+	border-radius: 8px;
+	font-weight: 500;
 }
 
-@media screen and (max-width: 1100px){
+.box-file-input label:after {
+	content: "파일등록";
+}
+
+.box-file-input .file-input {
+	display: none;
+}
+
+.box-file-input .filename {
+	display: inline-block;
+	padding-left: 10px;
+}
+
+#form_style {
+	width: 400px; height : auto;
+	height: auto;
+	left: 50%;
+	float: left;
+	position: absolute;
+}
+
+#form_style label {
+	font-weight: 500;
+	font-size: 14px;
+	color: #333333;
+}
+
+#form_style input {
+	border: 1px solid #444444;
+}
+
+#form_style #addr-btn {
+	display: inline-block;
+	background: #eb2b63;;
+	color: #fff;
+	padding: 0px 15px;
+	line-height: 35px;
+	cursor: pointer;
+	font-size: 11px;
+	border-radius: 8px;
+	font-weight: 500;
+	border: none;
+	margin-left: 5px;
+}
+
+#sample6_postcode {
+	width: 100px;
+	height: 40px;
+	border-radius: 7px;
+	margin-left: 5px;
+}
+
+.w2 {
+	width: 1300px;
+	height: auto;
+	margin: 0 auto;
+}
+@media screen and (max-width: 1400px) {
 	div.a {
-	width: 100%;
-	height: 20%;
-	text-align: center;
-	font-size: 14px;
-	margin-bottom: 0px;
-	border: none;
-	background: light-grey;
-	}
-
-	h1 {
-	display: block;
+		display: inline-block;
+		text-align: center;
+		width: 45%;
+		height: 100%;
+		font-size: 14px;
+		margin-top: 100px;
+		border: none;
 	}
 }
 
-
+@media screen and (max-width: 1100px) {
+	div.a {
+		width: 100%;
+		height: 20%;
+		text-align: center;
+		font-size: 14px;
+		margin-bottom: 0px;
+		border: none;
+		background: light-grey;
+	}
+	h1 {
+		display: block;
+	}
+}

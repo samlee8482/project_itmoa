@@ -62,6 +62,7 @@ public class AdminInsRegistCommand implements Command {
             }
             
             ins_tel = ins_tel1+"-"+ins_tel2+"-"+ins_tel3;
+            ins_img = "/Project_itmoa/admin/ins/img/" + ins_img;
             
             result_cnt = dao.insertIns(ins_name, ins_zip, ins_add1, ins_add2, ins_tel, ins_img, ins_branch, ins_location, ins_x, ins_y);
             

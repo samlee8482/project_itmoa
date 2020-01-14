@@ -14,7 +14,9 @@ public class ReviewWriteCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String ins_name = request.getParameter("ins_name");	
+		String ins_name = request.getParameter("ins_name");
+		String review_brd_title = request.getParameter("review_brd_title");
+		String review_brd_content = request.getParameter("review_brd_title");
 		
 		ReviewDTO [] arr = null;
 		ReviewDAO dao = new ReviewDAO();
@@ -24,6 +26,8 @@ public class ReviewWriteCommand implements Command {
 				ins_name = "%" + ins_name + "%";
 				arr = dao.selectInsByName(ins_name);
 				request.setAttribute("reviewWrite", arr);
+				request.setAttribute("reviewBrdTitle", review_brd_title);
+				request.setAttribute("reviewBrdContent", review_brd_content);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {

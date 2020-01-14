@@ -105,11 +105,13 @@
                                 <div class="center gap fade-down section-heading">
                                     <h2 class="main-title">${classView[0].cur_name }</h2>
                                     <hr>
-                                    <c:if test="${not empty sessionScope.LoginUid }">
+                                    <c:if test="${sessionScope.loginUid != null }">
                                     	<p>${classView[0].ins_name }</p>
 	                                    <form method="post" action="/Project_itmoa/user/reserveOk.do">
 	                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
-		                                    <button type="submit" style="color: black">상담 예약</button>
+		                                    <button type="submit" style="color: white" class="btn btn-info btn-icon-split">
+												<span class="text">상담 예약</span>
+											</button>
 	                                    </form>
                                     </c:if>
                                     <c:choose>
