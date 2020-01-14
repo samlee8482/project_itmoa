@@ -11,11 +11,12 @@
 
 .ooo{
 	overflow: hidden;
+	margin-top: 15px;
 } 
 
 #left{
 	float:left;
-	width:100px;
+	width:150px;
 }
 :root { -
 	-blue: #4e73df; -

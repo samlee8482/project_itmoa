@@ -193,21 +193,21 @@
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">이메일</h6>
-										<input type="text" name="mb_email" value="${adminMemberUpdateView[0].mb_email }" class="p-2 mb-3 col-xl-12" style="width: 150px; height: 30px;">
+										<input type="text" name="mb_email" value="${adminMemberUpdateView[0].mb_email }" class="p-2 mb-3 col-xl-12" style="width: 250px; height: 30px;">
 										</div>
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
-										<input type="text" id="sample6_postcode" name="mb_zip" value="${adminMemberUpdateView[0].mb_zip }" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;">
-										<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+										<input type="text" id="sample6_postcode" name="mb_zip" value="${adminMemberUpdateView[0].mb_zip }" style="width: 250px; height: 30px; border-radius: 5px; margin: 5px; margin-left: -1px;">
+										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px;">우편번호 찾기</button><br>
 										</div>
-										<div class="ooo" style="margin-left: 100px">
-										<input class="addr" type="text" id="sample6_address" name="mb_add1" value="${adminMemberUpdateView[0].mb_add1 }"><br>
-										<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" value="${adminMemberUpdateView[0].mb_add2 }">
+										<div style="margin-left: 150px">
+										<input class="addr" type="text" id="sample6_address" name="mb_add1" value="${adminMemberUpdateView[0].mb_add1 }" style="width:250px"><br>
+										<input class="addr" type="text" id="sample6_detailAddress" name="mb_add2" value="${adminMemberUpdateView[0].mb_add2}" style="width:250px">
 										<!--<input style="left: 200px" class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">-->
 										</div>
 										<div class="ooo">   
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">프로필 이미지</h6>
-										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
+										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top:7px;">
 												사진 선택<input type="file" name="mb_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 										</label>     
 										<img src="../user/mypage/img/${adminMemberUpdateView[0].mb_img }" style="width: 150px; height: 150px;"/>
