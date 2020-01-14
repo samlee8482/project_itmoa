@@ -35,7 +35,7 @@ h2 {
   width: 150px;
   height: 50px;
   text-align: center;
-  margin: 0px auto;
+  margin: 40px auto;
   border-bottom: 3px solid #eb2b63;
 }
 th, td { white-space: nowrap; }
@@ -118,7 +118,7 @@ input[class="addr-btn"] {
 	height: 38px;
 	margin: 5px;
 }
-textarea { border: 0px; }
+textarea { border: 0px; resize: none; }
 /* width */
 textarea::-webkit-scrollbar { width: 10px; }
 /* Track */
@@ -140,6 +140,8 @@ table { margin-left: 5%; }
 	text-align: center;
 }
 @media screen and (max-width: 1400px) {
+	#agreement { margin-top: 0px; }
+	#join-info { margin-top: 0px; }
 	.text_1, .chkbox { margin: 0 auto; }
 	table { margin-left: 17%; }
 }
@@ -269,24 +271,24 @@ table { margin-left: 5%; }
 			<div id="info1">
 				<table>
 					<tr>
-						<th>이름</th>
-						<td><input class="info1" name="mb_name" type="text" placeholder="이름을 입력해주세요."></td>
+						<th><label for="mb_name">이름</label></th>
+						<td><input id="mb_name" class="info1" name="mb_name" type="text" placeholder="이름을 입력해주세요."></td>
 					</tr>
 					<tr>
-						<th>아이디</th>
-						<td><input class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."></td>
+						<th><label for="mb_id">아이디</label></th>
+						<td><input id="mb_id" class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."></td>
 					</tr>
 					<tr>
-						<th>비밀번호</th>
-						<td><input class="info1" name="mb_pw" type="password" placeholder="비밀번호 를 입력해주세요."></td>
+						<th><label for="mb_pw">비밀번호</label></th>
+						<td><input id="mb_pw" class="info1" name="mb_pw" type="password" placeholder="비밀번호 를 입력해주세요."></td>
 					</tr>
 					<tr>
-						<th>비밀번호 확인</th>
-						<td><input class="info1" name="mb_pwOk" type="password" placeholder="비밀번호를 입력해주세요."></td>
+						<th><label for="mb_pwOk">비밀번호 확인</label></th>
+						<td><input id="mb_pwOk" class="info1" name="mb_pwOk" type="password" placeholder="비밀번호를 입력해주세요."></td>
 					</tr>
 					<tr>
-						<th>Email</th>
-						<td><input class="info1" name="mb_email" type="text" placeholder="이메일을 입력해주세요."></td>
+						<th><label for="mb_email">Email</label></th>
+						<td><input id="mb_email" class="info1" name="mb_email" type="text" placeholder="이메일을 입력해주세요."></td>
 					</tr>
 					<tr>
 						<th>주소</th>
