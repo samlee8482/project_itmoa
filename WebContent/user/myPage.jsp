@@ -53,7 +53,7 @@
 
 	<div class="w1">
 		<div class="w2">
-		<form id="infoForm" action="/Project_itmoa/user/myPageUpdateOk.do" method="post" enctype="multipart/form-data">
+		<form id="infoForm"  method="post" enctype="multipart/form-data">
 			<div class="w3">
 				<img src="upload/${myPage[0].mb_img}"
 					style="width: 200px; height: 200px;"> 
@@ -111,13 +111,11 @@
 						placeholder="상세주소">
 					<br>
 				
-					<button type="submit" id="join-btn">정보수정</button>
+					<input type="submit" id="join-btn" value="정보수정" onclick="selectAction()"/>
 				</div>
-				
-			</form>
+
 			
-			<div class="zzim-list" id="zzim-list"
-				style="margin-left: 37%; text-align: center;">
+			<div class="zzim-list" id="zzim-list">
 				<table>
 					<tr>
 						<th>NO</th>
@@ -130,23 +128,20 @@
 							<td>${dto.zzim_uid }</td>
 							<td>${dto.ins_name }</td>
 							<td>${dto.cur_name }
-								<form action="zzimDeleteOk.do">
-									<input type="submit" value="삭제" style="float: right;">
-									<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }">
-									<input type="hidden" name="ifZZim" value="true" /> <input
-										type="hidden" name="mb_uid" value="${myPage[0].mb_uid }">
-									<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
-								</form>
+							<input type="submit" value="삭제" style="float: right;" onclick="selectAction()" />
+							<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }" />
+							<input type="hidden" name="ifZZim" value="true" /> 
+							<input type="hidden" name="mb_uid" value="${myPage[0].mb_uid }" />
+							<input type="hidden" name="goBack" value="${myPage[0].mb_uid }" />
+		
 							</td>
 						</tr>
 
 					</c:forEach>
 
-					<!--  <a href='view.do?uid=" + arr[i].getMb_uid() + "'>"-->
-
 				</table>
 			</div>
-			
+		</form>	
 
 		</div>
 	</div>
@@ -210,6 +205,24 @@
 		}
 	</script>
 	<script>
+	
+	
+	function selectAction(){
+		
+		 var option = $(this).text();
+		 
+		 if(option="정보수정"){
+			 
+			 document.infoForm.action="/Project_itmoa/user/myPageUpdateOk.do";
+			 
+		 }else if(option="삭제"){
+			 
+			 document.infoForm.action="/Project_itmoa/user/zzimDeleteOk.do";
+		 }
+		
+	}
+	
+	
 		$(function info_submit() {
 			if ($("#infoForm").submit(function() {
 				if ($("#pw").val() !== $("#pw2").val()) {
