@@ -20,7 +20,6 @@ body,html {
 	width: 100%;
 }
 
-<<<<<<< HEAD
 #main_btn {
 	float: left;
 	margin-left: 20%;
@@ -31,10 +30,6 @@ body,html {
 }
 
 #login-content{
-=======
-#login-content {
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
-	text-align: center;
 }
 
 #logo {
@@ -59,14 +54,11 @@ input.login-info {
 }
 
 #login-btn, #join-btn, #find-id-btn, #find-pw-btn {
-<<<<<<< HEAD
 	margin: 10px;
 	width: 350px;
 	height: 50px;
 	border-radius: 7px;
 	background-color: #eb2b63;
-	
-=======
 	display: inline-block;
 	border: none;
 	font-size: 15px;
@@ -80,7 +72,6 @@ input.login-info {
 	cursor: pointer;
 	text-align: center;
 	letter-spacing: 2px;
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 }
 
 #login-btn {
