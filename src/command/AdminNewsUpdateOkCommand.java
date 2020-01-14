@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +17,16 @@ public class AdminNewsUpdateOkCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		final String SAVE_URL = "admin/news/img";
+		
+		// 실제 저장되는 물리적인 경로 확인하기
+		ServletContext context = request.getServletContext();
+		String saveDirectory = context.getRealPath(SAVE_URL);
+		System.out.println("업로드 경로: " + saveDirectory);
+		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\admin\\news\\main", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, saveDirectory, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+			//MultipartRequest multi = new MultipartRequest(request, "C:\\tomcat\\itmoa\\wtpwebapps\\Project_itmoa\\admin\\news\\main", 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
 			boolean ifNew = Boolean.parseBoolean(multi.getParameter("ifNew"));
 			String news_brd_title = multi.getParameter("news_brd_title");
 			String news_brd_content = multi.getParameter("news_brd_content");

@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 
-tr, th, td {
+/*tr, th, td {
 	margin: 100px;
 	border: 1px solid;
-}
+}*/
 
 div.a {
 	display: inline-block;
@@ -82,7 +82,6 @@ input.find-id-info, input.find-pw-info {
 
 
 div.find-id-com, div.find-com-id{
-	
 	border: 1px solid;
 	text-align: center;
 }
@@ -90,8 +89,6 @@ div.find-id-com, div.find-com-id{
 div.w1 {
 	text-align: center;
 	width: 100%;
-	height: 100%;
-	background-color: lime;
 }
 
 #div_find-id{
@@ -104,9 +101,35 @@ div.w1 {
 #find_id-info{
 	white-space: nowrap;
 	border: 0.5px solid;
+	border-radius: 5px;
 	margin: 0 20%;
 	padding: 10px;
 	font-size: 15px;	
 }
 
+#dataTable th{
+	border: 1px solid #eb2b63;
+	border-radius: 5px;
+	background-color: #eb2b63;
+	color: white;
+	text-align: center;;
+}
 
+ #dataTable td{
+ 	border: 1px solid #eb2b63;
+	border-radius: 5px;
+	text-align: center;
+ }
+
+ #goback{
+ 	border-radius: 5px;
+ 	background-color: #eb2b63;
+ 	color: white;
+ 	cursor: pointer;
+	text-align: center;
+	letter-spacing: 2px;
+	border: none;
+	width: 120px;
+	height: 40px;
+	margin: 10px;
+ }

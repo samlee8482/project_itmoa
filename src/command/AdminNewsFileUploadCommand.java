@@ -15,7 +15,7 @@ public class AdminNewsFileUploadCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		final String SAVE_URL = "/admin/news/img";
+		final String SAVE_URL = "admin/news/img";
 		
 		// 실제 저장되는 물리적인 경로 확인하기
 		ServletContext context = request.getServletContext();

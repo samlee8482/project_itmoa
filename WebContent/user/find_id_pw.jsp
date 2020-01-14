@@ -76,12 +76,12 @@
         		<input name="mb_name" class="find-id-info" type="text" placeholder="이름" required="required"><br>
         		<input name="mb_email" class="find-id-info" type="text" placeholder="ex)  *****@example.com" required="required">
         	</div>
-        	<button type="submit" id="find-id-btn">아이디 찾기</button>
+        	<button type="submit" id="find-id-btn" style="background: #eb2b63; color: #ffffff;">아이디 찾기</button>
         </div>
     </form>
     </div>
     
-    <div class="a" id="div-find-pw">
+    <div class="a" id="div-find-pw" style="margin-top: 125px;">
     <form name="frm" id="find-pw-content" method="get" action="findPwOk.do" onsubmit="return chkSubmit()" >
         <div class="find_pw">
         	<h4>비밀번호 찾기</h4>
@@ -92,7 +92,7 @@
         		<input name="mb_id" class="find-pw-info" type="text" placeholder="아이디" required="required"><br>
         		<input name="mb_email" class="find-pw-info" type="text" placeholder="ex)  *****@example.com" required="required">
         	</div>
-        	<button type="submit" id="find-pw-btn">비밀번호 찾기</button>
+        	<button type="submit" id="find-pw-btn" style="background: #eb2b63; color: #ffffff;">비밀번호 찾기</button>
         </div>
     </form>
 	</div>

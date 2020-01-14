@@ -16,6 +16,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style3.css" rel="stylesheet">
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -41,9 +42,9 @@
     jQuery(document).ready(function($){
     'use strict';
         jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
+        	"images/bg/bg0.jpg",
+            "images/bg/bg1.png",
+            "images/bg/bg2.png"
         ], {duration: 5000, fade: 500});
 
         $("#mapwrapper").gMap({ controls: false,
@@ -164,7 +165,7 @@
                                 <div class="blog-content">
                                 	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 100%"/></div>
 									<div class="col-sm-7">
-										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
 													<th width="35%">교육 기간</th>
@@ -178,11 +179,11 @@
 										</table>
 									</div>
 									<div class="row">
-										<div class="col-md-4">
+										<div class="col-md-5">
 			                                <h3>교육 과정</h3>
 			                                <span>~~~~~</span>
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-7" style="float: right">
 					                        <div class="tile-progress tile-primary bounce-in">
 					                            <div class="tile-header">
 					                            	<p>교육과정의 주차수를 선택하여 세부과정을 볼 수 있습니다.</p>
@@ -293,7 +294,7 @@
 					                    </div>
                                     </div>
                                     <div id="map" style="margin-top: 100px"></div>
-                                    <button type="button" onclick="location.href='/Project_itmoa/user/classList.do'">
+                                    <button id="goback" type="button" onclick="location.href='/Project_itmoa/user/classList.do'">
 										목록으로
                                     </button>
                                 </div>

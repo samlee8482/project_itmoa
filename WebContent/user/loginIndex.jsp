@@ -26,39 +26,39 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" href="images/ico/apple-touch-icon-57x57.png">
 
-	<style>
-		body{
-			overflow-y: hidden; 
-			overflow-x: hidden;
-		}
-	</style>
+   <style>
+      body{
+         overflow-y: hidden; 
+         overflow-x: hidden;
+      }
+   </style>
 
     <script type="text/javascript">
     jQuery(document).ready(function($){
-	'use strict';
-      	jQuery('body').backstretch([
-	        "images/bg/bg0.jpg",
-	        "images/bg/bg1.png",
-	        "images/bg/bg2.png"
-	    ], {duration: 5000, fade: 500, centeredY: true });
+   'use strict';
+         jQuery('body').backstretch([
+           "images/bg/bg0.jpg",
+           "images/bg/bg1.png",
+           "images/bg/bg2.png"
+       ], {duration: 5000, fade: 500, centeredY: true });
 
-		$("#mapwrapper").gMap({ controls: false,
-         	scrollwheel: false,
-         	markers: [{
-              	latitude:40.7566,
-				longitude: -73.9863,
-          	icon: { image: "images/marker.png",
-              	iconsize: [44,44],
-          		iconanchor: [12,46],
-          		infowindowanchor: [12, 0] } }],
-          	icon: {
-              	image: "images/marker.png",
-             	iconsize: [26, 46],
-              	iconanchor: [12, 46],
-              	infowindowanchor: [12, 0] },
-         	latitude:40.7566,
-         	longitude: -73.9863,
-          	zoom: 14 });
+      $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                 latitude:40.7566,
+            longitude: -73.9863,
+             icon: { image: "images/marker.png",
+                 iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+             icon: {
+                 image: "images/marker.png",
+                iconsize: [26, 46],
+                 iconanchor: [12, 46],
+                 infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+             zoom: 14 });
     });
     </script>
 </head><!--/head-->
@@ -73,16 +73,16 @@
                 </button>
                  <a class="navbar-brand" href="index.do"><h1><span class="pe-7s-gleam bounce-in"></span> ITMOA</h1></a>
             </div>
-            	<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.do">메인</a></li>
-					<li><a href="/Project_itmoa/user/classList.do">학원 찾기</a></li>
-					<li><a href="/Project_itmoa/user/reviewList.do">학원 후기</a></li>
-					<li><a href="/Project_itmoa/user/newsList.do">IT News</a></li>
-					<li><a href="/Project_itmoa/user/myPageAction.do">마이페이지</a></li>
-					<li><a href="/Project_itmoa/user/logoutOk.do">로그아웃</a></li>
-				</ul>
-			</div>
+               <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="index.do">메인</a></li>
+               <li><a href="/Project_itmoa/user/classList.do">학원 찾기</a></li>
+               <li><a href="/Project_itmoa/user/reviewList.do">학원 후기</a></li>
+               <li><a href="/Project_itmoa/user/newsList.do">IT News</a></li>
+               <li><a href="/Project_itmoa/user/myPageAction.do">마이페이지</a></li>
+               <li><a href="/Project_itmoa/user/logoutOk.do">로그아웃</a></li>
+            </ul>
+         </div>
         </div>
     </header><!--/header-->
 
@@ -94,8 +94,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="center centered" style="padding-top: 12%;">
-                                	<span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
-                           			<div id="main_text"><img src ="images/bg/main_text.png" ></div>
+                                   <span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
+                                    <div id="main_text"><img src ="images/bg/main_text.png" ></div>
                                     <div id="main_btn"><a class="btn btn-md animation bounce-in" href="join.do">회원가입</a></div>
                                 </div>
                             </div>

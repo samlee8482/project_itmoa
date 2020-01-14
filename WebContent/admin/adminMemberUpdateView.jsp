@@ -212,7 +212,7 @@
 										</label>     
 										<img src="../user/mypage/img/${adminMemberUpdateView[0].mb_img }" style="width: 150px; height: 150px;"/>
 										<input type="hidden" name="mb_uid" value="${adminMemberUpdateView[0].mb_uid }" />
-										<input type="hidden" name="ifNew" value="true" style="left: 200px" />
+										<input type="hidden" name="ifNew" value="true" />
 										</div>
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>
 									</form>

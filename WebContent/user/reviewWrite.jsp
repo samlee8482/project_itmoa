@@ -152,7 +152,8 @@
 										<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />  <!-- mb_uid -->
 										<input type="hidden" name="class_uid" value="0" />  <!-- class_uid -->
 										<input type="hidden" name="ifNew" value="true" />
-										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">작성 완료</button>
+										<button class="col-sm-12" style="background-color: #eb2b63; color: white; border: 0px; 
+										border-radius: 10px; padding: 10px 0px;" type="submit">작성 완료</button>
 									</form>
 								</div>
 							</div>
@@ -210,10 +211,8 @@
 		})
 		
 		function chkSubmit() {
-			alert($(".cke_editable").text());
 			$(":hidden[name='review_brd_title']").val($(":text[name='review_brd_title']").val());
-			$(":hidden[name='review_brd_content']").val($("textarea[name='review_brd_content']").val());
-			
+			$(":hidden[name='review_brd_content']").val(CKEDITOR.instances['editor1'].getData());
 		}
 		
 		function chkSubmit2() {

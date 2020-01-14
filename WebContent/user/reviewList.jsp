@@ -26,36 +26,54 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
-
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-    'use strict';
-        jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
-        ], {duration: 5000, fade: 500});
-
-        $("#mapwrapper").gMap({ controls: false,
-            scrollwheel: false,
-            markers: [{
-                latitude:40.7566,
-                longitude: -73.9863,
-            icon: { image: "images/marker.png",
-                iconsize: [44,44],
-                iconanchor: [12,46],
-                infowindowanchor: [12, 0] } }],
-            icon: {
-                image: "images/marker.png",
-                iconsize: [26, 46],
-                iconanchor: [12, 46],
-                infowindowanchor: [12, 0] },
-            latitude:40.7566,
-            longitude: -73.9863,
-            zoom: 14 });
-        
-    });
-</script>
+	<style>
+		.site-btn {
+		   display: inline-block;
+		   border: none;
+		   font-size: 14px;
+		   font-weight: 400;
+		   padding: 6px 10px;
+		   margin-bottom: 10px;
+		   border-radius: 14px;
+		   background: #eb2b63;
+		   color: #fff;
+		   line-height: 1;
+		   cursor: pointer;
+		   text-align: center;
+		}
+		.site-btn:hover {
+			background: #eb2b70;
+		}
+	</style>
+	<script type="text/javascript">
+	    jQuery(document).ready(function($){
+	    'use strict';
+	        jQuery('body').backstretch([
+	            "http://placehold.it/800x600",
+	            "http://placehold.it/800x600",
+	            "http://placehold.it/800x600"
+	        ], {duration: 5000, fade: 500});
+	
+	        $("#mapwrapper").gMap({ controls: false,
+	            scrollwheel: false,
+	            markers: [{
+	                latitude:40.7566,
+	                longitude: -73.9863,
+	            icon: { image: "images/marker.png",
+	                iconsize: [44,44],
+	                iconanchor: [12,46],
+	                infowindowanchor: [12, 0] } }],
+	            icon: {
+	                image: "images/marker.png",
+	                iconsize: [26, 46],
+	                iconanchor: [12, 46],
+	                infowindowanchor: [12, 0] },
+	            latitude:40.7566,
+	            longitude: -73.9863,
+	            zoom: 14 });
+	        
+	    });
+	</script>
 </head><!--/head-->
 <body>
 <c:choose>
@@ -97,20 +115,16 @@
                 <div class="row">
                     <aside class="col-sm-4 col-sm-push-8">
                         <div class="widget search">
-                            <form role="frm" method="get" action="/Project_itmoa/user/reviewList.do" onSubmit="chkSubmit()">
+                            <form role="frm" method="get" action="/Project_itmoa/user/reviewList.do" onSubmit="return chkSubmit()">
                                 <div class="input-group">
-	                               	<div style="width: 100%">
-	                               		<select name="option_review">
-		                               		<option value="1">회원 ID</option>
-		                               		<option value="2">리뷰 제목</option>
-		                               		<option value="3">리뷰 내용</option>
-	                               		</select>	                                	
-	                               	</div>
-	                            </div>
-                                <div class="input-group">
-                                	<input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
+                                	<select name="option_review" style="width: 35%; padding: 9px 18px 9px 9px; border: 0px; box-shadow: 0 0 0 2px #eb2b63 inset; -webkit-appearance: none; background: url('images/arrow.jpg') no-repeat 95% 50%;">
+	                               		<option value="1">회원 ID</option>
+	                               		<option value="2">리뷰 제목</option>
+	                               		<option value="3">리뷰 내용</option>
+                               		</select>
+                                	<input type="text" name="keyword" style="float:right; width: 65%; padding: 9px; border: 0px; box-shadow: 0 0 0 2px #eb2b63 inset;" value="${param.keyword }" placeholder="Search">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search" style="height: 16px;"></i></button>
                                     </span>
                                 </div>
                             </form>
@@ -118,23 +132,23 @@
                      
 
                     </aside>
-                    <div class="col-sm-8 col-sm-pull-4">
+                    <div class="col-sm-10 col-sm-push-1">
                         <div class="blog">
                         	<div class="table-responsive">
                         		<c:choose>
 									<c:when test="${sessionScope.loginLevel >= 2 }">
-                    					<button type="button" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
+                    					<button type="button" class="site-btn" onclick="location.href = '/Project_itmoa/user/reviewWrite.do'" style="float: right">리뷰 작성</button>
                     				</c:when>
                     			</c:choose>
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table" width="100%" cellspacing="0">
 									<thead>
-										<tr>
-											<th width="5%">No</th>
-											<th width="12%">리뷰 번호</th>
-											<th width="18%">작성자 아이디</th>
-											<th width="20%">학원명</th>
-											<th width="25%">리뷰제목</th>
-											<th width="25%">리뷰작성일</th>
+										<tr style="background-color: #eb2b70; color: white; font-weight: bold;">
+											<th width="5%" style="padding: 14px 20px;">No</th>
+											<th width="12%" style="padding: 14px 20px;">리뷰 번호</th>
+											<th width="18%" style="padding: 14px 20px;">작성자 아이디</th>
+											<th width="25%" style="padding: 14px 20px;">학원명</th>
+											<th width="20%" style="padding: 14px 20px;">리뷰제목</th>
+											<th width="25%" style="padding: 14px 20px;">리뷰작성일</th>
 										</tr>
 									</thead>
 		                        	<c:forEach var="dto" items="${reviewList }" varStatus="status">
