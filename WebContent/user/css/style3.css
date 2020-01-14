@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 
-tr, th, td {
+/*tr, th, td {
 	margin: 100px;
 	border: 1px solid;
-}
+}*/
 
 div.a {
 	display: inline-block;
@@ -82,7 +82,6 @@ input.find-id-info, input.find-pw-info {
 
 
 div.find-id-com, div.find-com-id{
-	
 	border: 1px solid;
 	text-align: center;
 }
@@ -90,8 +89,6 @@ div.find-id-com, div.find-com-id{
 div.w1 {
 	text-align: center;
 	width: 100%;
-	height: 100%;
-	background-color: lime;
 }
 
 #div_find-id{

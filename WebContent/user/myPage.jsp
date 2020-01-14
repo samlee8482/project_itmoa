@@ -17,8 +17,8 @@
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<link href="css/style2.css" rel="stylesheet">
 <link href="css/style3.css" rel="stylesheet">
+<link href="css/style2.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -49,74 +49,78 @@
 	<jsp:include page="topMenu.jsp" />
 	</c:otherwise>
 </c:choose>
+		
+	<div id="ro"><h2>마이페이지</h2></div>
 	
-
 	<div class="w1">
 		<div class="w2">
-		<form id="infoForm"  method="post" enctype="multipart/form-data">
+		<form id="infoForm"  method="post" enctype="multipart/form-data" action="myPageUpdateOk.do">
+					<input type="hidden" name="mb_id" value="${sessionScope.loginId }">
+					<input type="hidden" name="origin_pw" id="origin_pw"
+					value="${myPage[0].mb_pw}"> <input type="hidden"
+					name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }">
+
 			<div class="w3">
 				<img src="upload/${myPage[0].mb_img}"
 					style="width: 200px; height: 200px;"> 
 					<div class="box-file-input">
 						<label>
-						<input type="file" name="mb_img" class="file-input" accept="image/*"></label>
+						<input type="file" name="mb_img" class="file-input" accept="image/jpeg, image/png"></label>
 						<span class="filename">파일을 선택해주세요.</span>
 						</div>
 			</div>
 	
 				<div id="form_style">
-	
-					<label><span>이름</span> <input class="info1" type="text" id="id"
-						name="mb_name" readonly value="${myPage[0].mb_name }">
-					</label>
-					<br>
-					
-					<label><span>이메일</span><input class="info1" type="text" id="email"
-						name="mb_email" value="${myPage[0].mb_email }">
-					</label> 
-					<br>
+					<table id="table_si">
+						<tr>
+							<td><span>이름</span></td>
+							<td><input class="info1" type="text" id="id" name="mb_name" readonly value="${myPage[0].mb_name }"></td>
+						</tr>
 						
-					<input type="hidden" name="mb_id" value="${sessionScope.loginId }">
-					<input type="hidden" name="origin_pw" id="origin_pw"
-					value="${myPage[0].mb_pw}"> <input type="hidden"
-					name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }">
-					<label><span>비밀번호</span> <input class="info1" id="old_pw"
-						name="old_pw" type="password" required>
-					</label>
-					<br>
+						<tr>
+						  	<td><span>이메일</span></td>
+							<td><input class="info1" type="text" id="email" name="mb_email" value="${myPage[0].mb_email }"></td>
+						</tr>
 						
-					<label><span>새로운 비밀번호</span> <input class="info1" id="pw"
-						name="mb_pw" type="password" required>
-					</label>
-					<br>
-					
-					<label><span>비밀번호 확인</span> <input class="info1" type="password"
-						name="mb_pw" id="pw2" type="password" required>
-					</label>
-					<br>
-					
-					<label><span>주소</span> <input type="text" id="sample6_postcode"
-						name="mb_zip" value="${myPage[0].mb_zip }">
-					</label>
-					
-					<input id="addr-btn" type="button"
-						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<br>
-					
-					<input class="addr" type="text" id="sample6_address" name="mb_add1"
-						value="${myPage[0].mb_add1 }"><br> <input
-						class="addr" name="mb_add2" type="text" id="sample6_detailAddress"
-						value="${myPage[0].mb_add2 }"> <input class="addr"
-						type="text" id="sample6_extraAddress" style="display: none;"
-						placeholder="상세주소">
-					<br>
+						<tr>
+							<td><span>비밀번호</span></td>
+							<td><input class="info1" id="old_pw" name="old_pw" type="password" required></td>
+						</tr>
+						
+						<tr>
+							<td><span>새로운 비밀번호</span></td>
+							<td><input class="info1" id="pw" name="mb_pw" type="password" required></td>
+						</tr>
+						
+						<tr>
+							<td><span>비밀번호 확인</span></td>						
+							<td><input class="info1" id="pw2" name="mb_pw" type="password" required></td>
+						</tr>
+						
+						<tr>						
+							<td><span>주소</span></td>						
+							<td><input type="text" class="info1" id="sample6_postcode" name="mb_zip" value="${myPage[0].mb_zip }"> <input id="addr-btn" type="button"
+									onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td><input class="info1" type="text" id="sample6_address" name="mb_add1" value="${myPage[0].mb_add1 }"></td>
+						<tr>
+						
+						<tr>
+							<td></td>	
+							<td><input class="info1" name="mb_add2" type="text" id="sample6_detailAddress" value="${myPage[0].mb_add2 }"></td>
+						</tr>
+				</table>
 				
-					<input type="submit" id="join-btn" value="정보수정" onclick="selectAction()"/>
+					<input type="submit" id="join-btn" value="정보수정" />
 				</div>
-
 			
+		</form>	
+		
 			<div class="zzim-list" id="zzim-list">
-				<table>
+				<table id="table_sib">
 					<tr>
 						<th>NO</th>
 						<th>학원명</th>
@@ -141,8 +145,6 @@
 
 				</table>
 			</div>
-		</form>	
-
 		</div>
 	</div>
 
@@ -213,8 +215,8 @@
 		 
 		 if(option="정보수정"){
 			 
+			 document.infoForm.encoding="multipart/form-data";
 			 document.infoForm.action="/Project_itmoa/user/myPageUpdateOk.do";
-			 
 		 }else if(option="삭제"){
 			 
 			 document.infoForm.action="/Project_itmoa/user/zzimDeleteOk.do";
