@@ -69,7 +69,7 @@
 						<span class="filename">파일을 선택해주세요.</span>
 						</div>
 			</div>
-	
+				
 				<div id="form_style">
 					<table id="table_si">
 						<tr>
@@ -119,6 +119,8 @@
 			
 		</form>	
 		
+
+			<!-- 찜테이블 -->
 			<div class="zzim-list" id="zzim-list">
 				<table id="table_sib">
 					<tr>
@@ -145,6 +147,7 @@
 
 				</table>
 			</div>
+
 		</div>
 	</div>
 
@@ -218,7 +221,6 @@
 			 document.infoForm.encoding="multipart/form-data";
 			 document.infoForm.action="/Project_itmoa/user/myPageUpdateOk.do";
 		 }else if(option="삭제"){
-			 
 			 document.infoForm.action="/Project_itmoa/user/zzimDeleteOk.do";
 		 }
 		
@@ -275,8 +277,6 @@
 	<script src="js/init.js"></script>
 </body>
 
-</html>
-</body>
 </html>
 
 

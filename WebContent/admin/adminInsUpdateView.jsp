@@ -191,10 +191,10 @@
 									<div class="ooo">
 									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
 									<div id="info_addr">
-			    						<input type="text" id="sample6_postcode" name="ins_zip" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;" value="${adminInsUpdateView[0].ins_zip }">
-										<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" value="${adminInsUpdateView[0].ins_add1 }" style="margin-left: 100px"><br>
-										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" value="${adminInsUpdateView[0].ins_add2 }" style="margin-left: 100px">
+										<input type="text" id="sample6_postcode" name="ins_zip" value="${adminInsUpdateView[0].ins_zip }" style="width: 250px; height: 30px; border-radius: 5px; margin: 5px; margin-left: -1px;">
+										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px;">우편번호 찾기</button><br>
+										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" value="${adminInsUpdateView[0].ins_add1 }" style="margin-left: 150px"><br>
+										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" value="${adminInsUpdateView[0].ins_add2 }" style="margin-left: 150px">
 										<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">
 	    							</div> 			
 	    							<div class="ooo">				
@@ -222,7 +222,7 @@
 									</div>
 									<div class="ooo">
 									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded">
+									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top: 7px;">
 											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 									</label>
 									<img src="ins/img/${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>

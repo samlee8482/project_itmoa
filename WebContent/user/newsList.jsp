@@ -98,17 +98,13 @@
                         <div class="widget search">
                             <form role="frm" method="get" action="/Project_itmoa/user/newsList.do">
                                 <div class="input-group">
-	                               	<div style="width: 100%">
-	                               		<select name="option_news">
-		                               		<option value="1">뉴스 제목</option>
+                                	<select name="option_news" style="width: 35%; padding: 9px 18px 9px 9px; border: 0px; box-shadow: 0 0 0 2px #eb2b63 inset; -webkit-appearance: none; background: url('images/arrow.jpg') no-repeat 95% 50%;">
+	                               		<option value="1">뉴스 제목</option>
 		                               		<option value="2">뉴스 내용</option>
-	                               		</select>	                                	
-	                               	</div>
-	                            </div>
-                                <div class="input-group">
-                                	 <input type="text" name="keyword" class="form-control" autocomplete="off" value="${param.keyword }" placeholder="Search">
+                               		</select>
+                                	<input type="text" name="keyword" style="float:right; width: 65%; padding: 9px; border: 0px; box-shadow: 0 0 0 2px #eb2b63 inset;" value="${param.keyword }" placeholder="Search">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary btn-outlined" type="submit" onclick="chkSubmit()"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search" style="height: 16px;"></i></button>
                                     </span>
                                 </div>
                             </form>

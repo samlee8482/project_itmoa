@@ -113,12 +113,12 @@
 										<option value="1" selected>학원명</option>
 										<option value="2">학원코드</option>
 								</select>
-								<input type="text" name="keyword" style="height:29.5px; margin-top:-5px; margin-left: -5px" ></input>
+								<input type="text" name="keyword" style="height:29.5px; margin-left: -5px" ></input>
 								<button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
 								</form>
 								</div>
 								<div class="card-body">
-								<h6 class="m-0 font-weight-bold text-primary">총 ${adminInsAllCnt }건 중 ${adminInsCnt }건의 데이터가 조회되었습니다.</h6>
+								<h6 class="m-0 font-weight-bold text-primary">총 ${adminInsAllCnt }건 중 ${adminInsCnt }건의 데이터가 조회되었습니다.</h6><br>
 								<a href="adminInsRegist.do" class="btn btn-info btn-icon-split"> <span>학원등록</span></a> <!-- class="icon text-white-100" 뺐음 -->
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
