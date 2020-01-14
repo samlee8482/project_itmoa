@@ -196,7 +196,7 @@
 	
 
 
-	function changeBranchSelect(){
+	$(document).ready(function() {
 	   $('#option_location').on('change', function(){
 		
 		   var select = document.getElementById("option_location");
@@ -228,8 +228,7 @@
 		   $('#option_branch').html(selected_location);
 		 
 	   });
-	  
-	};
+	})
 
 	
 	 function show(){

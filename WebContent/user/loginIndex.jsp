@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Impact By Distinctive Themes</title>
+    <title>ITMOA | EVERY LIFE IS RUNNING</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/pe-icons.css" rel="stylesheet">
@@ -26,13 +26,20 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" href="images/ico/apple-touch-icon-57x57.png">
 
+	<style>
+		body{
+			overflow-y: hidden; 
+			overflow-x: hidden;
+		}
+	</style>
+
     <script type="text/javascript">
     jQuery(document).ready(function($){
 	'use strict';
       	jQuery('body').backstretch([
-	        "images/bg/page-top-bg.jpg",
+	        "images/bg/bg0.jpg",
 	        "images/bg/bg1.png",
-	        "images/bg/bg0.jpg"
+	        "images/bg/bg2.png"
 	    ], {duration: 5000, fade: 500, centeredY: true });
 
 		$("#mapwrapper").gMap({ controls: false,
@@ -88,10 +95,8 @@
                             <div class="col-sm-12">
                                 <div class="center centered" style="padding-top: 12%;">
                                 	<span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
-                                    <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">우리가 원하는 IT학원</h2><br><br>
-                                    <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">모두 다! 모아</h2><br>
-                                    <h1 class="boxed animation animated-item-2 fade-up" id="main_title">I T M O A</h1><br>
-                                    <a class="btn btn-md animation bounce-in" id="main_btn" href="join.do">회원가입</a>
+                           			<div id="main_text"><img src ="images/bg/main_text.png" ></div>
+                                    <div id="main_btn"><a class="btn btn-md animation bounce-in" href="join.do">회원가입</a></div>
                                 </div>
                             </div>
                         </div>

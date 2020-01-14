@@ -53,6 +53,7 @@
 
 	<div class="w1">
 		<div class="w2">
+		<!-- 폼 입력 -->
 		<form id="infoForm"  method="post" enctype="multipart/form-data">
 			<div class="w3">
 				<img src="upload/${myPage[0].mb_img}"
@@ -63,7 +64,7 @@
 						<span class="filename">파일을 선택해주세요.</span>
 						</div>
 			</div>
-	
+				
 				<div id="form_style">
 	
 					<label><span>이름</span> <input class="info1" type="text" id="id"
@@ -114,7 +115,7 @@
 					<input type="submit" id="join-btn" value="정보수정" onclick="selectAction()"/>
 				</div>
 
-			
+			<!-- 찜테이블 -->
 			<div class="zzim-list" id="zzim-list">
 				<table>
 					<tr>
@@ -141,7 +142,7 @@
 
 				</table>
 			</div>
-		</form>	
+		</form>	<!-- 폼 종료 -->
 
 		</div>
 	</div>
@@ -212,11 +213,9 @@
 		 var option = $(this).text();
 		 
 		 if(option="정보수정"){
-			 
 			 document.infoForm.action="/Project_itmoa/user/myPageUpdateOk.do";
-			 
+			 //document.infoForm.enctype="multipart/form-data";
 		 }else if(option="삭제"){
-			 
 			 document.infoForm.action="/Project_itmoa/user/zzimDeleteOk.do";
 		 }
 		
