@@ -16,7 +16,7 @@ public class ReviewWriteCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String ins_name = request.getParameter("ins_name");
 		String review_brd_title = request.getParameter("review_brd_title");
-		String review_brd_content = request.getParameter("review_brd_title");
+		String review_brd_content = request.getParameter("review_brd_content");
 		
 		ReviewDTO [] arr = null;
 		ReviewDAO dao = new ReviewDAO();

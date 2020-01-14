@@ -15,15 +15,12 @@ public class AdminNewsFileUploadCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		final String SAVE_URL = "newsImg";
+		final String SAVE_URL = "/admin/news/img";
 		
 		// 실제 저장되는 물리적인 경로 확인하기
-		//ServletContext context = request.getServletContext();
-		//String saveDirectory = context.getRealPath(SAVE_URL);
-		//String saveDirectory = "C:\\Project_itmoa\\Project_itmoa\\WebContent\\adminNewsImgUpload";;
 		ServletContext context = request.getServletContext();
-		String contextRootPath = context.getRealPath("admin/news/img"); 
-		//System.out.println("업로드 경로: " + saveDirectory);
+		String saveDirectory = context.getRealPath(SAVE_URL);
+		System.out.println("업로드 경로: " + saveDirectory);
 			
 		Enumeration names = null;   
 		String name = null;         // parameter 로 넘어오는 name 값
@@ -42,7 +39,7 @@ public class AdminNewsFileUploadCommand implements Command {
 		try {
 			multi = new MultipartRequest(
 				request,
-				contextRootPath,
+				saveDirectory,
 				maxPostSize,
 				encoding,
 				policy
