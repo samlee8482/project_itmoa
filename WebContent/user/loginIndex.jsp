@@ -29,9 +29,9 @@
     jQuery(document).ready(function($){
 	'use strict';
       	jQuery('body').backstretch([
-	        "images/bg/bg0.jpg",
+	        "images/bg/page-top-bg.jpg",
 	        "images/bg/bg1.png",
-	        "images/bg/bg2.png"
+	        "images/bg/bg0.jpg"
 	    ], {duration: 5000, fade: 500, centeredY: true });
 
 		$("#mapwrapper").gMap({ controls: false,

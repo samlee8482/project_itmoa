@@ -38,9 +38,9 @@
     jQuery(document).ready(function($){
     'use strict';
         jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
+        	"images/bg/bg0.jpg",
+ 	        "images/bg/bg1.png",
+ 	        "images/bg/bg2.png"
         ], {duration: 5000, fade: 500});
 
         $("#mapwrapper").gMap({ controls: false,  scrollwheel: false, markers: [{ latitude:40.7566, longitude: -73.9863, icon: { image: "images/marker.png", iconsize: [44,44], iconanchor: [12,46], infowindowanchor: [12, 0] } }], icon: {image: "images/marker.png",iconsize: [26, 46], iconanchor: [12, 46],  infowindowanchor: [12, 0] }, latitude:40.7566, longitude: -73.9863, zoom: 14 });
@@ -117,21 +117,21 @@
 				<ul class="portfolio-filter fade-down center">
 					<li><a class="curName btn btn-outlined btn-primary active" href="#"
 						onclick="show()">전체과정</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">웹앱</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">보안</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">네트워크</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">AI</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">디자인</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">영상</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">빅데이터</a></li>
-					<li><a class="curName btn btn-outlined btn-primary" href="#"
+					<li><a class="curName btn btn-outlined btn-primary btn-color" href="#"
 						onclick="show()">게임</a></li>
 
 				</ul>
@@ -151,10 +151,10 @@
 								<span style="color:red;">
 									<i id="heart" class="fa fa-heart" style="color:red"></i>
 								</span>
-								<span> 찜 ${dto.class_zzimcnt } </span>
+								<span>찜 ${dto.class_zzimcnt }</span>
 							</div>	
 							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
-							<h5>${dto.ins_name }</h5>
+								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.ins_branch }</h5>
 							</div>
