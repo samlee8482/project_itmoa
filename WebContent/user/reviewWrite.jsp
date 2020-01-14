@@ -107,14 +107,17 @@
 								<div class="blog-item">
 									<div class="blog-content">
 										<div class="widget search">
-				                        	<form method="post" action="/Project_itmoa/user/reviewWrite.do">
+				                        	<form method="post" action="/Project_itmoa/user/reviewWrite.do" onSubmit="chkSubmit()">
 												<h3>학원 검색</h3>
 				                            	<div class="input-group">
 					                                <input type="text" name="ins_name" placeholder="학원명을 입력하세요" style="width: 100%; padding: 10px;" />
+					                                <input type="hidden" name="review_brd_title" value="" />
+					                                <input type="hidden" name="review_brd_content" value="" />
 					                                <span class="input-group-btn">
 				                                    	<button class="btn btn-primary btn-outlined" type="submit"><i class="fa fa-search"></i></button>
 					                                </span>
 				                            	</div>
+		                        			</form>
 			                    		</div><!--/.search-->
 				                    	<table class="table">
 					                    	<thead>
@@ -139,20 +142,18 @@
 										<div style="padding: 30px 10px">
 											<textarea name="review_brd_content" id="editor1">${reviewBrdContent }</textarea>
 											<script>
-											CKEDITOR.replace('editor1', {
-												allowedContent: true,
-												height: '700px',
-												filebrowserUploadUrl: '${pageContext.request.contextPath }/user/reviewFileUpload.do'
-											});
+												CKEDITOR.replace('editor1', {
+													allowedContent: true,
+													height: '700px',
+													filebrowserUploadUrl: '${pageContext.request.contextPath }/user/reviewFileUplaod.do'
+												});
 											</script>
 										</div>
 										<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />  <!-- mb_uid -->
 										<input type="hidden" name="class_uid" value="0" />  <!-- class_uid -->
 										<input type="hidden" name="ifNew" value="true" />
-										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">수정 완료</button>
+										<button class="col-sm-12" style="background-color: #343a40; color: white; border: 0px; padding: 10px 0px;" type="submit">작성 완료</button>
 									</form>
-									
-		                        	</form>
 								</div>
 							</div>
 						</div>
@@ -207,6 +208,13 @@
 				$('h4').html($(this).children());
 			})
 		})
+		
+		function chkSubmit() {
+			alert($(".cke_editable").text());
+			$(":hidden[name='review_brd_title']").val($(":text[name='review_brd_title']").val());
+			$(":hidden[name='review_brd_content']").val($("textarea[name='review_brd_content']").val());
+			
+		}
 		
 		function chkSubmit2() {
 			if ($(":hidden[name='class_uid']").val() == 0) {
