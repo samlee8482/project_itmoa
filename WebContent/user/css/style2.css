@@ -1,15 +1,25 @@
 @charset "UTF-8";
 
-form {
+body,html {
+    width: 100%;
+    height: 100%;
+}
+
+/*form {
 	text-align: center;
 	position: relative;
 	width: 100%;
 	height: auto;
-	float: left;
-	margin-top: 10%;
+	margin-top: 5%;
+}*/
+
+#infoForm {
+	margin-top: 8%;
+	background-color: fuchsia;
+	height: 100%;
+	width: 100%;
 }
 
-<<<<<<< HEAD
 #main_btn {
 	float: left;
 	margin-left: 20%;
@@ -20,10 +30,6 @@ form {
 }
 
 #login-content{
-=======
-#login-content {
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
-	text-align: center;
 }
 
 #logo {
@@ -48,14 +54,11 @@ input.login-info {
 }
 
 #login-btn, #join-btn, #find-id-btn, #find-pw-btn {
-<<<<<<< HEAD
 	margin: 10px;
 	width: 350px;
 	height: 50px;
 	border-radius: 7px;
 	background-color: #eb2b63;
-	
-=======
 	display: inline-block;
 	border: none;
 	font-size: 15px;
@@ -69,7 +72,6 @@ input.login-info {
 	cursor: pointer;
 	text-align: center;
 	letter-spacing: 2px;
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 }
 
 #login-btn {
@@ -138,8 +140,6 @@ textarea {
 	width: 300px;
 	height: 300px;
 	position: absolute;
-	float: left;
-	clear: both;
 	left: 15%;
 }
 
@@ -177,17 +177,26 @@ textarea {
 }
 
 #form_style {
-	width: 400px; height : auto;
+	width: 500px; 
 	height: auto;
-	left: 50%;
+	left: 40%;
 	float: left;
-	position: absolute;
+	background-color: green;
+	padding: 0;
+	position: relative;
 }
 
 #form_style label {
 	font-weight: 500;
 	font-size: 14px;
 	color: #333333;
+	padding: 0;
+	float: left;
+}
+
+#form_style label span {
+	letter-spacing: -2px;
+	margin-left: 10px;
 }
 
 #form_style input {
@@ -208,6 +217,10 @@ textarea {
 	margin-left: 5px;
 }
 
+#zip_style {
+	
+} 
+
 #sample6_postcode {
 	width: 100px;
 	height: 40px;
@@ -217,8 +230,7 @@ textarea {
 
 .w2 {
 	width: 1300px;
-	height: auto;
-	margin: 0 auto;
+	height: 100%;
 }
 @media screen and (max-width: 1400px) {
 	div.a {
