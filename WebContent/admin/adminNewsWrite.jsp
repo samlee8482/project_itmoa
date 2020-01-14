@@ -112,9 +112,9 @@
 											});
 										</script>
 										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="news_brd_img" accept="image/jpeg, image/png" />
+										<input type="file" name="news_brd_img" accept="image/jpeg, image/png" class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" />
 										<input type="hidden" name="ifNew" value="true" />
-										<button type="submit" on class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>
+										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>
 									</form>
 								</div>
 							</div>

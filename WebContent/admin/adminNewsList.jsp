@@ -25,6 +25,7 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 <style>
 .pagination {
 	display: inline-block;
@@ -209,7 +210,7 @@
 									</form>
 								</div>
 								<div class="card-body">
-									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminNewsList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6><br>
+									<h6 class="font-weight-bold text-primary">총 ${adminNewsListAllCnt }건 중 ${adminNewsListCnt }건의 데이터가 조회되었습니다.</h6><br><!-- ${fn:length(adminNewsList) * (totalPage - 1) } -->
 									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'" class="btn btn-info btn-icon-split">뉴스 작성</button>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"

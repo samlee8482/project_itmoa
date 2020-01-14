@@ -25,6 +25,7 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 <style>
 .pagination {
 	display: inline-block;
@@ -205,7 +206,7 @@
 									</form>
 								</div>
 								<div class="card-body">
-									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminReviewList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6>
+									<h6 class="font-weight-bold text-primary">총 ${adminReviewAllCnt }건 중 ${adminReviewCnt }건의 데이터가 조회되었습니다.</h6>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
 											width="100%" cellspacing="0">
