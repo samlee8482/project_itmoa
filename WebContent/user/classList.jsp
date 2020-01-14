@@ -174,12 +174,10 @@
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.ins_branch }</h5>
 							</div>
-					
 							</div>
 						</li>
 						<!--/.portfolio-item-->
 					</c:forEach>
-				
 				</ul>
 			</div>
 		</section>
