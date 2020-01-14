@@ -108,17 +108,20 @@ public class MbDTO {
 	}
 	
 	// 회원정보찾기 - ID 
-	public MbDTO(String mb_id) {
-		super();
-		this.mb_id = mb_id;
-	}
-	
-	// 회원정보찾기 - PW
 	public MbDTO(String mb_id, String mb_name, String mb_email) {
 		super();
 		this.mb_id = mb_id;
 		this.mb_name = mb_name;
 		this.mb_email = mb_email;
+	}
+	
+	// 회원정보찾기 - PW
+	public MbDTO(String mb_id, String mb_name, String mb_email, String mb_pw) {
+		super();
+		this.mb_id = mb_id;
+		this.mb_name = mb_name;
+		this.mb_email = mb_email;
+		this.mb_pw = mb_pw;
 	}
 	
 	public MbDTO(int mb_uid, String mb_id, String mb_pw, int mb_zip, String mb_add1, String mb_add2,

@@ -150,19 +150,6 @@ blockquote {
 	margin-top: -150px;
 }
 
-#main-slider .carousel .btn {
-	border: 5px solid rgba(255, 255, 255, 0.9);
-	color: #fff;
-	border-radius: 0;
-	margin-top: 35px;
-	font-size: 26px;
-	font-weight: 700;
-	text-transform: uppercase;
-	padding: 10px 15px;
-	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
-	z-index: 10px;
-}
-
 #main-slider .carousel .btn:hover {
 	background-color: rgba(255, 255, 255, 0.9);
 	color: #202020;
@@ -221,7 +208,7 @@ blockquote {
 	clear: both;
 	display: block;
 	font-size: 78px;
-	margin: 100px auto 0;
+	margin: inherit;
 	position: relative;
 	width: 80px;
 	-webkit-transform: rotate(15deg);
@@ -266,6 +253,7 @@ blockquote {
 	list-style: none;
 	padding: 0;
 	margin: 120px -20px 20px 0;
+	
 }
 
 .portfolio-filter>li {
@@ -274,16 +262,16 @@ blockquote {
 
 .portfolio-filter>li a.active {
 	color: #FFF;
-	background: #00b29e;
-	border: 2px solid #00b29e;
+	background: #eb2b63;
+	border: 2px solid #eb2b63;
 }
 
 .portfolio-items>li {
 	float: left;
 	padding: 0;
+	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
 .portfolio-items.col-2>li {
@@ -330,7 +318,6 @@ blockquote {
 	font-size: 12px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	position: relative;
 	border-bottom: 4px solid #f0f0f0;
 	text-transform: uppercase;
 	-webkit-transition: all .5s ease-in-out;
@@ -347,7 +334,7 @@ blockquote {
 	-o-transition: all .5s ease-in-out;
 	-ms-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
-	border-bottom: 4px solid #00b29e;
+	border-bottom: 4px solid #eb2b63;
 }
 
 .portfolio-item h5:after {
@@ -865,7 +852,7 @@ ul.tag-cloud li {
 /*-----------------------------------------------------------------------------------*/
 .team-member:hover .img-thumbnail {
 	background: transparent;
-	background-color: #00b29e;
+	background-color: #eb2b63;
 }
 
 .team-member .img-thumbnail {
@@ -996,7 +983,7 @@ ul.tag-cloud li {
 	line-height: 68px;
 	color: #fff;
 	margin-right: 15px;
-	background-color: #00b29e;
+	background-color: #eb2b63;
 	text-align: center;
 	display: block;
 	box-shadow: 0 0 0 4px rgba(255, 255, 255, 1);
@@ -1008,8 +995,8 @@ ul.tag-cloud li {
 
 .service-block:hover .fa-md {
 	background: transparent;
-	color: #00b29e;
-	box-shadow: 0 0 0 4px #00b29e;
+	color: #eb2b63;
+	box-shadow: 0 0 0 4px #eb2b63;
 }
 
 .service-block .media-heading {
@@ -1179,7 +1166,7 @@ ul.rss li::before {
 }
 
 #footer a:hover, #footer-wrapper a:hover {
-	color: #00b29e;
+	color: #eb2b63;
 }
 
 #footer ul {
@@ -1518,14 +1505,14 @@ img.author-box-image {
 
 .btn-outlined.btn-primary {
 	background: none;
-	border: 2px solid #00b29e;
-	color: #00b29e;
+	border: 2px solid  #eb2b63;
+	color:  #eb2b63;
 }
 
 .btn-outlined.btn-primary:hover, .btn-outlined.btn-primary:active {
 	color: #FFF;
-	background: #00b29e;
-	border-color: #00b29e:;
+	background:  #eb2b63;
+	border-color:  #eb2b63;
 }
 
 .btn-outlined.btn-success {
@@ -1579,7 +1566,7 @@ img.author-box-image {
 }
 
 .btn-outlined.btn-white:hover, .btn-outlined.btn-white:active {
-	color: #00b29e;
+	color: #eb2b63;
 	background: #fff;
 }
 
@@ -1880,7 +1867,7 @@ img.author-box-image {
 }
 
 .testimonial-list-item:hover blockquote {
-	border-left: 4px solid #00b29e;
+	border-left: 4px solid #eb2b63;
 }
 
 .quote-author-list {
@@ -2102,8 +2089,7 @@ img.author-box-image {
 	border: 3px solid rgba(255, 255, 255, 0.9);
 	color: #fff;
 	border-radius: 0;
-	margin-top: 35px;
-	font-size: 19px;
+	font-size: 30px;
 	font-weight: 400;
 	text-transform: uppercase;
 	padding: 10px 15px;
@@ -2185,7 +2171,8 @@ img.author-box-image {
 	bottom: 8px;
 	right: -198px;
 	width: 200px;
-	height: 350px;
+	height: 300px;
+	margin: auto;
 }
 
 .hero-rocket img {
@@ -2195,5 +2182,7 @@ img.author-box-image {
 }
 
 
-
+.btn-color{
+	color:  #eb2b63;
+}
 

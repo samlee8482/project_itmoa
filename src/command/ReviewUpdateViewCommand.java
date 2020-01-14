@@ -14,6 +14,8 @@ public class ReviewUpdateViewCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int review_brd_uid = Integer.parseInt(request.getParameter("review_brd_uid"));
+		String review_brd_title = request.getParameter("review_brd_title");
+		String review_brd_content = request.getParameter("review_brd_content");
 		
 		AdminReviewDAO dao = new AdminReviewDAO();
 		ReviewDTO [] arr = null;
@@ -22,6 +24,8 @@ public class ReviewUpdateViewCommand implements Command {
 			try {
 				arr = dao.readReviewByUid(review_brd_uid);
 				request.setAttribute("reviewUpdateView", arr);
+				request.setAttribute("reviewBrdTitle", review_brd_title);
+				request.setAttribute("reviewBrdContent", review_brd_content);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (NamingException e) {

@@ -14,6 +14,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -29,9 +30,9 @@
     jQuery(document).ready(function($){
 	'use strict';
       	jQuery('body').backstretch([
-	        "images/bg/bg0.jpg",
+	        "images/bg/page-top-bg.jpg",
 	        "images/bg/bg1.png",
-	        "images/bg/bg2.png"
+	        "images/bg/bg0.jpg"
 	    ], {duration: 5000, fade: 500, centeredY: true });
 
 		$("#mapwrapper").gMap({ controls: false,
@@ -85,11 +86,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content center centered">
-           							<span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
-                                    <h2 class="boxed animation animated-item-1 fade-down">원하는 IT 학원</h2><br>
-                                    <h3 class="boxed animation animated-item-2 fade-up">다 모아놨다.</h3><br>
-                                    <a class="btn btn-md animation bounce-in" href="classList.do">학원찾기</a>
+                                <div class="center centered" style="padding-top: 12%;">
+                                	<span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
+                                    <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">우리가 원하는 IT학원</h2><br><br>
+                                    <h2 class="boxed animation animated-item-1 fade-down" id="main_sub_title">모두 다! 모아</h2><br>
+                                    <h1 class="boxed animation animated-item-2 fade-up" id="main_title">I T M O A</h1><br>
+                                    <a class="btn btn-md animation bounce-in" id="main_btn" href="join.do">회원가입</a>
                                 </div>
                             </div>
                         </div>

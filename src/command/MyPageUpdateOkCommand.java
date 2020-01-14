@@ -23,6 +23,7 @@ public class MyPageUpdateOkCommand implements Command {
 		ServletContext context = request.getServletContext();
 		String contextRootPath = context.getRealPath("user/upload"); 
 		System.out.println(contextRootPath);
+		
 		try {
 			
 			MultipartRequest multi = new MultipartRequest(request, contextRootPath, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());			
