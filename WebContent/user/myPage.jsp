@@ -213,8 +213,10 @@
 		 var option = $(this).text();
 		 
 		 if(option="정보수정"){
+			 
+			 document.infoForm.encoding="multipart/form-data";
 			 document.infoForm.action="/Project_itmoa/user/myPageUpdateOk.do";
-			 //document.infoForm.enctype="multipart/form-data";
+			 
 		 }else if(option="삭제"){
 			 document.infoForm.action="/Project_itmoa/user/zzimDeleteOk.do";
 		 }

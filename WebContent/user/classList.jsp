@@ -73,7 +73,7 @@
 								<div class="center gap fade-down section-heading">
 									<h2 class="main-title">학원검색</h2>
 									<hr>
-									<p>학원 검색 작업중이라네</p>
+									<p>여기는 없는게 나을거같애</p>
 								</div>
 							</div>
 						</div>
@@ -90,10 +90,14 @@
 	<div id="content-wrapper">
 		<section id="portfolio" class="white">
 			<div class="container">
-				
-				
-				<form> 
+			<!-- 상단영역 -->
+			<div id="ins_top">
 				<!-- 지역 선택을 위한 select문 -->
+				<div class="ins center">
+				<form>
+				<hr>
+				<div class="ins_label"><span class="pe-7s-gleam bounce-in"></span>&nbsp;지역</div>
+				<hr>
 				<select name="option_location" id= "option_location" size="1" onchange="changeBranchSelect()" >
 					<option value="전체" selected>전체</option>
 					<option value="서울" >서울</option>
@@ -106,14 +110,24 @@
 					<option value="울산" >울산</option>
 					<option value="기타" >기타</option>
 				</select>
+				</div>
 				
 				<!-- 지점 선택을 위한 select문 -->
+				<div class="ins center">
+				<hr>
+				<div class="ins_label"><span class="pe-7s-gleam bounce-in"></span>&nbsp;지점</div>
+				<hr>
 				<select name="option_branch" id= "option_branch" size="1">
 					<option value ="전체" id="test" selected>전체</option>
 				</select>
+				</div>
 				</form>
 				
-			
+				
+				<div class="ins center">
+				<hr>
+				<div class="ins_label"><span class="pe-7s-gleam bounce-in"></span>&nbsp;과정</div>
+				<hr>
 				<ul class="portfolio-filter fade-down center">
 					<li><a class="curName btn btn-outlined btn-primary active" href="#"
 						onclick="show()">전체과정</a></li>
@@ -135,6 +149,8 @@
 						onclick="show()">게임</a></li>
 
 				</ul>
+				</div>
+			</div> 
 				<!--/#portfolio-filter-->
 
 
