@@ -14,7 +14,7 @@
 <meta name="author" content="">
 <title>About Us | Impact By Distinctive Themes</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">"WebContent/user/classList.jsp"
 <link href="css/pe-icons.css" rel="stylesheet">
 <link href="css/prettyPhoto.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
@@ -144,8 +144,8 @@
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
-								<img src="../admin/ins/img/${dto.ins_img}" alt="">
+							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+								<img src="${dto.ins_img}" alt="" style="height: 200px;">
 							</div>
 							<div id="like_pane">
 								<span style="color:red;">
