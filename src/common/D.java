@@ -357,15 +357,15 @@ public interface D {
 	
 	// 리뷰 검색 조건) 리뷰제목
 	public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE = 
-	  	" AND r.review_title LIKE ?";
+	  	" AND r.review_brd_title LIKE ?";
 	
 	// 리뷰 검색 조건) 리뷰내용
 	 public static final String SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT = 
-		" AND r.review_content LIKE ?";
+		" AND r.review_brd_content LIKE ?";
 	
 	// 리뷰 목록 정렬
 	public static final String SQL_ORDER_REVIEW =  
-		" ORDER BY review_brd_uid DESC";
+		" ORDER BY r.review_brd_uid DESC";
 		
 
 	// 리뷰 내용

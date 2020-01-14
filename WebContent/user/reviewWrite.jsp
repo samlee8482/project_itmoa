@@ -211,10 +211,8 @@
 		})
 		
 		function chkSubmit() {
-			alert($(".cke_editable").text());
 			$(":hidden[name='review_brd_title']").val($(":text[name='review_brd_title']").val());
-			$(":hidden[name='review_brd_content']").val($("textarea[name='review_brd_content']").val());
-			
+			$(":hidden[name='review_brd_content']").val(CKEDITOR.instances['editor1'].getData());
 		}
 		
 		function chkSubmit2() {

@@ -204,12 +204,12 @@
 											<option value="2">뉴스 제목</option>
 											<option value="3">뉴스 내용</option>
 										</select>
-										<input type="text" name="option_news_3" style="height:29.5px; margin-top:-5px; margin-left: -5px" />
+										<input type="text" name="option_news_3" style="height:29.5px; margin-left: -5px" />
 										<button type="submit" class="btn btn-info btn-icon-split" style="margin-top: -3.5px; margin-left: 1px">검색</button></label>
 									</form>
 								</div>
 								<div class="card-body">
-									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminNewsList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6>
+									<h6 class="font-weight-bold text-primary">약 ${fn:length(adminNewsList) * (totalPage - 1) }건의 데이터가 조회되었습니다.</h6><br>
 									<button type="button" onclick="location.href = '/Project_itmoa/admin/adminNewsWrite.do'" class="btn btn-info btn-icon-split">뉴스 작성</button>
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable"
