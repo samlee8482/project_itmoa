@@ -314,15 +314,16 @@ blockquote {
 
 .portfolio-item .item-inner {
 	background: #fff;
-	padding: 0;
-	
+	padding:0;
 	padding-bottom: 15px;
 	margin: 0 20px 20px 0;
 	position: relative;
 	font-family:"-윤고딕320";
-	
 }
 
+#h5_border{
+	padding-left:15px;
+}
 
 .portfolio-item img {
 	width: 100%;
@@ -412,7 +413,6 @@ blockquote {
 
 /**** Isotope CSS3 transitions ****/
 .isotope, .isotope .isotope-item {
-	
 	padding-top: 20px;
 	padding-left: 10px;
 	-webkit-transition-duration: .8s;
@@ -431,7 +431,6 @@ blockquote {
 }
 
 .isotope .isotope-item {
-	padding: 5px;
 	-webkit-transition-property: 0 opacity;
 	-moz-transition-property: 0 opacity;
 	-ms-transition-property: 0 opacity;
@@ -2215,19 +2214,22 @@ img.author-box-image {
 
 
 #main_text{
-	position: absolute;
-	top: 27%;
+	position: fixed;
+	top: 29%;
+	left: 10%;
+
+}
+
+#main_text img{
 	width: 500px;
-	height: 200px;
-	
+	height: 250px;
 }
 
 #main_btn{
-	position: absolute;
-	top: 79%;
-	left: 22%;
-	
-	
+	position: fixed;
+	top: 70%;
+	left: 6%;
+
 }
 
 
@@ -2260,7 +2262,7 @@ img.author-box-image {
 
 #like_pane{
 	margin: 10px 0;
-	padding-left: 10px;
+	
 }
 
 
@@ -2280,9 +2282,17 @@ img.author-box-image {
 	postion: relative;
 	width:100%;
 	height: 80%;
-	
 	margin-bottom: 30px;
 	padding-bottom: 30px;
+}
+
+
+#pw_policy{
+	position: absolute;
+	font-size: 12px;
+	top: 19%;
+	left: 37%;
+	
 }
 
 

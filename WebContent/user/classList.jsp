@@ -163,6 +163,7 @@
 							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
 								<img src="${dto.ins_img}" alt="" style="height: 200px;">
 							</div>
+							<div id="h5_border">
 							<div id="like_pane">
 								<span style="color:red;">
 									<i id="heart" class="fa fa-heart" style="color:red"></i>
@@ -173,6 +174,7 @@
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.ins_branch }</h5>
+							</div>
 							</div>
 							</div>
 						</li>
@@ -257,7 +259,7 @@
 			  
 			  var option_curName = $(this).text(); 
 			  
-			  alert(option_location+ " " + option_branch + " " +option_curName);
+			  //alert(option_location+ " " + option_branch + " " +option_curName);
 			  
 			  var url = 'classList.do?option_location=' + encodeURI(option_location) + '&option_branch=' + encodeURI(option_branch)+ '&option_curName=' + encodeURI(option_curName);
 			  

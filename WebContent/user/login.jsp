@@ -81,7 +81,7 @@
 			</div>
 			<button type="submit" id="login-btn">로그인</button>
 			<div id="other-op">
-				<a href="join.do" id="join">회원가입</a> | <a href="find_id_pw.do" style="margin-left: 30px;">
+				<a href="join.do" id="join">회원가입</a> | <a href="find_id_pw.do" >
 					아이디 찾기 </a>/ <a href="find_id_pw.do#div-find-pw">비밀번호 찾기</a>
 			</div>
 		</div>
