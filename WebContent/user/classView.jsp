@@ -178,11 +178,11 @@
 										</table>
 									</div>
 									<div class="row">
-										<div class="col-md-4">
+										<div class="col-md-5">
 			                                <h3>교육 과정</h3>
 			                                <span>~~~~~</span>
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-7" style="float: right">
 					                        <div class="tile-progress tile-primary bounce-in">
 					                            <div class="tile-header">
 					                            	<p>교육과정의 주차수를 선택하여 세부과정을 볼 수 있습니다.</p>

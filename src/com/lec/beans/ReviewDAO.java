@@ -82,24 +82,25 @@ public class ReviewDAO {
 		
 		switch(option_review) {
 			case 1: 
-				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
+				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_USER_ID;
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 2:
-				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
+				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_TITLE;
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 3:
-				selectReview += (D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT + D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
+				selectReview += D.SQL_SELECT_REVIEW_BRD_WHERE_REVIEW_CONTENT;
 				keyword = "%" + keyword + "%";
 				setStr1 = 1;
 				break;
 			case 4:
-				selectReview += D.SQL_SELECT_FROM_ROW_NEWS_BRD;
 				break;
 		}
+		
+		selectReview += (D.SQL_ORDER_REVIEW + D.SQL_SELECT_FROM_ROW_REVIEW_BRD);
 		
 		try {
 			conn = getConnection();
