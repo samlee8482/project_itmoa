@@ -22,7 +22,7 @@ public class MyPageUpdateOkCommand implements Command {
 		MbDAO dao = new MbDAO();
 		int cnt = 0;
 		ServletContext context = request.getServletContext();
-		String contextRootPath = context.getRealPath("user/upload"); 
+		String contextRootPath = context.getRealPath("user/mypage/img"); 
 		System.out.println(contextRootPath);
 		HttpSession httpSession = request.getSession();
 		

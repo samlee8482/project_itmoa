@@ -28,7 +28,22 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
-
+	
+	<style>
+	input[type="text"] {
+		border: 0.5px solid #cccccc;
+		background: #hhhhhh;
+		padding: 0px 10px;
+	}
+	button[type="submit"]{
+		border: none;
+		color: white;
+	}
+	body{
+		background: white;
+	}
+	</style>
+	
 </head><!--/head-->
 <script>
 	// form 검증

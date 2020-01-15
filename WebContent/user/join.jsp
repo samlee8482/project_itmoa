@@ -105,10 +105,19 @@ input[type="text"] { background-color: white; }
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+  
 }
 input { border: 1px solid #333333; }
-input[type="text"] { padding: 0px 5px; }
-input[type="password"] { padding: 0px 5px; }
+input[type="text"] {
+	padding: 0px 5px;
+	border: 0.5px solid #cccccc;
+	background: #hhhhhh;
+}
+input[type="password"] {
+	padding: 0px 5px;
+	border: 0.5px solid #cccccc;
+	background: #hhhhhh;	
+}
 input[class="addr-btn"] { 
 	border: 0px;
 	border-radius: 7px; 
@@ -269,7 +278,6 @@ table { margin-left: 5%; }
 
 		<div id="join-info" class="a col-sm-6">
 			<div id="info1">
-			<span id="pw_policy">※ 영문 대문자, 숫자, 특수문자 조합 </span>
 				<table>
 					<tr>
 						<th><label for="mb_name">이름</label></th>
@@ -284,6 +292,7 @@ table { margin-left: 5%; }
 						<th><label for="mb_pw">비밀번호</label></th>
 						<td><input id="mb_pw" class="info1" name="mb_pw" type="password" placeholder="비밀번호 를 입력해주세요."></td>
 					</tr>
+						<span id="pw_policy">※ 영문 대문자, 숫자, 특수문자 조합 </span>
 					<tr>
 						<th><label for="mb_pwOk">비밀번호 확인</label></th>
 						<td><input id="mb_pwOk" class="info1" name="mb_pwOk" type="password" placeholder="비밀번호를 입력해주세요."></td>
