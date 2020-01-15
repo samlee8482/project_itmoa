@@ -32,8 +32,4 @@
       </div>
    </header>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/gzgzg2/Project_itmoa.git
 
