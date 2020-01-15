@@ -30,7 +30,13 @@
 	href="images/ico/images/ico/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57x57.png">
-
+<style>
+	input[type="text"], input[type="password"] {
+	padding: 0px 5px;
+	border: 0.5px solid #cccccc;
+	background: #hhhhhh;	
+}
+</style>
 
 <title>LOGIN</title>
 </head>

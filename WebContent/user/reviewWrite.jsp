@@ -110,7 +110,7 @@
 				                        	<form method="post" action="/Project_itmoa/user/reviewWrite.do" onSubmit="chkSubmit()">
 												<h3>학원 검색</h3>
 				                            	<div class="input-group">
-					                                <input type="text" name="ins_name" placeholder="학원명을 입력하세요" style="width: 100%; padding: 10px;" />
+					                                <input type="text" name="ins_name" placeholder="학원명을 입력하세요" style="width: 100%; height: 42px; padding: 10px;" />
 					                                <input type="hidden" name="review_brd_title" value="" />
 					                                <input type="hidden" name="review_brd_content" value="" />
 					                                <span class="input-group-btn">
