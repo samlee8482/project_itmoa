@@ -134,7 +134,6 @@
 							<td>${dto.zzim_uid }</td>
 							<td>${dto.ins_name }</td>
 							<td>${dto.cur_name }
-							<input type="submit" value="삭제" style="float: right;" onclick="selectAction()" />
 							<input type="hidden" name="zzim_uid" value="${dto.zzim_uid }" />
 							<input type="hidden" name="ifZZim" value="true" /> 
 							<input type="hidden" name="mb_uid" value="${myPage[0].mb_uid }" />
