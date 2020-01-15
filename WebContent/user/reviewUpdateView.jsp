@@ -107,7 +107,7 @@
 						<div class="blog">
 							<div class="blog-item">
 								<div class="blog-content">
-									<form method="get" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit()">
+									<form method="post" action="/Project_itmoa/user/reviewUpdateOk.do" enctype=”multipart/form-data” onSubmit="return chkSubmit()">
 										<h3 class="main-title">
 											<input name="review_brd_title" value="${reviewUpdateView[0].review_brd_title }" style="width: 100%; padding: 10px;" />
 										</h3>

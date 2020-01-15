@@ -61,7 +61,7 @@
 					name="mb_uid" id="mb_uid" value="${myPage[0].mb_uid }">
 
 			<div class="w3">
-				<img src="upload/${myPage[0].mb_img}"
+				<img src="/Project_itmoa/user/mypage/img/${myPage[0].mb_img}"
 					style="width: 200px; height: 200px;"> 
 					<div class="box-file-input">
 						<label>
@@ -262,7 +262,7 @@
 
         if($filename == "")
             $filename = "파일을 선택해주세요.";
-
+			
         $(".filename").text($filename);
 
     })

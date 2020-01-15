@@ -385,7 +385,7 @@ public interface D {
 	// 리뷰 수정
 	public static final String SQL_UPDATE_REVIEW_BY_UID = 
 		"UPDATE review_brd"
-		+ " SET class uid = ?, review_brd_title = ?, review_brd_content = ? "
+		+ " SET review_brd_title = ?, review_brd_content = ? "
 		+ " WHERE review_brd_uid = ?";
 		
 	// 조회수 처리는?
