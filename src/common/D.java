@@ -197,8 +197,9 @@ public interface D {
 
 	public static final String SQL_SELECT_ZZIM_BY_UID = 
 			"SELECT z.mb_uid, z.zzim_uid"
-			+ " FROM class c,  zzim z"
+			+ " FROM class c, zzim z"
 			+ " WHERE c.class_uid = ?"
+			+ " AND z.mb_uid = ?"
 			+ " AND c.class_uid = z.class_uid";
 
 	// 찜 추가

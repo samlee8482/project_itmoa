@@ -210,13 +210,14 @@ public class ClassDAO {
 	
 	
 	
-	public ClassDTO[] selectZZimByUid(int class_uid) throws SQLException, NamingException {
+	public ClassDTO[] selectZZimByUid(int class_uid, int mb_uid) throws SQLException, NamingException {
 		ClassDTO[] arr = null ;
 		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(D.SQL_SELECT_ZZIM_BY_UID);
 			pstmt.setInt(1, class_uid);
+			pstmt.setInt(2, mb_uid);
 			rs = pstmt.executeQuery();
 			arr = createZZimArrayByUid(rs);
 		} catch (SQLException e) {
