@@ -86,11 +86,6 @@ div.find-id-com, div.find-com-id{
 	text-align: center;
 }
 
-div.w1 {
-	text-align: center;
-	width: 100%;
-	background-color: #ffffff;
-}
 
 #div_find-id{
 	margin-top: 20%;
@@ -152,3 +147,13 @@ div.w1 {
 	background: #eb2b63;
 	padding: 10px
   }
+  
+  
+  
+#w1 {
+	position: absolute;
+	margin-top: 1%;
+	width: 100%;
+	height: auto;
+	background-color: #ffffff;
+}
