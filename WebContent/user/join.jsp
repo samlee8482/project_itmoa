@@ -269,6 +269,7 @@ table { margin-left: 5%; }
 
 		<div id="join-info" class="a col-sm-6">
 			<div id="info1">
+			<span id="pw_policy">※ 영문 대문자, 숫자, 특수문자 조합 </span>
 				<table>
 					<tr>
 						<th><label for="mb_name">이름</label></th>
@@ -279,6 +280,7 @@ table { margin-left: 5%; }
 						<td><input id="mb_id" class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."></td>
 					</tr>
 					<tr>
+						
 						<th><label for="mb_pw">비밀번호</label></th>
 						<td><input id="mb_pw" class="info1" name="mb_pw" type="password" placeholder="비밀번호 를 입력해주세요."></td>
 					</tr>

@@ -75,6 +75,8 @@ public class AdminNewsListCommand implements Command {
 				int fromRow = (page - 1) * pageRows;  // MySQL 은 0 부터 시작 !
 				
 				arr = dao.selectNews(option_news_1, option_news_2, option_news_3, fromRow, pageRows);
+				request.setAttribute("adminNewsListAllCnt", cnt);
+				request.setAttribute("adminNewsListCnt", arr.length);
 				request.setAttribute("adminNewsList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);

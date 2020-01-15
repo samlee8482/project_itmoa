@@ -45,11 +45,11 @@
         <div class="find-id">
         	<h3>비밀번호 찾기</h3>
         </div>
-        <div id="find-id" class="find-id">
+        <div id="find-id" class="find-id" style="border: none;">
         	<div id="find_id-info" class="find-id">
         		<div name="mb_name" class="find-id-info" type="text" required="required">고객님의 이메일로<br>비밀번호가 발송되었습니다.</div><br>
         	</div>
-        	<button id="login-btn" onclick="location.href='login.do'">로그인</button>
+        	<button id="login-btn" onclick="location.href='login.do'" style="background: #eb2b63; color: #ffffff;">로그인</button>
         </div>
     </div>
     

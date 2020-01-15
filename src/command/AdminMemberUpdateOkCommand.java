@@ -33,7 +33,7 @@ public class AdminMemberUpdateOkCommand implements Command {
 		
 		// 최대 5M byte
 		ServletContext context = request.getServletContext();
-		String contextRootPath = context.getRealPath("user/mypage/img");
+		String contextRootPath = context.getRealPath("user/upload");
 		int maxPostSize = 5 * 1024 * 1024;	// 최대 5M byte POST 받기
 		String encoding = "utf-8";	// 인코딩
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();	// 업로딩 파일 이름 중복 정책

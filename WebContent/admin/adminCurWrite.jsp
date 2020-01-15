@@ -99,7 +99,7 @@
 									<form action="/Project_itmoa/admin/adminCurOk.do" method="post" enctype=”multipart/form-data”>
 										<h6 class="m-0 font-weight-bold text-primary p-2">과정명</h6>
 										<select name="cur_name" style="width: 100%" class="p-2">
-											<option value="웹/앱">웹/앱</option>
+											<option value="웹앱">웹/앱</option>
 											<option value="네트워크">네트워크</option>
 											<option value="보안">보안</option>
 											<option value="AI">AI</option>

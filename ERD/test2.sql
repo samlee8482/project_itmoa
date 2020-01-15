@@ -281,3 +281,28 @@ insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
+
+
+
+insert into zzim(mb_uid, class_uid)
+values(1,1);
+insert into zzim(mb_uid, class_uid)
+values(1,3);
+insert into zzim(mb_uid, class_uid)
+values(1,5);
+insert into zzim(mb_uid, class_uid)
+values(2,3);
+insert into zzim(mb_uid, class_uid)
+values(2,4);
+insert into zzim(mb_uid, class_uid)
+values(3,3);
+insert into zzim(mb_uid, class_uid)
+values(3,5);
+insert into zzim(mb_uid, class_uid)
+values(4,1);
+insert into zzim(mb_uid, class_uid)
+values(4,3);
+insert into zzim(mb_uid, class_uid)
+values(5,2);
+insert into zzim(mb_uid, class_uid)
+values(5,1);
