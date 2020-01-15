@@ -196,6 +196,7 @@ SELECT * FROM class;
 SELECT * FROM cur;
 select * from ins;
 select * from zzim;
+select * from review_brd;
 
 SELECT z.*, ins_name, cur_name FROM zzim z, ins i, cur WHERE z.mb_uid = 2;
 
@@ -255,6 +256,7 @@ values
 ,("그린컴퓨터아카데미 울산점", "052-716-3199", 44705, "울산광역시 남구 삼산동 삼산중로100번길 26", "1층", "울산", "남구", "https://busan.greenart.co.kr/_img/event/presentCoffeeEvent/eventBanner_03.jpg", "35.5421081", "129.3218261")
 ,("크린컴퓨터학원", "052-271-6892", 44681, "울산광역시 남구 신정5동 272-4", "1층", "울산", "남구", "http://www.usca.co.kr/images/logo_top.png", "35.5473193", "129.3182459");
 
+
 insert into cur(cur_name, cur_hours, cur_months, cur_month1, cur_month2, cur_month3, cur_month4, cur_month5, cur_month6)
 values('웹앱', 3, 5,'java 기초', 'html/css/javaScript','jsp/File','Spring','기획서만들기/MVC모델','')
 ,('네트워크', 3, 5,'OT, 시스템 가상화/ WindowServer 설치', 'OT, 가상 시스템/라우팅 서버<br> 리눅스의 역사와 및 특징 ','사용자와 그룹 관리/라우팅 서버<br>Vi에디터 / 쉘 스크립트 ','접근제어 서비스관리 <br> 시스템 네트워킹1 시스템 네트워킹2','프로젝트','')
@@ -282,3 +284,100 @@ values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
 
+
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('코리아IT 선택은 신의한수였습니다.', '<p>여러 책의 개념과 예제를 함축시켜 핵심 위주의 이론 설명을 해주셔서 이해하기 쉬웠습니다.<br />
+그리고, 숙제로 문제를 많이 내주셔서 반복해서 연습해보면서 내용을 익힐 수 있었습니다.ㅎㅎ<br />
+유용한 사이트도 매시간 마다 알려주셔서 도움이 되었습니다.^^<br />
+마지막 시간에 아나콘다 설치와 주피터 노트북 활용한 예제를 해볼 수 있어 매우 좋았습니다.<br />
+특히 제가 질문한 내용을 수업 전에 직접 찾아보고오셔서 파이토치 관련 책저자 블로그 사이트 추천과<br />
+파이토치 설치 및 사용법도 알려주시고, 관련 책도 보여주셔서 너무 만족스러웠습니다^^<br />
+또한, AI 관련해서 어떻게 공부하면 좋은지도 친절하게 설명해주셔서 감사합니다~!<br />
+다음에도 기회가 된다면 꼭 다시 수강하고 싶습니다^^<br />
+선생님 화이팅! 선규 멘토님도 화이팅!</p>
+', '2020-01-15 03:54:50', 1, 6);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('그린컴퓨터 당신은 도덕책', '<p>매일 수업마다 깔끔하게 자료들도 잘 정리해주시고, 이해하며 따라가기 쉽도록 꼼꼼하게 수업해 주신 덕에<br />
+유니티를 잘 마무리 할 수 있었던 것 같습니다~!<br />
+또, 전공자임에도 불구하고 파이썬은 처음 배우는거라 수강 전부터 걱정을 많이 했었는데<br />
+선생님의 수업 덕분에 유니티에 흥미를 느끼게 되었습니다!<br />
+그래서 저처럼 유니티에 입문하시는 분들께 추천드리고 싶네요!<br />
+<br />
+방학 특강이라 짧아서 아쉬웠지만 매일 아침 일찍 수업하시느라 정말 수고 많으셨습니다! ㅎㅎㅎㅎ 감사합니다~!</p>
+', '2020-01-15 03:56:38', 7, 16);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('SBS아카데미와 함께 찬란한 미래를 꿈꾸며', '<p>리눅스를 처음 혼자 접했을 때는 인터넷에서 보면서 따라했는데 똑같이 따라해도 안되고 가상머신 오류도 나고 해서 어려웠는데<br />
+강사님의 수업을 듣고 나서 리눅스가 조금 더 가까워진 것 같습니다. 그리고 어렵고 재미없을 것 같았던 리눅스를 친절하고 재밌게<br />
+설명해 주셔서 좋았습니다.</p>
+', '2020-01-15 03:58:21', 5, 13);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('빅데이터는 이젠아카데미와 함께', '<p>처음 접해보는 리눅스 수업이라 걱정이 되었지만 강사님께서 이해하기 쉽고 편하게 수업을 진행해 주셔서 어려움 없이 수업을 따라 갈 수 있었다고 생각합니다.<br />
+아직 리눅스를 배워야 할 부분이 더욱 많지만 처음 시작하는 경험이 좋았기 때문에 뒤에 할 공부들도 잘할 수 있을거라는 느낌이 들었습니다.<br />
+여러 실무 경험담도 얻을 수 있어서 좋은 수업이었습니다.</p>
+', '2020-01-15 03:59:40', 4, 7);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('코리아IT강남 웹개발 성연철 강사님 감사합니다!', '<p>자바기초반이라 기초적인 이론을 자세하게 알려주시고, 기초반이라고 쉬운 코딩으로 하지않고 학생들의 실력향상을 위해서 조금더 난이도가 있는 코딩을 가져와 알려주셨습니다.<br />
+덕분에 기초적인부분도 잘 잡혔고 조금 어려운 코딩도 접해서 좋았습니다.<br />
+수업도중에 선생님의 회사 경험담이나 회사면접때 이런것들을 물어보더라며 취업준비하는 우리에게 좋은팁들도 주어서 좋은 수업이였습니다.</p>
+', '2020-01-15 04:01:32', 1, 10);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('빅데이터는 sbs아카데미와 함께!', '<p>2달간의 리눅스 과정을 마치고 수강후기 작성합니다.!<br />
+<br />
+처음 리눅스를 들을 때만 해도 굉장히 리눅스라는 것을 어려울꺼라 생각했었는데, 이문규강사님의<br />
+수업지도방식으로 어려울 거라는 생각이 전부 사라지고 오히려 더 재밌어지고 공부도 잘되었습니다.<br />
+차근차근 수업을 진행해 주면서 어려울수 있는 부분을 하나하나 체크해주시고 안되는 부분또한<br />
+하나하나 체크하여서 해결해 주시면서 여러 상황에대해 필요한 공부를 할 수 있게 해주셔서 감사합니다.<br />
+<br />
+다른 수업과 마찬가지로 이번 리눅스 수업또한 정말 좋은 시간이 되어서 개인적으로도 너무 만족스럽고<br />
+또 앞으로 수업들 중 어렵다고 생각할 수 있는 수업을 어렵다고 생각하지 않게 할 수 있는 정말 좋은 수업이였었습니다.<br />
+<br />
+이렇게 좋은 수업진행해주신 이문규 강사님께 다시한번 감사드립니다,<br />
+2달간 리눅스를 사용할 수 있도록 지도해주시고, 서버를 구축 및 운영할 수 있도록 훌륭하게 지도해주셔서 정말감사합니다.</p>
+', '2020-01-15 04:03:16', 5, 11);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('네트워크의 1인자가 되겠습니다.', '<p>텍스트로 이용하는 낯선 운영체계였지만 선생님의 친절한 설명 덕분에 금세 익숙해질 수 있었습니다.<br />
+질문할 때에도 항상 친절하고 자세히 설명해주셔서 쉽지 않은 내용이었지만 흥미를 잃지 않고 따라갈 수 있었습니다.<br />
+파이썬 수업 때에도 그랬지만 수업 내용 정리를 잘 해주셔서 복습할 때에도 놓치는 부분 없이 수업 내용 복기가 가능했습니다.<br />
+수업 잘 이끌어주셔서 감사합니다 선생님.<br />
+<br />
+기초가 부족한 비전공자 분들도 따라가실 수 있도록 쉽고 친절한 강의라 수업 들으시려는 분들께 적극 추천드립니다.</p>
+', '2020-01-15 04:04:52', 8, 8);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('데이터 개발자를 위한 초석', '<p>처음 배우는 프로그램언어였지만 쉬운것도 여러번 설명해 주시는 덕분에 놓치는 부분 거의 없이 수업에 참여할 수 있었습니다.<br />
+질문하면 바로 자리로 오셔서 1대1로 차근히 설명해 주시고 , 수업중 어렵거나 실습이 많은 날은 수강생들 자리를 돌아보시는 경우가 있어서<br />
+질문하시기 어려우신 분들에게도 편안한 수업이 될 수 있을 것 같습니다.</p>
+', '2020-01-15 04:06:05', 2, 17);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('홈페이지를 만들고 싶다면 sbs로!', '<p>평일 오전 09:00~12:00 코리아IT아카데미 1타 강사 한동석 강사님의 DBMS 수업을 듣고 있는 강경표입니다.<br />
+한동석 강사님의 JAVA2 수업을 듣고 강의 스타일에 감탄하여 1년에 한번 열리는 DBMS 수업을 바로 듣게 되었네요.<br />
+<br />
+한동석 강사님은 개념 설명을 하신 뒤, 기본 예제, 심화 예제, 기본 실습, 심화 실습을 하는 것으로 진행하십니다.<br />
+수업 내용은 실제로 회사에서 어떻게 활용하는 지에 대해서 다루고 있으며 최대한 현업에서 이루어지는 내용을 위주로<br />
+설명을 해주시며, SQLD 자격증 시험 준비도 도와주십니다.<br />
+<br />
+아무래도 실제 현업에서 잘 활용되는 내용을 위주로 설명하시다 보니, 난이도가 높은 편입니다.<br />
+하지만, 강사님은 어려워 하는 학생들을 위해 1:1로 자리에 직접 가셔서 이해하기 쉽게 설명을 다시 해줍니다.<br />
+<br />
+다음 강의에서도 잘 부탁드립니다!! 한동석 강사님의 수업 추천드려요!ㅎㅎ</p>
+', '2020-01-15 04:07:13', 6, 12);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('유니티가 즐겁습니다.', '<p>처음 DBMS를 배워서 계속 놓치고 따라가지 못했습니다.<br />
+그래도 강사님이 쉬는시간에도 봐주시고 물어보면 일일히 알려주셔서 따라갈 수 있었습니다.<br />
+강사 덕분에 강의 내용에 대해 이해가 많이 되었고, 수업을 듣고 난 후 자격증 시험에 도전하자는 생각이 들었습니다.<br />
+강의 열심히 가르쳐주셔서 감사하고 나중에 또 강의에서 강사님을 만나면 좋겠습니다!</p>
+', '2020-01-15 04:08:12', 3, 1);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values('빅데이터는 사랑입니다', '<p>최고에요</p>
+', '2020-01-15 05:57:56', 1, 20);
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()
+insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+values()

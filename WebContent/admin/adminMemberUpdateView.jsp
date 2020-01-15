@@ -210,7 +210,7 @@
 										<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top:7px;">
 												사진 선택<input type="file" name="mb_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 										</label>     
-										<img src="../user/mypage/img/${adminMemberUpdateView[0].mb_img }" style="width: 150px; height: 150px;"/>
+										<img src="../user/upload/${adminMemberUpdateView[0].mb_img }" style="width: 150px; height: 150px;"/>
 										<input type="hidden" name="mb_uid" value="${adminMemberUpdateView[0].mb_uid }" />
 										<input type="hidden" name="ifNew" value="true" />
 										</div>
