@@ -146,31 +146,61 @@
 
 
 				<ul class="portfolio-items col-3 isotope fade-up">
-					
-				    <c:forEach var="dto" items="${classList }">
-				    	<!-- portfolio-item  -->
-						<li class="portfolio-item apps isotope-item">
-							<div class="item-inner">
-							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
-								<img src="${dto.ins_img}" alt="" style="height: 200px;">
-							</div>
-							<div id="h5_border">
-							<div id="like_pane">
-								<span style="color:red;">
-									<i id="heart" class="fa fa-heart" style="color:red"></i>
-								</span>
-								<span>찜 ${dto.class_zzimcnt }</span>
-							</div>	
-							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
-								<h5>${dto.ins_name }</h5>
-								<h5>${dto.cur_name }</h5>
-								<h5>${dto.ins_branch }</h5>
-							</div>
-							</div>
-							</div>
-						</li>
-						<!--/.portfolio-item-->
-					</c:forEach>
+				<c:choose>	
+					<c:when test="${not empty sessionScope.loginUid }">				
+					    <c:forEach var="dto" items="${classList }">
+					    	<!-- portfolio-item  -->
+							<li class="portfolio-item apps isotope-item">
+								<div class="item-inner">
+								<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
+									<img src="${dto.ins_img}" alt="" style="height: 200px;">
+								</div>
+								<div id="h5_border">
+								<div id="like_pane">
+									<span style="color:red;">
+										<i id="heart" class="fa fa-heart" style="color:red"></i>
+									</span>
+									<span>찜 ${dto.class_zzimcnt }</span>
+								</div>	
+								<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
+									<h5>${dto.ins_name }</h5>
+									<h5>${dto.cur_name }</h5>
+									<h5>${dto.ins_branch }</h5>
+								</div>
+								</div>
+								</div>
+							</li>
+							<!--/.portfolio-item-->
+						</c:forEach>
+					</c:when>
+						
+						<c:otherwise>
+							    <c:forEach var="dto" items="${classList }">
+					    	<!-- portfolio-item  -->
+							<li class="portfolio-item apps isotope-item">
+								<div class="item-inner">
+								<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+									<img src="${dto.ins_img}" alt="" style="height: 200px;">
+								</div>
+								<div id="h5_border">
+								<div id="like_pane">
+									<span style="color:red;">
+										<i id="heart" class="fa fa-heart" style="color:red"></i>
+									</span>
+									<span>찜 ${dto.class_zzimcnt }</span>
+								</div>	
+								<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+									<h5>${dto.ins_name }</h5>
+									<h5>${dto.cur_name }</h5>
+									<h5>${dto.ins_branch }</h5>
+								</div>
+								</div>
+								</div>
+							</li>
+							<!--/.portfolio-item-->
+						</c:forEach>
+						</c:otherwise>
+				</c:choose>
 				</ul>
 			</div>
 		</section>
