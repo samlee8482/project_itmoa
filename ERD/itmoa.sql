@@ -200,6 +200,10 @@ select * from review_brd;
 
 SELECT z.*, ins_name, cur_name FROM zzim z, ins i, cur WHERE z.mb_uid = 2;
 
+-- 2배로 늘리기 (회원관리)
+INSERT INTO mb(mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2)
+SELECT mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2 FROM mb;
+
 update mb set mb_level = 3 where mb_id = 'admin';
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user1', 'Aabcd123!', '이미지', 'wkrud94@hanmail.net', 07030, '서울시', '동작구');
@@ -284,6 +288,9 @@ values(4, 5, 4334);
 insert into class(ins_uid, cur_uid, class_zzimcnt)
 values(4, 2, 144);
 
+-- 2배로 늘리기 (학원후기)
+INSERT INTO review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
+SELECT review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid FROM review_brd;
 
 insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
 values('코리아IT 선택은 신의한수였습니다.', '<p>여러 책의 개념과 예제를 함축시켜 핵심 위주의 이론 설명을 해주셔서 이해하기 쉬웠습니다.<br />

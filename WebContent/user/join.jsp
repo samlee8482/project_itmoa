@@ -94,7 +94,11 @@ th, td { white-space: nowrap; }
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-input[type="text"] { background-color: white; }
+input[type="text"] {
+	padding: 0px 5px;
+	border: 0.5px solid #cccccc;
+	background: #hhhhhh;	
+}
 /* Style the checkmark/indicator */
 .container .checkmark:after {
   left: 9px;
@@ -109,11 +113,6 @@ input[type="text"] { background-color: white; }
   
 }
 input { border: 1px solid #333333; }
-input[type="text"] {
-	padding: 0px 5px;
-	border: 0.5px solid #cccccc;
-	background: #hhhhhh;
-}
 input[type="password"] {
 	padding: 0px 5px;
 	border: 0.5px solid #cccccc;
@@ -289,11 +288,10 @@ table { margin-left: 5%; }
 						<td><input id="mb_id" class="info1" name="mb_id" type="text" placeholder="아이디를 입력해주세요."></td>
 					</tr>
 					<tr>
-						
+						<span id="pw_policy">※ 영문 대문자, 숫자, 특수문자 조합 </span>
 						<th><label for="mb_pw">비밀번호</label></th>
 						<td><input id="mb_pw" class="info1" name="mb_pw" type="password" placeholder="비밀번호 를 입력해주세요."></td>
 					</tr>
-						<span id="pw_policy">※ 영문 대문자, 숫자, 특수문자 조합 </span>
 					<tr>
 						<th><label for="mb_pwOk">비밀번호 확인</label></th>
 						<td><input id="mb_pwOk" class="info1" name="mb_pwOk" type="password" placeholder="비밀번호를 입력해주세요."></td>
@@ -305,13 +303,13 @@ table { margin-left: 5%; }
 					<tr>
 						<th>주소</th>
 						<td>
-							<input type="text" id="sample6_postcode" name="mb_zip" placeholder="우편번호" style="float:left; width: 250px; height: 40px; border-radius: 7px; margin: 5px;" disabled="disabled">
+							<input type="text" id="sample6_postcode" name="mb_zip" placeholder="우편번호" style="float:left; width: 250px; height: 40px; border-radius: 7px; margin: 5px;" readonly="readonly">
 							<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
 						</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input class="addr" type="text" id="sample6_address" name="mb_add1" placeholder="주소" disabled="disabled"></td>
+						<td><input class="addr" type="text" id="sample6_address" name="mb_add1" placeholder="주소" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<td></td>

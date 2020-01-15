@@ -124,13 +124,13 @@
 	                                    <div class="author well">
 	                                        <div class="media">
 	                                            <div class="pull-left">
-	                                                <img class="avatar img-thumbnail author-box-image" src="${sessionScope.loginImg }" alt="" style="min-width: 88px; min-height: 88px;"> <!-- ${sessionScope.loginImg } -->
+	                                                <img class="avatar img-thumbnail author-box-image" src="/Project_itmoa/user/upload/${sessionScope.loginImg }" alt="" style="min-width: 88px; min-height: 88px;"> <!-- ${sessionScope.loginImg } -->
 	                                            </div>
 				                    				<div class="media-body">
 		                                                <div class="media-heading">
 		                                                    <strong>${sessionScope.loginId }</strong>
 		                                                </div>
-		                                                <form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="chkSubmit()">
+		                                                <form method="post" action="/Project_itmoa/user/repUpdateOk.do" onSubmit="return chkSubmit()">
 		                                                	<input type="hidden" name="ifNew" value="true" />
 		                                                	<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }" />
 		                                                	<input type="hidden" name="review_brd_uid" value="${reviewView[0].review_brd_uid }" />
@@ -194,7 +194,7 @@
 			                                    </c:when>
 			                            	</c:choose>
                                         </div><!--/#comments-list-->
-                                        <button type="button" onclick="location.href='/Project_itmoa/user/reviewList.do'">
+                                        <button type="button" id="find-id-btn" onclick="location.href='/Project_itmoa/user/reviewList.do'" style="background: #eb2b63; color: #ffffff; border:none; border-radius: 5px">
 											목록으로
                                         </button>
                                         <div class="gap"></div>
@@ -228,7 +228,7 @@
 				return true;
 			}
 			
-			alert("댓글을 입력하세요");
+			
 			return false;
     	}
     </script>
