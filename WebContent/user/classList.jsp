@@ -73,7 +73,6 @@
 								<div class="center gap fade-down section-heading">
 									<h2 class="main-title">학원검색</h2>
 									<hr>
-									<p>여기는 없는게 나을거같애</p>
 								</div>
 							</div>
 						</div>

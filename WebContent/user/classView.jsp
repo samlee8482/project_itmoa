@@ -107,7 +107,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">${classView[0].cur_name }</h2>
+                                    <h2 class="main-title">학원 상세 정보</h2>
                                     <hr>
                                     <c:if test="${sessionScope.loginUid != null }">
                                     	<p>${classView[0].ins_name }</p>
@@ -161,13 +161,20 @@
         <section id="blog" class="white">
             <div class="container">
             <div class="gap"></div>
+             							<div class="col-md-5 class_label center">
+			                                <h3><span class="pe-7s-gleam bounce-in"></span>교육 과정</h3>
+			                                <div id="class_name"><span>${classView[0].cur_name }</span></div>
+										</div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="blog">
                             <div class="blog-item">
                                 <div class="blog-content">
+                                <div class="row">
                                 	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 100%"/></div>
-									<div class="col-sm-7">
+									
+									
+										<div class="col-md-7">
 										<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
@@ -180,13 +187,9 @@
 												</tr>
 											</thead>
 										</table>
-									</div>
-									<div class="row">
-										<div class="col-md-5">
-			                                <h3>교육 과정</h3>
-			                                <span>~~~~~</span>
-										</div>
-										<div class="col-md-7" style="float: right">
+								
+									
+									
 					                        <div class="tile-progress tile-primary bounce-in">
 					                            <div class="tile-header">
 					                            	<p>교육과정의 주차수를 선택하여 세부과정을 볼 수 있습니다.</p>

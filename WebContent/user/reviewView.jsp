@@ -194,7 +194,7 @@
 			                                    </c:when>
 			                            	</c:choose>
                                         </div><!--/#comments-list-->
-                                        <button type="button" onclick="location.href='/Project_itmoa/user/reviewList.do'">
+                                        <button type="button" id="find-id-btn" onclick="location.href='/Project_itmoa/user/reviewList.do'" style="background: #eb2b63; color: #ffffff; border:none; border-radius: 5px">
 											목록으로
                                         </button>
                                         <div class="gap"></div>
