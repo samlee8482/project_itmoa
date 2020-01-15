@@ -39,6 +39,17 @@ div.a {
 	background-color: #bbc4bc;
 }
 
+
+#return_list {
+	position: absolute;
+	margin: 20px 0px;
+	border-radius: 5px;
+	border:none;
+	background-color: #eb2b63;
+	color: #ffffff;
+	padding:10px;
+}
+
 input.find-id-info, input.find-pw-info {
 	width: 350px;
 	height: 60px;
@@ -127,7 +138,7 @@ div.find-id-com, div.find-com-id{
 	border: none;
 	width: 120px;
 	height: 40px;
-	margin: 10px;
+	margin: 20px 0;
  }
  
  

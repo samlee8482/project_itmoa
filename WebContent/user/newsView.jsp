@@ -15,6 +15,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+     <link href="css/style3.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -25,9 +26,9 @@
     jQuery(document).ready(function($){
     'use strict';
         jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
+        	"images/bg/bg0.jpg",
+ 	        "images/bg/bg1.png",
+ 	        "images/bg/bg2.png"
         ], {duration: 5000, fade: 500});
 
         $("#mapwrapper").gMap({ controls: false,
@@ -72,7 +73,7 @@
                                 <div class="center gap fade-down section-heading">
                                     <h2 class="main-title">IT News</h2>
                                     <hr>
-                                    <p>뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스 뉴스</p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -104,10 +105,15 @@
                                 </div>
                             </div>
                         </div>
+                        
+                          <button type="button" id="return_list" onclick="location.href='/Project_itmoa/user/newsList.do'">
+											목록으로
+                                        </button>
                     </div><!--/.col-md-8-->
                 </div><!--/.row-->
             </div>
         </section><!--/#blog-->
+       
     </div>
 
     
