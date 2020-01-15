@@ -96,7 +96,7 @@
                 <div class="row">
                     <aside class="col-sm-4 col-sm-push-8">
                         <div class="widget search">
-                            <form role="frm" method="get" action="/Project_itmoa/user/newsList.do">
+                            <form role="frm" method="get" action="/Project_itmoa/user/newsList.do" onSubmit="return chkSubmit()">
                                 <div class="input-group">
                                 	<select name="option_news" style="width: 35%; padding: 9px 18px 9px 9px; border: 0px; box-shadow: 0 0 0 2px #eb2b63 inset; -webkit-appearance: none; background: url('images/arrow.jpg') no-repeat 95% 50%;">
 	                               		<option value="1">뉴스 제목</option>

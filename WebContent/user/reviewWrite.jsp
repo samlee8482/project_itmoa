@@ -164,27 +164,6 @@
 		</section><!--/#blog-->
 	</div>
 
-	<div id="footer-wrapper">
-		<footer id="footer" class="">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8">
-						&copy; 2019 Your Site Name. All Rights Reserved. <a
-							href="https://templatemag.com/bootstrap-templates/">Bootstrap
-							templates</a> by TemplateMag.
-					</div>
-					<div class="col-sm-4">
-						<ul class="pull-right">
-							<li><a id="gototop" class="gototop" href="#"><i
-									class="fa fa-chevron-up"></i></a></li>
-							<!--#gototop-->
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!--/#footer-->
-	</div>
 
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.prettyPhoto.js"></script>
