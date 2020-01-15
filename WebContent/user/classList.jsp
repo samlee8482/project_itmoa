@@ -151,7 +151,7 @@
 				    	<!-- portfolio-item  -->
 						<li class="portfolio-item apps isotope-item">
 							<div class="item-inner">
-							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
 								<img src="${dto.ins_img}" alt="" style="height: 200px;">
 							</div>
 							<div id="h5_border">
@@ -161,7 +161,7 @@
 								</span>
 								<span>찜 ${dto.class_zzimcnt }</span>
 							</div>	
-							<div  onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }'">
+							<div onclick="location.href='/Project_itmoa/user/classView.do?class_uid=${dto.class_uid }&mb_uid=${sessionScope.loginUid }'">
 								<h5>${dto.ins_name }</h5>
 								<h5>${dto.cur_name }</h5>
 								<h5>${dto.ins_branch }</h5>

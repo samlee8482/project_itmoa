@@ -15,6 +15,7 @@ public class CurViewCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 	
 		int class_uid = Integer.parseInt(request.getParameter("class_uid"));
+		int mb_uid = Integer.parseInt(request.getParameter("mb_uid"));
 				
 		ClassDAO dao = new ClassDAO();
 		ClassDTO [] arr = null;
@@ -24,7 +25,7 @@ public class CurViewCommand implements Command {
 			
 			arr = dao.selectClassByUid(class_uid);
 			request.setAttribute("classView", arr);
-			arr = dao.selectZZimByUid(class_uid);
+			arr = dao.selectZZimByUid(class_uid, mb_uid);
 			request.setAttribute("zzimView", arr);
 						
 		} catch (SQLException e) {

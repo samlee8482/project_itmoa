@@ -11,7 +11,7 @@
 	<c:when test="${zzimOk == 1 }">
 		<script>
 			alert("찜 삭제 성공");
-			location.href = "/Project_itmoa/user/classView.do?class_uid=${goBack }";
+			location.href = "/Project_itmoa/user/classView.do?class_uid=${goBack }&mb_uid=${sessionScope.loginUid }";
 		</script>
 	</c:when>
 	<c:when test="${zzimOk == 2 }">
@@ -23,7 +23,7 @@
 	<c:when test="${zzimOk == 3 }">
 		<script>
 			alert("찜 성공");;
-			location.href = "/Project_itmoa/user/classView.do?class_uid=${goBack }";
+			location.href = "/Project_itmoa/user/classView.do?class_uid=${goBack }&mb_uid=${sessionScope.loginUid }";
 		</script>
 	</c:when>
 </c:choose>
