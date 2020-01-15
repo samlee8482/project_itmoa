@@ -110,15 +110,13 @@ div.w1 {
 
 #dataTable th{
 	border: 1px solid #eb2b63;
-	border-radius: 5px;
 	background-color: #eb2b63;
 	color: white;
-	text-align: center;;
+	text-align: center;
 }
 
  #dataTable td{
  	border: 1px solid #eb2b63;
-	border-radius: 5px;
 	text-align: center;
  }
 
@@ -134,3 +132,23 @@ div.w1 {
 	height: 40px;
 	margin: 10px;
  }
+ 
+ 
+ .class_label{
+ 	backgroud-color: #eb2b63;
+	font-size: 1.2em;
+	font-family: "-윤고딕320";
+	width: 100%;
+ }
+ 
+ #class_name{
+ padding-top: 15px;
+ }
+ 
+#class_name>span{
+  	font-size: 1.4em;
+	font-family: "-윤고딕320";
+	color: #fff;
+	background: #eb2b63;
+	padding: 10px
+  }

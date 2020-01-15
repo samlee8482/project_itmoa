@@ -1,6 +1,11 @@
 /* IMPACT - By DistinctiveThemes */
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,300);
 
+*{
+	font-family:'-윤고딕320', 'Noto Sans', 'Noto Sans Light', 'Malgun Gothic';
+}
+
+
 .clearfix {
 	zoom: 1;
 }
@@ -1256,7 +1261,7 @@ ul.social>li>a:hover {
 }
 
 .blog .blog-item .blog-content {
-	padding: 20px;
+	padding: -40 20px;
 	position: relative;
 	border-bottom: 4px solid #f0f0f0;
 	left: 20px;
@@ -1453,7 +1458,7 @@ img.author-box-image {
 }
 
 #content-wrapper section {
-	padding-top: 60px;
+	padding-top: 0px;
 	padding-bottom: 60px;
 }
 
@@ -1747,7 +1752,7 @@ img.author-box-image {
 }
 
 .tile-progress .tile-header {
-	padding: 15px 20px;
+	
 	padding-bottom: 40px;
 }
 
@@ -2228,8 +2233,7 @@ img.author-box-image {
 #main_btn{
 	position: fixed;
 	top: 70%;
-	left: 6%;
-
+	left: 5%;
 }
 
 
@@ -2295,4 +2299,6 @@ img.author-box-image {
 	
 }
 
-
+#class_info_float{
+	float:left;
+}
