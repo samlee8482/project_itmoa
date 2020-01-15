@@ -21,15 +21,17 @@ public class CurViewCommand implements Command {
 		
 		ClassDAO dao = new ClassDAO();
 		ClassDTO [] arr = null;
-		
+		ClassDTO [] arr2 = null;
 		
 		try {
 			if ( mb_uid == null) {
 				arr = dao.selectClassByUid(class_uid);
 				request.setAttribute("classView", arr);
 			} else {
+				arr2 = arr = dao.selectClassByUid(class_uid);
 				arr = dao.selectZZimByUid(class_uid, Integer.parseInt(mb_uid));
 				request.setAttribute("zzimView", arr);
+				request.setAttribute("classView", arr2);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
