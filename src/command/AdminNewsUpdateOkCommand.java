@@ -59,7 +59,7 @@ public class AdminNewsUpdateOkCommand implements Command {
 					if (news_brd_title != null && !news_brd_title.trim().equals("")
 						&& news_brd_content != null && !news_brd_content.trim().equals("")) {
 						try {
-							news_brd_img = "/Project_itmoa/admin/news/main/" + news_brd_img;
+							news_brd_img = "/Project_itmoa/admin/news/img/" + news_brd_img;
 							cnt = dao.insertNews(news_brd_title, news_brd_img, news_brd_content);
 							if (cnt == 1) cnt = 1;
 							if (cnt == 0) cnt = 0;
