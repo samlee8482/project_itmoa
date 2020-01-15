@@ -120,7 +120,7 @@
 	                                    <div class="author well">
 	                                        <div class="media">
 	                                            <div class="pull-left">
-	                                                <img class="avatar img-thumbnail author-box-image" src="/Project_itmoa/user/upload/${sessionScope.loginImg }" alt="" style="min-width: 88px; min-height: 88px;"> <!-- ${sessionScope.loginImg } -->
+	                                                <img class="avatar img-thumbnail author-box-image" src="${sessionScope.loginImg }" alt="" style="min-width: 88px; min-height: 88px;"> <!-- ${sessionScope.loginImg } -->
 	                                            </div>
 				                    				<div class="media-body">
 		                                                <div class="media-heading">
@@ -149,7 +149,7 @@
 				                        			<c:forEach var="repList" items="${repView }" varStatus="status">
 			                                            <div class="media">
 			                                                <div class="pull-left">
-			                                                    <img class="avatar img-thumbnail comment-avatar" src="/Project_itmoa/user/upload/${repList.mb_img }" style="min-width: 88px; min-height: 88px;" alt="">
+			                                                    <img class="avatar img-thumbnail comment-avatar" src="/Project_itmoa/user/mypage/img/${repList.mb_img }" style="min-width: 88px; min-height: 88px;" alt="">
 			                                                </div>
 			                                                <div class="media-body">
 			                                                    <div class="well">
