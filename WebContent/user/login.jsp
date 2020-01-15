@@ -21,15 +21,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 <script src="js/jquery.js"></script>
-<link rel="shortcut icon" href="images/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="images/ico/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="images/ico/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="images/ico/images/ico/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon-precomposed"
-	href="images/ico/apple-touch-icon-57x57.png">
+
 <style>
 	input[type="text"], input[type="password"] {
 	padding: 0px 5px;
@@ -38,7 +30,7 @@
 }
 </style>
 
-<title>LOGIN</title>
+<title>ITMOA</title>
 </head>
 <!--/head-->
 <script>

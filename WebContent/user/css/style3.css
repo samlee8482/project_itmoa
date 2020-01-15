@@ -103,6 +103,8 @@ div.find-id-com, div.find-com-id{
 	font-size: 15px;	
 }
 
+
+
 #dataTable th{
 	border: 1px solid #eb2b63;
 	background-color: #eb2b63;
@@ -141,7 +143,7 @@ div.find-id-com, div.find-com-id{
  }
  
 #class_name>span{
-  	font-size: 1.4em;
+  	font-size: 1.2em;
 	font-family: "-윤고딕320";
 	color: #fff;
 	background: #eb2b63;

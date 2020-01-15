@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>About Us | Impact By Distinctive Themes</title>
+<title>ITMOA</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">"WebContent/user/classList.jsp"
+<link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/pe-icons.css" rel="stylesheet">
 <link href="css/prettyPhoto.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
@@ -24,15 +24,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 <script src="js/jquery.js"></script>
-<link rel="shortcut icon" href="images/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="images/ico/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="images/ico/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="images/ico/images/ico/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon-precomposed"
-	href="images/ico/apple-touch-icon-57x57.png">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
     jQuery(document).ready(function($){

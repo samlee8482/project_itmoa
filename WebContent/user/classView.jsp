@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
+    <title>ITMOA</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/pe-icons.css" rel="stylesheet">
@@ -23,11 +23,6 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <script src="js/jquery.js"></script>
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57x57.png">
 	<style>
 	
        /* Set the size of the div element that contains the map */
@@ -174,7 +169,7 @@
                                 	<div class="col-sm-5"><img src="${classView[0].ins_img }" style="width: 100%"/></div>
 									
 									
-										<div class="col-md-7">
+										<div class="col-md-7" id="dataTable_warp">
 										<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
@@ -190,7 +185,7 @@
 								
 									
 									
-					                        <div class="tile-progress tile-primary bounce-in">
+					                        <div class="tile-progress tile-pink bounce-in">
 					                            <div class="tile-header">
 					                            	<p>교육과정의 주차수를 선택하여 세부과정을 볼 수 있습니다.</p>
 													<c:if test="${fn:length(classView[0].cur_month1) != 0 }">
@@ -212,12 +207,14 @@
 			                            				<button onClick="changeMonth(6)">6개월 차</button>
 													</c:if>
 					                            </div>
+					                            
+					                 
 					                            <c:if test="${fn:length(classView[0].cur_month1) != 0 }">
 					                            	<div>
 					                            		<h3>1개월 차</h3>
 						                                <span>${classView[0].cur_month1 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
-							                                <span data-fill="10%"></span>
+							                            <div class="tile-progressbar" style="margin-top: 50px">
+							                                <span data-fill="10%" style="background-color:#eb2b63"></span>
 							                            </div>
 							                            <div class="tile-footer">
 							                                <h4>
@@ -230,7 +227,7 @@
 						                            <div>
 					                            		<h3>2개월 차</h3>
 						                                <span>${classView[0].cur_month2 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
+							                            <div class="tile-progressbar" style="margin-top: 50px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -244,7 +241,7 @@
 						                            <div>
 					                            		<h3>3개월 차</h3>
 						                                <span>${classView[0].cur_month3 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
+							                            <div class="tile-progressbar" style="margin-top: 50px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -258,7 +255,7 @@
 						                            <div>
 					                            		<h3>4개월 차</h3>
 						                                <span>${classView[0].cur_month4 }</span>
-							                            <div class="tile-progressbar" style="margin-toZp: 100px">
+							                            <div class="tile-progressbar" style="margin-top: 50px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -272,7 +269,7 @@
 						                            <div>
 					                            		<h3>5개월 차</h3>
 						                                <span>${classView[0].cur_month5 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
+							                            <div class="tile-progressbar" style="margin-top: 50px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -286,7 +283,7 @@
 						                            <div>
 					                            		<h3>6개월 차</h3>
 						                                <span>${classView[0].cur_month6 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
+							                            <div class="tile-progressbar" style="margin-top: 50px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -295,7 +292,9 @@
 							                                </h4>
 							                            </div>
 					                            	</div>
+					                            	
 												</c:if>
+						
 					                        </div>
 					                    </div>
                                     </div>
@@ -325,11 +324,11 @@
     		$('.tile-header > button').css({
     			"background-color": "#f0f0f0",
     			"border": "0",
-    			"padding": "5px",
-    			"margin": "5px"
+    			//"padding": "5px",
+    			//"margin": "5px"
     		});
-    		$('.tile-header > button').eq(0).css("background-color", "black");
-    		$('.tile-header > button').eq(0).css("color", "white");
+    		$('.tile-header > button').eq(0).css("background-color", "#eb2b63");
+    		$('.tile-header > button').eq(0).css("color", "#fff");
     		
     		$(".tile-progress > div").css("display", "none");
     		$(".tile-progress > div").eq(0).css("display", "block");
@@ -392,8 +391,8 @@
        		$(".tile-progress > div").eq(i).css("display", "block");
     		$('.tile-header > button').css("background-color", "#f0f0f0");
     		$('.tile-header > button').css("color", "black");
-    		$('.tile-header > button').eq(i-1).css("background-color", "black");
-    		$('.tile-header > button').eq(i-1).css("color", "white");
+    		$('.tile-header > button').eq(i-1).css("background-color", "#eb2b63");
+    		$('.tile-header > button').eq(i-1).css("color", "#fff");
     	}
     	
     	function chkLogin() {

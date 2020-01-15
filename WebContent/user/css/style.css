@@ -1751,10 +1751,23 @@ img.author-box-image {
 	border-radius: 0;
 }
 
-.tile-progress .tile-header {
-	
-	padding-bottom: 40px;
+
+.tile-header {
+	margin-bottom: 20px;
+	padding: 15px 0;
 }
+
+.tile-header>button{
+	padding: 10px;
+	background-color: #eb2b63;
+}
+
+
+.tile-progress .tile-header p{
+	display: block;
+	padding-top: 20px;	
+}
+
 
 .tile-progress .tile-progressbar {
 	height: 4px;
