@@ -272,8 +272,8 @@
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/init.js"></script>
-</body>
 
+</body>
 </html>
 
 
