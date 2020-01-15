@@ -96,7 +96,7 @@
                                 <div class="center centered" style="padding-top: 12%;">
                                    <span class="home-icon hero-rocket"><img src="images/bg/rocket.png" alt=""></span>
                                     <div id="main_text"><img src ="images/bg/main_text.png" ></div>
-                                    <div id="main_btn"><a class="btn btn-md animation bounce-in" href="join.do">회원가입</a></div>
+                                    <div id="main_btn"><a class="btn btn-md animation bounce-in" href="/Project_itmoa/user/classList.do">학원찾기</a></div>
                                 </div>
                             </div>
                         </div>

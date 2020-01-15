@@ -52,8 +52,7 @@
 		
 	<div id="ro"><h2>마이페이지</h2></div>
 	
-	<div class="w1">
-		<div class="w2">
+	<div id="w1">
 		<form id="infoForm"  method="post" enctype="multipart/form-data" action="myPageUpdateOk.do">
 					<input type="hidden" name="mb_id" value="${sessionScope.loginId }">
 					<input type="hidden" name="origin_pw" id="origin_pw"
@@ -148,7 +147,6 @@
 			</div>
 
 		</div>
-	</div>
 
 
 	<script
