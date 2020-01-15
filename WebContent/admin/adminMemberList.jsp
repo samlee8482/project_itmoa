@@ -31,7 +31,11 @@
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <script src="https://kit.fontawesome.com/bb29575d31.js"></script>
 </head>
-
+<c:choose>
+<c:when test="${sessionScope.loginLevel != 3 }">
+	<jsp:include page="ifNotAdmin.jsp" />
+</c:when>
+<c:otherwise>
 <body id="page-top">
 
    <!-- Page Wrapper -->
@@ -237,6 +241,8 @@
 
 
 </body>
+</c:otherwise>
+</c:choose>
 <script>
 function chk(){
 	var delConfirm = confirm('정말로 삭제하시겠습니까?');

@@ -30,7 +30,11 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<c:choose>
+<c:when test="${sessionScope.loginLevel != 3 }">
+	<jsp:include page="ifNotAdmin.jsp" />
+</c:when>
+<c:otherwise>
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -225,5 +229,7 @@
 		})
 	</script>
 </body>
+</c:otherwise>
+</c:choose>
 
 </html>

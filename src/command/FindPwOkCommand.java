@@ -33,7 +33,7 @@ public class FindPwOkCommand implements Command{
 		String mb_email = request.getParameter("mb_email");    
 
 		String SMTP_USERNAME = "wkrud94@naver.com";
-		String SMTP_PASSWORD = "lds794613!";
+		String SMTP_PASSWORD = "Aiu794613!";
 		String HOST = "smtp.naver.com";
 		//int PORT = 587;
 
