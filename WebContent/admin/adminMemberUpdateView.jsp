@@ -19,7 +19,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Member</title>
+<title>ITMOA ADMIN - MemberUpdateView</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -33,6 +33,10 @@
 <script src="ckeditor/ckeditor.js"></script>
 
 <style>
+input[type="text"] {
+		border: 0.5px solid #cccccc;
+		background: #hhhhhh;
+}
 .btn-file {
 	padding: 0px 10px;
     overflow: hidden;
@@ -198,7 +202,7 @@
 										<div class="ooo">
 										<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
 										<input type="text" id="sample6_postcode" name="mb_zip" value="${adminMemberUpdateView[0].mb_zip }" style="width: 250px; height: 30px; border-radius: 5px; margin: 5px; margin-left: -1px;">
-										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px;">우편번호 찾기</button><br>
+										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px; background-color: #4e73df; border: none;">우편번호 찾기</button><br>
 										</div>
 										<div style="margin-left: 150px">
 										<input class="addr" type="text" id="sample6_address" name="mb_add1" value="${adminMemberUpdateView[0].mb_add1 }" style="width:250px"><br>

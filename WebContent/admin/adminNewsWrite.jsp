@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Member</title>
+<title>ITMOA ADMIN - NewsWrite</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -112,7 +112,7 @@
 											});
 										</script>
 										<h6 class="m-0 font-weight-bold text-primary p-2">대표 사진</h6>
-										<input type="file" name="news_brd_img" accept="image/jpeg, image/png" class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" />
+										<input type="file" name="news_brd_img" accept="image/jpeg, image/png" class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="width: 230px;"/>
 										<input type="hidden" name="ifNew" value="true" />
 										<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">작성 완료</button>
 									</form>

@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Class</title>
+<title>ITMOA ADMIN - InsRegist</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -27,6 +27,13 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+<style>
+input[type="text"] {
+		border: 0.5px solid #cccccc;
+		background: #hhhhhh;
+}
+</style>
 
 </head>
 
@@ -166,10 +173,13 @@
 								
 								<div class="card-body">
 									<form name="frm" action="adminInsRegistOk.do" method="post" enctype="multipart/form-data" onsubmit="return chkSubmit()">
-									<h6 class="m-0 font-weight-bold text-primary p-2">학원명</h6>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원명</h6>
 									<input name="ins_name" type="text"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
-									<select name="ins_tel1">
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">전화번호</h6>
+									<select name="ins_tel1" style="height: 27px">
 										<option selected>02</option>
 										<option>031</option>
 										<option>032</option>
@@ -189,15 +199,19 @@
 									</select>
 									<input name="ins_tel2" type="text"></input>
 									<input name="ins_tel3" type="text"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">주소</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
 									<div id="info_addr">
-			    						<input type="text" id="sample6_postcode" name="ins_zip" placeholder="우편번호" style="width: 250px;height: 40px;border-radius: 7px;margin: 5px;">
-										<input class="addr-btn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소"><br>
-										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소">
+			    						<input type="text" id="sample6_postcode" name="ins_zip" placeholder="우편번호" style="width: 250px; height: 30px; border-radius: 5px; margin: 5px; margin-left: -1px;">
+										<input class="addr-btn btn btn-info btn-icon-split" style="margin-left: -5px; margin-top: -3.5px; background-color: #4e73df; border: none;" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" style="margin-left: 150px"><br>
+										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" style="margin-left: 150px">
 										<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">
 	    							</div> 							
-									<h6 class="m-0 font-weight-bold text-primary p-2">지역</h6>
+	    							</div>
+	    							<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">지역</h6>
 									<select name="ins_location">
 										<option selected>서울</option>
 										<option>경기</option>
@@ -209,13 +223,22 @@
 										<option>울산</option>
 										<option>기타</option>
 									</select>
-									<h6 class="m-0 font-weight-bold text-primary p-2">지점</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">지점</h6>
 									<input type="text" name="ins_branch"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">위치</h6>
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">위치</h6>
 									X <input type="text" name="ins_x" placeholder="좌표값1"></input><br>
 									Y <input type="text" name="ins_y" placeholder="좌표값2"></input>
-									<h6 class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<input type="file" name="file" />							
+									</div>
+									<div class="ooo">
+									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
+									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top: 7px;">
+									<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="width: 230px;" />
+									</label>
+									</div>							
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">등록</button>	
 									
 									</form>
@@ -344,6 +367,10 @@
         }).open();
     }
  
+    function changeImg() {
+		var changeP = $("input[name='ins_img']").val().substring(12);
+		$("form > p").html(changeP);
+	}
  
 </script>
 

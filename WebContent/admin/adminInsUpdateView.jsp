@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ITMOA ADMIN - Class</title>
+<title>ITMOA ADMIN - InsUpdate</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -29,6 +29,10 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 <style>
+input[type="text"] {
+		border: 0.5px solid #cccccc;
+		background: #hhhhhh;
+}
 .btn-file {
 	padding: 0px 10px;
     overflow: hidden;
@@ -192,7 +196,7 @@
 									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">주소</h6>
 									<div id="info_addr">
 										<input type="text" id="sample6_postcode" name="ins_zip" value="${adminInsUpdateView[0].ins_zip }" style="width: 250px; height: 30px; border-radius: 5px; margin: 5px; margin-left: -1px;">
-										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px;">우편번호 찾기</button><br>
+										<button class="addr-btn, btn btn-info btn-icon-split" type="button" onclick="sample6_execDaumPostcode()" style="margin-left: -5px; margin-top: -3.5px; background-color: #4e73df; border: none;">우편번호 찾기</button><br>
 										<input class="addr" type="text" id="sample6_address" name="ins_add1" placeholder="주소" value="${adminInsUpdateView[0].ins_add1 }" style="margin-left: 150px"><br>
 										<input class="addr" type="text" id="sample6_detailAddress" name="ins_add2" placeholder="상세주소" value="${adminInsUpdateView[0].ins_add2 }" style="margin-left: 150px">
 										<input class="addr" type="text" id="sample6_extraAddress" style="display: none;" placeholder="상세주소">
@@ -222,10 +226,11 @@
 									</div>
 									<div class="ooo">
 									<h6 id="left" class="m-0 font-weight-bold text-primary p-2">학원이미지</h6>
-									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top: 7px;">
-											사진 선택<input type="file" name="ins_img" accept="image/jpeg, image/png" onchange="changeImg()" />
+									<label class="btn-file float-left bg-primary font-weight-bold text-white border-0 rounded" style="margin-top:7px;">
+												사진 선택<input type="file" name="mb_img" accept="image/jpeg, image/png" onchange="changeImg()" />
 									</label>
 									<img src="ins/img/${adminInsUpdateView[0].ins_img }" style="width: 150px; height: 150px;"/>
+									</div>
 									<%--
 										String ins_img = "${adminInsUpdateView[0].ins_img }";
 										String dirPath = application.getRealPath(ins_img);
@@ -255,7 +260,7 @@
 											}
 										}
 									--%>
-									</div>
+									
 									<button type="submit" class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">수정</button>	
 									</form>
 								</div>
@@ -384,7 +389,7 @@
     }
  	
     function changeImg() {
-		var changeP = $("input[name='ins_img']").val().substring(1);
+		var changeP = $("input[name='ins_img']").val().substring(12);
 		$("form > p").html(changeP);
 	}
  
