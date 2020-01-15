@@ -109,15 +109,15 @@
                                 <div class="center gap fade-down section-heading">
                                     <h2 class="main-title">학원 상세 정보</h2>
                                     <hr>
-                                    <c:if test="${sessionScope.loginUid != null }">
+                      
                                     	<p>${classView[0].ins_name }</p>
-	                                    <form method="post" action="/Project_itmoa/user/reserveOk.do">
+	                                    <form method="post" action="/Project_itmoa/user/reserveOk.do" onSubmit="return chkLogin()">
 	                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
 		                                    <button type="submit" style="color: white" class="btn btn-info btn-icon-split">
 												<span class="text">상담 예약</span>
 											</button>
 	                                    </form>
-                                    </c:if>
+                                 
                                     <c:choose>
 										<c:when test="${sessionScope.loginUid != null }">                                    
 		                                    <form method="post" action="/Project_itmoa/user/zzimOk.do">
@@ -258,7 +258,7 @@
 						                            <div>
 					                            		<h3>4개월 차</h3>
 						                                <span>${classView[0].cur_month4 }</span>
-							                            <div class="tile-progressbar" style="margin-top: 100px">
+							                            <div class="tile-progressbar" style="margin-toZp: 100px">
 							                                <span data-fill="10%"></span>
 							                            </div>
 							                            <div class="tile-footer">
@@ -394,6 +394,13 @@
     		$('.tile-header > button').css("color", "black");
     		$('.tile-header > button').eq(i-1).css("background-color", "black");
     		$('.tile-header > button').eq(i-1).css("color", "white");
+    	}
+    	
+    	function chkLogin() {
+    		if (${empty sessionScope.loginUid }) {
+    			alert("상담 예약은 로그인 시 가능합니다");
+    			return false;
+    		}
     	}
     </script>
     
