@@ -68,15 +68,17 @@ public class MyPageUpdateOkCommand implements Command {
 					cnt = 3;
 				}
 			}
+			
+			if (cnt == 1) {
+				httpSession.removeAttribute("loginImg");
+				httpSession.setAttribute("loginImg", mb_img);
+			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		request.setAttribute("myPageUpdateOk", cnt);
 
-		if (cnt == 1) {
-			httpSession.removeAttribute("loginImg");
-			httpSession.setAttribute("loginImg", contextRootPath);;
-		}
+		
 	}
 
 }
