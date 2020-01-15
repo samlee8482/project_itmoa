@@ -109,7 +109,7 @@
 	                                    <form method="post" action="/Project_itmoa/user/reserveOk.do" onSubmit="return chkLogin()">
 	                                 		<input type="hidden" name="mb_uid" value="${sessionScope.loginUid }">
 		                                    <button type="submit" style="color: white" class="btn btn-info btn-icon-split">
-												<span class="text">상담 예약</span>
+												<span class="text"><span class="pe-7s-gleam bounce-in"></span>상담예약</span>
 											</button>
 	                                    </form>
                                  
@@ -126,7 +126,7 @@
 															<span class="icon text-white-50"> 
 																<i class="fas fa-heart"></i>
 															</span>
-															<span class="text">찜 취소</span>
+															<span class="text zzim_btn">찜취소</span>
 														</button>
 			                                    	</c:when>
 			                                    	<c:otherwise>
@@ -136,7 +136,7 @@
 															<span class="icon text-white-50"> 
 																<i class="fas fa-heart"></i>
 															</span>
-															<span class="text">찜 하기</span>
+															<span class="text zzim_btn">찜하기</span>
 														</button>
 			                                    	</c:otherwise>
 			                                    </c:choose>
