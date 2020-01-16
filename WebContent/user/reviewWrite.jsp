@@ -27,9 +27,9 @@
     jQuery(document).ready(function($){
     'use strict';
         jQuery('body').backstretch([
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600",
-            "http://placehold.it/800x600"
+        	"images/bg/bg0.jpg",
+ 	        "images/bg/bg1.png",
+ 	        "images/bg/bg2.png"
         ], {duration: 5000, fade: 500});
 
         $("#mapwrapper").gMap({ controls: false,
@@ -75,7 +75,6 @@
 								<div class="center gap fade-down section-heading">
 									<h2 class="main-title">학원 후기</h2>
 									<hr>
-									<p>리뷰 리뷰 리뷰 리뷰 리뷰 리뷰 리뷰 리뷰</p>
 								</div>
 							</div>
 						</div>
