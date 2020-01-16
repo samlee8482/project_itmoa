@@ -31,13 +31,9 @@ public class AdminCurUpdateOkCommand implements Command {
 		int cur_uid = Integer.parseInt(request.getParameter("cur_uid"));
 		
 		try {
-			if( cur_uid > 0) {
 				cnt = dao.updateClass( cur_uid,  cur_name,  cur_hours, cur_months,  cur_month1,  cur_month2,  cur_month3, 
-						cur_month4,  cur_month5,  cur_month6);
+					cur_month4,  cur_month5,  cur_month6);
 				System.out.println(cur_uid);
-			} else {
-				System.out.println("cur_uid 파라미터값을 불러오지 못했음" + cur_uid);
-			}
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
