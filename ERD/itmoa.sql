@@ -215,10 +215,8 @@ insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2)
 values ('user4', 'Rretw_12#', '박우람', 'abced@hanmail.net', 01035, '경기도', '평택');
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
 values ('user5', 'A12_adsf$', '김민하', 'ddsf133@hanmail.net', 91105, '부천시', '원미구');
-insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2) 
-values ('admin', 'pw', '김민하', 'ddsf133@hanm123ail.net', 91105, '부천시', '원미구');
 insert into mb (mb_id, mb_pw, mb_name, mb_email, mb_zip, mb_add1, mb_add2, mb_level) 
-values ('admin1', 'pw', '김민하', 'ddsf1asd33@hanm123ail.net', 91105, '부천시', '원미구', 3);
+values ('admin', 'pw', '김민하', 'ddsf1asd33@hanm123ail.net', 91105, '부천시', '원미구', 3);
 
 
 insert into ins (ins_name, ins_tel, ins_zip, ins_add1, ins_add2, ins_location, ins_branch, ins_img, ins_x, ins_y)
@@ -380,3 +378,8 @@ values('유니티가 즐겁습니다.', '<p>처음 DBMS를 배워서 계속 놓�
 insert into review_brd(review_brd_title, review_brd_content, review_brd_regdate, class_uid, mb_uid)
 values('빅데이터는 사랑입니다', '<p>최고에요</p>
 ', '2020-01-15 05:57:56', 1, 20);
+select * from rep;
+insert into rep(review_brd_uid, rep_content, mb_uid)
+values(101, "감사합니다!", 2);
+insert into rep(review_brd_uid, rep_content, mb_uid)
+values(101, "도움이 되었습니다!", 3);
