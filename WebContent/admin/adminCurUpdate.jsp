@@ -26,6 +26,28 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <script src="ckeditor/ckeditor.js"></script>
+<script>
+		// form 검증
+		function chkSubmit() {
+			frm = document.forms["frm"];
+
+			var cur_hours = frm["cur_hours"].value.trim();
+			var cur_months = frm["cur_months"].value.trim();
+
+			if (cur_hours == "") {
+				alert("수강시간을 입력해주세요");
+				frm["cur_hours"].focus();
+				return false;
+			}
+			if (cur_months == "") {
+				alert("수강개월을 입력해주세요");
+				frm["cur_months"].focus();
+				return false;
+			}
+
+			return true;
+		}
+	</script>
 </head>
 
 <body id="page-top">
@@ -96,7 +118,7 @@
 									<h6 class="m-0 font-weight-bold text-primary">과정 추가</h6>
 								</div>
 								<div class="card-body">
-									<form action="/Project_itmoa/admin/adminCurUpdateOk.do" method="post" enctype=”multipart/form-data”>
+									<form action="/Project_itmoa/admin/adminCurUpdateOk.do" method="post" name="frm" onsubmit="return chkSubmit()" enctype=”multipart/form-data”>
 										<h6 class="m-0 font-weight-bold text-primary p-2">과정명</h6>
 										<select name="cur_name" style="width: 100%" class="p-2">
 											<option value="웹/앱">웹/앱</option>
@@ -113,17 +135,17 @@
 										<h6 class="m-0 font-weight-bold text-primary p-2" >총 개월</h6>
 										<input type="text" name="cur_months" placeholder=" ${Curselect[0].cur_months}" class="p-2 mb-3 col-xl-12">
 										<h6 class="m-0 font-weight-bold text-primary p-2">month1</h6>
-										<textarea name="cur_month1" placeholder="${Curselect[0].cur_month1}"></textarea>
+										<textarea name="cur_month1">${Curselect[0].cur_month1}</textarea>
 										<h6 class="m-0 font-weight-bold text-primary p-2">month2</h6>
-										<textarea name="cur_month2" placeholder="${Curselect[0].cur_month2}"></textarea>
+										<textarea name="cur_month2">${Curselect[0].cur_month2}</textarea>
 										<h6 class="m-0 font-weight-bold text-primary p-2">month3</h6>
-										<textarea name="cur_month3" placeholder="${Curselect[0].cur_month3}"></textarea>
+										<textarea name="cur_month3">${Curselect[0].cur_month3}</textarea>
 										<h6 class="m-0 font-weight-bold text-primary p-2">month4</h6>
-										<textarea name="cur_month4" placeholder="${Curselect[0].cur_month4}"></textarea>
+										<textarea name="cur_month4">${Curselect[0].cur_month4}</textarea>
 										<h6 class="m-0 font-weight-bold text-primary p-2">month5</h6>
-										<textarea name="cur_month5" placeholder="${Curselect[0].cur_month5}"></textarea>
+										<textarea name="cur_month5">${Curselect[0].cur_month5}</textarea>
 										<h6 class="m-0 font-weight-bold text-primary p-2">month6</h6>
-										<textarea name="cur_month6" placeholder="${Curselect[0].cur_month6}"></textarea>
+										<textarea name="cur_month6">${Curselect[0].cur_month6}</textarea>
 										<input type="hidden" name="ifNew" value="true" />
 										<input type="hidden" name="cur_uid" value="${param.cur_uid }" />
 										<button type="submit" on class="p-2 mt-3 col-xl-12 bg-primary text-white border-0 rounded">추가 완료</button>

@@ -215,6 +215,7 @@ public class AdminClassDAO {
 
 		ClassDTO [] arr = null;
 		String selectIns = D.SQL_SELECT_INS;
+		selectIns += D.SQL_SELECT_FROM_ROW_INS;
 		
 		try {
 			int cnt = 0;
@@ -245,7 +246,6 @@ public class AdminClassDAO {
 			
 			}
 			
-			selectIns += D.SQL_SELECT_FROM_ROW_INS;
 			if(cnt == 1) {
 				pstmt.setInt(2, from);
 				pstmt.setInt(3, rows);

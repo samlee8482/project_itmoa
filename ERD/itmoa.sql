@@ -129,64 +129,64 @@ CREATE TABLE zzim
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (class_uid)
 	REFERENCES class (class_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (cur_uid)
 	REFERENCES cur (cur_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE class
 	ADD FOREIGN KEY (ins_uid)
 	REFERENCES ins (ins_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE rep
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE review_brd
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE zzim
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES mb (mb_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
 ALTER TABLE rep
 	ADD FOREIGN KEY (review_brd_uid)
 	REFERENCES review_brd (review_brd_uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON UPDATE cascade
+	ON DELETE cascade
 ;
 
 
@@ -383,3 +383,10 @@ insert into rep(review_brd_uid, rep_content, mb_uid)
 values(101, "감사합니다!", 2);
 insert into rep(review_brd_uid, rep_content, mb_uid)
 values(101, "도움이 되었습니다!", 3);
+
+
+
+
+
+
+DELETE FROM mb WHERE mb_uid = ;

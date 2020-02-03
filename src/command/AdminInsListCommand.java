@@ -90,7 +90,8 @@ public class AdminInsListCommand implements Command {
 				
 				arr = dao.selectInsFromRow2(Integer.parseInt(option), keyword, fromRow, pageRows);
 				
-				request.setAttribute("adminInsCnt", cnt);
+				request.setAttribute("adminInsAllCnt", cnt);
+				request.setAttribute("adminInsCnt", arr.length);
 				request.setAttribute("adminInsList", arr);
 				request.setAttribute("page", page);
 				request.setAttribute("totalPage", totalPage);
