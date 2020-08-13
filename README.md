@@ -19,3 +19,5 @@
 ### DB구조
 ![아이티모아_DB1](/itmoa_DB1.jpg)   
 ![아이티모아_DB2](/itmoa_DB2.jpg)   
+   
+*[전체 포트폴리오 보기](https://github.com/samlee8482/portfolio)*
