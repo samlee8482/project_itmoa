@@ -17,3 +17,5 @@
 ### 시연영상
 [YouTube 보기](https://youtu.be/giellTQLafQ)   
 ### DB구조
+![아이티모아_DB1](/itmoa_DB1.jpg)   
+![아이티모아_DB2](/itmoa_DB2.jpg)   
