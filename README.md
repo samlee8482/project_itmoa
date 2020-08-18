@@ -12,7 +12,7 @@
 * 웹 화면 구성 : HTML, CSS, JavaScript, BootStrap   
 * 결과를 얻어오기 위한 서버 액션 : JAVA(jdk 1.8.0_221), JSP, JSTL, EL   
 * DB액션 처리 : JDBC, MariaDB(10.4ver)   
-* 개발 Tool : Eclips(Photon), GitHub, Apache Tomcat(v8.5.49)   
+* 개발 Tool : Eclipse(Photon), GitHub, Apache Tomcat(v8.5.49)   
 * 기타 라이브러리 : CKEditor, Google Maps, JavaMailAPI   
 ### 시연영상
 [YouTube 보기](https://youtu.be/giellTQLafQ)   
